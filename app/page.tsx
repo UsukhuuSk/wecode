@@ -25,35 +25,39 @@ export default function Home() {
       id: 1,
       name: "John Doe",
       designation: "Software Engineer",
-      image:
-        "https://images.unsplash.com/photo-1599566150163-29194dcaad36?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=3387&q=80",
+      // image:
+      //   "https://images.unsplash.com/photo-1599566150163-29194dcaad36?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=3387&q=80",
+      image: "",
     },
     {
       id: 2,
       name: "Robert Johnson",
       designation: "Product Manager",
-      image:
-        "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8YXZhdGFyfGVufDB8fDB8fHww&auto=format&fit=crop&w=800&q=60",
+      // image:
+      //   "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8YXZhdGFyfGVufDB8fDB8fHww&auto=format&fit=crop&w=800&q=60",
+      image: "",
     },
     {
       id: 3,
       name: "Jane Smith",
       designation: "Data Scientist",
-      image:
-        "https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8YXZhdGFyfGVufDB8fDB8fHww&auto=format&fit=crop&w=800&q=60",
+      // image:
+      //   "https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8YXZhdGFyfGVufDB8fDB8fHww&auto=format&fit=crop&w=800&q=60",
+      image: "",
     },
     {
       id: 4,
       name: "Emily Davis",
       designation: "UX Designer",
-      image:
-        "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fGF2YXRhcnxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=800&q=60",
+      // image:
+      //   "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fGF2YXRhcnxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=800&q=60",
+      image: "",
     },
   ];
   return (
     <>
-      <div className="px-4 m-0 bg lg:pt-[125px]">
-        <div
+      <div className="px-4 m-0 bg lg:pt-[125px] bg-[#13032b] rounded-3xl">
+        {/* <div
           className="absolute inset-0 bg-center bg-cover bg-no-repeat -z-30 top-1/4 lg:top-0"
           style={{ backgroundImage: `url(${bg.src})` }}
         >
@@ -73,7 +77,7 @@ export default function Home() {
             alt=""
             className="flex lg:hidden absolute top-[70%] left-1/2 -translate-x-1/2"
           />
-        </div>
+        </div> */}
 
         <div className="flex flex-col gap-6">
           <div className="m-auto flex justify-center">
@@ -109,18 +113,18 @@ export default function Home() {
             </div>
           </div>
           <div className="text-center">
-            <span className="gradtext font-montserratAlt text-[40px] lg:text-[72px] font-extrabold">
-              Хиймэл{" "}
+            <span className="gradtext ovsoge text-[40px] lg:text-[72px] font-extrabold">
+              Empowering{" "}
             </span>
-            <span className="gradtext font-montserratAlt text-[40px] lg:text-[72px] font-extrabold">
-              оюун,{" "}
+            <span className="ovsoge text-white text-[40px] lg:text-[72px] font-extrabold">
+              the Next
             </span>
-            <span className="gradtext font-montserratAlt text-[40px] lg:text-[72px] font-extrabold">
-              кодчлолын
-            </span>
-            <div className="font-montserratAlt text-[40px] lg:text-[72px] font-extrabold">
-              ур чадварт суралцацгаая!
+            <div className="ovsoge text-white text-[40px] lg:text-[72px] font-extrabold">
+              Generation
             </div>
+            {/* <span className="gradtext font-montserratAlt text-[40px] lg:text-[72px] font-extrabold">
+              кодчлолын
+            </span> */}
             {/* <span className="gradtext font-montserratAlt text-[40px] font-extrabold ">
           Хиймэл оюун, кодчлолын
           </span> */}

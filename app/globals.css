@@ -10,13 +10,15 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
+    --background: ##13032b;
     --foreground: #ededed;
   }
 }
 
 body {
   color: var(--foreground);
+  padding: 40px;
+
   background: var(--background);
   font-family: var(--font-manrope);
 }
@@ -25,7 +27,7 @@ body {
   .text-balance {
     text-wrap: balance;
   }
-  .gradtext {
+  /* .gradtext {
     background: linear-gradient(
       248deg,
       #3bc9e8 41.67%,
@@ -35,6 +37,22 @@ body {
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+  } */
+  .gradtext {
+    background: linear-gradient(
+      251deg,
+      #3944d1 28.67%,
+      #8f5aff 41.75%,
+      #ffc567 54.83%,
+      #f8623f 69.02%,
+      #ff82a9 84.33%
+    );
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  .ovsoge {
+    font-family: var(--font-ov-soge), sans-serif;
   }
   /* .bg {
     background: linear-gradient(
