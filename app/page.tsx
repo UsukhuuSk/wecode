@@ -5,7 +5,7 @@ import golomt from "../assets/golomt.svg";
 import brain from "../assets/brain-02.svg";
 import coding from "../assets/code-circle.svg";
 import help from "../assets/help-circle.svg";
-import bg from "../assets/bg.png";
+// import bg from "../assets/bg.png";
 import star from "../assets/stars.png";
 import star2 from "../assets/stars2.png";
 import star3 from "../assets/stars3.png";
@@ -18,6 +18,22 @@ import { FaPlay, FaApple } from "react-icons/fa";
 import apple from "../assets/apple.svg";
 import google from "../assets/google.svg";
 import phone from "../assets/phone.png";
+import first from "../assets/LandingPage/1.svg";
+import second from "../assets/LandingPage/2.svg";
+import third from "../assets/LandingPage/3.svg";
+import fourth from "../assets/LandingPage/4.svg";
+import fifth from "../assets/LandingPage/5.svg";
+import sixth from "../assets/LandingPage/6.svg";
+import seventh from "../assets/LandingPage/7.svg";
+import eight from "../assets/LandingPage/8.svg";
+import nine from "../assets/LandingPage/9.svg";
+import ten from "../assets/LandingPage/10.svg";
+import eleven from "../assets/LandingPage/11.svg";
+import twelve from "../assets/LandingPage/12.svg";
+import bg from "../assets/LandingPage/background.png";
+import fullcircle from "../assets/LandingPage/fullcircle.png";
+import opencircle from "../assets/LandingPage/opencircle.png";
+import shadow from "../assets/LandingPage/shadow.svg";
 
 export default function Home() {
   const people = [
@@ -56,95 +72,112 @@ export default function Home() {
   ];
   return (
     <>
-      <div className="px-4 m-0 bg lg:pt-[125px] bg-[#13032b] rounded-3xl">
-        {/* <div
-          className="absolute inset-0 bg-center bg-cover bg-no-repeat -z-30 top-1/4 lg:top-0"
-          style={{ backgroundImage: `url(${bg.src})` }}
-        >
-          {" "}
-          <Image
-            src={star}
-            alt=""
-            className="hidden lg:flex lg:absolute  lg:left-0 lg:top-[15%]"
-          />
-          <Image
-            src={star2}
-            alt=""
-            className="hidden lg:flex lg:absolute lg:right-0 lg:top-[15%] "
-          />
-          <Image
-            src={star3}
-            alt=""
-            className="flex lg:hidden absolute top-[70%] left-1/2 -translate-x-1/2"
-          />
-        </div> */}
-
-        <div className="flex flex-col gap-6">
-          <div className="m-auto flex justify-center">
-            <div className="flex items-center gap-6 py-2 px-4 rounded-[32px] bg-white border border-[#C2CAD2] ">
-              <div className="flex flex-row items-center justify-center">
-                {people.map((item) => (
-                  <div className="-mr-3" key={item.name}>
-                    <Image
-                      height={100}
-                      width={100}
-                      src={item.image}
-                      alt={item.name}
-                      className="object-cover !m-0 !p-0 object-top rounded-full  h-8 w-8"
-                    />
-                  </div>
-                ))}
+      <div className="px-4 m-0 relative rounded-3xl h-screen">
+        <div className="absolute -z-50">
+          <Image src={bg} alt="" />
+        </div>
+        <div className="absolute right-1/2 top-[15%] translate-x-1/2 translate-y-1/3">
+          <div className="flex flex-col justify-between items-center gap-12 ">
+            <div className=" absolute left-0 ">
+              <div className="flex items-center gap-3">
+                <Image src={first} alt="" />
+                <Image src={second} alt="" />
+                <Image src={third} alt="" />
               </div>
-              <div className="flex flex-col items-start">
-                <div className="flex justify-center ">
-                  <span className="text-xs font-extrabold font-manrope">
-                    4.5
-                  </span>
-                  <IoIosStar size={14} color="#FFCC15" />
-                  <IoIosStar size={14} color="#FFCC15" />
-                  <IoIosStar size={14} color="#FFCC15" />
-                  <IoIosStar size={14} color="#FFCC15" />
-                  <IoIosStar size={14} color="#FFCC15" />
+            </div>
+            <div className="absolute right-0">
+              <div className="flex items-center gap-3">
+                <Image src={fourth} alt="" />
+                <Image src={fifth} alt="" />
+                <Image src={sixth} alt="" />
+              </div>
+            </div>
+            <div className="absolute right-0 bottom-0">
+              <div className="flex items-center gap-3">
+                <Image src={seventh} alt="" />
+                <Image src={eight} alt="" />
+                <Image src={nine} alt="" />
+              </div>
+            </div>
+            <div className="absolute left-0 bottom-0">
+              <div className="flex items-center gap-3">
+                <Image src={seventh} alt="" />
+                <Image src={eight} alt="" />
+                <Image src={nine} alt="" />
+              </div>
+            </div>
+            <div className="m-auto absolute flex justify-center">
+              <div className="flex items-center gap-6 py-2 px-4 rounded-[32px] bg-[#150A32] border border-[#00FF9D]">
+                <div className="flex flex-row items-center justify-center">
+                  {people.map((item) => (
+                    <div className="-mr-3" key={item.name}>
+                      <Image
+                        height={100}
+                        width={100}
+                        src={item.image}
+                        alt={item.name}
+                        className="object-cover !m-0 !p-0 object-top rounded-full  h-8 w-8"
+                      />
+                    </div>
+                  ))}
                 </div>
-                <div className=" text-[#27262B66] font-manrope text-center font-semibold">
-                  1200+ сурагчид
+                <div className="flex flex-col items-start">
+                  <div className="flex justify-center items-start gap-1 ">
+                    <span className="text-xs font-extrabold font-manrope text-white">
+                      4.5
+                    </span>
+                    <div className="flex ">
+                      <IoIosStar size={14} color="#FFCC15" />
+                      <IoIosStar size={14} color="#FFCC15" />
+                      <IoIosStar size={14} color="#FFCC15" />
+                      <IoIosStar size={14} color="#FFCC15" />
+                      <IoIosStar size={14} color="#FFCC15" />
+                    </div>
+                  </div>
+                  <div className=" text-[#FFFFFF99] font-manrope text-center font-semibold">
+                    1200+ сурагчид
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-          <div className="text-center">
-            <span className="gradtext ovsoge text-[40px] lg:text-[72px] font-extrabold">
-              Empowering{" "}
-            </span>
-            <span className="ovsoge text-white text-[40px] lg:text-[72px] font-extrabold">
+            <div className="text-center">
+              <span className="gradtext ovsoge text-[40px] lg:text-[72px] font-bold">
+                AI FOR ALL
+              </span>
+              {/* <span className="ovsoge text-white text-[40px] lg:text-[72px] font-extrabold">
               the Next
             </span>
             <div className="ovsoge text-white text-[40px] lg:text-[72px] font-extrabold">
               Generation
-            </div>
-            {/* <span className="gradtext font-montserratAlt text-[40px] lg:text-[72px] font-extrabold">
+            </div> */}
+              {/* <span className="gradtext font-montserratAlt text-[40px] lg:text-[72px] font-extrabold">
               кодчлолын
             </span> */}
-            {/* <span className="gradtext font-montserratAlt text-[40px] font-extrabold ">
+              {/* <span className="gradtext font-montserratAlt text-[40px] font-extrabold ">
           Хиймэл оюун, кодчлолын
           </span> */}
-          </div>
-          <div className="text-center">
-            {/* <div className="text-[#5c5c5c] font-manrope text-[16px] font-medium tracking-tight">
-            AI for All: Expanding our mission to democratize
-          </div>
-          <div className="text-[#5c5c5c] font-manrope text-[16px] font-medium tracking-tight">
-            AI and coding education for everyone,
-          </div>
-          <div className="text-[#5c5c5c] font-manrope text-[16px] font-medium tracking-tight">
-            everywhere.
-          </div> */}
-            <div className="text-[#5c5c5c] font-manrope text-[16px] font-medium tracking-tight lg:tracking-[0.173px] lg:w-[622px] m-auto">
-              AI for All: Expanding our mission to democratize AI and coding
-              education for everyone, everywhere.
             </div>
-          </div>
-          <div className="flex flex-col gap-12">
+            <div className="flex justify-center gap-12">
+              {/* <Image src={first} alt="" />
+            <Image src={second} alt="" />
+            <Image src={third} alt="" />
+            <Image src={fourth} alt="" />
+            <Image src={fifth} alt="" />
+            <Image src={sixth} alt="" /> */}
+              <Image src={seventh} alt="" />
+              <Image src={eight} alt="" />
+              <Image src={nine} alt="" />
+              <Image src={ten} alt="" />
+              <Image src={eleven} alt="" />
+              <Image src={twelve} alt="" />
+            </div>
+            <div className="text-center">
+              <div className="text-[#5c5c5c] font-manrope text-[16px] font-medium tracking-tight lg:tracking-[0.173px] lg:w-[622px] m-auto">
+                AI for All: Expanding our mission to democratize AI and coding
+                education for everyone, everywhere.
+              </div>
+            </div>
+            {/* <div className="flex flex-col gap-12">
             <div className="m-0 flex justify-center ">
               <div className="px-5 py-4 rounded-[48px] text-white bg-[#27262B] font-manrope font-extrabold text-[16px]">
                 Сургалт үзэж эхлэх
@@ -154,10 +187,10 @@ export default function Home() {
               <Image src={unicef} alt="unicef" width={91} />
               <Image src={golomt} alt="golomtbank" width={110} />
             </div>
+          </div> */}
+            {/* <div className=" "> */}
           </div>
-        </div>
-        <div className="mt-[88px] mb-[125px]">
-          <div className="flex flex-col items-center justify-center gap-7">
+          <div className="flex flex-col items-center justify-end gap-7">
             <div className="flex flex-col lg:flex-row lg:gap-4 gap-2">
               <div className="m-0 z-50 bg-white flex justify-start items-center self-stretch w-auto rounded-[32px] border gap-[10px]  px-6 py-3 border-[#E3E3E3] text-start">
                 <Image src={brain} alt="brain" width={24} height={24} />
@@ -172,121 +205,6 @@ export default function Home() {
                 </span>
               </div>
             </div>
-          </div>
-        </div>
-        <div className=" max-w-[1100px] m-auto flex flex-col gap-12 mb-[183px]">
-          <h1 className=" text-[24px] font-extrabold text-[#27262b] font-manrope">
-            Бидний онцлог
-          </h1>
-          <div className="flex flex-col lg:grid grid-cols-5 gap-[20px]">
-            <div className="bluegrad rounded-2xl pt-[33px] overflow-hidden col-span-2">
-              <h1 className="text-mainblack text-[20px] font-extrabold font-manrope text-center">
-                Дэлхийд хүлээн зөвшөөрөгдсөн сертификат
-              </h1>
-              <div className="border text-center border-[#0000000D] w-[237px] h-[1px] mx-auto my-4"></div>
-              <div className="flex items-center justify-center gap-6">
-                <Image
-                  src={unicef}
-                  alt="unicef"
-                  width={54}
-                  height={12}
-                  className="object-cover"
-                />
-                <Image
-                  src={unicef}
-                  alt="unicef"
-                  width={54}
-                  height={12}
-                  className="object-cover"
-                />
-                <Image
-                  src={unicef}
-                  alt="unicef"
-                  width={54}
-                  height={12}
-                  className="object-cover"
-                />
-              </div>
-              <Image src={certicates2} alt="certicates" />
-            </div>
-            <div className="greengrad rounded-2xl flex flex-col gap-[75px] lg:gap-[30px] pt-[33px] py-[63px] col-span-3 overflow-hidden">
-              <h1 className="text-mainblack text-[20px] font-extrabold font-manrope text-center">
-                Ур чадваруудын үнэлгээ
-                <div className="border text-center border-[#0000000D] w-[237px] h-[1px] mx-auto my-4"></div>
-              </h1>
-
-              <Image
-                src={graph}
-                alt="statistics"
-                className="px-1 object-contain mx-auto lg:w-[485px] lg:h-[362px]"
-              />
-              <div className="flex justify-center gap-7">
-                <div className="flex justify-between items-center gap-[6px]">
-                  <div className="bg-[#2EBD59] h-3 w-3 rounded"></div>
-                  <span className="text-[14px] font-normal font-manrope text-[#080808]">
-                    Таны үзүүлэлт
-                  </span>
-                </div>
-                <div className="flex justify-between items-center gap-[6px]">
-                  <div className="bg-[#5C5C5C] h-3 w-3 rounded"></div>
-                  <span className="text-[14px] font-normal font-manrope text-[#080808]">
-                    Дундаж
-                  </span>
-                </div>
-              </div>
-            </div>
-            <div className="col-span-5 rounded-2xl relative flex gap-4 py-[33px] lg:py-[50px] px-3 overflow-hidden border-2 border-[#E4E4E4]">
-              <div
-                className="absolute inset-0 bg-center bg-cover bg-no-repeat -z-30"
-                style={{ backgroundImage: `url(${cardgrad.src})` }}
-              ></div>
-              <Image
-                src={star4}
-                alt=""
-                className="lg:hidden absolute top-[70%] left-1/2 -translate-x-1/2"
-              />
-              <Image src={star4} alt="" className="absolute left-0" />
-              <div className="flex flex-col gap-4 justify-center lg:ml-36">
-                <h1 className="text-mainblack text-[20px] font-extrabold font-manrope text-center">
-                  <div className=" text-[32px] font-extrabold font-manrope text-start">
-                    Мобайл хувилбар
-                  </div>
-                  <div className="text-[#27262B80] text-2xl font-light text-start">
-                    тун удахгүй ...
-                  </div>
-                </h1>
-                <div className="flex items-center gap-3 z-50">
-                  <div className="flex items-center gap-2 py-2 px-4 rounded-[32px] bg-white border border-[#E3E3E3]">
-                    <FaApple />
-                    <Image src={apple} alt="" className="z-50" />
-                  </div>
-                  <div className="flex items-center gap-2 py-2 px-4 rounded-[32px] bg-white border-[#E3E3E3]">
-                    <FaPlay />
-                    <Image src={google} alt="" />
-                  </div>
-                </div>
-              </div>
-              <Image
-                src={phone}
-                alt="screens"
-                className="hidden lg:flex absolute top-0 right-0"
-              />
-            </div>
-          </div>
-        </div>
-      </div>
-      <div className="h-[50rem]  bg-[#F3F3F3] bg-grid-small-black/[0.05] lg:bg-grid-black/[0.05]">
-        <div className="flex flex-col gap-4 py-[95px] items-center">
-          <div className="text-center text-[32px] font-extrabold font-manrope">
-            Сурагчид болон салбарын экспертүүдийн сэтгэгдэл
-          </div>
-
-          <div className="flex">
-            <IoIosStar size={32} color="DBB500" />
-            <IoIosStar size={32} color="DBB500" />
-            <IoIosStar size={32} color="DBB500" />
-            <IoIosStar size={32} color="DBB500" />
-            <IoIosStar size={32} color="DBB500" />
           </div>
         </div>
       </div>
