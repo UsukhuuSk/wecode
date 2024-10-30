@@ -65,7 +65,7 @@ export default function RootLayout({
       >
         {/* <Header /> */}
         {/* <Navbar /> */}
-        <FloatingNavDemo />
+        {/* <FloatingNavDemo /> */}
         {children}
       </body>
     </html>

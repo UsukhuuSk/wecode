@@ -2,7 +2,14 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
+@import "/node_modules/locomotive-scroll/dist/locomotive-scroll";
+
+body {
+  margin: 0px;
+  background-color: white;
+}
+
+/* :root {
   --background: #ffffff;
   --foreground: #171717;
   --mainblack: #27262b;
@@ -38,7 +45,7 @@ body {
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
   } */
-  .gradtext {
+/* .gradtext {
     background: linear-gradient(
       251deg,
       #3944d1 28.67%,
@@ -53,8 +60,8 @@ body {
   }
   .ovsoge {
     font-family: var(--font-ov-soge), sans-serif;
-  }
-  /* .bg {
+  } */
+/* .bg {
     background: linear-gradient(
       248deg,
       #3bc9e8 41.67%,
@@ -65,7 +72,7 @@ body {
     );
     opacity: 0.5;
   } */
-  .bluegrad {
+/* .bluegrad {
     background: radial-gradient(
       121.35% 121.35% at 50% 50%,
       rgba(147, 216, 220, 0.25) 0%,
@@ -78,9 +85,9 @@ body {
       #effff5 0%,
       #8bd8a5 100%
     );
-  }
-  .starbg {
-    /* background: linear-gradient(
+  } */
+/* .starbg { */
+/* background: linear-gradient(
       90deg,
       hsla(47, 100%, 54%, 1) 0%,
       hsla(51, 100%, 79%, 1) 100%
@@ -88,5 +95,5 @@ body {
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent; */
-  }
-}
+/* } */
+/* }  */
