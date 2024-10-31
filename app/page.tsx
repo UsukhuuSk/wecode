@@ -10,11 +10,12 @@ export default function Home() {
     })();
   }, []);
   return (
-    <main>
+    <main className="">
       <Intro />
-      {/* {/* <div className="h-screen bg-orange-600 space-y-5"></div> */}
-      {/* <div className="h-screen bg-orange-600 space-y-5"></div>
-      <div className="h-screen bg-orange-600 space-y-5s"></div> */}
+
+      <div className="h-screen bg-orange-600 space-y-5"></div>
+      <div className="h-screen bg-orange-600 space-y-5"></div>
+      {/* <div className="h-screen bg-orange-600 space-y-5s"></div> */}
     </main>
   );
 }
