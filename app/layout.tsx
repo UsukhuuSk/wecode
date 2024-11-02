@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { Navbar } from "../components/Navbar";
-import { Montserrat_Alternates, Manrope } from "next/font/google";
+import { Montserrat_Alternates, Manrope, Golos_Text } from "next/font/google";
 import { FloatingNavDemo } from "../components/Nav";
 import localFont from "next/font/local";
 
@@ -18,6 +18,13 @@ const manrope = Manrope({
   subsets: ["latin"],
   display: "swap",
   variable: "--font-manrope",
+});
+const golosText = Golos_Text({
+  weight: ["400", "500", "600", "700", "800"],
+  style: ["normal"],
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-golos-text",
 });
 const ovSoge = localFont({
   src: [
@@ -61,11 +68,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${montserratAlt.variable} ${manrope.variable} ${ovSoge.variable} antialiased`}
+        className={`${montserratAlt.variable} ${manrope.variable} ${ovSoge.variable} ${golosText.variable} antialiased`}
       >
         {/* <Header /> */}
         {/* <Navbar /> */}
-        {/* <FloatingNavDemo /> */}
+        <FloatingNavDemo />
         {children}
       </body>
     </html>
