@@ -85,32 +85,24 @@ export const testimonials = [
 
 export const teachers = [
   {
-    name: "Батбаяр Баясгалан",
+    name: "Б. Баясгалан",
     image: person,
-    role: "Сургагч багш",
     profession: "UI/UX Designer",
-    experience: "5+ жилийн ажлын туршлага",
   },
   {
-    name: "Батбаяр Баясгалан",
+    name: "Т. Өсөхбаяр",
     image: person,
-    role: "Сургагч багш",
-    profession: "UI/UX Designer",
-    experience: "5+ жилийн ажлын туршлага",
+    profession: "Front-end Developer",
   },
   {
-    name: "Батбаяр Баясгалан",
+    name: "Ц. Батаа",
     image: person2,
-    role: "Ментор",
-    profession: "UI/UX Designer",
-    experience: "5+ жилийн ажлын туршлага",
+    profession: "Back-end Developer",
   },
   {
-    name: "Батбаяр Баясгалан",
+    name: "Оюунгоо",
     image: person3,
-    role: "Ментор",
-    profession: "UI/UX Designer",
-    experience: "5+ жилийн ажлын туршлага",
+    profession: "Project Lead",
   },
   {
     name: "Батбаяр Баясгалан",

@@ -1,25 +1,26 @@
 "use client";
 import Image from "next/image";
-// import bg from "../../assets/background.jpeg";
-import intro from "../../assets/intro.png";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useLayoutEffect, useRef } from "react";
 import line from "../../assets/landing/line.svg";
-// import bg from "../../assets/LandingPage/background.png";
-import bg from "../../assets/landing/1A8BA28B 1.svg";
+import bg from "../../assets/landing/1A8BA28B.svg";
 import { people } from "../../data/dummy";
 import { IoIosStar } from "react-icons/io";
+import { motion } from "framer-motion";
+import circle from "../../assets/LandingPage/fullcircle.png";
+import round from "../../assets/LandingPage/opencircle.png";
+import brain from "../../assets/brain-02.svg";
+import coding from "../../assets/code-circle.svg";
+import Unique from "../Unique";
+import AnimatedText from "../AnimatedText";
+import Wander from "../Wander";
 import seventh from "../../assets/LandingPage/7.svg";
 import eight from "../../assets/LandingPage/8.svg";
 import nine from "../../assets/LandingPage/9.svg";
 import ten from "../../assets/LandingPage/10.svg";
 import eleven from "../../assets/LandingPage/11.svg";
 import twelve from "../../assets/LandingPage/12.svg";
-import unicef from "../../assets/unicef.svg";
-import golomt from "../../assets/golomt.svg";
-import circle from "../../assets/LandingPage/fullcircle.png";
-import round from "../../assets/LandingPage/opencircle.png";
 
 export default function Intro() {
   const background = useRef(null);
@@ -32,12 +33,12 @@ export default function Intro() {
     gsap.fromTo(
       background.current,
       {
-        clipPath: "inset(2%)",
-        borderRadius: "24px",
+        clipPath: "inset(0%)",
+        // borderRadius: "24px",
       },
       {
         clipPath: "inset(0%)",
-        borderRadius: "24px",
+        // borderRadius: "24px",
         duration: 1,
         scrollTrigger: {
           trigger: document.documentElement,
@@ -47,28 +48,56 @@ export default function Intro() {
         },
       }
     );
-    gsap.to("#mobilephone", {
-      duration: 1.5,
-      y: -30,
-      repeat: -1,
-      yoyo: true,
-      ease: "sine.inOut",
-    });
+    // gsap.to("#mobilephone", {
+    //   duration: 1.5,
+    //   y: -30,
+    //   repeat: -1,
+    //   yoyo: true,
+    //   ease: "sine.inOut",
+    // });
+    // const timeline = gsap.timeline({
+    //   scrollTrigger: {
+    //     trigger: ".hero-section",
+    //     start: "top top",
+    //     end: "+=100%",
+    //     scrub: true,
+    //     pin: true,
+    //   },
+    // });
+    // timeline
+    //   .to(".section1", { opacity: 0, duration: 1 })
+    //   .from(".section2", { opacity: 0, duration: 1 }, "-=0.5");
   });
+  // useLayoutEffect(() => {
+  //   gsap.registerPlugin(ScrollTrigger);
 
+  //   const timeline = gsap.timeline({
+  //     scrollTrigger: {
+  //       trigger: ".hero-section",
+  //       start: "top top",
+  //       end: "+=100%",
+  //       scrub: true,
+  //       pin: true,
+  //     },
+  //   });
+
+  //   // Animate section1 to fade out and section2 to fade in
+  //   timeline
+  //     .to(".section1", { opacity: 0, duration: 1 })
+  //     .from(".section2", { opacity: 0, duration: 1 }, "-=0.5"); // The "-=0.5" overlaps the animations slightly
+  // }, []);
   return (
-    <div className="relative h-screen w-full">
+    <div className="relative h-screen w-full overflow-hidden">
       <div className="flex justify-center relative">
-        <div
-          ref={background}
-          className="w-full h-screen absolute rounded-3xl bg-[#13032B]"
-        >
-          <Image
+        <div ref={background} className="w-full h-screen absolute bg-[#13032B]">
+          {/* <Image
             src={bg}
             alt="background image"
             fill={true}
             className=" -z-50 bg-cover"
-          />
+            loading="lazy"
+          /> */}
+          <div className="background w-full h-full -z-[50] bg-cover"></div>
           <Image
             src={line}
             alt=""
@@ -78,7 +107,7 @@ export default function Intro() {
             src={circle}
             alt=""
             id="mobilephone"
-            className="absolute top-[66%] -left-[5%] -z-[10]"
+            className="absolute top-[66%] -left-[5%] z-[10]"
             width={458}
             height={458}
           />
@@ -86,7 +115,7 @@ export default function Intro() {
             src={round}
             alt=""
             id="mobilephone"
-            className="absolute top-2/4 -right-[15%] -z-50"
+            className="absolute top-2/4 -right-[15%] z-50"
             width={662}
             height={588}
           />
@@ -96,7 +125,16 @@ export default function Intro() {
         {/* <div>
           <div ref={introImage} data-scroll data-scroll-speed="0.3"></div>
         </div> */}
-        <div className="relative top-1/3 translate-y-1/4 z-10  text-white text-center flex flex-col items-center gap-12">
+        <motion.div
+          initial={{ opacity: 0.0, y: 200 }}
+          whileInView={{ opacity: 1, y: 150 }}
+          transition={{
+            delay: 0.3,
+            duration: 0.8,
+            ease: "easeInOut",
+          }}
+          className="relative top-1/3 translate-y-1/4 z-10  text-white text-center flex flex-col items-center gap-12"
+        >
           <div className="m-auto  flex justify-center">
             <div className="flex items-center gap-6 py-2 px-4 rounded-[32px] bg-[#150A32] border border-[#00FF9D]">
               <div className="flex flex-row items-center justify-center">
@@ -132,17 +170,18 @@ export default function Intro() {
             </div>
           </div>
           <div className="text-center">
-            <span className="gradtext ovsoge text-[40px] lg:text-8xl font-bold">
+            {/* <span className="grad ovsoge text-[40px] lg:text-8xl font-bold">
               AI FOR ALL
-            </span>
+            </span> */}
+            <AnimatedText text="AI FOR ALL" />
           </div>
-          <div className="flex justify-center gap-12">
-            {/* <Image src={first} alt="" />
+          {/* <Image src={first} alt="" />
             <Image src={second} alt="" />
             <Image src={third} alt="" />
             <Image src={fourth} alt="" />
             <Image src={fifth} alt="" />
             <Image src={sixth} alt="" /> */}
+          <div className="flex justify-center gap-12">
             <Image src={seventh} alt="" />
             <Image src={eight} alt="" />
             <Image src={nine} alt="" />
@@ -150,23 +189,32 @@ export default function Intro() {
             <Image src={eleven} alt="" />
             <Image src={twelve} alt="" />
           </div>
+          {/* <Wander /> */}
           <div className="text-center">
             <div className="text-[#5c5c5c] font-manrope text-[16px] font-medium tracking-tight lg:tracking-[0.173px] lg:w-[622px] m-auto">
               AI for All: Expanding our mission to democratize AI and coding
               education for everyone, everywhere.
             </div>
           </div>
-        </div>
+        </motion.div>
       </div>
-      <div className="relative top-1/3 -translate-y-1/2 z-10  text-white text-center flex flex-col items-center gap-12">
-        <div className="flex flex-col gap-12">
-          <div className="flex items-center justify-center gap-7">
-            <Image src={unicef} alt="unicef" width={91} />
-            <Image src={golomt} alt="golomtbank" width={110} />
-          </div>
-          <div className="m-0 flex justify-center ">
-            <div className="px-5 py-4 rounded-[48px] text-white bg-[#27262B] font-manrope font-extrabold text-[16px]">
-              Сургалт үзэж эхлэх
+      <div
+        id="section1"
+        className="relative top-1/3 -translate-y-1/2 z-10  text-white text-center flex flex-col items-center gap-12"
+      >
+        <div className="flex flex-col items-center justify-end gap-7">
+          <div className="flex flex-col lg:flex-row lg:gap-4 gap-2">
+            <div className="m-0 z-50 bg-[#13062D] flex justify-start items-center self-stretch w-auto rounded-[32px] border gap-[10px]  px-6 py-3 border-[#785EFF] text-start">
+              <Image src={brain} alt="brain" width={24} height={24} />
+              <span className="text-white font-manrope text-[14px] font-extrabold leading-none">
+                Artificial Intelligence
+              </span>
+            </div>
+            <div className="flex z-50 bg-[#13062D] justify-start self-stretch text-start w-auto rounded-[32px] border border-[#785EFF] items-center gap-[10px] px-6 py-3">
+              <Image src={coding} alt="coding" width={24} height={24} />
+              <span className="text-white font-manrope text-[14px] font-extrabold leading-none">
+                Coding Program
+              </span>
             </div>
           </div>
         </div>

@@ -48,17 +48,17 @@ export const FloatingNav = ({
       <motion.div
         initial={{
           opacity: 1,
-          y: -100,
+          y: 0,
         }}
         animate={{
-          y: visible ? 0 : -100,
-          opacity: visible ? 1 : 0,
+          y: visible ? 0 : 0,
+          opacity: visible ? 1 : 1,
         }}
         transition={{
           duration: 0.2,
         }}
         className={cn(
-          "flex justify-between max-w-[900px] fixed top-2 inset-x-0 mx-auto border border-transparent dark:border-white/[0.2] rounded-full dark:bg-black bg-white shadow-[0px_2px_3px_-1px_rgba(0,0,0,0.1),0px_1px_0px_0px_rgba(25,28,33,0.02),0px_0px_0px_1px_rgba(25,28,33,0.08)] z-[5000] pr-2 pl-8 py-2  items-center space-x-4",
+          "flex justify-between max-w-[900px] fixed top-0 inset-x-0 mx-auto border border-transparent dark:border-white/[0.2] rounded-b-3xl dark:bg-black bg-white shadow-[0px_2px_3px_-1px_rgba(0,0,0,0.1),0px_1px_0px_0px_rgba(25,28,33,0.02),0px_0px_0px_1px_rgba(25,28,33,0.08)] z-[5000] pr-2 pl-8 py-2  items-center space-x-4",
           className
         )}
       >
@@ -72,7 +72,7 @@ export const FloatingNav = ({
               key={`link=${idx}`}
               href={navItem.link}
               className={cn(
-                "relative dark:text-neutral-50 items-center flex space-x-14 text-neutral-600 dark:hover:text-neutral-300 hover:text-neutral-500"
+                "relative items-center flex space-x-14 text-[#13032B] font-medium text-[14px] font-golosText"
               )}
             >
               <span className="block sm:hidden">{navItem.icon}</span>
@@ -81,13 +81,9 @@ export const FloatingNav = ({
           ))}
         </div>
         <div className="">
-          <select name="" id="">
-            <option value="ENG">ENG</option>
-            <option value="MNG">MNG</option>
-          </select>
-          <button className="border text-sm font-medium relative border-neutral-200 dark:border-white/[0.2] text-black dark:text-white px-4 py-2 rounded-full">
+          <button className="border bg-[#12072C] text-sm font-medium relative border-neutral-200 dark:border-white/[0.2] text-white px-5 py-2 rounded-[32px]">
             <span>Login</span>
-            <span className="absolute inset-x-0 w-1/2 mx-auto -bottom-px bg-gradient-to-r from-transparent via-blue-500 to-transparent  h-px" />
+            {/* <span className="absolute inset-x-0 w-1/2 mx-auto -bottom-px bg-gradient-to-r from-transparent via-blue-500 to-transparent  h-px" /> */}
           </button>
         </div>
       </motion.div>

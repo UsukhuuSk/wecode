@@ -12,21 +12,14 @@ import { motion } from "framer-motion";
 export default function Teachers() {
   return (
     <div className=" m-auto">
-      <div className="flex justify-between max-w-[1280px] m-auto">
-        <span className="teachGrad ovsoge font-bold text-[64px]  flex justify-start">
-          Our teachers
+      <div className=" m-auto">
+        <span className="teachGrad ovsoge font-bold text-[64px] text-center flex justify-center">
+          Our team
         </span>
-        <div className="flex items-center gap-4">
-          <Image src={first} alt="" width={32} height={32} />
-          <Image src={second} alt="" width={32} height={32} />
-          <Image src={third} alt="" width={32} height={32} />
-          <Image src={fourth} alt="" width={32} height={32} />
-          <Image src={fifth} alt="" width={32} height={32} />
-        </div>
       </div>
 
       <motion.div
-        className="flex justify-center m-auto mt-16"
+        className="flex justify-center m-auto mt-16 gap-14"
         initial="hidden"
         animate="visible"
         variants={{
@@ -38,10 +31,7 @@ export default function Teachers() {
             key={index}
             name={teacher.name}
             image={teacher.image}
-            role={teacher.role}
             profession={teacher.profession}
-            experience={teacher.experience}
-            className={`card ${index % 2 === 0 ? "even" : "odd"}`}
           />
         ))}
       </motion.div>

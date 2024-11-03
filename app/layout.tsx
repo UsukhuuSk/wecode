@@ -4,6 +4,7 @@ import { Navbar } from "../components/Navbar";
 import { Montserrat_Alternates, Manrope, Golos_Text } from "next/font/google";
 import { FloatingNavDemo } from "../components/Nav";
 import localFont from "next/font/local";
+import Footer from "../components/Footer";
 
 const montserratAlt = Montserrat_Alternates({
   weight: ["200", "300", "400", "500", "600", "700", "800"],
@@ -72,7 +73,7 @@ export default function RootLayout({
       >
         {/* <Header /> */}
         {/* <Navbar /> */}
-        <FloatingNavDemo />
+
         {children}
       </body>
     </html>

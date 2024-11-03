@@ -5,33 +5,28 @@ import { motion } from "framer-motion";
 interface TeacherProps {
   name: string;
   image: any;
-  role: string;
   profession: string;
-  experience: string;
-  className: any;
 }
-const TeacherCard: React.FC<TeacherProps> = ({
-  name,
-  image,
-  role,
-  profession,
-  experience,
-  className,
-}) => {
+const TeacherCard: React.FC<TeacherProps> = ({ name, image, profession }) => {
   return (
     <motion.div
       className={cn(
-        "card flex flex-col items-center w-[284px] h-[360px] bg-[#160A35] rounded-3xl",
-        className
+        "card flex relative flex-col  items-center w-[284px] h-[360px] bg-[#160A35] rounded-3xl"
       )}
     >
-      <div className="w-[284px] h-[217px] overflow-hidden gradBorder rounded-t-3xl">
-        <Image src={image} alt="" fill objectFit="cover" />
+      <Image
+        src={image}
+        alt=""
+        className="w-full h-full object-cover rounded-3xl "
+      />
+
+      <div className="absolute bottom-[5%] left-[5%] z-20 text-start flex flex-col items-start justify-start">
+        <h1 className="font-manrope text-[18px] font-extrabold">{name}</h1>
+        <span className="font-manrope text-[14px] font-medium">
+          {profession}
+        </span>
       </div>
-      <h1>{name}</h1>
-      <h3></h3>
-      <h3></h3>
-      <div className=""></div>
+      <div className="absolute bottom-0 cardText w-full  z-10 h-[305px] rounded-b-3xl"></div>
     </motion.div>
   );
 };

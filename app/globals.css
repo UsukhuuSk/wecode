@@ -46,7 +46,12 @@ body {
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
   }
-  .gradtext {
+  .background {
+    background-image: url("../assets/landing/1A8BA28B.svg");
+
+    background-repeat: no-repeat;
+  }
+  .grad {
     background: linear-gradient(
       251deg,
       #3944d1 28.67%,
@@ -59,6 +64,19 @@ body {
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
   }
+  /* .char {
+    background: linear-gradient(
+      251deg,
+      #3944d1 28.67%,
+      #8f5aff 41.75%,
+      #ffc567 54.83%,
+      #f8623f 69.02%,
+      #ff82a9 84.33%
+    );
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  } */
   .ovsoge {
     font-family: var(--font-ov-soge), sans-serif;
   }
@@ -115,13 +133,21 @@ body {
   .gradBorder {
     border-bottom: 4px solid #3ccae9;
   }
-  .card {
-    margin: 0 20px;
+  .cardText {
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, #000 100%);
   }
-  .card.odd {
-    transform: translateY(50px);
-  }
-  .card.even {
-    transform: translateY(-50px);
+
+  .gradbg {
+    border-radius: 534px;
+    border: 4px solid #3ccae9;
+    background: linear-gradient(
+      217deg,
+      rgba(59, 201, 232, 0.5) 13.69%,
+      rgba(160, 220, 147, 0.5) 36.45%,
+      rgba(249, 221, 65, 0.5) 59.2%,
+      rgba(253, 167, 89, 0.5) 83.89%,
+      rgba(230, 100, 130, 0.5) 110.52%
+    );
+    filter: blur(160px);
   }
 }

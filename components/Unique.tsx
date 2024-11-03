@@ -16,21 +16,24 @@ import { WobbleCard } from "./ui/wobble-card";
 import { InfiniteMovingCards } from "./ui/infinite-moving-cards";
 import { testimonials } from "../data/dummy";
 import Teachers from "./Teachers";
+import Faq from "./Faq";
+import { Finish } from "./Finish";
+import Footer from "./Footer";
 
 export default function Unique() {
   return (
-    <div className="bg-bgGrad rounded-t-[240px] text-center text-white py-[88px]">
+    <div className="bg-bgGrad text-center text-white pt-[88px]">
       <div className="max-w-[1100px] m-auto flex flex-col gap-12 mb-[183px]">
         <div className="flex flex-col items-center gap-4">
           <Image src={wheel} alt="" width={32} height={32} />
           <h1 className=" text-[24px] font-extrabold text-[#fff] font-manrope">
-            Бидний онцлог
+            Our features
           </h1>
         </div>
         <div className="flex flex-col lg:grid grid-cols-5 gap-[20px]">
           <WobbleCard containerClassName="cardGrad rounded-2xl pt-[33px] overflow-hidden col-span-2 border border-[#78FF5733]">
             <h1 className="text-mainblack text-[20px] font-extrabold font-manrope text-center text-white">
-              Дэлхийд хүлээн зөвшөөрөгдсөн сертификат
+              Globally recognized certification
             </h1>
             <div className="border text-center border-[#78FF5733] w-[237px] h-[1px] mx-auto my-4"></div>
             <div className="flex items-center justify-center gap-6">
@@ -60,7 +63,7 @@ export default function Unique() {
           </WobbleCard>
           <WobbleCard containerClassName=" cardGrad border border-[#78FF5733] rounded-2xl flex flex-col gap-[75px] lg:gap-[30px] pt-[33px] py-[63px] col-span-3 overflow-hidden">
             <h1 className="text-white text-[20px] font-extrabold font-manrope text-center">
-              Ур чадваруудын үнэлгээ
+              Assessment of skills
               <div className="border text-center border-[#0000000D] w-[237px] h-[1px] mx-auto my-4"></div>
             </h1>
 
@@ -116,10 +119,10 @@ export default function Unique() {
             <div className="flex flex-col gap-4 justify-center lg:ml-36 z-20">
               <h1 className="text-mainblack text-[20px] font-extrabold font-manrope text-center">
                 <div className=" text-[32px] text-white font-extrabold font-manrope text-start">
-                  Мобайл хувилбар
+                  Mobile Application
                 </div>
                 <div className="text-[#FFFFFF80] text-2xl font-light text-start">
-                  тун удахгүй ...
+                  coming soon ...
                 </div>
               </h1>
               <div className="flex items-center gap-3 z-[100]">
@@ -158,6 +161,13 @@ export default function Unique() {
       <div className="mt-[188px]">
         <Teachers />
       </div>
+      <div className="mt-[188px]">
+        <Faq />
+      </div>
+      <div className="mt-[50px]">
+        <Finish />
+      </div>
+      <Footer />
     </div>
   );
 }
