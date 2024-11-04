@@ -34,7 +34,7 @@ export default function Home() {
     requestAnimationFrame(raf);
   }, []);
   return (
-    <main className="container">
+    <main className="">
       {isLoading ? (
         <Preloader />
       ) : (
