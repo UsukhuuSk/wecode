@@ -31,23 +31,10 @@ export default function Home() {
     requestAnimationFrame(raf);
   }, []);
   return (
-<<<<<<< HEAD
     <main>
       <FloatingNavDemo />
       <Intro />
       <NonCriticalComponent />
-=======
-    <main className="">
-      {isLoading ? (
-        <Preloader />
-      ) : (
-        <>
-          <FloatingNavDemo />
-          <Intro />
-          <Unique />
-        </>
-      )}
->>>>>>> 246872ceb003a2a9187286b886d51a12cc1b8d42
     </main>
   );
 }
