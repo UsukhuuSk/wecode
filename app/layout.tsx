@@ -1,13 +1,11 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import { Navbar } from "../components/Navbar";
 import { Montserrat_Alternates, Manrope, Golos_Text } from "next/font/google";
-import { FloatingNavDemo } from "../components/Nav";
 import localFont from "next/font/local";
-import Footer from "../components/Footer";
 
 const montserratAlt = Montserrat_Alternates({
   weight: ["200", "300", "400", "500", "600", "700", "800"],
+  preload: true,
   style: ["normal"],
   subsets: ["latin"],
   display: "swap",
@@ -17,6 +15,7 @@ const manrope = Manrope({
   weight: ["200", "300", "400", "500", "600", "700", "800"],
   style: ["normal"],
   subsets: ["latin"],
+  preload: true,
   display: "swap",
   variable: "--font-manrope",
 });
@@ -24,6 +23,7 @@ const golosText = Golos_Text({
   weight: ["400", "500", "600", "700", "800"],
   style: ["normal"],
   subsets: ["latin"],
+  preload: true,
   display: "swap",
   variable: "--font-golos-text",
 });
@@ -55,6 +55,7 @@ const ovSoge = localFont({
     },
   ],
   variable: "--font-ov-soge",
+  preload: true,
 });
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -71,9 +72,6 @@ export default function RootLayout({
       <body
         className={`${montserratAlt.variable} ${manrope.variable} ${ovSoge.variable} ${golosText.variable} antialiased`}
       >
-        {/* <Header /> */}
-        {/* <Navbar /> */}
-
         {children}
       </body>
     </html>

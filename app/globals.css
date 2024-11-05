@@ -2,10 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-@import "/node_modules/locomotive-scroll/dist/locomotive-scroll";
-
 body {
-  margin: 0px;
   background-color: white;
 }
 
@@ -24,9 +21,6 @@ body {
 
 body {
   color: var(--foreground);
-  /* padding: 40px; */
-  overflow: hidden;
-
   background: var(--background);
   font-family: var(--font-manrope);
 }

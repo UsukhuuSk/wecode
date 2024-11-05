@@ -22,7 +22,7 @@ import Footer from "./Footer";
 
 export default function Unique() {
   return (
-    <div className="bg-bgGrad text-center text-white pt-[88px]">
+    <div className="bg-bgGrad text-center text-white pt-[88px] px-4 lg:px-0">
       <div className="max-w-[1100px] m-auto flex flex-col gap-12 mb-[183px]">
         <div className="flex flex-col items-center gap-4">
           <Image src={wheel} alt="" width={32} height={32} />
@@ -100,7 +100,7 @@ export default function Unique() {
               alt=""
               width={48}
               height={48}
-              className="absolute top-[20%] left-[6%]"
+              className="absolute lg:top-[20%] lg:left-[6%] top-[10%] left-1/2 -translate-x-1/2"
             />
             <div className="max-w-[741px] flex absolute z-10">
               <div className="w-[250px] h-[192px] rotate-[2.856deg] blur-[80px] bg-[#e66482]"></div>

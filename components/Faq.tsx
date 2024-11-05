@@ -9,10 +9,10 @@ import {
 export default function Faq() {
   return (
     <div className="max-w-[760px] m-auto">
-      <h1 className="text-[32px] font-extrabold font-manrope text-[#F9FAFB]">
+      <h1 className="text-[32px]  font-extrabold font-manrope text-[#F9FAFB]">
         Frequently Asked Questions
       </h1>
-      <Accordion type="single" collapsible className="w-full">
+      <Accordion type="single" collapsible className="w-full text-start">
         <AccordionItem value="item-1">
           <AccordionTrigger>
             Сургалт авснаар надад ямар ашигтай вэ?

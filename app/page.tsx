@@ -7,17 +7,14 @@ import { useScroll, useTransform, motion } from "framer-motion";
 import { useRef } from "react";
 import Unique from "../components/Unique";
 import Lenis from "lenis";
-import Preloader from "../components/Preloader";
 import { FloatingNavDemo } from "../components/Nav";
+import dynamic from "next/dynamic";
+
+const NonCriticalComponent = dynamic(() => import("../components/Unique"), {
+  ssr: false,
+});
 
 export default function Home() {
-  const [isLoading, setIsLoading] = useState(true);
-
-  useEffect(() => {
-    const timer = setTimeout(() => setIsLoading(false), 1500); // Adjust delay if needed
-    return () => clearTimeout(timer);
-  }, []);
-
   // const scene = useRef(null);
   // const { scrollYProgress } = useScroll({
   //   target: scene,
@@ -34,16 +31,10 @@ export default function Home() {
     requestAnimationFrame(raf);
   }, []);
   return (
-    <main className="container">
-      {isLoading ? (
-        <Preloader />
-      ) : (
-        <>
-          <FloatingNavDemo />
-          <Intro />
-          <Unique />
-        </>
-      )}
+    <main>
+      <FloatingNavDemo />
+      <Intro />
+      <NonCriticalComponent />
     </main>
   );
 }

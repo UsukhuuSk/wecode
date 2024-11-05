@@ -100,7 +100,7 @@ export default function Wander() {
   };
   return (
     <div
-      className="items-center flex justify-center mx-auto  gap-12"
+      className="items-center flex justify-center mx-auto absolute -left-1/2 -top-0 -translate-y-[50%] -translate-x-1/2 gap-12"
       ref={containerRef}
     >
       <div ref={(el) => setBoxRef(el, 0)}>

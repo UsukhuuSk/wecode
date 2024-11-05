@@ -48,44 +48,26 @@ export default function Intro() {
         },
       }
     );
-    // gsap.to("#mobilephone", {
-    //   duration: 1.5,
-    //   y: -30,
-    //   repeat: -1,
-    //   yoyo: true,
-    //   ease: "sine.inOut",
-    // });
-    // const timeline = gsap.timeline({
-    //   scrollTrigger: {
-    //     trigger: ".hero-section",
-    //     start: "top top",
-    //     end: "+=100%",
-    //     scrub: true,
-    //     pin: true,
-    //   },
-    // });
-    // timeline
-    //   .to(".section1", { opacity: 0, duration: 1 })
-    //   .from(".section2", { opacity: 0, duration: 1 }, "-=0.5");
+    gsap.to("#mobilephone", {
+      duration: 1.5,
+      y: -30,
+      repeat: -1,
+      yoyo: true,
+      ease: "sine.inOut",
+    });
+    const timeline = gsap.timeline({
+      scrollTrigger: {
+        trigger: ".hero-section",
+        start: "top top",
+        end: "+=100%",
+        scrub: true,
+        pin: true,
+      },
+    });
+    timeline
+      .to(".section1", { opacity: 0, duration: 1 })
+      .from(".section2", { opacity: 0, duration: 1 }, "-=0.5");
   });
-  // useLayoutEffect(() => {
-  //   gsap.registerPlugin(ScrollTrigger);
-
-  //   const timeline = gsap.timeline({
-  //     scrollTrigger: {
-  //       trigger: ".hero-section",
-  //       start: "top top",
-  //       end: "+=100%",
-  //       scrub: true,
-  //       pin: true,
-  //     },
-  //   });
-
-  //   // Animate section1 to fade out and section2 to fade in
-  //   timeline
-  //     .to(".section1", { opacity: 0, duration: 1 })
-  //     .from(".section2", { opacity: 0, duration: 1 }, "-=0.5"); // The "-=0.5" overlaps the animations slightly
-  // }, []);
   return (
     <div className="relative h-screen w-full overflow-hidden">
       <div className="flex justify-center relative">
@@ -115,7 +97,7 @@ export default function Intro() {
             src={round}
             alt=""
             id="mobilephone"
-            className="absolute top-2/4 -right-[15%] z-50"
+            className="absolute top-2/4 -right-[15%] z-50 lg:flex hidden"
             width={662}
             height={588}
           />
@@ -126,17 +108,17 @@ export default function Intro() {
           <div ref={introImage} data-scroll data-scroll-speed="0.3"></div>
         </div> */}
         <motion.div
-          initial={{ opacity: 0.0, y: 200 }}
+          initial={{ opacity: 0.0, y: 250 }}
           whileInView={{ opacity: 1, y: 150 }}
           transition={{
-            delay: 0.3,
+            delay: 0.6,
             duration: 0.8,
             ease: "easeInOut",
           }}
-          className="relative top-1/3 translate-y-1/4 z-10  text-white text-center flex flex-col items-center gap-12"
+          className="relative top-1/3 translate-y-1/4 z-10  text-white text-center flex flex-col items-center gap-6 lg:gap-12"
         >
-          <div className="m-auto  flex justify-center">
-            <div className="flex items-center gap-6 py-2 px-4 rounded-[32px] bg-[#150A32] border border-[#00FF9D]">
+          <div className="m-auto flex justify-center">
+            <div className="flex items-center gap-6 py-2 px-3 lg:py-2 lg:px-4 rounded-[32px] bg-[#150A32] border border-[#00FF9D]">
               <div className="flex flex-row items-center justify-center">
                 {people.map((item) => (
                   <div className="-mr-3" key={item.name}>
@@ -145,7 +127,7 @@ export default function Intro() {
                       width={100}
                       src={item.image}
                       alt={item.name}
-                      className="object-cover !m-0 !p-0 object-top rounded-full  h-8 w-8"
+                      className="object-cover !m-0 !p-0 object-top rounded-full  w-6 h-6 lg:h-8 lg:w-8"
                     />
                   </div>
                 ))}
@@ -155,25 +137,40 @@ export default function Intro() {
                   <span className="text-xs font-extrabold font-manrope text-white">
                     4.5
                   </span>
-                  <div className="flex ">
-                    <IoIosStar size={14} color="#FFCC15" />
-                    <IoIosStar size={14} color="#FFCC15" />
-                    <IoIosStar size={14} color="#FFCC15" />
-                    <IoIosStar size={14} color="#FFCC15" />
-                    <IoIosStar size={14} color="#FFCC15" />
+                  <div className="flex">
+                    <IoIosStar
+                      color="#FFCC15"
+                      className="w-[10px] h-[10px] lg:w-[14px] lg:h-[14px] "
+                    />
+                    <IoIosStar
+                      color="#FFCC15"
+                      className="w-[10px] h-[10px] lg:w-[14px] lg:h-[14px] "
+                    />
+                    <IoIosStar
+                      color="#FFCC15"
+                      className="w-[10px] h-[10px] lg:w-[14px] lg:h-[14px] "
+                    />
+                    <IoIosStar
+                      color="#FFCC15"
+                      className="w-[10px] h-[10px] lg:w-[14px] lg:h-[14px] "
+                    />
+                    <IoIosStar
+                      color="#FFCC15"
+                      className="w-[10px] h-[10px] lg:w-[14px] lg:h-[14px] "
+                    />
                   </div>
                 </div>
-                <div className=" text-[#FFFFFF99] font-manrope text-center font-semibold">
+                <div className=" text-[#FFFFFF99] text-xs text-[16px] font-manrope text-center font-semibold">
                   1200+ сурагчид
                 </div>
               </div>
             </div>
           </div>
           <div className="text-center">
-            {/* <span className="grad ovsoge text-[40px] lg:text-8xl font-bold">
+            <span className="grad ovsoge text-[40px] lg:text-8xl font-bold">
               AI FOR ALL
-            </span> */}
-            <AnimatedText text="AI FOR ALL" />
+            </span>
+            {/* <AnimatedText text="AI FOR ALL" /> */}
           </div>
           {/* <Image src={first} alt="" />
             <Image src={second} alt="" />
@@ -181,43 +178,75 @@ export default function Intro() {
             <Image src={fourth} alt="" />
             <Image src={fifth} alt="" />
             <Image src={sixth} alt="" /> */}
-          <div className="flex justify-center gap-12">
-            <Image src={seventh} alt="" />
-            <Image src={eight} alt="" />
-            <Image src={nine} alt="" />
-            <Image src={ten} alt="" />
-            <Image src={eleven} alt="" />
-            <Image src={twelve} alt="" />
+          <div className="flex justify-center gap-6 lg:gap-12">
+            <Image
+              src={seventh}
+              alt=""
+              className="h-[32px] w-[32px] lg:h-[75px] lg:w-[75px]"
+            />
+            <Image
+              src={eight}
+              alt=""
+              className="h-[32px] w-[32px] lg:h-[75px] lg:w-[75px]"
+            />
+            <Image
+              src={nine}
+              alt=""
+              className="h-[32px] w-[32px] lg:h-[75px] lg:w-[75px]"
+            />
+            <Image
+              src={ten}
+              alt=""
+              className="h-[32px] w-[32px] lg:h-[75px] lg:w-[75px]"
+            />
+            <Image
+              src={eleven}
+              alt=""
+              className="h-[32px] w-[32px] lg:h-[75px] lg:w-[75px]"
+            />
+            <Image
+              src={twelve}
+              alt=""
+              className="h-[32px] w-[32px] lg:h-[75px] lg:w-[75px]"
+            />
           </div>
-          {/* <Wander /> */}
-          <div className="text-center">
-            <div className="text-[#5c5c5c] font-manrope text-[16px] font-medium tracking-tight lg:tracking-[0.173px] lg:w-[622px] m-auto">
+          <div className="text-center ">
+            <div className="text-[#5c5c5c] font-manrope text-[14px] lg:text-[16px] font-medium tracking-tight lg:tracking-[0.173px] lg:w-[622px] m-auto">
               AI for All: Expanding our mission to democratize AI and coding
               education for everyone, everywhere.
             </div>
           </div>
         </motion.div>
       </div>
-      <div
-        id="section1"
-        className="relative top-1/3 -translate-y-1/2 z-10  text-white text-center flex flex-col items-center gap-12"
-      >
-        <div className="flex flex-col items-center justify-end gap-7">
-          <div className="flex flex-col lg:flex-row lg:gap-4 gap-2">
-            <div className="m-0 z-50 bg-[#13062D] flex justify-start items-center self-stretch w-auto rounded-[32px] border gap-[10px]  px-6 py-3 border-[#785EFF] text-start">
-              <Image src={brain} alt="brain" width={24} height={24} />
-              <span className="text-white font-manrope text-[14px] font-extrabold leading-none">
-                Artificial Intelligence
-              </span>
-            </div>
-            <div className="flex z-50 bg-[#13062D] justify-start self-stretch text-start w-auto rounded-[32px] border border-[#785EFF] items-center gap-[10px] px-6 py-3">
-              <Image src={coding} alt="coding" width={24} height={24} />
-              <span className="text-white font-manrope text-[14px] font-extrabold leading-none">
-                Coding Program
-              </span>
+      <div className="flex justify-center relative">
+        <motion.div
+          initial={{ opacity: 0, y: 550 }}
+          whileInView={{ opacity: 1, y: 450 }}
+          transition={{
+            delay: 0.6,
+            duration: 0.8,
+            ease: "easeInOut",
+          }}
+          // className="relative top-1/3 translate-y-1/4 z-10  text-white text-center flex flex-col items-center gap-12"
+          className="relative top-1/3 -translate-y-1/4  z-[10] text-white text-center flex flex-col items-center gap-12"
+        >
+          <div className="flex flex-col items-center justify-end gap-7">
+            <div className="flex flex-col lg:flex-row lg:gap-4 gap-2">
+              <div className="m-0 z-50 bg-[#13062D] flex justify-start items-center self-stretch w-auto rounded-[32px] border gap-[10px]  px-6 py-3 border-[#785EFF] text-start">
+                <Image src={brain} alt="brain" width={24} height={24} />
+                <span className="text-white font-manrope text-[14px] font-extrabold leading-none">
+                  Artificial Intelligence
+                </span>
+              </div>
+              <div className="flex z-50 bg-[#13062D] justify-start self-stretch text-start w-auto rounded-[32px] border border-[#785EFF] items-center gap-[10px] px-6 py-3">
+                <Image src={coding} alt="coding" width={24} height={24} />
+                <span className="text-white font-manrope text-[14px] font-extrabold leading-none">
+                  Coding Program
+                </span>
+              </div>
             </div>
           </div>
-        </div>
+        </motion.div>
       </div>
     </div>
   );

@@ -19,7 +19,7 @@ export default function Teachers() {
       </div>
 
       <motion.div
-        className="flex justify-center m-auto mt-16 gap-14"
+        className="flex justify-center m-auto mt-16 lg:gap-14 gap-7 overflow-x-scroll"
         initial="hidden"
         animate="visible"
         variants={{
