@@ -58,7 +58,7 @@ const ovSoge = localFont({
   preload: true,
 });
 export const metadata: Metadata = {
-  title: "Ai Academy",
+  title: "AI Academy",
   description: "Empowering the Next Generation",
 };
 
