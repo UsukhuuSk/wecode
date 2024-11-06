@@ -64,7 +64,9 @@ export const FloatingNav = ({
       >
         {" "}
         <div>
-          <Image src={logo} alt="" />
+          <Link href={"/"}>
+            <Image src={logo} alt="" />
+          </Link>
         </div>
         <div className="flex justify-center">
           {navItems.map((navItem: any, idx: number) => (
