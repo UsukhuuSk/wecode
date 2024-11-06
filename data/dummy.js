@@ -6,6 +6,9 @@ import person4 from "../assets/LandingPage/avatar4.jpg";
 import person5 from "../assets/LandingPage/avatar5.jpg";
 import person6 from "../assets/LandingPage/avatar6.jpg";
 import person7 from "../assets/LandingPage/avatar7.jpg";
+import person8 from "../assets/avatar8.jpeg";
+import person9 from "../assets/avatar9.jpg";
+
 export const people = [
   {
     id: 1,
@@ -88,44 +91,48 @@ export const testimonials = [
 
 export const teachers = [
   {
-    name: "Батбаяр Баясгалан",
+    name: "Bolor-Erdene B.",
     image: person5,
-    role: "Ментор",
-    profession: "UI/UX Designer",
-    experience: "5+ жилийн ажлын туршлага",
+    profession: "Founder & CEO",
   },
   {
-    name: "Батбаяр Баясгалан",
-    image: person7,
-    role: "Ментор",
-    profession: "UI/UX Designer",
-    experience: "5+ жилийн ажлын туршлага",
-  },
-  {
-    name: "Ц. Батаа",
-    image: person3,
-    profession: "Back-end Developer",
-  },
-  {
-    name: "Оюунгоо",
+    name: "Urantsetseg E.",
     image: person4,
-    profession: "Project Lead",
+    profession: "PR & Marketing Lead",
   },
   {
-    name: "Б. Баясгалан",
+    name: "Oyungoo E.",
+    image: person3,
+    profession: "Programme Director",
+  },
+  {
+    name: "Chadraabal D.",
+    image: person8,
+    profession: "Event Coordinator",
+  },
+  {
+    name: "Tuguldur E.",
+    image: person7,
+    profession: "Designer",
+  },
+  {
+    name: "Michid B.",
+    image: person6,
+    profession: "Volunteer",
+  },
+  {
+    name: "Bayasgalan B.",
     image: person2,
     profession: "UI/UX Designer",
   },
   {
-    name: "Т. Өсөхбаяр",
-    image: person,
-    profession: "Front-end Developer",
+    name: "Bataa Ts.",
+    image: person9,
+    profession: "Back-End Developer",
   },
   {
-    name: "Батбаяр Баясгалан",
-    image: person6,
-    role: "Ментор",
-    profession: "UI/UX Designer",
-    experience: "5+ жилийн ажлын туршлага",
+    name: "Usukhbayar T.",
+    image: person,
+    profession: "Front-End Developer",
   },
 ];

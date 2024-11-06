@@ -22,7 +22,7 @@ import Footer from "./Footer";
 
 export default function Unique() {
   return (
-    <div className="bg-bgGrad text-center text-white pt-[88px] px-4 lg:px-0">
+    <div className="bg-bgGrad text-center text-white pt-[88px] px-4 lg:px-0 overflow-hidden">
       <div className="max-w-[1100px] m-auto flex flex-col gap-12 mb-[183px]">
         <div className="flex flex-col items-center gap-4">
           <Image src={wheel} alt="" width={32} height={32} />
@@ -91,10 +91,6 @@ export default function Unique() {
             containerClassName="cardGrad col-span-5"
             className="px-4 py-20 sm:px-10"
           >
-            {/* <div
-              className="absolute  inset-0 bg-center bg-cover bg-no-repeat z-30"
-              style={{ backgroundImage: `url(${grad.src}) ` }}
-            ></div> */}
             <Image
               src={wheel}
               alt=""
@@ -145,7 +141,7 @@ export default function Unique() {
         </div>
       </div>
       <div className="">
-        <div className=" rounded-md flex flex-col antialiased items-center justify-center relative overflow-hidden">
+        {/* <div className=" rounded-md flex flex-col antialiased items-center justify-center relative overflow-hidden">
           <InfiniteMovingCards
             items={testimonials}
             direction="left"
@@ -156,7 +152,7 @@ export default function Unique() {
             direction="right"
             speed="slow"
           />
-        </div>
+        </div> */}
       </div>
       <div className="mt-[188px]">
         <Teachers />
