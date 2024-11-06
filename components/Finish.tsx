@@ -1,8 +1,5 @@
 import React from "react";
-import { Boxes } from "./ui/Boxes";
 import { cn } from "../lib/utils";
-import Image from "next/image";
-// import logo from "../assets/logo.svg";
 import ActionCard from "./ui/ActionCard";
 
 export function Finish() {

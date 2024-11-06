@@ -2,12 +2,12 @@ import Image from "next/image";
 import React from "react";
 import { cn } from "../lib/utils";
 import { motion } from "framer-motion";
-interface TeacherProps {
-  name: string;
-  image: any;
-  profession: string;
-}
-const TeacherCard: React.FC<TeacherProps> = ({ name, image, profession }) => {
+// interface TeacherProps {
+//   name: string;
+//   image: any;
+//   profession: string;
+// }
+const TeacherCard = ({ name, image, profession }: any) => {
   return (
     <motion.div
       className={cn(

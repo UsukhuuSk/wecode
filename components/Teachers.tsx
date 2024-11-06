@@ -1,7 +1,6 @@
 import React from "react";
 import { teachers } from "../data/dummy";
 import TeacherCard from "./TeacherCard";
-import { motion } from "framer-motion";
 import {
   Carousel,
   CarouselContent,
@@ -21,9 +20,11 @@ export default function Teachers() {
         <Carousel>
           <CarouselContent>
             {teachers.map((teacher, index) => (
-              <CarouselItem className=" basis-1 mr-1 lg:mr-0 lg:basis-1/4">
+              <CarouselItem
+                className="basis-1 mr-1 lg:mr-0 lg:basis-1/4"
+                key={index}
+              >
                 <TeacherCard
-                  key={index}
                   name={teacher.name}
                   image={teacher.image}
                   profession={teacher.profession}

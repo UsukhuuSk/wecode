@@ -1,5 +1,4 @@
 import React from "react";
-import x from "../assets/social/svgexport-33.svg";
 import fb from "../assets/social/svgexport-34.svg";
 import linkedin from "../assets/social/svgexport-35.svg";
 import ig from "../assets/social/ig.svg";
@@ -15,10 +14,7 @@ export default function Footer() {
       path: "",
     },
   ];
-  //   AI for All forum
-  // Events and meetups
-  // Community
-  // Contact us
+
   const organization = [
     { name: "About", disabled: true, path: "" },
     { name: "Volunteer opportunities", disabled: true, path: "" },
@@ -30,7 +26,6 @@ export default function Footer() {
     { name: "Contact us", disabled: true, path: "" },
   ];
   const follow = [
-    // { icon: x, path: "" },
     { icon: fb, path: "https://www.facebook.com/girlscodemn" },
     { icon: ig, path: "https://www.instagram.com/girlscode.mn/?locale=sl" },
     {

@@ -7,7 +7,6 @@ export default function ActionCard({
   description,
   action,
   main,
-  disabled,
   size,
 }: any) {
   return (
