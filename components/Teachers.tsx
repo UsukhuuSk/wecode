@@ -11,7 +11,7 @@ export default function Teachers() {
   return (
     <div className=" m-auto ">
       <div className=" m-auto">
-        <span className="teachGrad ovsoge font-bold text-[64px] text-center flex justify-center">
+        <span className="teachGrad ovsoge font-bold text-[36px] lg:text-[64px] text-center flex justify-center">
           Our team
         </span>
       </div>
@@ -21,7 +21,7 @@ export default function Teachers() {
           <CarouselContent>
             {teachers.map((teacher, index) => (
               <CarouselItem
-                className="basis-1 mr-1 lg:mr-0 lg:basis-1/4"
+                className=" basis-4/5 mr-1 lg:mr-0 lg:basis-1/4"
                 key={index}
               >
                 <TeacherCard
