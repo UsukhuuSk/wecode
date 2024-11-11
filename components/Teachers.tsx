@@ -1,5 +1,5 @@
 import React from "react";
-import { teachers } from "../data/dummy";
+import { teachers } from "../constants/constants";
 import TeacherCard from "./TeacherCard";
 import {
   Carousel,

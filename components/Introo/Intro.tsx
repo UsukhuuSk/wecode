@@ -16,10 +16,11 @@ import nine from "../../assets/LandingPage/9.svg";
 import ten from "../../assets/LandingPage/10.svg";
 import eleven from "../../assets/LandingPage/11.svg";
 import twelve from "../../assets/LandingPage/12.svg";
+import { useTranslations } from "next-intl";
 
 export default function Intro() {
   const background = useRef(null);
-
+  const t = useTranslations("HomePage");
   useLayoutEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
     // gsap.fromTo(
@@ -133,7 +134,7 @@ export default function Intro() {
                   </div>
                 </div>
                 <div className=" text-[#FFFFFF99] text-xs text-[16px] font-manrope text-center font-semibold">
-                  1200+ сурагчид
+                  1200+ {t("students")}
                 </div>
               </div>
             </div>

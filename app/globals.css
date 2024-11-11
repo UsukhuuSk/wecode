@@ -24,6 +24,10 @@ body {
   background: var(--background);
   font-family: var(--font-manrope);
 }
+h1 {
+  font-size: 24px;
+  font-weight: 700;
+}
 
 @layer utilities {
   .text-balance {
@@ -42,7 +46,6 @@ body {
   }
   .background {
     background-image: url("../assets/landing/1A8BA28B.svg");
-
     background-repeat: no-repeat;
   }
   .grad {
@@ -143,5 +146,53 @@ body {
       rgba(230, 100, 130, 0.5) 110.52%
     );
     filter: blur(160px);
+  }
+
+  select:focus {
+    outline: none; /* Ensure no outline appears when focused */
+    border: none; /* Remove any default border on focus */
+    box-shadow: none; /* Remove any shadow effect */
+  }
+  .frame {
+    /* background: linear-gradient(
+      180deg,
+      #2ebd59 0%,
+      #fda759 30.5%,
+      #e66482 72%,
+      #3bc9e8 100%
+    ); */
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .frame::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: 50%;
+    padding: 2px; /* Adjust padding to control gradient border thickness */
+    background: linear-gradient(
+      180deg,
+      #2ebd59 0%,
+      #fda759 30.5%,
+      #e66482 72%,
+      #3bc9e8 100%
+    );
+    -webkit-mask: linear-gradient(#fff 0 0) content-box,
+      linear-gradient(#fff 0 0);
+    -webkit-mask-composite: destination-out;
+    mask-composite: exclude;
+    z-index: 10;
+  }
+  .frame > img {
+    object-fit: cover;
+    border-radius: 100%;
+  }
+  .outerFrame {
+    border: 1.2px solid rgba(255, 255, 255, 0.4);
   }
 }

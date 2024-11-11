@@ -1,14 +1,15 @@
 "use client";
 import { useEffect } from "react";
-import Intro from "../components/Introo/Intro";
+import Intro from "../../components/Introo/Intro";
 import Lenis from "lenis";
-import { FloatingNavDemo } from "../components/Nav";
+import { FloatingNavDemo } from "../../components/Nav";
 import dynamic from "next/dynamic";
+import { useTranslations } from "next-intl";
+import { Link } from "../../i18n/routing";
 
-const NonCriticalComponent = dynamic(() => import("../components/Unique"), {
+const NonCriticalComponent = dynamic(() => import("../../components/Unique"), {
   ssr: false,
 });
-
 export default function Home() {
   useEffect(() => {
     const lenis = new Lenis();

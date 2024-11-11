@@ -1,7 +1,12 @@
 import type { Metadata } from "next";
-import "./globals.css";
+import "../globals.css";
 import { Montserrat_Alternates, Manrope, Golos_Text } from "next/font/google";
 import localFont from "next/font/local";
+import { NextIntlClientProvider } from "next-intl";
+import { getMessages } from "next-intl/server";
+import { notFound } from "next/navigation";
+import { routing } from "../../i18n/routing";
+// import Navbar from "../../components/Navbar";
 
 const montserratAlt = Montserrat_Alternates({
   weight: ["200", "300", "400", "500", "600", "700", "800"],
@@ -30,27 +35,27 @@ const golosText = Golos_Text({
 const ovSoge = localFont({
   src: [
     {
-      path: "./fonts/OVSoge-Light.otf",
+      path: "../fonts/OVSoge-Light.otf",
       weight: "300",
     },
     {
-      path: "./fonts/OVSoge-Regular.otf",
+      path: "../fonts/OVSoge-Regular.otf",
       weight: "400",
     },
     {
-      path: "./fonts/OVSoge-Medium.otf",
+      path: "../fonts/OVSoge-Medium.otf",
       weight: "500",
     },
     {
-      path: "./fonts/OVSoge-SemiBold.otf",
+      path: "../fonts/OVSoge-SemiBold.otf",
       weight: "600",
     },
     {
-      path: "./fonts/OVSoge-Bold.otf",
+      path: "../fonts/OVSoge-Bold.otf",
       weight: "700",
     },
     {
-      path: "./fonts/OVSoge-Black.otf",
+      path: "../fonts/OVSoge-Black.otf",
       weight: "900",
     },
   ],
@@ -62,17 +67,25 @@ export const metadata: Metadata = {
   description: "Empowering the Next Generation",
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
+  params: { locale },
 }: Readonly<{
   children: React.ReactNode;
+  params: { locale: string };
 }>) {
+  if (!routing.locales.includes(locale as any)) {
+    notFound();
+  }
+  const messages = await getMessages();
   return (
-    <html lang="en">
+    <html lang={locale}>
       <body
         className={`${montserratAlt.variable} ${manrope.variable} ${ovSoge.variable} ${golosText.variable} antialiased`}
       >
-        {children}
+        <NextIntlClientProvider messages={messages}>
+          {children}
+        </NextIntlClientProvider>
       </body>
     </html>
   );

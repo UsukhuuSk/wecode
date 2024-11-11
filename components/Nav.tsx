@@ -1,24 +1,26 @@
 "use client";
 import React from "react";
 import { FloatingNav } from "../components/ui/floating-navbar";
+import { useLocale } from "next-intl";
 
 export function FloatingNavDemo() {
+  const locale = useLocale();
   const navItems = [
     {
       name: "Courses",
-      link: "/courses",
+      link: `/${locale}/courses`,
     },
     {
       name: "Community",
-      link: "/community",
+      link: `/${locale}/community`,
     },
     {
       name: "Blog",
-      link: "/blog",
+      link: `/${locale}/blog`,
     },
     {
       name: "Contact us",
-      link: "/contact",
+      link: `/${locale}/contact`,
     },
   ];
   return (
