@@ -1,9 +1,9 @@
 "use client";
 import React from "react";
-import { AuroraBackground } from "../../../../components/ui/Aurora-Background";
+import { AuroraBackground } from "../../../components/ui/Aurora-Background";
 import { motion } from "framer-motion";
-import { FloatingNavDemo } from "../../../../components/Nav";
-export default function page() {
+import { FloatingNavDemo } from "../../../components/Nav";
+export default function Courses() {
   return (
     <AuroraBackground>
       <FloatingNavDemo />

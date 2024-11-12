@@ -6,13 +6,15 @@ import {
   CarouselContent,
   CarouselItem,
 } from "../components/ui/carousel";
+import { useTranslations } from "next-intl";
 
 export default function Teachers() {
+  const t = useTranslations("HomePage");
   return (
     <div className=" m-auto ">
       <div className=" m-auto">
         <span className="teachGrad ovsoge font-bold text-[36px] lg:text-[64px] text-center flex justify-center">
-          Our team
+          {t("team")}
         </span>
       </div>
 

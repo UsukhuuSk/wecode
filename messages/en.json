@@ -2,6 +2,10 @@
   "HomePage": {
     "title": "Hello world!",
     "about": "Go to the about page",
-    "students": "students"
+    "students": "students",
+    "subheadline": "Democratizing AI and Coding education for everyone, everywhere.",
+    "headline": "AI for All: ",
+    "headline2": "Empowering Every Mind",
+    "start": "Get started for free"
   }
 }

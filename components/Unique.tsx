@@ -11,18 +11,19 @@ import phone from "../assets/phone.png";
 import wheel from "../assets/LandingPage/9.svg";
 import { WobbleCard } from "./ui/wobble-card";
 import Teachers from "./Teachers";
-import Faq from "./Faq";
 import { Finish } from "./Finish";
 import Footer from "./Footer";
+import { useTranslations } from "next-intl";
 
 export default function Unique() {
+  const t = useTranslations("HomePage");
   return (
     <div className="bg-bgGrad text-center text-white pt-[88px] px-4 lg:px-0 overflow-hidden">
       <div className="max-w-[1100px] m-auto flex flex-col gap-12 mb-[183px]">
         <div className="flex flex-col items-center gap-4">
           <Image src={wheel} alt="" width={32} height={32} />
           <h1 className=" text-[24px] font-extrabold text-[#fff] font-manrope">
-            Our features
+            {t("features")}
           </h1>
         </div>
         <div className="flex flex-col lg:grid grid-cols-5 gap-[20px]">
@@ -152,9 +153,7 @@ export default function Unique() {
       <div className="mt-[188px]">
         <Teachers />
       </div>
-      <div className="mt-[188px]">
-        <Faq />
-      </div>
+      <div className="mt-[188px]"></div>
       <div className="mt-[50px]">
         <Finish />
       </div>

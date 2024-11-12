@@ -103,45 +103,12 @@ export default function Intro() {
           }}
           className="relative top-1/3 translate-y-1/4 z-10  text-white text-center flex flex-col items-center gap-6 lg:gap-12"
         >
-          <div className="m-auto flex justify-center">
-            <div className="flex items-center gap-6 py-2 px-3 lg:py-2 lg:px-4 rounded-[32px] bg-[#150A32] border border-[#00FF9D]">
-              <div className="flex flex-col items-start">
-                <div className="flex justify-center items-start gap-1 ">
-                  <span className="text-xs font-extrabold font-manrope text-white">
-                    4.5
-                  </span>
-                  <div className="flex">
-                    <IoIosStar
-                      color="#FFCC15"
-                      className="w-[10px] h-[10px] lg:w-[14px] lg:h-[14px] "
-                    />
-                    <IoIosStar
-                      color="#FFCC15"
-                      className="w-[10px] h-[10px] lg:w-[14px] lg:h-[14px] "
-                    />
-                    <IoIosStar
-                      color="#FFCC15"
-                      className="w-[10px] h-[10px] lg:w-[14px] lg:h-[14px] "
-                    />
-                    <IoIosStar
-                      color="#FFCC15"
-                      className="w-[10px] h-[10px] lg:w-[14px] lg:h-[14px] "
-                    />
-                    <IoIosStar
-                      color="#FFCC15"
-                      className="w-[10px] h-[10px] lg:w-[14px] lg:h-[14px] "
-                    />
-                  </div>
-                </div>
-                <div className=" text-[#FFFFFF99] text-xs text-[16px] font-manrope text-center font-semibold">
-                  1200+ {t("students")}
-                </div>
-              </div>
-            </div>
-          </div>
           <div className="text-center">
-            <span className="grad ovsoge text-[40px] lg:text-8xl font-bold">
-              AI FOR ALL
+            <span className="grad ovsoge text-[40px] lg:text-6xl font-bold">
+              {t("headline")}
+              <div className="grad ovsoge text-[40px] lg:text-4xl font-bold">
+                {t("headline2")}
+              </div>
             </span>
           </div>
 
@@ -179,8 +146,7 @@ export default function Intro() {
           </div>
           <div className="text-center ">
             <div className="text-[#5c5c5c] font-manrope text-[14px] lg:text-[16px] font-medium tracking-tight lg:tracking-[0.173px] lg:w-[622px] m-auto">
-              AI for All: Expanding our mission to democratize AI and coding
-              education for everyone, everywhere.
+              {t("subheadline")}
             </div>
           </div>
         </motion.div>
@@ -188,6 +154,9 @@ export default function Intro() {
 
       <div className="relative top-1/3 -translate-y-1/4  z-[10] text-white text-center flex flex-col items-center gap-12">
         <div className="flex flex-col items-center justify-end gap-7">
+          <div className="text-[#fff] font-manrope text-[14px] lg:text-[16px] font-medium tracking-tight lg:tracking-[0.173px] m-auto">
+            {t("start")}
+          </div>
           <div className="flex flex-col lg:flex-row lg:gap-4 gap-2">
             <div className="m-0 z-50 bg-[#13062D] flex justify-start items-center self-stretch w-auto rounded-[32px] border gap-[10px]  px-6 py-3 border-[#785EFF] text-start">
               <Image src={brain} alt="brain" width={24} height={24} />

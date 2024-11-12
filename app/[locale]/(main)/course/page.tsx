@@ -1,10 +1,14 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { courses } from "../../../../data/dummy";
 import Image from "next/image";
 import Link from "next/link";
 import { useLocale } from "next-intl";
-export default function Courses() {
+import { fetchExample } from "../../../../lib/actions/action";
+export default function Course() {
+  useEffect(() => {
+    fetchExample();
+  }, []);
   const [selectedLevel, setSelectedLevel] = useState("Бүгд");
   const locale = useLocale();
   const handleFilter = (level: any) => {
