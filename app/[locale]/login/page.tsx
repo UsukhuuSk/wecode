@@ -23,15 +23,17 @@ export default function page() {
       })
     }
     const handlePostMessage = (event: any) => {
-      const data = JSON.parse(event.data)
-      if (data?.type === 'setHeight') {
-        const iframeLogin = window.document.getElementById('iframeLogin')
-        if (iframeLogin && data?.height) {
-          iframeLogin.style.height = `${data.height}px`;
+      try {
+        const eventData = JSON.parse(event.data)
+        if (eventData?.type === 'setHeight') {
+          const iframeLogin = window.document.getElementById('iframeLogin')
+          if (iframeLogin && eventData?.data?.height) {
+            iframeLogin.style.height = `${eventData?.data.height}px`;
+          }
+        } else if (eventData?.type === 'login') {
+          handleLogin(eventData?.data?.token)
         }
-      } else if (data?.type === 'login') {
-        handleLogin(data.token)
-      }
+      } catch (e) {}
     };
     window.addEventListener('message', handlePostMessage, false);
     return () => {
