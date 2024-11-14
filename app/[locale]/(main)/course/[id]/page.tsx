@@ -43,7 +43,7 @@ export default function CourseDetail({ params }: { params: { id: number } }) {
                   </div>
                   ))} */}
           {/* <Video src="https://www.youtube.com/watch?v=bHXn-SU7YYg&ab_channel=TheKidLAROIVEVO" /> */}
-          <VideoPlayer options={videoJsOptions} />
+          {/* <VideoPlayer options={videoJsOptions} /> */}
         </span>
       </div>
     </div>
