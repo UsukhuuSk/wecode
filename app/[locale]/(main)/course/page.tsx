@@ -4,10 +4,10 @@ import { courses } from "../../../../data/dummy";
 import Image from "next/image";
 import Link from "next/link";
 import { useLocale } from "next-intl";
-import { fetchExample } from "../../../../lib/actions/action";
+// import { fetchExample } from "../../../../lib/actions/action";
 export default function Course() {
   useEffect(() => {
-    fetchExample();
+    // fetchExample();
   }, []);
   const [selectedLevel, setSelectedLevel] = useState("Бүгд");
   const locale = useLocale();

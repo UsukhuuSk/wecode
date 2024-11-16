@@ -26,6 +26,8 @@ const config: Config = {
         manrope: "var(--font-manrope)",
         montserratAlt: "var(--font-montserrat-alt)",
         golosText: "var(--font-golos-text)",
+        adineue: "var(--font-adineue)",
+        neue: "var(--font-neue)",
       },
 
       backgroundImage: {

@@ -11,13 +11,15 @@ const TeacherCard = ({ name, image, profession }: any) => {
   return (
     <motion.div
       className={cn(
-        "card flex relative flex-col  items-center w-[284px] h-[360px] bg-[#160A35] rounded-3xl"
+        "card flex relative flex-col items-center w-[284px] h-[360px] rounded-3xl"
       )}
     >
       <Image
         src={image}
         alt=""
         className="w-full h-full object-cover rounded-3xl "
+        width={200}
+        height={400}
       />
 
       <div className="absolute bottom-[5%] left-[5%] z-20 text-start flex flex-col items-start justify-start">

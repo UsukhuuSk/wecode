@@ -3,21 +3,21 @@
 @tailwind utilities;
 
 body {
-  background-color: white;
+  background-color: #13032b;
 }
 
 :root {
-  --background: #ffffff;
+  --background: #13032b;
   --foreground: #171717;
   --mainblack: #27262b;
 }
-
+/* 
 @media (prefers-color-scheme: dark) {
   :root {
     --background: ##13032b;
     --foreground: #ededed;
   }
-}
+} */
 
 body {
   color: var(--foreground);
@@ -33,30 +33,25 @@ h1 {
   .text-balance {
     text-wrap: balance;
   }
-  .gradtext {
+
+  /* .background {
+    background-image: url("../assets/landing/1A8BA28B.svg");
+    background-repeat: no-repeat;
+  } */
+  .herotext {
     background: linear-gradient(
-      248deg,
-      #3bc9e8 41.67%,
-      #a0dc93 61.23%,
-      #f9dd41 70.79%
+      100deg,
+      #ff91ea 23.01%,
+      #ff7a1b 42.07%,
+      #c74af4 59.2%,
+      #5c58ff 78.26%
     );
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
   }
-  .background {
-    background-image: url("../assets/landing/1A8BA28B.svg");
-    background-repeat: no-repeat;
-  }
-  .grad {
-    background: linear-gradient(
-      251deg,
-      #3944d1 28.67%,
-      #8f5aff 41.75%,
-      #ffc567 54.83%,
-      #f8623f 69.02%,
-      #ff82a9 84.33%
-    );
+  .herosub {
+    background: linear-gradient(180deg, #fff 0%, #dadada 238.64%);
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -74,8 +69,30 @@ h1 {
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
   } */
+  .cardShadow {
+    background: #13032b;
+  }
   .ovsoge {
     font-family: var(--font-ov-soge), sans-serif;
+  }
+  .separator {
+    background: linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 1) 0%,
+      rgba(0, 0, 0, 1) 100%
+    );
+  }
+  .soon {
+    background: linear-gradient(
+      100deg,
+      #ff91ea 23.01%,
+      #ff7a1b 42.07%,
+      #c74af4 59.2%,
+      #5c58ff 78.26%
+    );
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
   }
   .bg {
     background: linear-gradient(
@@ -87,6 +104,19 @@ h1 {
       #e66482 85.55%
     );
     opacity: 0.5;
+  }
+  .rainbow {
+    background: linear-gradient(180deg, #13032b 0%, #13032b 100%) padding-box,
+      linear-gradient(
+        248deg,
+        #3bc9e8 41.67%,
+        #a0dc93 61.23%,
+        #f9dd41 70.79%,
+        #fda759 78.39%,
+        #e66482 85.55%
+      ),
+      border-box;
+    border: 2px solid transparent;
   }
   .bluegrad {
     background: radial-gradient(
@@ -173,25 +203,26 @@ h1 {
     left: 0;
     right: 0;
     bottom: 0;
-    border-radius: 50%;
-    padding: 2px; /* Adjust padding to control gradient border thickness */
+    border-radius: 24px;
+    padding: 2px;
     background: linear-gradient(
-      180deg,
-      #2ebd59 0%,
-      #fda759 30.5%,
-      #e66482 72%,
-      #3bc9e8 100%
+      248deg,
+      #3bc9e8 41.67%,
+      #a0dc93 61.23%,
+      #f9dd41 70.79%,
+      #fda759 78.39%,
+      #e66482 85.55%
     );
     -webkit-mask: linear-gradient(#fff 0 0) content-box,
       linear-gradient(#fff 0 0);
     -webkit-mask-composite: destination-out;
     mask-composite: exclude;
-    z-index: 10;
+    z-index: -10;
   }
-  .frame > img {
+  /* .frame > img {
     object-fit: cover;
     border-radius: 100%;
-  }
+  } */
   .outerFrame {
     border: 1.2px solid rgba(255, 255, 255, 0.4);
   }

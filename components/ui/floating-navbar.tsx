@@ -9,8 +9,11 @@ import {
 import { cn } from "../../lib/utils";
 import Link from "next/link";
 import Image from "next/image";
-import logo from "../../assets/ailogo.svg";
+import logo from "../../assets/newLogo.svg";
+// import logo from "../../assets/ailogo.svg";
 import LocaleSwitcher from "../LocaleSwitcher";
+import { usePathname } from "next/navigation";
+import { useTranslations } from "next-intl";
 
 export const FloatingNav = ({
   navItems,
@@ -23,9 +26,11 @@ export const FloatingNav = ({
   }[];
   className?: string;
 }) => {
+  const pathname = usePathname();
   const { scrollYProgress } = useScroll();
 
   const [visible, setVisible] = useState(false);
+  const t = useTranslations("footer");
 
   useMotionValueEvent(scrollYProgress, "change", (current) => {
     // Check if current is not undefined and is a number
@@ -59,34 +64,40 @@ export const FloatingNav = ({
           duration: 0.2,
         }}
         className={cn(
-          "flex justify-between max-w-[900px] fixed top-0 inset-x-0 mx-auto border border-transparent dark:border-white/[0.2] rounded-b-3xl dark:bg-black bg-white shadow-[0px_2px_3px_-1px_rgba(0,0,0,0.1),0px_1px_0px_0px_rgba(25,28,33,0.02),0px_0px_0px_1px_rgba(25,28,33,0.08)] z-[5000] pr-2 pl-8 py-2  items-center space-x-4",
+          "flex justify-between max-w-[900px] fixed top-[3%] inset-x-0 mx-auto border border-transparent dark:border-white/[0.2] rounded-full dark:bg-black bg-white shadow-[0px_2px_3px_-1px_rgba(0,0,0,0.1),0px_1px_0px_0px_rgba(25,28,33,0.02),0px_0px_0px_1px_rgba(25,28,33,0.08)] z-[5000] pr-2 pl-8 py-2  items-center space-x-4",
           className
         )}
       >
         {" "}
         <div>
           <Link href={"/"}>
-            <Image src={logo} alt="" />
+            {" "}
+            <Image src={logo} alt="" />{" "}
           </Link>
         </div>
-        <div className="flex justify-center">
-          {navItems.map((navItem: any, idx: number) => (
-            <Link
-              key={`link=${idx}`}
-              href={navItem.link}
-              className={cn(
-                "relative items-center flex space-x-14 text-[#13032B] font-medium text-[14px] font-golosText"
-              )}
-            >
-              <span className="block sm:hidden">{navItem.icon}</span>
-              <span className="hidden sm:block text-sm">{navItem.name}</span>
-            </Link>
-          ))}
+        <div className="flex justify-center gap-4">
+          {navItems.map((navItem: any, idx: number) => {
+            const isActive = navItem.link === pathname;
+            return (
+              <Link
+                key={`link=${idx}`}
+                href={navItem.link}
+                className={cn(
+                  `relative items-center flex rounded-3xl py-2 px-3 text-[#13032B] font-medium text-[14px] font-golosText transition-all ease-in-out duration-300 ${
+                    isActive ? "bg-[#E2E8F0]" : ""
+                  }`
+                )}
+              >
+                <span className="block sm:hidden">{navItem.icon}</span>
+                <span className="hidden sm:block text-sm">{navItem.name}</span>
+              </Link>
+            );
+          })}
         </div>
         <div className="flex items-center gap-2">
           <LocaleSwitcher />
-          <button className="border bg-[#12072C] text-sm font-medium relative border-neutral-200 dark:border-white/[0.2] text-white px-5 py-2 rounded-[32px]">
-            <span>Login</span>
+          <button className="border bg-[#4317FF] text-sm font-medium relative border-neutral-200 dark:border-white/[0.2] text-white px-5 py-2 rounded-[32px]">
+            <span>{t("login")}</span>
             {/* <span className="absolute inset-x-0 w-1/2 mx-auto -bottom-px bg-gradient-to-r from-transparent via-blue-500 to-transparent  h-px" /> */}
           </button>
         </div>

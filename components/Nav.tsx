@@ -1,27 +1,32 @@
 "use client";
 import React from "react";
 import { FloatingNav } from "../components/ui/floating-navbar";
-import { useLocale } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 
 export function FloatingNavDemo() {
   const locale = useLocale();
+  const t = useTranslations("footer");
   const navItems = [
     {
-      name: "Courses",
+      name: t("about"),
+      link: `/${locale}/about`,
+    },
+    {
+      name: t("courses"),
       link: `/${locale}/courses`,
     },
     {
-      name: "Community",
-      link: `/${locale}/community`,
-    },
-    {
-      name: "Blog",
+      name: t("blog"),
       link: `/${locale}/blog`,
     },
     {
-      name: "Contact us",
-      link: `/${locale}/contact`,
+      name: t("community"),
+      link: `/${locale}/community`,
     },
+    // {
+    //   name: "Contact us",
+    //   link: `/${locale}/contact`,
+    // },
   ];
   return (
     <div className="relative w-full z-[100]">

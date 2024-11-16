@@ -1,57 +1,53 @@
-import person from "../assets/LandingPage/avatar.jpg";
-import person2 from "../assets/LandingPage/avatar2.jpg";
-import person3 from "../assets/LandingPage/avatar3.jpg";
-import person4 from "../assets/LandingPage/avatar4.jpg";
-import person5 from "../assets/LandingPage/avatar5.jpg";
-import person6 from "../assets/LandingPage/avatar6.jpg";
-import person7 from "../assets/LandingPage/avatar7.jpg";
-import person8 from "../assets/avatar8.jpeg";
-import person9 from "../assets/avatar9.jpg";
-
-export const teachers = [
+import {
+  Brain02Icon,
+  CodeCircleIcon,
+  RoboticIcon,
+  StarsIcon,
+  CodeFolderIcon,
+  AudioBook01Icon,
+  Database01Icon,
+} from "hugeicons-react";
+export const categories = [
   {
-    name: "Bolor-Erdene B.",
-    image: person5,
-    profession: "Founder & CEO",
+    name: "Artificial Intelligence",
+    icon: Brain02Icon,
+    iconProps: { variant: "bulk", size: 24 },
+    className: "border-[#FFD03B] text-[#FFD03B]",
   },
   {
-    name: "Urantsetseg E.",
-    image: person4,
-    profession: "PR & Marketing Lead",
+    name: "Programming",
+    icon: CodeCircleIcon,
+    iconProps: { variant: "stroke", size: 24 },
+    className: "border-[#68D8FC] text-[#68D8FC]",
   },
   {
-    name: "Oyungoo E.",
-    image: person3,
-    profession: "Programme Director",
+    name: "Machine learning",
+    icon: RoboticIcon,
+    iconProps: { variant: "duotone", size: 24 },
+    className: "border-[#22C55E] text-[#22C55E]",
   },
   {
-    name: "Chadraabal D.",
-    image: person8,
-    profession: "Event Coordinator",
+    name: "AI Tools",
+    icon: StarsIcon,
+    iconProps: { variant: "bulk", size: 24 },
+    className: "border-[#CC48F4] text-[#CC48F4]",
   },
   {
-    name: "Tuguldur E.",
-    image: person7,
-    profession: "Designer",
+    name: "Software Development",
+    icon: CodeFolderIcon,
+    iconProps: { variant: "bulk", size: 24 },
+    className: "border-[#F0493E] text-[#F0493E]",
   },
   {
-    name: "Michid B.",
-    image: person6,
-    profession: "Volunteer",
+    name: "AI Know How’s",
+    icon: AudioBook01Icon,
+    iconProps: { variant: "bulk", size: 24 },
+    className: "border-[#6068F4] text-[#6068F4]",
   },
   {
-    name: "Bayasgalan B.",
-    image: person2,
-    profession: "UI/UX Designer",
-  },
-  {
-    name: "Bataa Ts.",
-    image: person9,
-    profession: "Back-End Developer",
-  },
-  {
-    name: "Usukhbayar T.",
-    image: person,
-    profession: "Front-End Developer",
+    name: "Data Science",
+    icon: Database01Icon,
+    iconProps: { variant: "bulk", size: 24 },
+    className: "border-[#CC48F4] text-[#CC48F4]",
   },
 ];

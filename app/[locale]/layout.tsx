@@ -6,7 +6,8 @@ import { NextIntlClientProvider } from "next-intl";
 import { getMessages } from "next-intl/server";
 import { notFound } from "next/navigation";
 import { routing } from "../../i18n/routing";
-// import Navbar from "../../components/Navbar";
+import { ReactLenis } from "../../lib/lenis";
+import { FloatingNavDemo } from "../../components/Nav";
 
 const montserratAlt = Montserrat_Alternates({
   weight: ["200", "300", "400", "500", "600", "700", "800"],
@@ -62,6 +63,47 @@ const ovSoge = localFont({
   variable: "--font-ov-soge",
   preload: true,
 });
+
+const adineue = localFont({
+  src: [
+    {
+      path: "../fonts/new/adineuePROKZ-Bold.otf",
+      weight: "700",
+    },
+  ],
+  variable: "--font-adineue",
+  preload: true,
+});
+const neue = localFont({
+  src: [
+    {
+      path: "../fonts/new/NeueAlteGrotesk-Medium.woff2",
+      weight: "500",
+    },
+    {
+      path: "../fonts/new/NeueAlteGrotesk-SemiBold.woff2",
+      weight: "600",
+    },
+    {
+      path: "../fonts/new/NeueAlteGrotesk-Medium.woff2",
+      weight: "500",
+    },
+    {
+      path: "../fonts/new/NeueAlteGrotesk-Regular.woff2",
+      weight: "400",
+    },
+    {
+      path: "../fonts/new/NeueAlteGrotesk-Light.woff2",
+      weight: "300",
+    },
+    {
+      path: "../fonts/new/NeueAlteGrotesk-Bold.woff2",
+      weight: "700",
+    },
+  ],
+  variable: "--font-neue",
+  preload: true,
+});
 export const metadata: Metadata = {
   title: "AI Academy",
   description: "Empowering the Next Generation",
@@ -80,13 +122,16 @@ export default async function RootLayout({
   const messages = await getMessages();
   return (
     <html lang={locale}>
-      <body
-        className={`${montserratAlt.variable} ${manrope.variable} ${ovSoge.variable} ${golosText.variable} antialiased`}
-      >
-        <NextIntlClientProvider messages={messages}>
-          {children}
-        </NextIntlClientProvider>
-      </body>
+      <ReactLenis root>
+        <body
+          className={`${montserratAlt.variable} ${manrope.variable} ${ovSoge.variable} ${golosText.variable} ${adineue.variable} ${neue.variable} antialiased`}
+        >
+          <NextIntlClientProvider messages={messages}>
+            <FloatingNavDemo />
+            {children}
+          </NextIntlClientProvider>
+        </body>
+      </ReactLenis>
     </html>
   );
 }
