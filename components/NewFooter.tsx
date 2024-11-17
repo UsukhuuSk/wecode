@@ -27,21 +27,21 @@ export default function NewFooter() {
     },
   ];
   return (
-    <div className="w-full flex flex-col gap-[72px] px-[120px] py-12 overflow-hidden rounded-t-full border border-[#FFFFFF33] relative">
+    <div className="w-full flex flex-col gap-[72px] px-5 py-10 md:py-20 2xl:px-[120px] 2xl:py-12 overflow-hidden rounded-t-[48px] md:rounded-t-[240px] border border-[#FFFFFF33] relative">
       <div className="absolute -top-0 w-full h-[104px] bg-[#4317FF] blur-[160px] rounded-full"></div>
       <div className="m-auto">
         <Image src={logo} alt="AI ACADEMY" />
       </div>
-      <div className="flex justify-center gap-[85px]">
+      <div className="flex flex-col items-center md:flex-row md:justify-center gap-8 md:gap-[85px]">
         {routes.map((route, index) => (
           <Link href={route.path} key={index}>
-            <p className="text-slate-300 font-base font-bold tracking-[0.173px] text-[40px] font-adineue">
+            <p className="text-slate-300 font-base font-bold tracking-[0.173px] text-2xl md:text-[40px] font-adineue">
               {route.name}
             </p>
           </Link>
         ))}
       </div>
-      <div className="flex justify-center items-center gap-8 m-auto">
+      <div className="flex flex-col md:flex-row md:justify-center md:items-center gap-8 m-auto">
         <Link
           href="mailto:info@ai-academy.asia "
           className="flex items-center text-white px-5 py-[10px] gap-3 bg-[#FFFFFF33] border border-[#FFFFFF66] rounded-full"
@@ -49,7 +49,7 @@ export default function NewFooter() {
           <span>info@ai-academy.asia </span>
           <ArrowRight02Icon size={12} color={"#FFFFFF"} />
         </Link>
-        <div className="flex items-center  gap-4">
+        <div className="flex items-center justify-center gap-4">
           <Link
             href={"https://www.facebook.com/profile.php?id=61566964959193"}
             className="p-[10px] border border-[#FFFFFF66] rounded-full bg-[#FFFFFF33]"

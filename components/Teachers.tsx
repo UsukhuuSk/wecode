@@ -52,7 +52,7 @@ export default function Teachers() {
         </div>
       </div>
 
-      <div className=" mt-16 lg:gap-14 gap-7 max-w-[1280px] m-auto z-50">
+      <div className="mt-16 lg:gap-14 gap-7 max-w-[1280px] m-auto z-50">
         <Carousel>
           <CarouselContent>
             {users.map((teacher: any) => (

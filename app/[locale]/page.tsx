@@ -116,8 +116,8 @@ export default function Home() {
   ];
   return (
     <main className="h-full w-full relative">
-      <div className="absolute top-0 left-0 -translate-x-1/2 bg-[#4317FF] blur-[200px] w-[244px] h-[200px] z-[100]"></div>
-      <div className="absolute top-0 right-0 -translate-x-1/2 bg-[#4317FF] blur-[200px] w-[244px] h-[200px] z-[100]"></div>
+      <div className="absolute top-0 left-0 -translate-x-1/2 bg-[#4317FF] blur-[200px] w-[244px] h-[200px] -z-[100]"></div>
+      <div className="absolute top-0 right-0 -translate-x-1/2 bg-[#4317FF] blur-[200px] w-[244px] h-[200px] -z-[100]"></div>
 
       <motion.div
         variants={fadeInUp}
@@ -133,20 +133,20 @@ export default function Home() {
               alt=""
               className="absolute left-[50%] top-0 -translate-x-1/2 w-full h-[80%] -z-[100] opacity-50 overflow-hidden"
             /> */}
-            <div className="absolute left-[50%] top-0 -translate-x-1/2 w-full h-[80%] -z-[100]  overflow-hidden">
+            <div className="absolute left-[50%] top-0 -translate-x-1/2 w-full h-[80%] -z-[100] overflow-hidden">
               <Image src={line} alt="" />
             </div>
             <Image
               src={circle}
               alt=""
-              className="absolute top-[50%] -left-[5%] z-[10]"
+              className="absolute top-3/4 md:top-[50%] -left-3/4 md:-left-[40%] xl:-left-[20%] 2xl:-left-[10%] z-[10]"
               width={458}
               height={458}
             />
             <Image
               src={round}
               alt=""
-              className="absolute top-2/4 -right-[15%] z-50 lg:flex hidden rotate-[32]"
+              className="absolute top-3/4 md:top-2/4 md:-right-[40%] -right-3/4 xl:-right-1/4 2xl:-right-[15%] z-50 lg:flex rotate-[32]"
               width={500}
               height={472}
             />
@@ -166,7 +166,7 @@ export default function Home() {
           </div>
           <div className="">
             <div className="flex flex-col gap-5 items-center z-50">
-              <div className="grid xl:grid-cols-2 2xl:grid-cols-4 text-center gap-5 ">
+              <div className="grid sm:grid-cols-2  xl:grid-cols-4 text-center gap-5 ">
                 {categories.slice(0, 4).map((category, index) => (
                   <CategoryCard
                     key={index}
@@ -177,7 +177,7 @@ export default function Home() {
                   />
                 ))}
               </div>
-              <div className="grid xl:grid-cols-2 2xl:grid-cols-3 text-center gap-5 m-auto">
+              <div className="grid sm:grid-cols-2 xl:grid-cols-3 text-center gap-5 m-auto">
                 {categories.slice(4, 7).map((category, index) => (
                   <CategoryCard
                     key={index}
@@ -197,34 +197,58 @@ export default function Home() {
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, amount: 0.3 }}
-        className="py-[175px] px-[120px] text-white"
+        className="px-5 py-5 2xl:py-[175px] 2xl:px-[120px] text-white"
       >
-        <div className="flex items-center gap-[45px]">
-          <div className="flex flex-col gap-12 items-start">
-            <div className="border-2 border-[#4317FF]  rounded-[32px] px-5 py-2 font-neue text-[18px] font-bold">
+        <div className="block xl:flex items-center gap-[45px]">
+          <div className="flex flex-col gap-12 items-center xl:items-start">
+            <div className="border-2 border-[#4317FF] rounded-[32px] px-5 py-2 font-neue text-[18px] font-bold">
               {t("cardData.feature")}
             </div>
-            <h1 className="font-bold font-neue text-5xl">
+            <h1 className="font-bold font-neue text-4xl md:text-5xl text-center xl:text-start">
               {t("cardData.explore")}
             </h1>
-            <p className="font-normal font-neue text-[16px] text-slate-300">
+            <p className="font-normal font-neue text-[16px] text-slate-300 text-center">
               {t("cardData.unlock")}
             </p>
-            <div className="flex items-center gap-10">
-              <Image src={seventh} alt="" className="h-[48px] w-[48px]" />
-              <Image src={eight} alt="" className="h-[48px] w-[48px]" />
-              <Image src={nine} alt="" className="h-[48px] w-[48px]" />
-              <Image src={ten} alt="" className="h-[48px] w-[48px]" />
-              <Image src={eleven} alt="" className="h-[48px] w-[48px]" />
-              <Image src={twelve} alt="" className="h-[48px] w-[48px]" />
+            <div className="flex items-center gap-5 md:gap-10 m-auto xl:m-0">
+              <Image
+                src={seventh}
+                alt=""
+                className="h-[24px] w-[24px] 2xl:h-[48px] 2xl:w-[48px]"
+              />
+              <Image
+                src={eight}
+                alt=""
+                className="h-[24px] w-[24px] 2xl:h-[48px] 2xl:w-[48px]"
+              />
+              <Image
+                src={nine}
+                alt=""
+                className="h-[24px] w-[24px] 2xl:h-[48px] 2xl:w-[48px]"
+              />
+              <Image
+                src={ten}
+                alt=""
+                className="h-[24px] w-[24px] 2xl:h-[48px] 2xl:w-[48px]"
+              />
+              <Image
+                src={eleven}
+                alt=""
+                className="h-[24px] w-[24px] 2xl:h-[48px] 2xl:w-[48px]"
+              />
+              <Image
+                src={twelve}
+                alt=""
+                className="h-[24px] w-[24px] 2xl:h-[48px] 2xl:w-[48px]"
+              />
             </div>
           </div>
-          <div className="">
-            <div className="grid grid-cols-2 gap-5">
+          <div className="my-10 xl:my-0">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
               {cardData.map((card, index) => (
                 <div
                   key={index}
-                  className="flex flex-col w-[340px] min-h-[315px] border border-[#404047] rounded-3xl"
+                  className="flex flex-col 2xl:w-[340px] min-h-[315px] border border-[#404047] rounded-3xl"
                 >
                   <Image
                     src={card.img}
@@ -252,14 +276,14 @@ export default function Home() {
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, amount: 0.3 }}
-        className="py-[125px] px-[120px] text-white relative border-t-2 border-t-[#FFFFFF33] rounded-t-[240px] flex flex-col gap-[120px]"
+        className="px-5 py-20 2xl:py-[125px] 2xl:px-[120px] text-white relative border-t-2 border-t-[#FFFFFF33] rounded-[32px] md:rounded-t-[240px] flex flex-col gap-[120px]"
       >
         <div className="absolute top-1/4 left-1/2 -translate-x-1/2 bg-[#4317FF] blur-[200px] min-w-[500px] max-w-[752px] h-[124px] -z-[10]"></div>
         <div className="text-center flex flex-col gap-8">
-          <div className="w-[205px] flex justify-center m-auto text-[18px] font-bold font-neue py-2 px-4 text-center text-white border-2 border-[#4317FF] rounded-[32px]">
+          <div className="max-w-[205px] flex justify-center m-auto text-[18px] font-bold font-neue py-2 px-4 text-center text-white border-2 border-[#4317FF] rounded-[32px]">
             {t("courses.title")}
           </div>
-          <h1 className=" font-neue font-bold text-5xl max-w-[960px] m-auto">
+          <h1 className=" font-neue font-bold text-4xl md:text-5xl max-w-[960px] m-auto">
             {t("courses.subtitle")}
           </h1>
         </div>
@@ -271,7 +295,7 @@ export default function Home() {
                   key={index}
                   className="basis-1/3 pb-6 min-w-[365px] h-auto flex flex-col gap-4 rounded-3xl border border-[#404047] overflow-hidden"
                 >
-                  <div className=" w-[365px] h-[190px] object-cover">
+                  <div className=" 2xl:w-[365px] h-[190px] object-cover">
                     <Image
                       src={item.image}
                       alt=""
@@ -325,13 +349,13 @@ export default function Home() {
           <Image src={purple} alt="" width={1000} height={1004} />
         </div>
 
-        <div className="flex flex-col gap-[72px] px-[120px] pt-[180px]">
+        <div className="flex flex-col gap-[72px] px-5 py-5 2xl:px-[120px] 2xl:pt-[180px]">
           <div className="flex justify-between">
             <div className="flex flex-col gap-8 items-start">
-              <div className="border-2 border-[#4317FF] rounded-[32px] px-5 py-2 font-neue text-[18px] font-bold ">
+              <div className="border-2 border-[#4317FF] rounded-[32px] px-5 py-2 font-neue md:text-[18px] font-bold ">
                 {t("steps.title")}
               </div>
-              <h1 className="text-5xl"> {t("steps.subtitle")}</h1>
+              <h1 className="text-4xl md:text-5xl"> {t("steps.subtitle")}</h1>
             </div>
             <div className="">
               <Image
@@ -344,7 +368,7 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="grid grid-cols-[1fr_80px_2fr_80px_3fr] gap-y-6">
+          <div className="flex flex-col md:grid md:grid-cols-[1fr_80px_2fr_80px_3fr] gap-y-6">
             {Steps.map((step, index) => (
               <React.Fragment key={index}>
                 <div
@@ -368,7 +392,7 @@ export default function Home() {
                 </div>
 
                 {index < 2 && (
-                  <div className="w-[45px] h-[1px] separator flex items-center justify-center m-auto "></div>
+                  <div className="w-[45px] h-[1px] separator items-center justify-center m-auto hidden md:flex "></div>
                 )}
               </React.Fragment>
             ))}
@@ -383,8 +407,8 @@ export default function Home() {
         className=""
       >
         <div className="mt-32 border-t border-b border-[#FFFFFF33]">
-          <div className="flex justify-between items-center px-[120px] py-12">
-            <span className="text-slate-400 font-medium text-2xl">
+          <div className="flex flex-col gap-7 md:flex-row justify-between items-center px-5 py-5 2xl:px-[120px] 2xl:py-12">
+            <span className="text-slate-400 font-medium text-2xl text-center">
               {t("partners")}
             </span>
             <Image src={logo3} alt="" />
@@ -393,9 +417,9 @@ export default function Home() {
           </div>
         </div>
 
-        <div className="px-[120px] py-[210px]">
+        <div className="2xl:px-[120px] 2xl:py-[210px] px-5 py-5 sm:py-20 ">
           <div className="relative text-center text-white ">
-            <h1 className=" text-[80px] font-bold font-adineue">
+            <h1 className=" text-4xl xl:text-[80px] font-bold font-adineue">
               {t("journey")}
             </h1>
             {/* <Image
@@ -406,12 +430,10 @@ export default function Home() {
               className="-rotate-90 absolute left-[33%] top-[90%] transform -translate-x-1/2 -translate-y-1/2"
             /> */}
           </div>
-          <div className="mt-[68px] grid grid-cols-7 gap-5 mx-auto">
+          <div className="mt-[68px] grid md:grid-cols-7 gap-5 mx-auto">
             <div
-              className={`rainbow text-start col-span-5 p-12 rounded-3xl relative overflow-hidden flex flex-col gap-4 justify-start items-start font-neue `}
+              className={`rainbow text-start md:col-span-5 p-12 rounded-3xl relative overflow-hidden flex flex-col gap-4 justify-start items-start font-neue `}
             >
-              {/* <div className={`${step.fade}`}></div> */}
-
               <div className="flex flex-col items-start gap-3 z-20 ">
                 <h1 className="">
                   <span className="text-white text-2xl font-bold font-neue">
@@ -421,12 +443,12 @@ export default function Home() {
                     {t("soon")}
                   </span>
                 </h1>
-                <div className="flex items-center justify-start gap-3">
-                  <div className="flex items-center gap-3 w-[150px] rounded-[48px] bg-[#FFFFFF33] border border-[#FFFFFF66] justify-center text-white py-[10px] px-5">
+                <div className="flex md:flex-row flex-col items-start md:items-center justify-start gap-3">
+                  <div className="flex items-center  gap-3 w-[170px] rounded-[48px] bg-[#FFFFFF33] border border-[#FFFFFF66] justify-start text-white py-[10px] px-5">
                     <FaAppleAlt size={16} color="#fff" />
                     <span>App Store</span>
                   </div>
-                  <div className="flex items-center gap-3 w-[170px] rounded-[48px] bg-[#FFFFFF33] border border-[#FFFFFF66] justify-center text-white py-[10px] px-5">
+                  <div className="flex items-center gap-3 w-[170px] rounded-[48px] bg-[#FFFFFF33] border border-[#FFFFFF66] justify-start text-white py-[10px] px-5">
                     <IoPlay size={16} color="#fff" />
                     <span>Google Play </span>
                   </div>
@@ -434,10 +456,8 @@ export default function Home() {
               </div>
             </div>
             <div
-              className={`bg-[#13032bcc] border-2 col-span-2 p-12 border-[#404047] rounded-3xl relative text-start overflow-hidden flex flex-col gap-4 items-center font-neue `}
+              className={`bg-[#13032bcc] border-2 md:col-span-2 p-12 border-[#404047] rounded-3xl relative text-start overflow-hidden flex flex-col gap-4 items-center font-neue `}
             >
-              {/* <div className={`${step.fade}`}></div> */}
-
               <div className="flex flex-col items-start gap-6 z-20 ">
                 <h1 className="text-white text-2xl font-bold font-neue">
                   {t("started")}

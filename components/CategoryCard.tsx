@@ -22,15 +22,14 @@ export default function CategoryCard({
   return (
     <div
       className={cn(
-        `px-6 py-4 border  rounded-[32px] flex items-center gap-[10px] justify-center`,
+        `flex-1 px-6 py-4 border min-w-[236px] rounded-[32px] flex items-center gap-[10px] justify-start`,
         className
       )}
     >
-      <Icon {...iconProps} />
-      {/* {icon} */}
-
+      <div className=" flex-shrink-0 flex justify-start items-center">
+        <Icon {...iconProps} />
+      </div>
       <p className={` text-[14px] font-semibold`}>{name}</p>
-      {/* <div>{color}</div> */}
     </div>
   );
 }

@@ -69,7 +69,7 @@ export default function page() {
       <div className="absolute -top-1/4 left-0 -translate-x-1/2 bg-[#4317FF] blur-[200px] w-[244px] h-[200px]"></div>
       <div className="absolute -top-1/4 right-0 -translate-x-1/2 bg-[#4317FF] blur-[200px] w-[244px] h-[200px]"></div>
       <div className="flex flex-col justify-center items-center gap-16 relative ">
-        <div className="soon font-adineue text-5xl xl:text-8xl">
+        <div className="soon text-center font-adineue text-5xl xl:text-8xl">
           {t("soon")}
         </div>
         <div className="flex flex-col gap-5 items-center z-50">
