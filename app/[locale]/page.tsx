@@ -20,10 +20,12 @@ import fancy3 from "../../assets/fancy3.svg";
 import fancy4 from "../../assets/fancy4.svg";
 import line from "../../assets/line.svg";
 import purple from "../../assets/landing/purplePlanet.png";
-import { courses } from "../../data/dummy";
 import mobile from "../../assets/asadasd.png";
 import gif from "../../assets/5b7374bbd8f499bfd804b74baa6ebd7a.gif";
 import { FaAppleAlt } from "react-icons/fa";
+import card1 from "../../assets/course/image.png";
+import card2 from "../../assets/course/image1.png";
+import card3 from "../../assets/course/image2.png";
 import {
   Carousel,
   CarouselContent,
@@ -114,6 +116,54 @@ export default function Home() {
       fade: "w-[224px] h-[224px] bg-[#F0493E] absolute blur-[160px] z-10",
     },
   ];
+  const courses = [
+    {
+      id: 0,
+      name: t("courses.course.1.name"),
+      level: t("courses.intro"),
+      teacher: t("courses.course.1.teacher"),
+      length: "16",
+      levelId: "1",
+      image: card3,
+    },
+    {
+      id: 1,
+      name: t("courses.course.2.name"),
+      level: t("courses.inter"),
+      teacher: t("courses.course.2.teacher"),
+      length: "16",
+      levelId: "2",
+      image: card1,
+    },
+    {
+      id: 2,
+      name: t("courses.course.3.name"),
+      level: t("courses.intro"),
+      teacher: t("courses.course.3.teacher"),
+      levelId: "1",
+      length: "16",
+      image: card2,
+    },
+    {
+      id: 3,
+      name: t("courses.course.4.name"),
+      level: t("courses.inter"),
+      levelId: "2",
+      teacher: t("courses.course.4.teacher"),
+      length: "16",
+      image: card3,
+    },
+    {
+      id: 4,
+      name: t("courses.course.5.name"),
+      level: t("courses.advanced"),
+      levelId: "3",
+      teacher: t("courses.course.5.teacher"),
+      length: "16",
+      image: card2,
+    },
+  ];
+
   return (
     <main className="h-full w-full relative overflow-hidden">
       <div className="absolute top-0 left-0 -translate-x-1/2 bg-[#4317FF] blur-[200px] w-[244px] h-[200px] -z-[100]"></div>
@@ -313,11 +363,11 @@ export default function Home() {
                       </div>
                       <div
                         className={`font-neue text-[12px] font-semibold border py-1 px-5 rounded-[32px] ${
-                          item.level === "Анхан шат"
+                          item.levelId === "1"
                             ? "text-[#22C55E] border-[#22C55E]"
-                            : item.level === "Дунд шат"
+                            : item.levelId === "2"
                             ? "text-[#FDBA74] border-[#FDBA74]"
-                            : item.level === "Ахисан шат"
+                            : item.levelId === "3"
                             ? "text-[#F0493E] border-[#F0493E]"
                             : ""
                         }`}

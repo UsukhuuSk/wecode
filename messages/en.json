@@ -8,6 +8,7 @@
     "headline2": "Empowering Every Mind",
     "start": "Get started for free",
     "team": "Our Team",
+
     "cardData": {
       "1": {
         "title": "Comprehensive AI education ",
@@ -32,7 +33,32 @@
     "courses": {
       "title": "Our Courses",
       "subtitle": "Discover, Learn, and Master AI and Coding at Your Own Pace",
-      "signup": "Sign up to watch Introductory for free"
+      "signup": "Sign up to watch Introductory for free",
+      "intro": "Introductory",
+      "inter": "Intermediate",
+      "advanced": "Advanced",
+      "course": {
+        "1": {
+          "name": "AI for All",
+          "teacher": "Bayasgalan"
+        },
+        "2": {
+          "name": "Train AI Model",
+          "teacher": "Bayasgalan"
+        },
+        "3": {
+          "name": "Code Explorer",
+          "teacher": "Bayasgalan"
+        },
+        "4": {
+          "name": "Code Innovator",
+          "teacher": "Bayasgalan"
+        },
+        "5": {
+          "name": "Code Pro",
+          "teacher": "Bayasgalan"
+        }
+      }
     },
     "steps": {
       "title": "Getting started",
