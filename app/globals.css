@@ -11,13 +11,6 @@ body {
   --foreground: #171717;
   --mainblack: #27262b;
 }
-/* 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: ##13032b;
-    --foreground: #ededed;
-  }
-} */
 
 body {
   color: var(--foreground);
@@ -34,10 +27,6 @@ h1 {
     text-wrap: balance;
   }
 
-  /* .background {
-    background-image: url("../assets/landing/1A8BA28B.svg");
-    background-repeat: no-repeat;
-  } */
   .herotext {
     background: linear-gradient(
       100deg,
@@ -85,19 +74,7 @@ h1 {
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
   }
-  /* .char {
-    background: linear-gradient(
-      251deg,
-      #3944d1 28.67%,
-      #8f5aff 41.75%,
-      #ffc567 54.83%,
-      #f8623f 69.02%,
-      #ff82a9 84.33%
-    );
-    background-clip: text;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-  } */
+
   .cardShadow {
     background: #13032b;
   }
@@ -172,8 +149,6 @@ h1 {
     -webkit-text-fill-color: transparent;
   }
   .cardGrad {
-    /* border-radius: 16px;
-    border: 1px solid rgba(120, 255, 87, 0.2); */
     background: radial-gradient(
       121.35% 121.35% at 50% 50%,
       rgba(0, 0, 0, 0.25) 0%,
@@ -208,18 +183,11 @@ h1 {
   }
 
   select:focus {
-    outline: none; /* Ensure no outline appears when focused */
-    border: none; /* Remove any default border on focus */
-    box-shadow: none; /* Remove any shadow effect */
+    outline: none;
+    border: none;
+    box-shadow: none;
   }
   .frame {
-    /* background: linear-gradient(
-      180deg,
-      #2ebd59 0%,
-      #fda759 30.5%,
-      #e66482 72%,
-      #3bc9e8 100%
-    ); */
     position: relative;
     display: inline-flex;
     align-items: center;
@@ -248,10 +216,7 @@ h1 {
     mask-composite: exclude;
     z-index: -10;
   }
-  /* .frame > img {
-    object-fit: cover;
-    border-radius: 100%;
-  } */
+
   .outerFrame {
     border: 1.2px solid rgba(255, 255, 255, 0.4);
   }

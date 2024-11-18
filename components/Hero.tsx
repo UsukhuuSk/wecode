@@ -9,7 +9,8 @@ import twelve from "../assets/LandingPage/12.svg";
 import Image from "next/image";
 import { useTranslations } from "next-intl";
 import globe from "../assets/globe.gif";
-import GradualSpacing from "./ui/gradual-spacing";
+import { motion, AnimatePresence } from "framer-motion";
+import WavyText from "./ui/wavytext";
 
 export default function Hero() {
   const t = useTranslations("HomePage");
@@ -22,21 +23,21 @@ export default function Hero() {
             src={seventh}
             alt=""
             className="h-[24px] w-[24px] 2xl:h-[32px] 2xl:w-[32px]"
-            onMouseEnter={() => setHoverText(t(""))}
+            onMouseEnter={() => setHoverText(t("hero.first"))}
             onMouseLeave={() => setHoverText(t("hero.title"))}
           />
           <Image
             src={eight}
             alt=""
             className="h-[24px] w-[24px] 2xl:h-[32px] 2xl:w-[32px]"
-            onMouseEnter={() => setHoverText("Text for Eight")}
+            onMouseEnter={() => setHoverText(t("hero.second"))}
             onMouseLeave={() => setHoverText(t("hero.title"))}
           />
           <Image
             src={nine}
             alt=""
             className="h-[24px] w-[24px] 2xl:h-[32px] 2xl:w-[32px]"
-            onMouseEnter={() => setHoverText("Text for Nine")}
+            onMouseEnter={() => setHoverText(t("hero.third"))}
             onMouseLeave={() => setHoverText(t("hero.title"))}
           />
         </div>
@@ -49,21 +50,21 @@ export default function Hero() {
             src={ten}
             alt=""
             className="h-[24px] w-[24px] 2xl:h-[32px] 2xl:w-[32px]"
-            onMouseEnter={() => setHoverText("Text for Ten")}
+            onMouseEnter={() => setHoverText(t("hero.fourth"))}
             onMouseLeave={() => setHoverText(t("hero.title"))}
           />
           <Image
             src={eleven}
             alt=""
             className="h-[24px] w-[24px] 2xl:h-[32px] 2xl:w-[32px]"
-            onMouseEnter={() => setHoverText("Text for Eleven")}
+            onMouseEnter={() => setHoverText(t("hero.fifth"))}
             onMouseLeave={() => setHoverText(t("hero.title"))}
           />
           <Image
             src={twelve}
             alt=""
             className="h-[24px] w-[24px] 2xl:h-[32px] 2xl:w-[32px]"
-            onMouseEnter={() => setHoverText("Text for Twelve")}
+            onMouseEnter={() => setHoverText(t("hero.sixth"))}
             onMouseLeave={() => setHoverText(t("hero.title"))}
           />
         </div>
@@ -76,9 +77,28 @@ export default function Hero() {
           className="bg-transparent mix-blend-screen absolute -translate-x-1/2 -top-[20%] left-1/2 w-[260px] h-[260px] xl:w-[600px] xl:h-[600px] -z-40"
         />
       </div>
-      <div className="herosub font-bold text-4xl sm:text-6xl xl:text-8xl font-adineue text-center px-1 xl:p-0 mb-[80px]">
+      <div className="herosub text-center px-1 xl:p-0 mb-[80px]">
         <div className="bg-[#4317FF] blur-[160px] hidden sm:flex w-[341px] h-[278px] absolute translate-x-1/2 sm:left-0 md:left-[15%] xl:left-1/3 -z-[105]"></div>
-        <span>{hoverText}</span>
+        {/* <span className="font-bold text-4xl sm:text-6xl xl:text-8xl font-adineue transition-all duration-300 ease-in-out"> */}
+        {/* <AnimatePresence mode="wait">
+          <motion.span
+            key={hoverText}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            transition={{ duration: 0.3 }}
+            className="font-bold text-4xl sm:text-6xl xl:text-8xl font-adineue"
+          >
+            {hoverText}
+          </motion.span>
+        </AnimatePresence> */}
+
+        <WavyText
+          text={hoverText}
+          replay={true}
+          className="font-bold text-4xl sm:text-6xl xl:text-8xl font-adineue m-auto text-center flex justify-center"
+        />
+        {/* </span> */}
       </div>
     </div>
   );
