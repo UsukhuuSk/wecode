@@ -115,7 +115,7 @@ export default function Home() {
     },
   ];
   return (
-    <main className="h-full w-full relative">
+    <main className="h-full w-full relative overflow-hidden">
       <div className="absolute top-0 left-0 -translate-x-1/2 bg-[#4317FF] blur-[200px] w-[244px] h-[200px] -z-[100]"></div>
       <div className="absolute top-0 right-0 -translate-x-1/2 bg-[#4317FF] blur-[200px] w-[244px] h-[200px] -z-[100]"></div>
 
@@ -124,7 +124,7 @@ export default function Home() {
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, amount: 0.3 }}
-        className="relative min-h-screen w-full overflow-hidden"
+        className="relative min-h-screen w-full "
       >
         <div className="flex justify-center relative -z-[100]">
           <div className="w-full h-screen absolute">
@@ -139,14 +139,14 @@ export default function Home() {
             <Image
               src={circle}
               alt=""
-              className="absolute top-3/4 md:top-[50%] -left-3/4 md:-left-[40%] xl:-left-[20%] 2xl:-left-[10%] z-[10]"
+              className="absolute hidden lg:flex top-3/4 md:top-[50%] -left-3/4 md:-left-[40%] xl:-left-[20%] 2xl:-left-[10%] z-[10]"
               width={458}
               height={458}
             />
             <Image
               src={round}
               alt=""
-              className="absolute top-3/4 md:top-2/4 md:-right-[40%] -right-3/4 xl:-right-1/4 2xl:-right-[15%] z-50 lg:flex rotate-[32]"
+              className="absolute hidden lg:flex top-3/4 md:top-2/4 md:-right-[40%] -right-3/4 xl:-right-1/4 2xl:-right-[15%] z-50 rotate-[32]"
               width={500}
               height={472}
             />
@@ -156,7 +156,7 @@ export default function Home() {
           <div>
             <Hero />
             <div className="text-center flex flex-col gap-10">
-              <div className="text-[#5c5c5c] font-neue text-[20px] font-medium tracking-tight lg:tracking-[0.173px] m-auto">
+              <div className="text-[#5c5c5c] font-neue text-[14px] md:text-[20px] font-medium tracking-tight lg:tracking-[0.173px] m-auto">
                 {t("subheadline")}
               </div>
               <div className="w-auto flex justify-center m-auto text-base font-bold font-neue py-4 px-4 text-center text-white bg-[#4317FF] rounded-[32px]">
@@ -165,8 +165,8 @@ export default function Home() {
             </div>
           </div>
           <div className="">
-            <div className="flex flex-col gap-5 items-center z-50">
-              <div className="grid sm:grid-cols-2  xl:grid-cols-4 text-center gap-5 ">
+            <div className="flex justify-between md:flex-col md:gap-5 items-center z-50">
+              <div className="grid grid-cols-4 sm:grid-cols-2  xl:grid-cols-4 text-center gap-60 md:gap-5 ">
                 {categories.slice(0, 4).map((category, index) => (
                   <CategoryCard
                     key={index}
@@ -177,7 +177,7 @@ export default function Home() {
                   />
                 ))}
               </div>
-              <div className="grid sm:grid-cols-2 xl:grid-cols-3 text-center gap-5 m-auto">
+              <div className="grid grid-cols-3 sm:grid-cols-2 xl:grid-cols-3 text-center gap-5 m-auto">
                 {categories.slice(4, 7).map((category, index) => (
                   <CategoryCard
                     key={index}
@@ -287,7 +287,7 @@ export default function Home() {
             {t("courses.subtitle")}
           </h1>
         </div>
-        <div className="z-50">
+        <div className="z-50 px-6">
           <Carousel>
             <CarouselContent className="space-x-5 pl-6">
               {courses.map((item, index) => (
@@ -432,7 +432,7 @@ export default function Home() {
           </div>
           <div className="mt-[68px] grid md:grid-cols-7 gap-5 mx-auto">
             <div
-              className={`rainbow text-start md:col-span-5 p-12 rounded-3xl relative overflow-hidden flex gap-4 justify-start items-start font-neue `}
+              className={`rainbow text-start md:col-span-5 p-16 rounded-3xl relative overflow-hidden flex gap-4 justify-start items-start font-neue `}
             >
               <div className="flex flex-col items-start gap-3 z-20 ">
                 <h1 className="">
@@ -454,7 +454,7 @@ export default function Home() {
                   </div>
                 </div>
               </div>
-              <div className="">
+              <div className="absolute hidden lg:flex top-0 right-[5%] lg:h-[276px] lg:w-[276px]">
                 <Image
                   src={mobile}
                   alt="mobile"

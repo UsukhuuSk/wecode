@@ -23,12 +23,14 @@ const TeacherCard = ({ name, image, profession }: any) => {
       />
 
       <div className="absolute bottom-[5%] left-[5%] z-20 text-start flex flex-col items-start justify-start">
-        <h1 className="font-manrope text-[18px] font-extrabold">{name}</h1>
-        <span className="font-manrope text-[14px] font-medium">
+        <h1 className="font-manrope text-[18px] font-extrabold text-white">
+          {name}
+        </h1>
+        <span className="font-manrope text-[14px] font-medium text-white">
           {profession}
         </span>
       </div>
-      <div className="absolute bottom-0 cardText w-full  z-10 h-[305px] rounded-b-3xl"></div>
+      <div className="absolute bottom-0 cardText w-full z-10 h-[35px] rounded-b-3xl"></div>
     </motion.div>
   );
 };

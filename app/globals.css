@@ -50,6 +50,35 @@ h1 {
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
   }
+  .team {
+    background: linear-gradient(180deg, #fff 0%, #030870 100%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  .story {
+    background: linear-gradient(
+      180deg,
+      #fff 0%,
+      rgba(111, 116, 123, 0) 213.58%
+    );
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  .title {
+    color: #ff9fe4;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    text-decoration-line: underline;
+    text-decoration-style: solid;
+    text-decoration-skip-ink: none;
+    text-decoration-thickness: auto;
+    text-underline-offset: auto;
+    text-underline-position: from-font;
+  }
   .herosub {
     background: linear-gradient(180deg, #fff 0%, #dadada 238.64%);
     background-clip: text;

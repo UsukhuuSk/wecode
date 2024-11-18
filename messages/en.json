@@ -57,7 +57,13 @@
     "hero": {
       "title": "Empowering Every Mind",
       "subtitle": "Democratizing AI and Coding education for everyone, everywhere.",
-      "button": "Get started for free"
+      "button": "Get started for free",
+      "first": "Empower",
+      "second": "Educate",
+      "third": "Include",
+      "fourth": "Innovate",
+      "fifth": "Transform",
+      "sixth": "Inspire"
     },
     "partners": "Partners and Collaborations",
     "journey": "Your AI journey starts today!",
@@ -83,11 +89,9 @@
     "missionlong": "To democratize AI and coding education, ensuring it is accessible to everyone. We strive to empower the next generation with the essential skills needed to succeed in the digital age.",
     "long": {
       "name": "AI Academy",
-      "1": "is the next chapter of our successful was born from the success of the",
-      "girls": "Girls",
-      "code": "code",
-      "2": "program, which empowered young girls with essential coding skills. Recognizing the need for broader access, we expanded our mission to create a platform for all learners, regardless of age or background. AI Academy now offers inclusive, step-by-step courses in AI Foundations, AI Model Development, and a 3 level Coding Program.",
-      "3": "Our goal is to democratize tech education, making AI and coding skills accessible to everyone, everywhere, and preparing individuals for the future of work. Join us on this journey to unlock the potential of technology for all."
+      "1": "was born from the success of the",
+      "girls": "Girlscode program",
+      "2": "which empowered young girls with essential coding skills. Recognizing the need for broader access, we expanded our mission to create a platform for all learners, regardless of age or background. AI Academy now offers inclusive, step-by-step courses in AI Foundations, AI Model Development, and a 3 level Coding Program. Our goal is to democratize tech education, making AI and coding skills accessible to everyone, everywhere, and preparing individuals for the future of work. Join us on this journey to unlock the potential of technology for all."
     }
   },
   "footer": {
@@ -102,5 +106,9 @@
     "title": "Blog",
     "subheadline": "Our updates will be here",
     "read": "Read more"
+  },
+  "community": {
+    "welcome": "Welcome to our Community!",
+    "subheadline": "Join a dynamic network of passionate individuals dedicated to democratizing AI and coding education in Mongolia. Our Community Hub is designed for local leaders, innovators, and educators committed to building strong, inclusive learning opportunities and empowering others in their region."
   }
 }
