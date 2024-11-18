@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 import { FloatingNavDemo } from "../../../components/Nav";
 import CategoryCard from "../../../components/CategoryCard";
 import Image from "next/image";
-import purple from "../../../assets/soon/purplecircle.svg";
+import purple from "../../../assets/soon/purplecircle.png";
 // import {
 //   Brain02Icon,
 //   CodeCircleIcon,
