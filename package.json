@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
+    "build_prod": "cross-env NODE_OPTIONS=--max-old-space-size=8192 BUILD_DIR=distbuild NODE_ENV=production next build",
     "start": "next start",
     "lint": "next lint"
   },
