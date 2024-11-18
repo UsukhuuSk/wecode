@@ -21,7 +21,7 @@ import fancy4 from "../../assets/fancy4.svg";
 import line from "../../assets/line.svg";
 import purple from "../../assets/landing/purplePlanet.png";
 import { courses } from "../../data/dummy";
-import half from "../../assets/landing/half.png";
+import mobile from "../../assets/asadasd.png";
 import gif from "../../assets/5b7374bbd8f499bfd804b74baa6ebd7a.gif";
 import { FaAppleAlt } from "react-icons/fa";
 import {
@@ -432,7 +432,7 @@ export default function Home() {
           </div>
           <div className="mt-[68px] grid md:grid-cols-7 gap-5 mx-auto">
             <div
-              className={`rainbow text-start md:col-span-5 p-12 rounded-3xl relative overflow-hidden flex flex-col gap-4 justify-start items-start font-neue `}
+              className={`rainbow text-start md:col-span-5 p-12 rounded-3xl relative overflow-hidden flex gap-4 justify-start items-start font-neue `}
             >
               <div className="flex flex-col items-start gap-3 z-20 ">
                 <h1 className="">
@@ -453,6 +453,13 @@ export default function Home() {
                     <span>Google Play </span>
                   </div>
                 </div>
+              </div>
+              <div className="">
+                <Image
+                  src={mobile}
+                  alt="mobile"
+                  className="w-full h-full object-cover"
+                />
               </div>
             </div>
             <div
