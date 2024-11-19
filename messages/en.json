@@ -135,6 +135,90 @@
   },
   "community": {
     "welcome": "Welcome to our Community!",
-    "subheadline": "Join a dynamic network of passionate individuals dedicated to democratizing AI and coding education in Mongolia. Our Community Hub is designed for local leaders, innovators, and educators committed to building strong, inclusive learning opportunities and empowering others in their region."
+    "subheadline": "Join a dynamic network of passionate individuals dedicated to democratizing AI and coding education in Mongolia. Our Community Hub is designed for local leaders, innovators, and educators committed to building strong, inclusive learning opportunities and empowering others in their region.",
+    "content": {
+      "name": "Become a Community Ambassador",
+      "subTitle": "Lead, Organize, and Inspire in Mongolia",
+      "action": "Apply now",
+      "intro": "Are you ready to become a pioneer of AI education in your local community? As a Community Ambassador, you will play a critical role in establishing and growing the first AI Community Hub in Mongolia, organizing impactful events, and sharing your expertise to make a difference locally.",
+      "eligibilityTitle": "Your Eligibility",
+      "eligibility": {
+        "1": "You have a strong passion for AI, machine learning, and deep learning.",
+        "2": "You are currently employed in the AI industry or actively seeking to switch into an AI-related career.",
+        "3": "You have prior experience in organizing developer-focused events like hackathons, workshops, or tech meetups.",
+        "4": "You are fluent in both Mongolian and English."
+      },
+      "responsibilitiesTitle": "Your Responsibilities",
+      "responsibilities": {
+        "1": "Create the first AI community hub in Mongolia: Establish a local network to connect AI enthusiasts, provide learning opportunities, and promote knowledge-sharing in your region.",
+        "2": "Organize local events and meetups: Host engaging events, workshops, and meetups (virtually or in-person) to foster a learning community and connect like-minded individuals in Mongolia.",
+        "3": "Produce podcasts and blogs: Share valuable content, including podcasts and blog posts, to educate and inspire others in your local community.",
+        "4": "Self-financed initiative: As an Event Ambassador, you are a volunteer and responsible for covering your event costs. If sponsorship is needed, ensure that potential sponsors align with the mission and values of the community.",
+        "5": "Consistent local engagement: Host meetups for your community at least once every quarter, providing regular opportunities for connection and learning."
+      },
+      "whyBecomeTitle": "Why become an Ambassador?",
+      "whyBecomeIntro": "Becoming an Ambassador offers you a unique opportunity to make a meaningful impact in your local community while advancing your own skills and career in AI. Here’s why you should join:",
+      "whyBecomeReasons": {
+        "1": {
+          "title": "Lead the AI movement in Mongolia",
+          "description": "As an Ambassador, you will be at the forefront of establishing the first AI Community Hub in Mongolia, empowering others to learn about AI, machine learning, and deep learning. You’ll play a vital role in shaping the future of tech education locally."
+        },
+        "2": {
+          "title": "Expand your expertise and skill set",
+          "description": "Enhance your leadership, event organization, and public speaking skills by hosting workshops, meetups, and community events. You’ll gain practical experience in facilitating learning and community building, which will be a strong asset in your AI career path."
+        },
+        "3": {
+          "title": "Access to exclusive resources and support",
+          "description": "Ambassadors receive early access to our learning materials, training content, and special events. You’ll be equipped with everything you need to successfully lead AI initiatives in your region."
+        },
+        "4": {
+          "title": "Build a strong local network",
+          "description": "Connect with like-minded AI enthusiasts, developers, and industry experts within Mongolia. As an Ambassador, you’ll foster a community of learners and innovators, creating opportunities for collaboration and shared learning."
+        },
+        "5": {
+          "title": "Create lasting impact",
+          "description": "By organizing events and sharing your knowledge, you’ll inspire others and contribute to the growth of the Mongolian tech ecosystem. Your efforts will help bridge the digital skills gap and provide more people with access to cutting-edge AI education."
+        }
+      },
+      "contributeTitle": "Contribute to a meaningful cause",
+      "contributeDescription": "Join a mission-driven initiative aimed at making AI and coding education accessible to everyone in Mongolia. Your leadership will help democratize technology and bring transformative opportunities to diverse groups, including underserved communities."
+    },
+    "meetups": {
+      "name": "Local meetups and events",
+      "subTitle": "Connect, Collaborate and Grow Locally",
+      "action": "Join our Next Meetup",
+      "content": {
+        "communityHost": "Our community hosts regular meetups and events, bringing together learners, professionals, and AI enthusiasts from across Mongolia. Whether you’re a beginner or an expert, our events offer a platform to:",
+        "communityContent": {
+          "1": "Learn from local experts: Gain insights from experienced professionals in AI, coding, and digital skills through talks and workshops.",
+          "2": "Collaborate on local projects: Work with fellow participants on projects that solve real-world problems using AI and digital skills relevant to Mongolia.",
+          "3": "Build strong local connections: Meet and engage with  like-minded individuals who share your passion for technology and innovation in Mongolia."
+        }
+      }
+    },
+    "stories": {
+      "name": "Community stories: Celebrating local achievements",
+      "subTitle": "Inspiring the next generation of AI learners in Mongolia",
+      "action": "Share Your Story",
+      "content": {
+        "1": {
+          "title": "Our community is full of inspiring stories of individuals who have made a difference locally. From students learning to code for the first time to professionals advancing their careers members across Mongolia."
+        },
+        "2": {
+          "title": "We want to hear from you! Share your journey and the impact our platform has had on your learning experience. Your story could inspire others in Mongolia to embark on their own learning adventure."
+        }
+      }
+    },
+    "involved": {
+      "name": "Get involved in the community",
+      "subTitle": "Connect, Collaborate and Grow Locally",
+      "action": "Join Us Today",
+      "content": {
+        "title": "Our community offers many ways to contribute beyond becoming an Ambassador. If you are passionate about AI and digital skills, here’s how you can get involved and make a difference:",
+        "1": "Mentor local learners: Use your expertise to guide and support learners on their journey in AI and coding. Your mentorship can help others gain confidence, develop skills, and achieve their goals..",
+        "2": "Engage with the community: Join our discussions, attend events, and actively participate in promoting inclusive digital education across Mongolia. Your voice and involvement can help shape a supportive learning environment.",
+        "3": "Provide financial aid or sponsorship: Support our mission by offering financial assistance or sponsorship. Whether it’s funding scholarships, donating equipment, or sponsoring an event, your contribution can help make AI education accessible to underserved communities."
+      }
+    }
   }
 }

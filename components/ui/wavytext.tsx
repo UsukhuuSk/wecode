@@ -11,12 +11,12 @@ interface Props extends HTMLMotionProps<"div"> {
 const WavyText: FC<Props> = ({
   text,
   delay = 0,
-  duration = 0.05,
+  duration = 0.2,
   replay,
   ...props
 }: Props) => {
-  const letters = Array.from(text);
-
+  // const letters = Array.from(text);
+  const words = text.split(" ");
   const container: Variants = {
     hidden: {
       opacity: 0,
@@ -50,15 +50,33 @@ const WavyText: FC<Props> = ({
 
   return (
     <motion.h1
-      style={{ display: "flex", overflow: "hidden" }}
+      style={{
+        display: "flex",
+        flexWrap: "wrap", // This will allow text to wrap to the next line
+        overflow: "hidden",
+        textAlign: "center", // Center-aligns the text within the container
+        justifyContent: "center", // Keeps the text centered
+      }}
       variants={container}
       initial="hidden"
       animate={replay ? "visible" : "hidden"}
       {...props}
     >
-      {letters.map((letter, index) => (
+      {/* {letters.map((letter, index) => (
         <motion.span key={index} variants={child}>
           {letter === " " ? "\u00A0" : letter}
+        </motion.span>
+      ))} */}{" "}
+      {words.map((word, index) => (
+        <motion.span
+          key={index}
+          style={{ display: "inline-block" }}
+          variants={child}
+        >
+          {word.split("").map((letter, index) => (
+            <motion.span key={index}>{letter}</motion.span>
+          ))}
+          {"\u00A0"} {/* Adds space after each word */}
         </motion.span>
       ))}
     </motion.h1>

@@ -18,6 +18,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { cn } from "../lib/utils";
+import LocaleSwitcher from "./LocaleSwitcher";
 export function FloatingNavDemo() {
   const locale = useLocale();
   const pathname = usePathname();
@@ -55,6 +56,7 @@ export function FloatingNavDemo() {
             <SheetHeader>
               <SheetTitle>
                 <Image src={logo} alt="" />
+                <LocaleSwitcher />
               </SheetTitle>
               <SheetDescription>
                 <div className="flex flex-col items-start justify-center gap-4 mt-[60px]">
@@ -89,6 +91,7 @@ export function FloatingNavDemo() {
           </SheetContent>
         </Sheet>
       </div>
+
       <FloatingNav navItems={navItems} />
     </div>
   );

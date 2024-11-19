@@ -42,140 +42,77 @@ export default function page() {
                 </div>
                 <span>
                   <h1 className="font-bold font-adineue text-[24px]">
-                    Become a Community Ambassador
+                    {t("content.name")}
                   </h1>
                   <p className="font-bold text-[16px] font-adineue text-[rgba(255,255,255,0.5)]">
-                    Lead, Organize, and Inspire in Mongolia
+                    {t("content.subTitle")}
                   </p>
                 </span>
               </div>
               <div className=" text-black py-3 px-5 font-bold text-[14px] font-neue bg-[#78ff57] rounded-[48px]">
-                Apply now
+                {t("content.action")}
               </div>
             </AccordionTrigger>
             <AccordionContent>
               <div className="p-8  mx-auto text-white font-neue ">
-                <p className="mb-6">
-                  Are you ready to become a pioneer of AI education in your
-                  local community? As a Community Ambassador, you will play a
-                  critical role in establishing and growing the first AI
-                  Community Hub in Mongolia, organizing impactful events, and
-                  sharing your expertise to make a difference locally.
-                </p>
+                <p className="mb-6">{t("content.intro")}</p>
 
                 <h3 className="text-lg font-semibold mt-8 mb-4">
-                  Your Eligibility
+                  {t("content.eligibilityTitle")}
                 </h3>
                 <ul className="list-disc list-inside space-y-2 mb-6">
-                  <li>
-                    You have a strong passion for AI, machine learning, and deep
-                    learning.
-                  </li>
-                  <li>
-                    You are currently employed in the AI industry or actively
-                    seeking to switch into an AI-related career.
-                  </li>
-                  <li>
-                    You have prior experience in organizing developer-focused
-                    events like hackathons, workshops, or tech meetups.
-                  </li>
-                  <li>You are fluent in both Mongolian and English.</li>
+                  <li>{t("content.eligibility.1")}</li>
+                  <li>{t("content.eligibility.2")}</li>
+                  <li>{t("content.eligibility.3")}</li>
+                  <li>{t("content.eligibility.4")}</li>
                 </ul>
 
                 <h3 className="text-lg font-semibold mt-8 mb-4">
-                  Your Responsibilities
+                  {t("content.responsibilitiesTitle")}
                 </h3>
                 <ul className="list-disc list-inside space-y-2 mb-6">
-                  <li>
-                    Create the first AI community hub in Mongolia: Establish a
-                    local network to connect AI enthusiasts, provide learning
-                    opportunities, and promote knowledge-sharing in your region.
-                  </li>
-                  <li>
-                    Organize local events and meetups: Host engaging events,
-                    workshops, and meetups (virtually or in-person) to foster a
-                    learning community and connect like-minded individuals in
-                    Mongolia.
-                  </li>
-                  <li>
-                    Produce podcasts and blogs: Share valuable content,
-                    including podcasts and blog posts, to educate and inspire
-                    others in your local community.
-                  </li>
-                  <li>
-                    Self-financed initiative: As an Event Ambassador, you are a
-                    volunteer and responsible for covering your event costs. If
-                    sponsorship is needed, ensure that potential sponsors align
-                    with the mission and values of the community.
-                  </li>
-                  <li>
-                    Consistent local engagement: Host meetups for your community
-                    at least once every quarter, providing regular opportunities
-                    for connection and learning.
-                  </li>
+                  <li>{t("content.eligibility.1")}</li>
+                  <li>{t("content.eligibility.2")}</li>
+                  <li>{t("content.eligibility.3")}</li>
+                  <li>{t("content.eligibility.4")}</li>
+                  <li>{t("content.eligibility.5")}</li>
                 </ul>
 
                 <h3 className="text-lg font-semibold mt-8 mb-4">
-                  Why become an Ambassador?
+                  {t("content.whyBecomeTitle")}
                 </h3>
-                <p className="mb-4">
-                  Becoming an Ambassador offers you a unique opportunity to make
-                  a meaningful impact in your local community while advancing
-                  your own skills and career in AI. Here’s why you should join:
-                </p>
+                <p className="mb-4">{t("content.whyBecomeIntro")}</p>
                 <ol className="list-decimal list-inside space-y-2 mb-6 pl-4">
                   <li>
-                    <strong>Lead the AI movement in Mongolia</strong>
+                    <strong>{t("content.whyBecomeReasons.1.title")}</strong>
                     <br />
-                    As an Ambassador, you will be at the forefront of
-                    establishing the first AI Community Hub in Mongolia,
-                    empowering others to learn about AI, machine learning, and
-                    deep learning. You’ll play a vital role in shaping the
-                    future of tech education locally.
+                    {t("content.whyBecomeReasons.1.description")}
                   </li>
                   <li>
-                    <strong>Expand your expertise and skill set</strong>
+                    <strong>{t("content.whyBecomeReasons.2.title")}</strong>
                     <br />
-                    Enhance your leadership, event organization, and public
-                    speaking skills by hosting workshops, meetups, and community
-                    events. You’ll gain practical experience in facilitating
-                    learning and community building, which will be a strong
-                    asset in your AI career path.
+                    {t("content.whyBecomeReasons.2.description")}
                   </li>
                   <li>
-                    <strong>Access to exclusive resources and support</strong>
+                    <strong>{t("content.whyBecomeReasons.3.title")}</strong>
                     <br />
-                    Ambassadors receive early access to our learning materials,
-                    training content, and special events. You’ll be equipped
-                    with everything you need to successfully lead AI initiatives
-                    in your region.
+                    {t("content.whyBecomeReasons.3.description")}
                   </li>
                   <li>
-                    <strong>Build a strong local network</strong>
+                    <strong>{t("content.whyBecomeReasons.4.title")}</strong>
                     <br />
-                    Connect with like-minded AI enthusiasts, developers, and
-                    industry experts within Mongolia. As an Ambassador, you’ll
-                    foster a community of learners and innovators, creating
-                    opportunities for collaboration and shared learning.
+                    {t("content.whyBecomeReasons.4.description")}
                   </li>
                   <li>
-                    <strong>Create lasting impact</strong>
+                    <strong>{t("content.whyBecomeReasons.5.title")}</strong>
                     <br />
-                    By organizing events and sharing your knowledge, you’ll
-                    inspire others and contribute to the growth of the Mongolian
-                    tech ecosystem. Your efforts will help bridge the digital
-                    skills gap and provide more people with access to
-                    cutting-edge AI education.
+                    {t("content.whyBecomeReasons.5.description")}
                   </li>
                 </ol>
                 <p className="mb-4">
-                  Contribute to a meaningful cause
+                  {t("content.contributeTitle")}
                   <br />
-                  Join a mission-driven initiative aimed at making AI and coding
-                  education accessible to everyone in Mongolia. Your leadership
-                  will help democratize technology and bring transformative
-                  opportunities to diverse groups, including underserved
-                  communities.
+                  {t("content.contributeDescription")}
                 </p>
               </div>
             </AccordionContent>
@@ -188,41 +125,24 @@ export default function page() {
                 </div>
                 <span>
                   <h1 className="font-bold font-adineue text-[24px]">
-                    Local meetups and events
+                    {t("meetups.name")}
                   </h1>
                   <p className="font-bold text-[16px] font-adineue text-[rgba(255,255,255,0.5)]">
-                    Connect, Collaborate and Grow Locally
+                    {t("meetups.subTitle")}
                   </p>
                 </span>
               </div>{" "}
               <div className=" text-black font-bold text-[14px] font-neue py-3 px-5 bg-[#FF8500] rounded-[48px]">
-                Join our Next Meetup
+                {t("meetups.action")}
               </div>
             </AccordionTrigger>
             <AccordionContent>
               <div className="p-8 mx-auto text-white font-neue ">
-                <p className="mb-6">
-                  Our community hosts regular meetups and events, bringing
-                  together learners, professionals, and AI enthusiasts from
-                  across Mongolia. Whether you’re a beginner or an expert, our
-                  events offer a platform to:
-                </p>
+                <p className="mb-6">{t("meetups.content.communityHost")}</p>
                 <ul className="list-disc list-inside space-y-2 mb-6">
-                  <li>
-                    Learn from local experts: Gain insights from experienced
-                    professionals in AI, coding, and digital skills through
-                    talks and workshops.
-                  </li>
-                  <li>
-                    Collaborate on local projects: Work with fellow participants
-                    on projects that solve real-world problems using AI and
-                    digital skills relevant to Mongolia.
-                  </li>
-                  <li>
-                    Build strong local connections: Meet and engage with
-                    like-minded individuals who share your passion for
-                    technology and innovation in Mongolia.
-                  </li>
+                  <li>{t("meetups.content.communityContent.1")}</li>
+                  <li>{t("meetups.content.communityContent.2")}</li>
+                  <li>{t("meetups.content.communityContent.3")}</li>
                 </ul>
               </div>
             </AccordionContent>
@@ -235,32 +155,21 @@ export default function page() {
                 </div>
                 <span>
                   <h1 className="font-bold font-adineue text-[24px]">
-                    Community stories: Celebrating local achievements
+                    {t("stories.name")}
                   </h1>
                   <p className="font-bold text-[16px] font-adineue text-[rgba(255,255,255,0.5)]">
-                    Inspiring the next generation of AI learners in Mongolia
+                    {t("stories.subTitle")}
                   </p>
                 </span>
               </div>
               <div className=" text-black font-bold text-[14px] font-neue py-3 px-5 bg-[#785EFF] rounded-[48px]">
-                Share Your Story
+                {t("stories.action")}
               </div>
             </AccordionTrigger>
             <AccordionContent>
               <div className="p-8 mx-auto text-white font-neue ">
-                <p className="mb-6">
-                  Our community is full of inspiring stories of individuals who
-                  have made a difference locally. From students learning to code
-                  for the first time to professionals advancing their careers
-                  with new AI skills, we celebrate the achievements of our
-                  members across Mongolia.
-                </p>
-                <p className="mb-6">
-                  We want to hear from you! Share your journey and the impact
-                  our platform has had on your learning experience. Your story
-                  could inspire others in Mongolia to embark on their own
-                  learning adventure.
-                </p>
+                <p className="mb-6">{t("stories.content.1.title")}</p>
+                <p className="mb-6">{t("stories.content.2.title")}</p>
               </div>
             </AccordionContent>
           </AccordionItem>
@@ -273,51 +182,25 @@ export default function page() {
                 </div>
                 <span>
                   <h1 className="font-bold font-adineue text-[24px]">
-                    Get involved: Make a Local Impact
+                    {t("involved.name")}
                   </h1>
                   <p className="font-bold text-[16px] font-adineue text-[rgba(255,255,255,0.5)]">
-                    Connect, Collaborate and Grow Locally
+                    {t("involved.subTitle")}
                   </p>
                 </span>
               </div>
               <div className=" text-black font-bold text-[14px] font-neue py-3 px-5 bg-[#FF9FE4] rounded-[48px]">
-                Join Us Today
+                {t("involved.action")}
               </div>
             </AccordionTrigger>
             <AccordionContent>
               <div className="p-8 mx-auto text-white font-neue ">
-                <p className="mb-6">
-                  Our community offers many ways to contribute beyond becoming
-                  an Ambassador. If you are passionate about AI and digital
-                  skills, here’s how you can get involved and make a difference:
-                </p>
+                <p className="mb-6"></p>
                 <ul className="list-disc list-inside space-y-2 mb-6">
-                  <li>
-                    Mentor local learners: Use your expertise to guide and
-                    support learners on their journey in AI and coding. Your
-                    mentorship can help others gain confidence, develop skills,
-                    and achieve their goals..
-                  </li>
-                  <li>
-                    Contribute local content: Share your knowledge by creating
-                    valuable content. Write blog posts, develop tutorials, or
-                    provide insights on AI trends and challenges specific to
-                    Mongolia, helping to educate and inspire others.
-                  </li>
-                  <li>
-                    Engage with the community: Join our discussions, attend
-                    events, and actively participate in promoting inclusive
-                    digital education across Mongolia. Your voice and
-                    involvement can help shape a supportive learning
-                    environment.
-                  </li>
-                  <li>
-                    Provide financial aid or sponsorship: Support our mission by
-                    offering financial assistance or sponsorship. Whether it’s
-                    funding scholarships, donating equipment, or sponsoring an
-                    event, your contribution can help make AI education
-                    accessible to underserved communities.
-                  </li>
+                  <li>{t("involved.content.title")}</li>
+                  <li>{t("involved.content.1")}</li>
+                  <li>{t("involved.content.2")}</li>
+                  <li>{t("involved.content.3")}</li>
                 </ul>
               </div>
             </AccordionContent>
