@@ -235,6 +235,7 @@ export default function Home() {
                     className={category.className}
                     icon={category.icon}
                     // iconProps={category.iconProps}
+                    color={category.color}
                   />
                 ))}
               </div>
@@ -359,7 +360,9 @@ export default function Home() {
                       <div className="flex items-center gap-[10px] text-slate-400">
                         <span>{item.teacher}</span>
                         <span className="w-[3px] h-[3px] rounded-full bg-slate-400"></span>
-                        <span>{item.length} hours</span>
+                        <span>
+                          {item.length} {t("courses.hours")}
+                        </span>
                       </div>
                       <div
                         className={`font-neue text-[12px] font-semibold border py-1 px-5 rounded-[32px] ${
@@ -469,7 +472,7 @@ export default function Home() {
 
         <div className="2xl:px-[120px] 2xl:py-[210px] px-5 py-5 sm:py-20 ">
           <div className="relative text-center text-white ">
-            <h1 className=" text-4xl xl:text-[80px] font-bold font-adineue">
+            <h1 className=" text-4xl xl:text-[80px] font-bold font-adineue leading-none">
               {t("journey")}
             </h1>
             {/* <Image

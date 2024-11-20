@@ -19,7 +19,7 @@ import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { cn } from "../lib/utils";
 import LocaleSwitcher from "./LocaleSwitcher";
-export function FloatingNavDemo() {
+export function FloatingHeader() {
   const locale = useLocale();
   const pathname = usePathname();
   const t = useTranslations("footer");

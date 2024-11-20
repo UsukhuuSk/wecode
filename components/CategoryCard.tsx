@@ -9,16 +9,19 @@ type Category = {
   name: string;
   icon: React.ComponentType<any>;
   className: string;
-  iconProps?: IconProps;
+  // iconProps?: I`conProps;
+  color: string;
 };
 
 export default function CategoryCard({
   name,
   icon: Icon,
   className,
-  iconProps,
-}: Category) {
-  console.log(iconProps);
+  color,
+}: // iconProps,
+Category) {
+  // console.log(iconProps);
+
   return (
     <div
       className={cn(
@@ -27,7 +30,7 @@ export default function CategoryCard({
       )}
     >
       <div className=" flex-shrink-0 flex justify-start items-center">
-        <Icon {...iconProps} />
+        <Icon size={24} variant={"bulk"} color={color} />
       </div>
       <p className={` text-[14px] font-semibold`}>{name}</p>
     </div>

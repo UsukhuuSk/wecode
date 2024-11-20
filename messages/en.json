@@ -37,6 +37,7 @@
       "intro": "Introductory",
       "inter": "Intermediate",
       "advanced": "Advanced",
+      "hours": "hours",
       "course": {
         "1": {
           "name": "AI for All",
