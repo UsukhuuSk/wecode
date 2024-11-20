@@ -1,8 +1,6 @@
 "use client";
 import React from "react";
-import { AuroraBackground } from "../../../components/ui/Aurora-Background";
-import { motion } from "framer-motion";
-import { FloatingNavDemo } from "../../../components/Nav";
+
 import CategoryCard from "../../../components/CategoryCard";
 import Image from "next/image";
 import purple from "../../../assets/soon/purplecircle.png";
@@ -81,6 +79,7 @@ export default function page() {
                 className={category.className}
                 icon={category.icon}
                 // iconProps={category.iconProps}
+                color={category.color}
               />
             ))}
           </div>
@@ -91,6 +90,7 @@ export default function page() {
                 name={category.name}
                 className={category.className}
                 icon={category.icon}
+                color={category.color}
                 // iconProps={category.iconProps}
               />
             ))}

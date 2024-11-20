@@ -2,7 +2,7 @@
 import React from "react";
 import { AuroraBackground } from "../../../../components/ui/Aurora-Background";
 import { motion } from "framer-motion";
-import { FloatingNavDemo } from "../../../../components/Nav";
+import { FloatingHeader } from "../../../../components/Nav";
 export default function Dashboard() {
   return (
     <div className="">

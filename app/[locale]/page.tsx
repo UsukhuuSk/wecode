@@ -223,6 +223,7 @@ export default function Home() {
                     name={category.name}
                     className={category.className}
                     icon={category.icon}
+                    color={category.color}
                     // iconProps={category.iconProps}
                   />
                 ))}
