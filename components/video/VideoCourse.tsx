@@ -26,6 +26,7 @@ export default function VideoCourse({ id, locale }: any) {
     id="iframevideo"
     style={{ width: `${width}px`, height: `${width/16*9}px`}}
     className="overflow-hidden h-full w-full"
+    allowFullScreen
     src={ `${BASEURL}/?id=${id}&lang=${locale}` }
   />
 }
