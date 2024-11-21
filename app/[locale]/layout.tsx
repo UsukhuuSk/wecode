@@ -127,7 +127,9 @@ export default async function RootLayout({
           className={`${montserratAlt.variable} ${manrope.variable} ${ovSoge.variable} ${golosText.variable} ${adineue.variable} ${neue.variable} antialiased`}
         >
           <NextIntlClientProvider messages={messages}>
-            <FloatingHeader />
+            <div className="">
+              <FloatingHeader />
+            </div>
             {children}
           </NextIntlClientProvider>
         </body>

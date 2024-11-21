@@ -27,6 +27,11 @@ h1 {
     text-wrap: balance;
   }
 
+  .search::placeholder {
+    font-weight: 700;
+    color: white;
+  }
+
   .herotext {
     background: linear-gradient(
       100deg,
@@ -181,7 +186,17 @@ h1 {
     );
     filter: blur(160px);
   }
-
+  .customborder {
+    border: 1px solid rgba(64, 64, 71, 0.53);
+    /* border: 1px solid transparent; */
+    /* background: linear-gradient(180deg, #13032b 0%, #13032b 100%) padding-box,
+      linear-gradient(
+        348.27deg,
+        rgba(64, 64, 71, 0.53) 8.6%,
+        rgba(255, 255, 255, 0.21) 41.73%
+      ),
+      border-box; */
+  }
   select:focus {
     outline: none;
     border: none;

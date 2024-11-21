@@ -71,11 +71,11 @@ export default function page() {
                   {t("content.responsibilitiesTitle")}
                 </h3>
                 <ul className="list-disc list-inside space-y-2 mb-6">
-                  <li>{t("content.eligibility.1")}</li>
-                  <li>{t("content.eligibility.2")}</li>
-                  <li>{t("content.eligibility.3")}</li>
-                  <li>{t("content.eligibility.4")}</li>
-                  <li>{t("content.eligibility.5")}</li>
+                  <li>{t("content.responsibilities.1")}</li>
+                  <li>{t("content.responsibilities.2")}</li>
+                  <li>{t("content.responsibilities.3")}</li>
+                  <li>{t("content.responsibilities.4")}</li>
+                  <li>{t("content.responsibilities.5")}</li>
                 </ul>
 
                 <h3 className="text-lg font-semibold mt-8 mb-4">

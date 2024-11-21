@@ -290,3 +290,384 @@ export const user = {
   ],
   graphStats: "",
 };
+
+export const maincourses = [
+  {
+    _id: "0",
+    image: {
+      _id: "1604",
+      link: "https://images.unsplash.com/photo-1515879218367-8466d910aaa4?q=80&w=2069&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      originalname: "loginbg3.jpg",
+      mimetype: "image/jpeg",
+      size: 116592,
+    },
+    name: "AI for All",
+    duration_seconds: 2,
+    about:
+      "AI Python for Beginners is designed to help you leverage the power of Python programming, even if your goal isn’t to become a software developer or AI engineer. This four-part course teaches you to code practical AI applications from day one, whether you’re an experienced programmer, or writing “Hello, World!” for the first time. ",
+    created_at: "2024-11-20 09:36:24",
+    level_id: {
+      name: "Introductory",
+      color: "#22C55E",
+      _id: "4",
+    },
+    is_exam: false,
+    is_certificate: false,
+    intro_video_id: {
+      name: "test",
+      _id: "8",
+    },
+    locale_uuid: "8e73dc8b-4718-43af-b3ff-d9d003940b34",
+    locale_id: "4",
+    learns: [
+      "Learn Python programming fundamentals and how to integrate AI tools for data manipulation, analysis, and visualization.",
+    ],
+    tags: [
+      {
+        _id: "8",
+        name: "Data Science",
+        color: "#CC48F4",
+      },
+    ],
+    teachers: [
+      {
+        _id: "5",
+        full_name: "T.Bataa",
+        image: "1601",
+        surname: "Tsetsgee",
+        given_name: "Bataa",
+      },
+      {
+        _id: "6",
+        full_name: "T.Usukhbayar",
+        image: "1602",
+        surname: "T",
+        given_name: "Usukhbayar",
+      },
+    ],
+  },
+  {
+    _id: "1",
+    image: {
+      _id: "1604",
+      link: "https://images.unsplash.com/photo-1515879218367-8466d910aaa4?q=80&w=2069&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      originalname: "loginbg3.jpg",
+      mimetype: "image/jpeg",
+      size: 116592,
+    },
+    name: "AI for All",
+    duration_seconds: 2,
+    about:
+      "AI Python for Beginners is designed to help you leverage the power of Python programming, even if your goal isn’t to become a software developer or AI engineer. This four-part course teaches you to code practical AI applications from day one, whether you’re an experienced programmer, or writing “Hello, World!” for the first time. ",
+    created_at: "2024-11-20 09:36:24",
+    level_id: {
+      name: "Introductory",
+      color: "#22C55E",
+      _id: "4",
+    },
+    is_exam: false,
+    is_certificate: false,
+    intro_video_id: {
+      name: "test",
+      _id: "8",
+    },
+    locale_uuid: "8e73dc8b-4718-43af-b3ff-d9d003940b34",
+    locale_id: "4",
+    learns: [
+      "Learn Python programming fundamentals and how to integrate AI tools for data manipulation, analysis, and visualization.",
+    ],
+    tags: [
+      {
+        _id: "8",
+        name: "Data Science",
+        color: "#CC48F4",
+      },
+    ],
+    teachers: [
+      {
+        _id: "5",
+        full_name: "T.Bataa",
+        image: "1601",
+        surname: "Tsetsgee",
+        given_name: "Bataa",
+      },
+      {
+        _id: "6",
+        full_name: "T.Usukhbayar",
+        image: "1602",
+        surname: "T",
+        given_name: "Usukhbayar",
+      },
+    ],
+  },
+  {
+    _id: "2",
+    image: {
+      _id: "1604",
+      link: "https://images.unsplash.com/photo-1515879218367-8466d910aaa4?q=80&w=2069&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      originalname: "loginbg3.jpg",
+      mimetype: "image/jpeg",
+      size: 116592,
+    },
+    name: "AI for All",
+    duration_seconds: 2,
+    about:
+      "AI Python for Beginners is designed to help you leverage the power of Python programming, even if your goal isn’t to become a software developer or AI engineer. This four-part course teaches you to code practical AI applications from day one, whether you’re an experienced programmer, or writing “Hello, World!” for the first time. ",
+    created_at: "2024-11-20 09:36:24",
+    level_id: {
+      name: "Introductory",
+      color: "#22C55E",
+      _id: "4",
+    },
+    is_exam: false,
+    is_certificate: false,
+    intro_video_id: {
+      name: "test",
+      _id: "8",
+    },
+    locale_uuid: "8e73dc8b-4718-43af-b3ff-d9d003940b34",
+    locale_id: "4",
+    learns: [
+      "Learn Python programming fundamentals and how to integrate AI tools for data manipulation, analysis, and visualization.",
+    ],
+    tags: [
+      {
+        _id: "8",
+        name: "Data Science",
+        color: "#CC48F4",
+      },
+    ],
+    teachers: [
+      {
+        _id: "5",
+        full_name: "T.Bataa",
+        image: "1601",
+        surname: "Tsetsgee",
+        given_name: "Bataa",
+      },
+      {
+        _id: "6",
+        full_name: "T.Usukhbayar",
+        image: "1602",
+        surname: "T",
+        given_name: "Usukhbayar",
+      },
+    ],
+  },
+  {
+    _id: "3",
+    image: {
+      _id: "1604",
+      link: "https://images.unsplash.com/photo-1515879218367-8466d910aaa4?q=80&w=2069&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      originalname: "loginbg3.jpg",
+      mimetype: "image/jpeg",
+      size: 116592,
+    },
+    name: "AI for All",
+    duration_seconds: 2,
+    about:
+      "AI Python for Beginners is designed to help you leverage the power of Python programming, even if your goal isn’t to become a software developer or AI engineer. This four-part course teaches you to code practical AI applications from day one, whether you’re an experienced programmer, or writing “Hello, World!” for the first time. ",
+    created_at: "2024-11-20 09:36:24",
+    level_id: {
+      name: "Introductory",
+      color: "#22C55E",
+      _id: "4",
+    },
+    is_exam: false,
+    is_certificate: false,
+    intro_video_id: {
+      name: "test",
+      _id: "8",
+    },
+    locale_uuid: "8e73dc8b-4718-43af-b3ff-d9d003940b34",
+    locale_id: "4",
+    learns: [
+      "Learn Python programming fundamentals and how to integrate AI tools for data manipulation, analysis, and visualization.",
+    ],
+    tags: [
+      {
+        _id: "8",
+        name: "Data Science",
+        color: "#CC48F4",
+      },
+    ],
+    teachers: [
+      {
+        _id: "5",
+        full_name: "T.Bataa",
+        image: "1601",
+        surname: "Tsetsgee",
+        given_name: "Bataa",
+      },
+      {
+        _id: "6",
+        full_name: "T.Usukhbayar",
+        image: "1602",
+        surname: "T",
+        given_name: "Usukhbayar",
+      },
+    ],
+  },
+  {
+    _id: "4",
+    image: {
+      _id: "1604",
+      link: "https://images.unsplash.com/photo-1515879218367-8466d910aaa4?q=80&w=2069&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      originalname: "loginbg3.jpg",
+      mimetype: "image/jpeg",
+      size: 116592,
+    },
+    name: "AI for All",
+    duration_seconds: 2,
+    about:
+      "AI Python for Beginners is designed to help you leverage the power of Python programming, even if your goal isn’t to become a software developer or AI engineer. This four-part course teaches you to code practical AI applications from day one, whether you’re an experienced programmer, or writing “Hello, World!” for the first time. ",
+    created_at: "2024-11-20 09:36:24",
+    level_id: {
+      name: "Introductory",
+      color: "#22C55E",
+      _id: "4",
+    },
+    is_exam: false,
+    is_certificate: false,
+    intro_video_id: {
+      name: "test",
+      _id: "8",
+    },
+    locale_uuid: "8e73dc8b-4718-43af-b3ff-d9d003940b34",
+    locale_id: "4",
+    learns: [
+      "Learn Python programming fundamentals and how to integrate AI tools for data manipulation, analysis, and visualization.",
+    ],
+    tags: [
+      {
+        _id: "8",
+        name: "Data Science",
+        color: "#CC48F4",
+      },
+    ],
+    teachers: [
+      {
+        _id: "5",
+        full_name: "T.Bataa",
+        image: "1601",
+        surname: "Tsetsgee",
+        given_name: "Bataa",
+      },
+      {
+        _id: "6",
+        full_name: "T.Usukhbayar",
+        image: "1602",
+        surname: "T",
+        given_name: "Usukhbayar",
+      },
+    ],
+  },
+  {
+    _id: "5",
+    image: {
+      _id: "1604",
+      link: "https://images.unsplash.com/photo-1515879218367-8466d910aaa4?q=80&w=2069&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      originalname: "loginbg3.jpg",
+      mimetype: "image/jpeg",
+      size: 116592,
+    },
+    name: "AI for All",
+    duration_seconds: 2,
+    about:
+      "AI Python for Beginners is designed to help you leverage the power of Python programming, even if your goal isn’t to become a software developer or AI engineer. This four-part course teaches you to code practical AI applications from day one, whether you’re an experienced programmer, or writing “Hello, World!” for the first time. ",
+    created_at: "2024-11-20 09:36:24",
+    level_id: {
+      name: "Introductory",
+      color: "#22C55E",
+      _id: "4",
+    },
+    is_exam: false,
+    is_certificate: false,
+    intro_video_id: {
+      name: "test",
+      _id: "8",
+    },
+    locale_uuid: "8e73dc8b-4718-43af-b3ff-d9d003940b34",
+    locale_id: "4",
+    learns: [
+      "Learn Python programming fundamentals and how to integrate AI tools for data manipulation, analysis, and visualization.",
+    ],
+    tags: [
+      {
+        _id: "8",
+        name: "Data Science",
+        color: "#CC48F4",
+      },
+    ],
+    teachers: [
+      {
+        _id: "5",
+        full_name: "T.Bataa",
+        image: "1601",
+        surname: "Tsetsgee",
+        given_name: "Bataa",
+      },
+      {
+        _id: "6",
+        full_name: "T.Usukhbayar",
+        image: "1602",
+        surname: "T",
+        given_name: "Usukhbayar",
+      },
+    ],
+  },
+  {
+    _id: "6",
+    image: {
+      _id: "1604",
+      link: "https://images.unsplash.com/photo-1515879218367-8466d910aaa4?q=80&w=2069&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      originalname: "loginbg3.jpg",
+      mimetype: "image/jpeg",
+      size: 116592,
+    },
+    name: "AI for All",
+    duration_seconds: 2,
+    about:
+      "AI Python for Beginners is designed to help you leverage the power of Python programming, even if your goal isn’t to become a software developer or AI engineer. This four-part course teaches you to code practical AI applications from day one, whether you’re an experienced programmer, or writing “Hello, World!” for the first time. ",
+    created_at: "2024-11-20 09:36:24",
+    level_id: {
+      name: "Introductory",
+      color: "#22C55E",
+      _id: "4",
+    },
+    is_exam: false,
+    is_certificate: false,
+    intro_video_id: {
+      name: "test",
+      _id: "8",
+    },
+    locale_uuid: "8e73dc8b-4718-43af-b3ff-d9d003940b34",
+    locale_id: "4",
+    learns: [
+      "Learn Python programming fundamentals and how to integrate AI tools for data manipulation, analysis, and visualization.",
+    ],
+    tags: [
+      {
+        _id: "8",
+        name: "Data Science",
+        color: "#CC48F4",
+      },
+    ],
+    teachers: [
+      {
+        _id: "5",
+        full_name: "T.Bataa",
+        image: "1601",
+        surname: "Tsetsgee",
+        given_name: "Bataa",
+      },
+      {
+        _id: "6",
+        full_name: "T.Usukhbayar",
+        image: "1602",
+        surname: "T",
+        given_name: "Usukhbayar",
+      },
+    ],
+  },
+];
