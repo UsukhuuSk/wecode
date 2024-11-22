@@ -3,7 +3,7 @@ import React, { useEffect } from "react";
 import { AuroraBackground } from "../../../components/ui/Aurora-Background";
 import { motion } from "framer-motion";
 import { jsonRequest } from "../../../api/utils";
-export default function page() {
+export default function page({ params }: any) {
   const generateUUID = () => {
     return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
       const r = Math.random() * 16 | 0;
@@ -53,13 +53,13 @@ export default function page() {
         className="relative flex flex-col gap-4 items-center justify-center px-4 h-[140vh]"
       >
         <div className="font-montserratAlt gradtext text-3xl md:text-7xl font-bold text-white text-center">
-          <div className="w-[380px] bg-white py-10 rounded-3xl">
+          <div className="w-[380px] bg-white py-4 rounded-3xl">
             {/* <div className="!text-gray-500 text-2xl text-center">Нэвтрэх</div> */}
             <iframe
               id="iframeLogin"
               style={{ height: `0px` }}
               className="overflow-hidden h-full w-full"
-              src={ `${BASEURL}/login?p=9&type=students&requestId=${requestId}&props=google,linkedin` }
+              src={ `${BASEURL}/login?p=9&type=students&requestId=${requestId}&props=google,linkedin&lang=${params?.locale || 'mn'}` }
             />
           </div>
         </div>
