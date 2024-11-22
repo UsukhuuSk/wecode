@@ -16,8 +16,8 @@ export default function page({ params }: any) {
   useEffect(() => {
     const handleLogin = (token: string) => {
       console.log('logged token', token)
-      jsonRequest({ endpoint: `/auth/user`, headers: { 'Authorization': `Bearer ${token}` } }).then((result) => {
-        console.log('logged user', result)
+      jsonRequest({ endpoint: `/auth/user`, headers: { 'Authorization': `Bearer ${token}` } }).then((result: any) => {
+        console.log('logged user', result?.is_agreement)
       }).catch(err => {
         console.log('logged err', err)
       })

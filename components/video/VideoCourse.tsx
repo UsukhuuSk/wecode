@@ -3,8 +3,8 @@
 import { useEffect } from "react";
 
 const BASEURL = process.env.NEXT_PUBLIC_VIDEO_URL
-export default function VideoCourse({ id, locale }: any) {
-  const width = 700
+export default function VideoCourse({ id, locale, width }: any) {
+  const iframeWidth = width || 700
   useEffect(() => {
     const handlePostMessage = (event: any) => {
       try {
@@ -24,7 +24,7 @@ export default function VideoCourse({ id, locale }: any) {
   }, []);
   return <iframe
     id="iframevideo"
-    style={{ width: `${width}px`, height: `${width/16*9}px`}}
+    style={{ width: `${iframeWidth}px`, height: `${iframeWidth/16*9}px`}}
     className="overflow-hidden h-full w-full"
     allowFullScreen
     src={ `${BASEURL}/?id=${id}&lang=${locale}` }
