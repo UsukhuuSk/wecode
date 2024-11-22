@@ -53,7 +53,7 @@ export default function page({ params }: any) {
         className="relative flex flex-col gap-4 items-center justify-center px-4 h-[140vh]"
       >
         <div className="font-montserratAlt gradtext text-3xl md:text-7xl font-bold text-white text-center">
-          <div className="w-[380px] bg-white py-4 rounded-3xl">
+          <div className="w-[380px] bg-white pt-4 pb-6 px-6 rounded-3xl">
             {/* <div className="!text-gray-500 text-2xl text-center">Нэвтрэх</div> */}
             <iframe
               id="iframeLogin"
