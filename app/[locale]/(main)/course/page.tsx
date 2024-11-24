@@ -1,21 +1,35 @@
 import React from "react";
 import Image from "next/image";
-import Link from "next/link";
-import { useLocale } from "next-intl";
 import laptop from "../../../../assets/laptop.svg";
 import { Input } from "../../../../components/ui/input";
 import { Search01Icon } from "hugeicons-react";
 import { Checkbox } from "../../../../components/ui/checkbox";
+import { getLocale } from "next-intl/server";
 import {
   Tabs,
   TabsContent,
   TabsList,
   TabsTrigger,
 } from "../../../../components/ui/tabs";
-import { maincourses } from "../../../../data/dummy";
 
-export default function Course() {
-  const locale = useLocale();
+async function fetchCourses(lang: string) {
+  const baseUrl = process.env.NEXT_PUBLIC_API_URL;
+  const params = new URLSearchParams({
+    lang: String(lang),
+  });
+  const url = `${baseUrl}/list/9/service_courses?${params.toString()}`;
+  const res = await fetch(url, {
+    cache: "no-store",
+  });
+  if (!res.ok) {
+    throw new Error("Failed to fetch posts");
+  }
+  return res.json();
+}
+
+export default async function Course() {
+  const locale = await getLocale();
+  const posts = await fetchCourses(locale);
   const topics = [
     {
       id: 0,
@@ -91,7 +105,10 @@ export default function Course() {
                   Topics
                 </h2>
                 {topics.map((item, index) => (
-                  <div key={index}>
+                  <div
+                    key={index}
+                    className="flex justify-start items-center gap-[10px]"
+                  >
                     <Checkbox key={item.id} />
                     <label>{item.name}</label>
                   </div>
@@ -122,7 +139,7 @@ export default function Course() {
                 </TabsList>
                 <TabsContent value="most-popular">
                   <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
-                    {maincourses.map((item, index) => (
+                    {posts.map((item: any, index: number) => (
                       <div
                         key={index}
                         className="bg-transparent rounded-[32px] overflow-hidden customborder"
@@ -138,11 +155,20 @@ export default function Course() {
                         </div>
                         <div className="p-4">
                           <div className="flex justify-between items-center mb-2">
-                            <span className="text-white space-x-1">
-                              {item.teachers.map((item, index) => (
+                            <span className="text-white flex items-center gap-[10px]">
+                              {/* {item.teachers.map((item: any, index: number) => (
                                 <span key={index}>{item.given_name}</span>
-                              ))}{" "}
-                              • {item.duration_seconds} hours
+                              ))}{" "} */}
+                              <span key={index}>
+                                {" "}
+                                {item.teachers[0].given_name}
+                              </span>
+                              <span>•</span>
+                              {(
+                                Math.round((item.duration_seconds / 3600) * 2) /
+                                2
+                              ).toFixed(1)}{" "}
+                              hours
                             </span>
                             {/* <Badge className="bg-green-600 text-white">
                               Introductory
@@ -163,13 +189,13 @@ export default function Course() {
                   </div>
                 </TabsContent>
                 <TabsContent value="top-rated">
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    {maincourses.slice(0, 1).map((item, index) => (
+                  <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
+                    {posts.map((item: any, index: number) => (
                       <div
                         key={index}
-                        className="bg-transparent rounded-[32px] overflow-hidden max-w-[470px] customborder"
+                        className="bg-transparent rounded-[32px] overflow-hidden customborder"
                       >
-                        <div className="overflow-hidden object-cover max-w-[475px] max-h-[190px] rounded-t-[24px]">
+                        <div className="overflow-hidden object-cover max-w-[470px] max-h-[190px] rounded-t-[24px]">
                           <Image
                             src={item.image.link}
                             alt="AI for All"
@@ -180,15 +206,22 @@ export default function Course() {
                         </div>
                         <div className="p-4">
                           <div className="flex justify-between items-center mb-2">
-                            <span className="text-white space-x-1">
-                              {item.teachers.map((item, index) => (
-                                <span className="" key={index}>
-                                  {item.given_name}
-                                </span>
-                              ))}
-                              • {item.duration_seconds} hours
+                            <span className="text-white flex items-center gap-[10px]">
+                              {/* {item.teachers.map((item: any, index: number) => (
+                                <span key={index}>{item.given_name}</span>
+                              ))}{" "} */}
+                              <span key={index}>
+                                {" "}
+                                {item.teachers[0].given_name}
+                              </span>
+                              <span>•</span>
+                              {(
+                                Math.round((item.duration_seconds / 3600) * 2) /
+                                2
+                              ).toFixed(1)}{" "}
+                              hours
                             </span>
-                            {/* <Badge className="">
+                            {/* <Badge className="bg-green-600 text-white">
                               Introductory
                             </Badge> */}
                             <div

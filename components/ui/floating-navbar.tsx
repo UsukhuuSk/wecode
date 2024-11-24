@@ -14,6 +14,7 @@ import logo from "../../assets/newLogo.svg";
 import LocaleSwitcher from "../LocaleSwitcher";
 import { usePathname } from "next/navigation";
 import { useTranslations } from "next-intl";
+import { useLocale } from "next-intl";
 
 export const FloatingNav = ({
   navItems,
@@ -26,6 +27,7 @@ export const FloatingNav = ({
   }[];
   className?: string;
 }) => {
+  const locale = useLocale();
   const pathname = usePathname();
   const { scrollYProgress } = useScroll();
 
@@ -96,10 +98,13 @@ export const FloatingNav = ({
         </div>
         <div className="flex items-center gap-2">
           <LocaleSwitcher />
-          <button className="border bg-[#4317FF] text-sm font-medium relative border-neutral-200 dark:border-white/[0.2] text-white px-5 py-2 rounded-[32px]">
+          <Link
+            href={`${locale}/login`}
+            className="border bg-[#4317FF] text-sm font-medium relative border-neutral-200 dark:border-white/[0.2] text-white px-5 py-2 rounded-[32px]"
+          >
             <span>{t("login")}</span>
             {/* <span className="absolute inset-x-0 w-1/2 mx-auto -bottom-px bg-gradient-to-r from-transparent via-blue-500 to-transparent  h-px" /> */}
-          </button>
+          </Link>
         </div>
       </motion.div>
     </AnimatePresence>

@@ -1,11 +1,13 @@
 "use client";
-import React from "react";
+import React, { useEffect } from "react";
 import { courses, user } from "../../../../data/dummy";
 import Image from "next/image";
 import { PiSealCheckFill } from "react-icons/pi";
 import { Radar } from "react-chartjs-2";
 import Link from "next/link";
 import { useLocale } from "next-intl";
+import { jsonRequestWithToken } from "../../../../api/utils";
+import Cookies from "js-cookie";
 
 export default function Profile() {
   const locale = useLocale();
@@ -20,10 +22,44 @@ export default function Profile() {
       },
     ],
   };
+  const BASEURL = process.env.NEXT_PUBLIC_API_URL;
+  const token = Cookies.get("authToken");
+  useEffect(() => {
+    jsonRequestWithToken({
+      endpoint: `/one/9/service_user_profile`,
+      headers: { Authorization: `Bearer ${token}` },
+    })
+      .then((result: any) => {
+        console.log(result);
+      })
+      .catch((err) => {
+        console.log("logged err", err);
+      });
+  }, []);
+
+  const handleLogout = async () => {
+    try {
+      const response = await fetch(`${BASEURL}/auth/logout`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+      });
+
+      if (!response.ok) {
+        throw new Error("Failed to log out");
+      }
+      console.log("Logout request successful");
+      Cookies.remove("authToken");
+      window.location.href = "/login";
+    } catch (error) {
+      console.error("Error during logout:", error);
+    }
+  };
+
   return (
     <div className="px-12 py-14">
+      <button onClick={handleLogout}>logout</button>
       {/* <div className="px-6 pb-6"></div> */}
-      <div className="flex flex-col gap-4">
+      {/* <div className="flex flex-col gap-4">
         <div className="relative">
           <div className="w-full h-[173px]">
             <Image
@@ -63,7 +99,7 @@ export default function Profile() {
           Миний үзүүлэлтүүд
         </h3>
         <div className="flex justify-between">
-          <div className="">{/* <Radar data={data} /> */}</div>
+        
           <div className="grid grid-cols-2 gap-4">
             {user.stats.map((item, index) => (
               <div
@@ -117,7 +153,7 @@ export default function Profile() {
                     {item.length} цагийн хичээл
                   </p>
                 </div>
-                {/* <p className="text-gray-600">{item.level}</p> */}
+               
                 <p className="text-[#191919] text-[16px] font-bold px-3">
                   {item.name}
                 </p>
@@ -125,7 +161,7 @@ export default function Profile() {
             </Link>
           ))}
         </div>
-      </div>
+      </div> */}
     </div>
   );
 }

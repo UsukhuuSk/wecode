@@ -1,43 +1,64 @@
 "use client";
 import React, { useEffect } from "react";
 import { AuroraBackground } from "../../../components/ui/Aurora-Background";
+import Cookies from "js-cookie";
 import { motion } from "framer-motion";
 import { jsonRequest } from "../../../api/utils";
+import { useRouter } from "next/navigation";
 export default function page({ params }: any) {
   const generateUUID = () => {
-    return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
-      const r = Math.random() * 16 | 0;
-      const v = c === 'x' ? r : (r & 0x3 | 0x8)
-      return v.toString(16)
-    })
-  }
-  const BASEURL = process.env.NEXT_PUBLIC_AUTH_URL
-  const requestId = generateUUID()
+    return "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(
+      /[xy]/g,
+      function (c) {
+        const r = (Math.random() * 16) | 0;
+        const v = c === "x" ? r : (r & 0x3) | 0x8;
+        return v.toString(16);
+      }
+    );
+  };
+  const router = useRouter();
+  const BASEURL = process.env.NEXT_PUBLIC_AUTH_URL;
+  const requestId = generateUUID();
   useEffect(() => {
     const handleLogin = (token: string) => {
-      console.log('logged token', token)
-      jsonRequest({ endpoint: `/auth/user`, headers: { 'Authorization': `Bearer ${token}` } }).then((result: any) => {
-        console.log('logged user', result?.is_agreement)
-      }).catch(err => {
-        console.log('logged err', err)
-      })
-    }
+      try {
+        Cookies.set("authToken", token, { expires: 7, secure: true });
+        console.log("logged token", token);
+        jsonRequest({
+          endpoint: `/auth/user`,
+          headers: { Authorization: `Bearer ${token}` },
+        })
+          .then((result: any) => {
+            if (!result?.is_agreement) {
+              router.push(`/${params?.locale}/quiz`);
+            } else {
+              console.log("logged user", result?.is_agreement);
+              router.push(`/${params?.locale}/courses`);
+            }
+          })
+          .catch((err) => {
+            console.log("logged err", err);
+          });
+      } catch (err) {
+        console.error("Error setting token:", err);
+      }
+    };
     const handlePostMessage = (event: any) => {
       try {
-        const eventData = JSON.parse(event.data)
-        if (eventData?.type === 'setHeight') {
-          const iframeLogin = window.document.getElementById('iframeLogin')
+        const eventData = JSON.parse(event.data);
+        if (eventData?.type === "setHeight") {
+          const iframeLogin = window.document.getElementById("iframeLogin");
           if (iframeLogin && eventData?.data?.height) {
             iframeLogin.style.height = `${eventData?.data.height}px`;
           }
-        } else if (eventData?.type === 'login') {
-          handleLogin(eventData?.data?.token)
+        } else if (eventData?.type === "login") {
+          handleLogin(eventData?.data?.token);
         }
       } catch (e) {}
     };
-    window.addEventListener('message', handlePostMessage, false);
+    window.addEventListener("message", handlePostMessage, false);
     return () => {
-      window.removeEventListener('message', handlePostMessage, false);
+      window.removeEventListener("message", handlePostMessage, false);
     };
   }, []);
   return (
@@ -59,7 +80,9 @@ export default function page({ params }: any) {
               id="iframeLogin"
               style={{ height: `0px` }}
               className="overflow-hidden h-full w-full"
-              src={ `${BASEURL}/login?p=9&type=students&requestId=${requestId}&props=google,linkedin&lang=${params?.locale || 'mn'}` }
+              src={`${BASEURL}/login?p=9&type=students&requestId=${requestId}&props=google,linkedin&lang=${
+                params?.locale || "mn"
+              }`}
             />
           </div>
         </div>
