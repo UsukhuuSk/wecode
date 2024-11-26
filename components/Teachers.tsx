@@ -3,12 +3,6 @@ import React, { useEffect, useState } from "react";
 import TeacherCard from "./TeacherCard";
 import { useLocale, useTranslations } from "next-intl";
 import { getFile, usersList } from "../api/serviceuser";
-import seventh from "../assets/LandingPage/7.svg";
-import eight from "../assets/LandingPage/8.svg";
-import nine from "../assets/LandingPage/9.svg";
-import ten from "../assets/LandingPage/10.svg";
-import eleven from "../assets/LandingPage/11.svg";
-import twelve from "../assets/LandingPage/12.svg";
 
 export default function Teachers() {
   const [users, setUsers] = useState<any>([]);
@@ -47,7 +41,6 @@ export default function Teachers() {
           return user;
         })
       );
-
       setUsers(usersWithImages);
     };
 

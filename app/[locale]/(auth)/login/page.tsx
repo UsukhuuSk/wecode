@@ -1,10 +1,12 @@
 "use client";
 import React, { useEffect } from "react";
-import { AuroraBackground } from "../../../components/ui/Aurora-Background";
+
 import Cookies from "js-cookie";
 import { motion } from "framer-motion";
-import { jsonRequest } from "../../../api/utils";
+
 import { useRouter } from "next/navigation";
+import { jsonRequest } from "../../../../api/utils";
+import { AuroraBackground } from "../../../../components/ui/Aurora-Background";
 export default function page({ params }: any) {
   const generateUUID = () => {
     return "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(
@@ -22,7 +24,7 @@ export default function page({ params }: any) {
   useEffect(() => {
     const handleLogin = (token: string) => {
       try {
-        Cookies.set("authToken", token, { expires: 7, secure: true });
+        Cookies.set("authToken", token, { expires: 1, secure: true });
         console.log("logged token", token);
         jsonRequest({
           endpoint: `/auth/user`,

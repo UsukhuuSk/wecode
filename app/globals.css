@@ -11,7 +11,10 @@ body {
   --foreground: #171717;
   --mainblack: #27262b;
 }
-
+.wrapContainer {
+  max-width: 1280px;
+  margin: 0 auto;
+}
 body {
   color: var(--foreground);
   background: var(--background);

@@ -2,7 +2,7 @@ import Image from "next/image";
 import React from "react";
 import logo from "../assets/logo.svg";
 import Link from "next/link";
-import { ArrowRight02Icon } from "hugeicons-react";
+import { ArrowRight02Icon } from "@hugeicons/react";
 import { FaFacebook, FaInstagram, FaLinkedin } from "react-icons/fa";
 import { useTranslations } from "next-intl";
 

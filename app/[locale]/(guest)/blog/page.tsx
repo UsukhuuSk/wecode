@@ -1,11 +1,13 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import { blogList, getFile } from "../../../api/serviceuser";
+
 import Link from "next/link";
 import Image from "next/image";
 import { useLocale, useTranslations } from "next-intl";
-import NewFooter from "../../../components/NewFooter";
+
 import moment from "moment";
+import { blogList, getFile } from "../../../../api/serviceuser";
+import NewFooter from "../../../../components/NewFooter";
 interface Post {
   _id: string;
   date: string;
@@ -43,7 +45,6 @@ export default function page() {
           return post;
         })
       );
-
       setPosts(postsWithImages);
     };
 
@@ -52,7 +53,7 @@ export default function page() {
 
   return (
     <>
-      <main className="h-full min-h-screen w-full relative m-auto pt-[60px] md:pt-[200px] overflow-hidden">
+      <main className="h-full min-h-screen w-full relative m-auto pt-[60px] md:py-[200px] overflow-hidden">
         <div className="absolute -top-1/4 left-0 -translate-x-1/2 bg-[#4317FF] blur-[200px] w-[244px] h-[200px]"></div>
         <div className="absolute -top-1/4 right-0 -translate-x-1/2 bg-[#4317FF] blur-[200px] w-[244px] h-[200px]"></div>
         <div className="">

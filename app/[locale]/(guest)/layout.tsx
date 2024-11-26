@@ -1,5 +1,4 @@
-import Header from "../../../components/Header";
-import NewFooter from "../../../components/NewFooter";
+import { FloatingHeader } from "../../../components/Nav";
 
 export default async function RootLayout({
   children,
@@ -8,9 +7,10 @@ export default async function RootLayout({
 }>) {
   return (
     <div>
-      <Header />
+      <div className="">
+        <FloatingHeader />
+      </div>
       {children}
-      <NewFooter />
     </div>
   );
 }

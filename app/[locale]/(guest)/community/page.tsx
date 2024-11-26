@@ -1,17 +1,17 @@
 import React from "react";
 import { useTranslations } from "next-intl";
-import eight from "../../../assets/LandingPage/8.svg";
-import nine from "../../../assets/LandingPage/9.svg";
-import ten from "../../../assets/LandingPage/10.svg";
-import eleven from "../../../assets/LandingPage/11.svg";
+import eight from "../../../../assets/LandingPage/8.svg";
+import nine from "../../../../assets/LandingPage/9.svg";
+import ten from "../../../../assets/LandingPage/10.svg";
+import eleven from "../../../../assets/LandingPage/11.svg";
+import Image from "next/image";
 import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
-} from "../../../components/ui/accordion";
-import Image from "next/image";
-import NewFooter from "../../../components/NewFooter";
+} from "../../../../components/ui/accordion";
+import NewFooter from "../../../../components/NewFooter";
 
 export default function page() {
   const t = useTranslations("community");

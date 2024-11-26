@@ -1,15 +1,16 @@
 import React from "react";
 import Image from "next/image";
-import Teachers from "../../../components/Teachers";
+
 import { useTranslations } from "next-intl";
-import seventh from "../../../assets/LandingPage/7.svg";
-import eight from "../../../assets/LandingPage/8.svg";
-import nine from "../../../assets/LandingPage/9.svg";
-import ten from "../../../assets/LandingPage/10.svg";
-import eleven from "../../../assets/LandingPage/11.svg";
-import twelve from "../../../assets/LandingPage/12.svg";
-import purple from "../../../assets/landing/purplePlanet.png";
+import seventh from "../../../../assets/LandingPage/7.svg";
+import eight from "../../../../assets/LandingPage/8.svg";
+import nine from "../../../../assets/LandingPage/9.svg";
+import ten from "../../../../assets/LandingPage/10.svg";
+import eleven from "../../../../assets/LandingPage/11.svg";
+import twelve from "../../../../assets/LandingPage/12.svg";
+import purple from "../../../../assets/landing/purplePlanet.png";
 import Link from "next/link";
+import Teachers from "../../../../components/Teachers";
 export default function About() {
   const t = useTranslations("about");
 

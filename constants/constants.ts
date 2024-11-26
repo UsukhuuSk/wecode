@@ -6,7 +6,7 @@ import {
   CodeFolderIcon,
   AudioBook01Icon,
   Database01Icon,
-} from "hugeicons-react";
+} from "@hugeicons/react";
 export const categories = [
   {
     name: "Artificial Intelligence",

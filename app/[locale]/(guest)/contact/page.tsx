@@ -1,8 +1,9 @@
 "use client";
 import React from "react";
-import { AuroraBackground } from "../../../components/ui/Aurora-Background";
 import { motion } from "framer-motion";
-import { FloatingHeader } from "../../../components/Nav";
+import { AuroraBackground } from "../../../../components/ui/Aurora-Background";
+import { FloatingHeader } from "../../../../components/Nav";
+
 export default function page() {
   return (
     <AuroraBackground>

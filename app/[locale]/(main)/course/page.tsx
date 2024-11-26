@@ -2,7 +2,7 @@ import React from "react";
 import Image from "next/image";
 import laptop from "../../../../assets/laptop.svg";
 import { Input } from "../../../../components/ui/input";
-import { Search01Icon } from "hugeicons-react";
+import { Search01Icon } from "@hugeicons/react";
 import { Checkbox } from "../../../../components/ui/checkbox";
 import { getLocale } from "next-intl/server";
 import {

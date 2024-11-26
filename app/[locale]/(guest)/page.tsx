@@ -1,44 +1,42 @@
 "use client";
-import { usersList } from "../../api/serviceuser";
-// import line from "../../assets/landing/line.svg";
-// import line from "../../assets/landing/Vector.svg";
-import circle from "../../assets/landing/green.png";
-import round from "../../assets/LandingPage/opencircle.png";
+import { usersList } from "../../../api/serviceuser";
+import circle from "../../../assets/landing/green.png";
+import round from "../../../assets/LandingPage/opencircle.png";
 import Image from "next/image";
-import seventh from "../../assets/LandingPage/7.svg";
-import eight from "../../assets/LandingPage/8.svg";
-import nine from "../../assets/LandingPage/9.svg";
-import ten from "../../assets/LandingPage/10.svg";
-import eleven from "../../assets/LandingPage/11.svg";
-import twelve from "../../assets/LandingPage/12.svg";
-import CategoryCard from "../../components/CategoryCard";
-import { categories } from "../../constants/constants";
-import Hero from "../../components/Hero";
-import fancy from "../../assets/fancy.svg";
-import fancy2 from "../../assets/fancy2.svg";
-import fancy3 from "../../assets/fancy3.svg";
-import fancy4 from "../../assets/fancy4.svg";
-import line from "../../assets/line.svg";
-import purple from "../../assets/landing/purplePlanet.png";
-import mobile from "../../assets/asadasd.png";
-import gif from "../../assets/5b7374bbd8f499bfd804b74baa6ebd7a.gif";
+import seventh from "../../../assets/LandingPage/7.svg";
+import eight from "../../../assets/LandingPage/8.svg";
+import nine from "../../../assets/LandingPage/9.svg";
+import ten from "../../../assets/LandingPage/10.svg";
+import eleven from "../../../assets/LandingPage/11.svg";
+import twelve from "../../../assets/LandingPage/12.svg";
+import CategoryCard from "../../../components/CategoryCard";
+import { categories } from "../../../constants/constants";
+import Hero from "../../../components/Hero";
+import fancy from "../../../assets/fancy.svg";
+import fancy2 from "../../../assets/fancy2.svg";
+import fancy3 from "../../../assets/fancy3.svg";
+import fancy4 from "../../../assets/fancy4.svg";
+import line from "../../../assets/line.svg";
+import purple from "../../../assets/landing/purplePlanet.png";
+import mobile from "../../../assets/asadasd.png";
+import gif from "../../../assets/5b7374bbd8f499bfd804b74baa6ebd7a.gif";
 import { FaAppleAlt } from "react-icons/fa";
-import card1 from "../../assets/course/image.png";
-import card2 from "../../assets/course/image1.png";
-import card3 from "../../assets/course/image2.png";
+import card1 from "../../../assets/course/image.png";
+import card2 from "../../../assets/course/image1.png";
+import card3 from "../../../assets/course/image2.png";
 import {
   Carousel,
   CarouselContent,
   CarouselNext,
   CarouselPrevious,
-} from "../../components/ui/carousel";
+} from "../../../components/ui/carousel";
 import React from "react";
-import logo1 from "../../assets/landing/Mask group.svg";
-import logo2 from "../../assets/landing/Mask group1.svg";
-import logo3 from "../../assets/landing/Group 12.svg";
+import logo1 from "../../../assets/landing/Mask group.svg";
+import logo2 from "../../../assets/landing/Mask group1.svg";
+import logo3 from "../../../assets/landing/Group 12.svg";
 import { FaArrowRight } from "react-icons/fa";
 import { IoPlay } from "react-icons/io5";
-import NewFooter from "../../components/NewFooter";
+import NewFooter from "../../../components/NewFooter";
 import { motion } from "framer-motion";
 import { useTranslations } from "next-intl";
 
