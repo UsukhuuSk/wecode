@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import createMiddleware from "next-intl/middleware";
 import { routing } from "./i18n/routing";
 
-const protectedRoutes = ["/profile", "/dashboard", "/courses"];
+const protectedRoutes = ["/profile", "/leaderboard"];
 
 export default function middleware(req: NextRequest) {
   const { pathname } = req.nextUrl;
@@ -16,7 +16,7 @@ export default function middleware(req: NextRequest) {
     const token = req.cookies.get("authToken");
 
     if (!token) {
-      const loginUrl = new URL(`/${locale}/auth`, req.url);
+      const loginUrl = new URL(`/${locale}/login`, req.url);
       return NextResponse.redirect(loginUrl);
     }
   }

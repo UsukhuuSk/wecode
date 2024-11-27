@@ -2,14 +2,17 @@
 import React from "react";
 
 import Image from "next/image";
-import purple from "../../../assets/soon/purplecircle.png";
-
+import purple from "../../../../assets/soon/purplecircle.png";
 import { useTranslations } from "next-intl";
 import { categories } from "../../../../constants/constants";
 import CategoryCard from "../../../../components/CategoryCard";
+import { useRouter } from "next/navigation";
 
-export default function page() {
+export default function page({ params }: any) {
   const t = useTranslations("Soon");
+  const router = useRouter();
+  const locale = params?.locale;
+  router.push(`/${locale}/course`);
   return (
     <main className="h-full min-h-screen w-full relative m-auto pt-[200px] overflow-hidden px-5">
       <div className="absolute -top-1/4 left-0 -translate-x-1/2 bg-[#4317FF] blur-[200px] w-[244px] h-[200px]"></div>
