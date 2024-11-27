@@ -48,8 +48,6 @@ export const jsonRequestWithToken = async <TResponse, TBody = any>({
   body,
   headers = {},
 }: FetchOptions<TBody>): Promise<TResponse> => {
-  //   const token = Cookies.get("auth-token");
-  // Set up fetch options
   const fetchOptions: RequestInit = {
     method,
     headers: {

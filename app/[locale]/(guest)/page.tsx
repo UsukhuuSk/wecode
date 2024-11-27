@@ -176,11 +176,6 @@ export default function Home() {
       >
         <div className="flex justify-center relative -z-[100]">
           <div className="w-full h-screen absolute">
-            {/* <Image
-              src={line}
-              alt=""
-              className="absolute left-[50%] top-0 -translate-x-1/2 w-full h-[80%] -z-[100] opacity-50 overflow-hidden"
-            /> */}
             <div className="absolute left-[50%] top-0 -translate-x-1/2 w-full h-[80%] -z-[100] overflow-hidden">
               <Image src={line} alt="" />
             </div>
@@ -222,7 +217,6 @@ export default function Home() {
                     className={category.className}
                     icon={category.icon}
                     color={category.color}
-                    // iconProps={category.iconProps}
                   />
                 ))}
               </div>
@@ -233,7 +227,6 @@ export default function Home() {
                     name={category.name}
                     className={category.className}
                     icon={category.icon}
-                    // iconProps={category.iconProps}
                     color={category.color}
                   />
                 ))}

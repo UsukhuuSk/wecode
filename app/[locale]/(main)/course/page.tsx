@@ -1,4 +1,5 @@
-import React from "react";
+"use client";
+import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import laptop from "../../../../assets/laptop.svg";
 import { Input } from "../../../../components/ui/input";
@@ -11,6 +12,7 @@ import {
   TabsList,
   TabsTrigger,
 } from "../../../../components/ui/tabs";
+import { fetchImageFileById } from "../../../../lib/imageUtils";
 
 async function fetchCourses(lang: string) {
   const baseUrl = process.env.NEXT_PUBLIC_API_URL;
@@ -27,9 +29,37 @@ async function fetchCourses(lang: string) {
   return res.json();
 }
 
-export default async function Course() {
-  const locale = await getLocale();
-  const posts = await fetchCourses(locale);
+export default function Course() {
+  const [postsWithImages, setPostsWithImages] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const locale = "en"; // Replace with dynamic locale if needed
+        const courses = await fetchCourses(locale);
+
+        const updatedCourses: any = await Promise.all(
+          courses.map(async (course: any) => {
+            if (course.image && course.image._id) {
+              const imgUrl = await fetchImageFileById(course.image._id);
+              return { ...course, imgUrl };
+            }
+            return { ...course, imgUrl: null };
+          })
+        );
+
+        setPostsWithImages(updatedCourses);
+      } catch (error) {
+        console.error("Error fetching courses or images:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchData();
+  }, []);
+
   const topics = [
     {
       id: 0,
@@ -139,14 +169,14 @@ export default async function Course() {
                 </TabsList>
                 <TabsContent value="most-popular">
                   <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
-                    {posts.map((item: any, index: number) => (
+                    {postsWithImages.map((item: any, index: number) => (
                       <div
                         key={index}
                         className="bg-transparent rounded-[32px] overflow-hidden customborder"
                       >
                         <div className="overflow-hidden object-cover max-w-[470px] max-h-[190px] rounded-t-[24px]">
                           <Image
-                            src={item.image.link}
+                            src={item.imgUrl}
                             alt="AI for All"
                             width={400}
                             height={200}
@@ -190,14 +220,14 @@ export default async function Course() {
                 </TabsContent>
                 <TabsContent value="top-rated">
                   <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
-                    {posts.map((item: any, index: number) => (
+                    {postsWithImages.map((item: any, index: number) => (
                       <div
                         key={index}
                         className="bg-transparent rounded-[32px] overflow-hidden customborder"
                       >
                         <div className="overflow-hidden object-cover max-w-[470px] max-h-[190px] rounded-t-[24px]">
                           <Image
-                            src={item.image.link}
+                            src={item.imgUrl}
                             alt="AI for All"
                             width={400}
                             height={200}

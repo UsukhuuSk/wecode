@@ -1,8 +1,10 @@
 "use client";
 import React, { useState } from "react";
-import Step1 from "./Step1";
-import Step2 from "./Step2";
-import Step3 from "./Step3";
+import Step1 from "../components/Step1";
+import Step2 from "../components/Step2";
+import Step3 from "../components/Step3";
+import Step4 from "../components/Step4";
+import Step5 from "../components/Step5";
 import Image from "next/image";
 import purple from "../../../../../assets/soon/purplecircle.png";
 import seventh from "../../../../../assets/LandingPage/7.svg";
@@ -12,19 +14,12 @@ import ten from "../../../../../assets/LandingPage/10.svg";
 import eleven from "../../../../../assets/LandingPage/11.svg";
 import twelve from "../../../../../assets/LandingPage/12.svg";
 import logo from "../../../../../assets/shortlogo.svg";
-import Step4 from "./Step4";
-import Step5 from "./Step5";
 
 export default function Form() {
   const [currentStep, setCurrentStep] = useState<number>(1);
   const next = () => setCurrentStep((prev) => prev + 1);
   const back = () => setCurrentStep((prev) => prev - 1);
   return (
-    // <div className="flex justify-center py-44 bg-white max-w-[580px] m-auto rounded-3xl">
-    //   {currentStep === 1 && <Step1 next={next} />}
-    //   {currentStep === 2 && <div>Step 2</div>}
-    //   {currentStep === 3 && <div>Step 3</div>}
-    // </div>
     <div className="flex flex-col gap-10 items-center h-screen relative">
       <div className="overflow-hidden h-[200px] xl:h-[450px] absolute bottom-0 -z-50">
         <Image
@@ -72,7 +67,7 @@ export default function Form() {
           />
         </div>
         <div className="text-[14px] font-normal font-neue text-[rgba(255,255,255,0.5)]">
-          Before start, please answer a few questions to identify yourself.
+          Before we start, please answer a few questions to identify yourself.
           Thank you.
         </div>
       </div>
