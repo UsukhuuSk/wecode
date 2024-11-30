@@ -1,8 +1,5 @@
 import React from "react";
-import { leaders } from "../../../../data/dummy";
 import Image from "next/image";
-import workout from "../../../../assets/userDash/sidebar/Workout.svg";
-import { CrownIcon } from "@hugeicons/react";
 import { FaTrophy } from "react-icons/fa";
 interface LeaderboardEntry {
   position: number;

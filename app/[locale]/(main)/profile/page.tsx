@@ -18,11 +18,13 @@ import {
   SelectValue,
 } from "../../../../components/ui/select";
 import { useAuth } from "../../../../context/AuthContext";
-interface LeaderboardUser {
-  rank: number;
+import { FaTrophy } from "react-icons/fa";
+import Link from "next/link";
+interface LeaderboardEntry {
+  position: number;
   name: string;
   hours: number;
-  avatar: string;
+  image?: string;
 }
 
 export default function Profile({ params }: any) {
@@ -32,41 +34,31 @@ export default function Profile({ params }: any) {
   const BASEURL = process.env.NEXT_PUBLIC_API_URL;
   const [userInfo, setUserInfo] = useState<any>({});
   const [imgUrl, setImgUrl] = useState<string | null | undefined>(null);
-  const topUsers: LeaderboardUser[] = [
+  const topUsers: LeaderboardEntry[] = [
     {
-      rank: 2,
+      position: 2,
       name: "Bataa",
-      hours: 16,
-      avatar: "/placeholder.svg?height=40&width=40",
+      hours: 28,
+      image: "/placeholder.svg?height=100&width=100",
     },
     {
-      rank: 1,
+      position: 1,
       name: "Bayasgalan B.",
       hours: 32,
-      avatar: "/placeholder.svg?height=40&width=40",
+      image: "/placeholder.svg?height=100&width=100",
     },
     {
-      rank: 3,
+      position: 3,
       name: "Oyungoo M.",
-      hours: 4,
-      avatar: "/placeholder.svg?height=40&width=40",
+      hours: 24,
+      image: "/placeholder.svg?height=100&width=100",
     },
   ];
-
-  const otherUsers: LeaderboardUser[] = [
-    {
-      rank: 4,
-      name: "Usukbayar",
-      hours: 2,
-      avatar: "/placeholder.svg?height=40&width=40",
-    },
-    {
-      rank: 5,
-      name: "Usukbayar",
-      hours: 2,
-      avatar: "/placeholder.svg?height=40&width=40",
-    },
-  ];
+  const otherUsers: LeaderboardEntry[] = Array.from({ length: 2 }, (_, i) => ({
+    position: i + 4,
+    name: "NAME",
+    hours: 2,
+  }));
   useEffect(() => {
     const fetchUserInfo = async () => {
       try {
@@ -94,8 +86,9 @@ export default function Profile({ params }: any) {
     fetchUserInfo();
   }, []);
   const posts: any = [];
-  return (
-    !user ? <></> :
+  return !user ? (
+    <></>
+  ) : (
     <div className="min-h-screen wrapContainer pt-[100px] overflow-hidden">
       <div className="w-[800px] h-[800px] rotate-[92] flex-shrink-0 rounded-full bg-[#4317ff] blur-[360px] -z-50 absolute right-0 top-1/4"></div>
       <div className="flex gap-8">
@@ -129,6 +122,20 @@ export default function Profile({ params }: any) {
             </div>
           </div>
           <div className="max-w-[390px]">
+            <div className="mb-2 text-center items-center flex justify-between gap-2">
+              <div className="flex items-center justify-start gap-2">
+                <FaTrophy className="h-5 w-5 text-green-400 m-auto" />
+                <h1 className="text-[18px]t font-bold text-white font-neue">
+                  Leaderboard
+                </h1>
+              </div>
+              <Link
+                href={`/${locale}/leaderboard`}
+                className="text-[13px] font-normal font-neue text-[#FFFFFF80]"
+              >
+                View full leaderboard
+              </Link>
+            </div>
             <div className="border border-[#40404787] bg-[#33415533] min-w-[390px] rounded-xl px-4 pb-4 pt-3 flex flex-col gap-4">
               <Select defaultValue="total">
                 <SelectTrigger className="w-[180px] bg-[#272142] border-none text-white">
@@ -141,19 +148,154 @@ export default function Profile({ params }: any) {
                 </SelectContent>
               </Select>
 
-              {/* <div className="flex flex-col items-center gap-2">
-                <div className="text-white font-neue font-semibold text-[20px]">
-                  {userInfo.given_name} {userInfo.surname?.split("")[0]}.
-                </div>
-                <div className="grid grid-cols-2">
-                  <div className="text-slate-400 font-normal text-[14px] font-neue">
-                    0 enrolled
-                  </div>
-                  <div className="text-slate-400 font-normal text-[14px] font-neue">
-                    0 completed
-                  </div>
-                </div>
+              {/* <div className="relative mb-8 flex h-[280px] items-end justify-center">
+                {topUsers
+                  .sort((a, b) => a.position - b.position)
+                  .map((user, index) => (
+                    <div
+                      key={user.position}
+                      className={`relative flex flex-col items-center ${
+                        index === 1
+                          ? "bottom-0 z-10 mb-8"
+                          : index === 0
+                          ? "bottom-8 left-4"
+                          : "bottom-8 right-4"
+                      }`}
+                      style={{
+                        width: index === 1 ? "35.5%" : "30%",
+                      }}
+                    >
+                      <div className="absolute -top-[50%] mb-2">
+                        {index === 1 && (
+                          <Image
+                            src="/placeholder.svg?height=40&width=40"
+                            alt="Crown"
+                            width={40}
+                            height={40}
+                            className="absolute -top-5 left-1/2 -translate-x-1/2"
+                          />
+                        )}
+                        <div
+                          className={`relative overflow-hidden rounded-full border-2 ${
+                            index === 1
+                              ? "border-yellow-400"
+                              : "border-green-400"
+                          }`}
+                          style={{
+                            width: index === 1 ? "100px" : "80px",
+                            height: index === 1 ? "100px" : "80px",
+                          }}
+                        >
+                          <Image
+                            src={user.image || "/placeholder.svg"}
+                            alt={user.name}
+                            fill
+                            className="object-cover"
+                          />
+                        </div>
+                      </div>
+                      <div
+                        className={`w-full rounded-t-[30px] pt-10 p-2 text-center ${
+                          index === 1
+                            ? "h-[140px] bg-slate-800"
+                            : " bg-slate-900 h-[100px]"
+                        }`}
+                      >
+                        <p className="font-medium text-[14px] font-neue text-white">
+                          {user.name}
+                        </p>
+                        <p className="text-sm text-yellow-400">
+                          {user.hours} hours
+                        </p>
+                      </div>
+                    </div>
+                  ))}
               </div> */}
+              <div className="relative  flex h-[280px] items-end justify-center">
+                {topUsers
+                  .sort((a, b) => a.position - b.position)
+                  .map((user, index) => (
+                    <div
+                      key={user.position}
+                      className={`relative flex flex-col items-center ${
+                        index === 1
+                          ? "bottom-0 z-10 mb-8"
+                          : index === 0
+                          ? "bottom-8 left-0"
+                          : "bottom-8 right-0"
+                      }`}
+                      style={{
+                        width: index === 1 ? "35.5%" : "30%",
+                      }}
+                    >
+                      <div className="absolute -top-[50%] mb-2">
+                        {index === 1 && (
+                          <Image
+                            src="/placeholder.svg?height=40&width=40"
+                            alt="Crown"
+                            width={40}
+                            height={40}
+                            className="absolute -top-5 left-1/2 -translate-x-1/2"
+                          />
+                        )}
+                        <div
+                          className={`relative overflow-hidden rounded-full border-2 ${
+                            index === 1
+                              ? "border-yellow-400"
+                              : "border-green-400"
+                          }`}
+                          style={{
+                            width: index === 1 ? "100px" : "80px",
+                            height: index === 1 ? "100px" : "80px",
+                          }}
+                        >
+                          <Image
+                            src={user.image || "/placeholder.svg"}
+                            alt={user.name}
+                            fill
+                            className="object-cover"
+                          />
+                        </div>
+                      </div>
+                      <div
+                        className={`w-full rounded-t-[30px] pt-10 px-2 flex flex-col items-center justify-center ${
+                          index === 1
+                            ? "h-[140px] bg-slate-800"
+                            : "bg-slate-900 h-[100px]"
+                        }`}
+                      >
+                        <p className="font-medium text-[12px] font-neue text-white">
+                          {user.name}
+                        </p>
+                        <p className="text-sm text-yellow-400">
+                          {user.hours} hours
+                        </p>
+                      </div>
+                    </div>
+                  ))}
+              </div>
+              <div className="">
+                {otherUsers.map((user, index) => (
+                  <div
+                    key={user.position}
+                    className={`flex items-center ${
+                      index === 0 ? "border-b" : ""
+                    } justify-between bg-transparent hover:bg-[#FFFFFF1A] duration-300 ease-in-out transition-all py-4 px-[10px]`}
+                  >
+                    <div className="flex items-center gap-3">
+                      <span className="w-6 text-center font-medium text-white">
+                        {user.position}
+                      </span>
+                      <span className="font-medium text-white text-[12px]">
+                        {user.name}
+                      </span>
+                    </div>
+                    <span className="text-sm text-gray-300">
+                      {user.hours} hours
+                    </span>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
         </div>
