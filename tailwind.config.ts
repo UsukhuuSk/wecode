@@ -65,6 +65,31 @@ const config: Config = {
           },
         },
       },
+      container: {
+        center: true,
+        padding: {
+          DEFAULT: '1rem', // Default padding for all screen sizes
+          sm: '2rem',      // Padding for small screens
+          md: '4rem',      // Padding for medium screens
+          lg: '6rem',      // Padding for large screens
+          xl: '8rem',      // Padding for extra-large screens
+        },
+        screens: {
+          sm: '640px',  // Small screens
+          md: '1020px',  // Medium screens
+          lg: '1344px', // Large screens
+          xl: '1500px', // Extra-large screens
+          '2xl': '1500px', // Custom size (optional)
+        },
+      },
+      colors: {
+        card: "rgba(51, 65, 85, 0.2)",
+        cardDark: "rgba(51, 65, 85, 0.4)",
+        primary: "#4317FF"
+      },
+      borderRadius: {
+        '4xl': '2rem',
+      },
     },
   },
   plugins: [addVariablesForColors, require("tailwindcss-animate")],

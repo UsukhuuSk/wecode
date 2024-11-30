@@ -2,6 +2,7 @@ const BASEURL = process.env.NEXT_PUBLIC_API_URL;
 const DEFAULT_TIMEOUT = 5000; // Default timeout 5 секунд
 import Cookies from "js-cookie";
 
+
 export class BaseApi {
     baseUrl: string = '/';
 
@@ -45,10 +46,16 @@ export class BaseApi {
         }, timeout);
 
         try {
-            const response = await fetch(finalUrl, options);
+            const response: any = await fetch(finalUrl, options);
 
             if (!response.ok) {
-                throw new Error(`HTTP error! Status: ${response.status}`);
+                const errorData = await response.json();
+                console.log('errorData', errorData)
+                if (errorData.message) {
+                    throw `${errorData.message}`;
+                  } else {
+                    throw `Error: ${response.status} - Unknown error`
+                  }
             }
 
             return await response.json();

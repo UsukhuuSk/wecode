@@ -4,6 +4,8 @@ import Header from "../../../components/Header";
 import NewFooter from "../../../components/NewFooter";
 import { useAuth } from "../../../context/AuthContext";
 import { useParams, useRouter } from "next/navigation";
+import { FloatingHeader } from "../../../components/Nav";
+import { LessonProvider } from "../../../context/LessonContext";
 
 export default function RootLayout({
   children,
@@ -14,16 +16,19 @@ export default function RootLayout({
   const { user }: any = useAuth()
   const router = useRouter()
   useEffect(() => {
-    console.log('-------user--------', user)
-    if(user && !user.is_agreement) {
+    if (user && !user.is_agreement) {
       router.push(`/${params.locale}/quiz`);
     }
   }, [user])
   return (
-    <div>
-      <Header />
-      {children}
-      <NewFooter />
-    </div>
+    <LessonProvider>
+      <div>
+        {
+          user ? <Header /> : <FloatingHeader />
+        }
+        {children}
+        <NewFooter />
+      </div>
+    </LessonProvider>
   );
 }

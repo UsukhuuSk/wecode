@@ -96,7 +96,7 @@ export default function Header() {
   ];
 
   return (
-    <div className="fixed z-10 w-full py-3 text-white bg-[#33415566] border-b border-[#40404787]">
+    <div className="fixed top-0 z-10 w-full py-3 text-white bg-[#33415566] border-b border-[#40404787]">
       <div className="wrapContainer flex justify-between">
         <Image src={logo} alt="logo" width={100} height={32} />
         <div className="flex items-center gap-8">

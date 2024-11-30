@@ -34,14 +34,15 @@ export default function Course() {
   const getCourses = async () => {
     try {
       setLoading(true)
-      const params: any = {}
+      const searchObj: any = {}
+
       if (filter.levels.length > 0) {
-        params.search = JSON.stringify({ level_id: filter.levels })
+        searchObj.level_id = filter.levels
       }
       if (filter.topics.length > 0) {
-        params.search = JSON.stringify({ tags: filter.topics })
+        searchObj.tags = filter.topics
       }
-      const { list } = await BaseApi._get('9/service_acourses', params)
+      const { list } = await BaseApi._get('9/service_acourses', { search: JSON.stringify(searchObj) })
       setCourses(list)
     } catch (error) {
 

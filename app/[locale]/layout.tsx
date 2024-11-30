@@ -7,8 +7,9 @@ import { getMessages } from "next-intl/server";
 import { notFound } from "next/navigation";
 import { routing } from "../../i18n/routing";
 import { ReactLenis } from "../../lib/lenis";
-import { FloatingHeader } from "../../components/Nav";
 import { AuthProvider } from "../../context/AuthContext";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const montserratAlt = Montserrat_Alternates({
   weight: ["200", "300", "400", "500", "600", "700", "800"],
@@ -130,9 +131,11 @@ export default async function RootLayout({
           <NextIntlClientProvider messages={messages}>
             <AuthProvider>
               {children}
+              <ToastContainer />
             </AuthProvider>
           </NextIntlClientProvider>
         </body>
+
       </ReactLenis>
     </html>
   );

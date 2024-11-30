@@ -15,18 +15,22 @@ export default function VideoCourse({ id, locale, width }: any) {
             iframevideo.style.height = `${eventData?.data.height}px`;
           }
         }
-      } catch (e) {}
+      } catch (e) { }
     };
     window.addEventListener('message', handlePostMessage, false);
     return () => {
       window.removeEventListener('message', handlePostMessage, false);
     };
   }, []);
-  return <iframe
-    id="iframevideo"
-    style={{ width: `${iframeWidth}px`, height: `${iframeWidth/16*9}px`}}
-    className="overflow-hidden h-full w-full"
-    allowFullScreen
-    src={ `${BASEURL}/?id=${id}&lang=${locale}` }
-  />
+  return (
+    <div className="rounded-xl overflow-hidden">
+      <iframe
+        id="iframevideo"
+        style={{ width: `${iframeWidth}px`, height: `${iframeWidth / 16 * 9}px` }}
+        className="overflow-hidden h-full w-full"
+        allowFullScreen
+        src={`${BASEURL}/?id=${id}&lang=${locale}`}
+      />
+    </div>
+  )
 }

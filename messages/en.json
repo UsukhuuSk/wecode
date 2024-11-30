@@ -228,5 +228,27 @@
     "account": {
       "firstName": "First name"
     }
+  },
+  "course": {
+    "detail": {
+      "rating": "avarage rating",
+      "length": "course length",
+      "level": "course level",
+      "access": "course access",
+      "completion": "course access",
+      "certTrue": "Certificate",
+      "certFalse": "No certificate",
+      "goal": "What you’ll learn",
+      "about": "About this course",
+      "content": "Course content",
+      "chapter": "Chapter",
+      "instructor": "Instructor",
+      "enroll": "Enroll for free",
+      "enrolled": "Already enrolled.",
+      "video": "video",
+      "home": "Home",
+      "courses": "Courses",
+      "loading": "loading"
+    }
   }
 }
