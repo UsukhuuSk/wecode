@@ -7,7 +7,9 @@ import { motion } from "framer-motion";
 import { useRouter } from "next/navigation";
 import { jsonRequest } from "../../../../api/utils";
 import { AuroraBackground } from "../../../../components/ui/Aurora-Background";
+import { useAuth } from "../../../../context/AuthContext";
 export default function page({ params }: any) {
+  const { login }: any = useAuth()
   const generateUUID = () => {
     return "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(
       /[xy]/g,
@@ -25,18 +27,13 @@ export default function page({ params }: any) {
     const handleLogin = (token: string) => {
       try {
         Cookies.set("authToken", token, { expires: 1, secure: true });
-        console.log("logged token", token);
+        login()
         jsonRequest({
           endpoint: `/auth/user`,
           headers: { Authorization: `Bearer ${token}` },
         })
           .then((result: any) => {
-            if (!result?.is_agreement) {
-              router.push(`/${params?.locale}/quiz`);
-            } else {
-              console.log("logged user", result?.is_agreement);
-              router.push(`/${params?.locale}/courses`);
-            }
+            router.push(`/${params?.locale}/profile`);
           })
           .catch((err) => {
             console.log("logged err", err);
@@ -56,7 +53,7 @@ export default function page({ params }: any) {
         } else if (eventData?.type === "login") {
           handleLogin(eventData?.data?.token);
         }
-      } catch (e) {}
+      } catch (e) { }
     };
     window.addEventListener("message", handlePostMessage, false);
     return () => {
@@ -82,9 +79,8 @@ export default function page({ params }: any) {
               id="iframeLogin"
               style={{ height: `0px` }}
               className="overflow-hidden h-full w-full"
-              src={`${BASEURL}/login?p=9&type=students&requestId=${requestId}&props=google,linkedin&lang=${
-                params?.locale || "mn"
-              }`}
+              src={`${BASEURL}/login?p=9&type=students&requestId=${requestId}&props=google,linkedin&lang=${params?.locale || "mn"
+                }`}
             />
           </div>
         </div>

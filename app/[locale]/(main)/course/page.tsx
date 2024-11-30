@@ -13,81 +13,51 @@ import {
   TabsTrigger,
 } from "../../../../components/ui/tabs";
 import { fetchImageFileById } from "../../../../lib/imageUtils";
+import { BaseApi } from "../../../../api/baseApi";
+import CourseFilter from "../../../../components/course/Filter";
+import CourseCard from "../../../../components/course/Card";
 
-async function fetchCourses(lang: string) {
-  const baseUrl = process.env.NEXT_PUBLIC_API_URL;
-  const params = new URLSearchParams({
-    lang: String(lang),
-  });
-  const url = `${baseUrl}/list/9/service_courses?${params.toString()}`;
-  const res = await fetch(url, {
-    cache: "no-store",
-  });
-  if (!res.ok) {
-    throw new Error("Failed to fetch posts");
-  }
-  return res.json();
-}
 
 export default function Course() {
-  const [postsWithImages, setPostsWithImages] = useState([]);
+  const [courses, setCourses] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [filter, setFilter] = useState({
+    text: "",
+    topics: [],
+    levels: []
+  })
 
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const locale = "en"; // Replace with dynamic locale if needed
-        const courses = await fetchCourses(locale);
+    getCourses()
+  }, [filter])
 
-        const updatedCourses: any = await Promise.all(
-          courses.map(async (course: any) => {
-            if (course.image && course.image._id) {
-              const imgUrl = await fetchImageFileById(course.image._id);
-              return { ...course, imgUrl };
-            }
-            return { ...course, imgUrl: null };
-          })
-        );
-
-        setPostsWithImages(updatedCourses);
-      } catch (error) {
-        console.error("Error fetching courses or images:", error);
-      } finally {
-        setLoading(false);
+  const getCourses = async () => {
+    try {
+      setLoading(true)
+      const params: any = {}
+      if (filter.levels.length > 0) {
+        params.search = JSON.stringify({ level_id: filter.levels })
       }
-    };
+      if (filter.topics.length > 0) {
+        params.search = JSON.stringify({ tags: filter.topics })
+      }
+      const { list } = await BaseApi._get('9/service_acourses', params)
+      setCourses(list)
+    } catch (error) {
 
-    fetchData();
-  }, []);
+    } finally {
+      setLoading(false)
+    }
+  }
 
-  const topics = [
-    {
-      id: 0,
-      name: "Artificial Intelligence",
-    },
-    {
-      id: 1,
-      name: "Machine Learning",
-    },
-    {
-      id: 2,
-      name: "Coding",
-    },
-  ];
-  const level = [
-    {
-      id: 0,
-      name: "Beginner",
-    },
-    {
-      id: 1,
-      name: "Intermediate",
-    },
-    {
-      id: 2,
-      name: "Advanced",
-    },
-  ];
+  const handleFilterChange = ({ selectedTopics, selectedLevels }: any) => {
+    setFilter((prevFilter) => ({
+      ...prevFilter,
+      topics: selectedTopics || prevFilter.topics,
+      levels: selectedLevels || prevFilter.levels,
+    }));
+  }
+
   return (
     <div className="relative">
       {" "}
@@ -109,43 +79,7 @@ export default function Course() {
           </div>
         </div>
         <div className="flex w-full px-[120px] py-12">
-          <div className="w-[300px] flex flex-col text-white gap-4 pr-8">
-            <div className="flex flex-col gap-4">
-              <div className="relative flex justify-between items-center bg-slate-700 text-white max-w-[230px] rounded-[100px] border border-[rgba(64,64,71,0.53)]">
-                <Search01Icon
-                  size={16}
-                  color={"#fff"}
-                  className="absolute left-3"
-                />
-                <Input
-                  className="search border-none focus:border-none rounded-[100px] pl-10"
-                  placeholder="Search"
-                />
-              </div>
-              <div className="flex justify-between">
-                <span className="text-[15px] font-neue font-medium">
-                  Filters
-                </span>
-                <span className="text-[15px] font-neue font-bold">
-                  Clear all
-                </span>
-              </div>
-              <div className="flex flex-col gap-4">
-                <h2 className="text-[15px] py-[10px] font-medium font-neue">
-                  Topics
-                </h2>
-                {topics.map((item, index) => (
-                  <div
-                    key={index}
-                    className="flex justify-start items-center gap-[10px]"
-                  >
-                    <Checkbox key={item.id} />
-                    <label>{item.name}</label>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
+          <CourseFilter onChange={handleFilterChange} />
           <div className="w-full">
             <div className="bg-transparent p-6 min-h-screen">
               <Tabs defaultValue="most-popular" className="w-full">
@@ -168,104 +102,42 @@ export default function Course() {
                   </TabsTrigger>
                 </TabsList>
                 <TabsContent value="most-popular">
+
                   <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
-                    {postsWithImages.map((item: any, index: number) => (
-                      <div
-                        key={index}
-                        className="bg-transparent rounded-[32px] overflow-hidden customborder"
-                      >
-                        <div className="overflow-hidden object-cover max-w-[470px] max-h-[190px] rounded-t-[24px]">
-                          <Image
-                            src={item.imgUrl}
-                            alt="AI for All"
-                            width={400}
-                            height={200}
-                            className="w-full h-auto object-cover"
-                          />
-                        </div>
-                        <div className="p-4">
-                          <div className="flex justify-between items-center mb-2">
-                            <span className="text-white flex items-center gap-[10px]">
-                              {/* {item.teachers.map((item: any, index: number) => (
-                                <span key={index}>{item.given_name}</span>
-                              ))}{" "} */}
-                              <span key={index}>
-                                {" "}
-                                {item.teachers[0].given_name}
-                              </span>
-                              <span>•</span>
-                              {(
-                                Math.round((item.duration_seconds / 3600) * 2) /
-                                2
-                              ).toFixed(1)}{" "}
-                              hours
-                            </span>
-                            {/* <Badge className="bg-green-600 text-white">
-                              Introductory
-                            </Badge> */}
-                            <div
-                              // style={{ borderColor: item.level_id.color }}
-                              className={`font-neue text-[12px] font-semibold border py-1 px-5 rounded-[32px] border-[${item.level_id.color}] text-[${item.level_id.color}]`}
-                            >
-                              {item.level_id.name}
-                            </div>
-                          </div>
-                          <h3 className="text-white text-lg font-bold">
-                            {item.name}
-                          </h3>
-                        </div>
-                      </div>
-                    ))}
+                    {
+                      loading ? <>
+                        {
+                          [1, 2].map(item => {
+                            return (
+                              <div key={item} className="h-72 flex flex-col gap-4 rounded-[32px] animate-pulse overflow-hidden">
+                                <div className="bg-[#e2e8f04a] h-48">
+
+                                </div>
+                                <div className="bg-[#e2e8f04a] h-6 rounded-md">
+
+                                </div>
+                                <div className="bg-[#e2e8f04a] h-6 rounded-md">
+
+                                </div>
+                              </div>
+                            )
+                          })
+                        }
+                      </> :
+                        <>
+                          {
+                            courses.map((item: any, index: number) => (
+                              <CourseCard key={index} course={item} />
+                            ))
+                          }
+                        </>
+                    }
                   </div>
                 </TabsContent>
                 <TabsContent value="top-rated">
                   <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
-                    {postsWithImages.map((item: any, index: number) => (
-                      <div
-                        key={index}
-                        className="bg-transparent rounded-[32px] overflow-hidden customborder"
-                      >
-                        <div className="overflow-hidden object-cover max-w-[470px] max-h-[190px] rounded-t-[24px]">
-                          <Image
-                            src={item.imgUrl}
-                            alt="AI for All"
-                            width={400}
-                            height={200}
-                            className="w-full h-auto object-cover"
-                          />
-                        </div>
-                        <div className="p-4">
-                          <div className="flex justify-between items-center mb-2">
-                            <span className="text-white flex items-center gap-[10px]">
-                              {/* {item.teachers.map((item: any, index: number) => (
-                                <span key={index}>{item.given_name}</span>
-                              ))}{" "} */}
-                              <span key={index}>
-                                {" "}
-                                {item.teachers[0].given_name}
-                              </span>
-                              <span>•</span>
-                              {(
-                                Math.round((item.duration_seconds / 3600) * 2) /
-                                2
-                              ).toFixed(1)}{" "}
-                              hours
-                            </span>
-                            {/* <Badge className="bg-green-600 text-white">
-                              Introductory
-                            </Badge> */}
-                            <div
-                              // style={{ borderColor: item.level_id.color }}
-                              className={`font-neue text-[12px] font-semibold border py-1 px-5 rounded-[32px] border-[${item.level_id.color}] text-[${item.level_id.color}]`}
-                            >
-                              {item.level_id.name}
-                            </div>
-                          </div>
-                          <h3 className="text-white text-lg font-bold">
-                            {item.name}
-                          </h3>
-                        </div>
-                      </div>
+                    {courses.map((item: any, index: number) => (
+                      <CourseCard key={index} course={item} />
                     ))}
                   </div>
                 </TabsContent>

@@ -1,5 +1,5 @@
 // steps/Step1.tsx
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useForm, SubmitHandler, Controller } from "react-hook-form";
 import { FormContext } from "../../../../../context/FormContext";
 import { Input } from "../../../../../components/ui/input";
@@ -12,23 +12,36 @@ import {
   SelectValue,
 } from "../../../../../components/ui/select";
 import { Checkbox } from "../../../../../components/ui/checkbox";
+import { BaseApi } from "../../../../../api/baseApi";
+import { useTranslations } from "next-intl";
+import { useParams } from "next/navigation";
 
 interface StepProps {
   next?: () => void;
   back?: () => void;
 }
 interface Step1FormValues {
-  firstName: string;
-  lastName: string;
+  given_name: string;
+  surname: string;
   gender: string;
-  employmentStatus: string;
+  work_id: string;
   age: string;
   address: string;
   city: string;
-  region: string;
-  educationLevel: string;
-  acceptTerms: boolean;
+  aimag_city_id: string;
+  education_id: string;
+  is_agreement: boolean;
 }
+
+const fetchAndSetData = async (endpoint: any, params: any, setter: any) => {
+  try {
+    const { list } = await BaseApi._get(endpoint, params);
+    setter(list);
+  } catch (error) {
+    console.error(`Failed to fetch ${endpoint}:`, error);
+  }
+};
+
 
 const Step1: React.FC<StepProps> = ({ next }) => {
   const {
@@ -37,7 +50,33 @@ const Step1: React.FC<StepProps> = ({ next }) => {
     handleSubmit,
     formState: { errors },
   } = useForm<Step1FormValues>();
+  const trns = useTranslations("quiz");
+
   const { formValues, setFormValues } = useContext(FormContext)!;
+  const [genders, setGenders] = useState<any>([])
+  const [refEmp, setRefEmp] = useState<any>([])
+  const [refAges, setRefAges] = useState<any>([])
+  const [refaimag_city_ids, setRefaimag_city_ids] = useState<any>([])
+  const [refEdus, setRefEdus] = useState<any>([])
+  const { locale } = useParams()
+
+  
+  useEffect(() => {
+    const lang = locale; 
+    const params = { fields: '_id,code,name', lang };
+
+    const fetchData = async () => {
+      await Promise.all([
+        fetchAndSetData('9/ref_genders', params, setGenders),
+        fetchAndSetData('9/ref_works', params, setRefEmp),
+        fetchAndSetData('9/ref_ages', params, setRefAges),
+        fetchAndSetData('9/ref_aimag_cities', params, setRefaimag_city_ids),
+        fetchAndSetData('9/ref_educations', params, setRefEdus),
+      ]);
+    };
+
+    fetchData();
+  }, []);
 
   const onSubmit: SubmitHandler<Step1FormValues> = (data) => {
     console.log("Form Data:", data);
@@ -51,37 +90,37 @@ const Step1: React.FC<StepProps> = ({ next }) => {
       <div className="flex flex-col gap-4">
         <div className="grid grid-cols-2 gap-4 mt-6">
           <div className="flex flex-col gap-3">
-            <Label htmlFor="firstName">First name</Label>
+            <Label htmlFor="given_name">{trns("account.firstName")}</Label>
             <Input
-              {...register("firstName", { required: "First name is required" })}
+              {...register("given_name", { required: "First name is required" })}
               placeholder="First Name"
-              defaultValue={formValues.firstName || ""}
+              defaultValue={formValues.given_name || ""}
               className="rounded-[32px]"
             />
-            {errors.firstName && (
-              <p className="text-red-500 text-sm">{errors.firstName.message}</p>
+            {errors.given_name && (
+              <p className="text-red-500 text-sm">{errors.given_name.message}</p>
             )}
           </div>
           <div className="flex flex-col gap-3">
-            <Label htmlFor="lastName">Last name</Label>
+            <Label htmlFor="surname">Last name</Label>
             <Input
-              {...register("lastName", { required: "Last name is required" })}
+              {...register("surname", { required: "Last name is required" })}
               placeholder="Last Name"
-              defaultValue={formValues.lastName || ""}
+              defaultValue={formValues.surname || ""}
               className="rounded-[32px]"
             />
-            {errors.lastName && (
-              <p className="text-red-500 text-sm">{errors.lastName.message}</p>
+            {errors.surname && (
+              <p className="text-red-500 text-sm">{errors.surname.message}</p>
             )}
           </div>
         </div>
-        <div className="grid grid-cols-4 gap-4">
-          <div className="max-w-[100px]">
+        <div className="flex gap-4 ">
+          <div className="basis-1/4">
             <Label htmlFor="">Gender</Label>
             <Controller
               name="gender"
               control={control}
-              defaultValue={formValues.gender || ""}
+              defaultValue={formValues.gender_id || ""}
               rules={{ required: "Gender is required" }}
               render={({ field }) => (
                 <Select value={field.value} onValueChange={field.onChange}>
@@ -89,20 +128,21 @@ const Step1: React.FC<StepProps> = ({ next }) => {
                     <SelectValue placeholder="Select" />
                   </SelectTrigger>
                   <SelectContent className="">
-                    <SelectItem value="male">Male</SelectItem>
-                    <SelectItem value="female">Female</SelectItem>
-                    <SelectItem value="none">I prefer not to say</SelectItem>
+                    {
+
+                      genders.map((g: any, index: number) => <SelectItem className="hover:bg-gray-200" key={index} value={g._id}>{g.name}</SelectItem>)
+                    }
                   </SelectContent>
                 </Select>
               )}
             />
           </div>
-          <div className="max-w-[220px] min-w-[220px] col-span-2">
+          <div className="basis-1/2">
             <Label htmlFor="">Employment status</Label>
             <Controller
-              name="employmentStatus"
+              name="work_id"
               control={control}
-              defaultValue={formValues.employmentStatus || ""}
+              defaultValue={formValues.work_id || ""}
               rules={{ required: "Employment status is required" }}
               render={({ field }) => (
                 <Select value={field.value} onValueChange={field.onChange}>
@@ -110,19 +150,16 @@ const Step1: React.FC<StepProps> = ({ next }) => {
                     <SelectValue placeholder="Select" />
                   </SelectTrigger>
                   <SelectContent className="">
-                    <SelectItem value="student">Highschool student</SelectItem>
-                    <SelectItem value="bachelor">Bachelor's student</SelectItem>
-                    <SelectItem value="self">Self-employment</SelectItem>
-                    <SelectItem value="civil">Civil servant</SelectItem>
-                    <SelectItem value="employee">Employee</SelectItem>
-                    <SelectItem value="unemployed">Unemployed</SelectItem>
-                    <SelectItem value="retired">Retired</SelectItem>
+                    {
+
+                      refEmp.map((g: any, index: number) => <SelectItem className="hover:bg-gray-200" key={index} value={g._id}>{g.name}</SelectItem>)
+                    }
                   </SelectContent>
                 </Select>
               )}
             />
           </div>
-          <div className="max-w-[100px]">
+          <div className="basis-1/4">
             <Label htmlFor="">Age</Label>
             <Controller
               name="age"
@@ -135,9 +172,10 @@ const Step1: React.FC<StepProps> = ({ next }) => {
                     <SelectValue placeholder="Select" />
                   </SelectTrigger>
                   <SelectContent className="">
-                    <SelectItem value="light">Light</SelectItem>
-                    <SelectItem value="dark">Dark</SelectItem>
-                    <SelectItem value="system">System</SelectItem>
+                    {
+
+                      refAges.map((g: any, index: number) => <SelectItem className="hover:bg-gray-200" key={index} value={g._id}>{g.name}</SelectItem>)
+                    }
                   </SelectContent>
                 </Select>
               )}
@@ -146,15 +184,15 @@ const Step1: React.FC<StepProps> = ({ next }) => {
         </div>
         <div className="grid grid-cols-2 gap-4">
           <div className="flex flex-col gap-3">
-            <Label htmlFor="firstName">Address</Label>
+            <Label htmlFor="given_name">Address</Label>
             <Input
               {...register("address", { required: "Address is required" })}
               placeholder="Ex: BZD, 1-r khoroo, 10-22"
               defaultValue={formValues.address || ""}
               className="rounded-[32px]"
             />
-            {errors.firstName && (
-              <p className="text-red-500 text-sm">{errors.firstName.message}</p>
+            {errors.given_name && (
+              <p className="text-red-500 text-sm">{errors.given_name.message}</p>
             )}
           </div>
           <div className="flex flex-col gap-3">
@@ -172,21 +210,22 @@ const Step1: React.FC<StepProps> = ({ next }) => {
         </div>
         <div className="grid grid-cols-2 gap-4">
           <div className="">
-            <Label htmlFor="">Region</Label>
+            <Label htmlFor="">aimag_city_id</Label>
             <Controller
-              name="region"
+              name="aimag_city_id"
               control={control}
-              defaultValue={formValues.region || ""}
-              rules={{ required: "Region is required" }}
+              defaultValue={formValues.aimag_city_id || ""}
+              rules={{ required: "aimag_city_id is required" }}
               render={({ field }) => (
                 <Select value={field.value} onValueChange={field.onChange}>
                   <SelectTrigger className=" rounded-[32px]">
                     <SelectValue placeholder="Select" />
                   </SelectTrigger>
-                  <SelectContent className="">
-                    <SelectItem value="light">Light</SelectItem>
-                    <SelectItem value="dark">Dark</SelectItem>
-                    <SelectItem value="system">System</SelectItem>
+                  <SelectContent className="max-h-80 overflow-auto">
+                    {
+
+                      refaimag_city_ids.map((g: any, index: number) => <SelectItem className="hover:bg-gray-200" key={index} value={g._id}>{g.name}</SelectItem>)
+                    }
                   </SelectContent>
                 </Select>
               )}
@@ -195,9 +234,9 @@ const Step1: React.FC<StepProps> = ({ next }) => {
           <div className="">
             <Label htmlFor="">Education level</Label>
             <Controller
-              name="educationLevel"
+              name="education_id"
               control={control}
-              defaultValue={formValues.educationLevel || ""}
+              defaultValue={formValues.education_id || ""}
               rules={{ required: "Education level is required" }}
               render={({ field }) => (
                 <Select value={field.value} onValueChange={field.onChange}>
@@ -205,13 +244,10 @@ const Step1: React.FC<StepProps> = ({ next }) => {
                     <SelectValue placeholder="Select" />
                   </SelectTrigger>
                   <SelectContent className="">
-                    <SelectItem value="graduate">
-                      Highschool Graduate
-                    </SelectItem>
-                    <SelectItem value="bachelors">Bachelor's Degree</SelectItem>
-                    <SelectItem value="college">College Degree</SelectItem>
-                    <SelectItem value="master">Master's Degree</SelectItem>
-                    <SelectItem value="doctor">Doctorate Degree</SelectItem>
+                    {
+
+                      refEdus.map((g: any, index: number) => <SelectItem className="hover:bg-gray-200" key={index} value={g._id}>{g.name}</SelectItem>)
+                    }
                   </SelectContent>
                 </Select>
               )}
@@ -220,9 +256,9 @@ const Step1: React.FC<StepProps> = ({ next }) => {
         </div>
         <div className="flex justify-center items-center gap-2">
           <Controller
-            name="acceptTerms"
+            name="is_agreement"
             control={control}
-            defaultValue={formValues.acceptTerms || false}
+            defaultValue={formValues.is_agreement || false}
             rules={{ required: "You must accept the terms and conditions" }}
             render={({ field }) => (
               <Checkbox
@@ -238,9 +274,9 @@ const Step1: React.FC<StepProps> = ({ next }) => {
             </a>
           </span>
         </div>
-        {errors.acceptTerms && (
+        {errors.is_agreement && (
           <p className="text-red-500 text-sm text-center">
-            {errors.acceptTerms.message}
+            {errors.is_agreement.message}
           </p>
         )}
 

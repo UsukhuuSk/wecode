@@ -2,6 +2,8 @@
 import React, { useContext, useState } from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { FormContext } from "../../../../../context/FormContext";
+import { BaseApi } from "../../../../../api/baseApi";
+import { useAuth } from "../../../../../context/AuthContext";
 
 interface StepProps {
   next?: () => void;
@@ -13,42 +15,82 @@ interface Step2FormValues {
 }
 
 const Step5: React.FC<StepProps> = ({ next, back }) => {
+  const { user }: any = useAuth()
+  const tags = [
+    {
+      "name": "Take a deep breath",
+      "color": "#CC48F4"
+    },
+    {
+      "name": "Break the problem down into smaller parts",
+      "color": "#9060F4"
+    },
+    {
+      "name": "Ask for help",
+      "color": "#68D8FC"
+    },
+    {
+      "name": "Do research",
+      "color": "#6068F4"
+    },
+    {
+      "name": "Be positive",
+      "color": "#FF8500"
+    },
+    {
+      "name": "Discuss your thoughts with others or yourself",
+      "color": "#94C943"
+    }
+  ]
+
   const {
     handleSubmit,
     formState: { errors },
   } = useForm<Step2FormValues>();
   const { formValues, setFormValues } = useContext(FormContext)!;
 
-  const onSubmit: SubmitHandler<Step2FormValues> = () => {
+  const onSubmit: SubmitHandler<Step2FormValues> = async () => {
     console.log("FormValues", formValues);
     // if (next) next();
+    try {
+      await BaseApi._post('/9/service_user_profile', { _id: user._id, ...formValues })
+    } catch (error) {
+
+    }
   };
 
   return (
-    <div className="flex flex-col gap-6">
+    <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col">
       <div className="flex gap-2">
-        <span className="text-start font-bold text-[18px] text-[#3f3f46] font-neue">
-          4.
-        </span>
         <h1 className="text-start text-[18px] text-[#3f3f46] font-neue">
-          Do you have a background in coding, computer science, or a related
-          field?
+          Self Promise
         </h1>
       </div>
 
+      <p className="font-medium text-[16px] font-neue text-[#52525b] text-center">
+        I am starting an online learning program at Al Academy. I know that
+        learning can be challenging, but I have the patience, determination, and
+        discipline to achieve my goals. If I get stuck, I will look for the
+        following solutions…
+      </p>
+      <div className="flex gap-x-3 gap-y-2 w-[550px] flex-wrap justify-center mb-6 mt-3">
+        {
+          tags.map(t => {
+            return (
+              <div className="text-white text-nowrap px-3 text-sm" style={{ background: t.color }}> {t.name}</div>
+            )
+          })
+        }
+      </div>
       <div className="flex gap-4">
-        <button type="button" onClick={back} className="px-4 py-2 bg-gray-300">
-          Back
-        </button>
         <button
-          onClick={handleSubmit(onSubmit)}
           type="submit"
-          className="px-4 py-2 bg-blue-500 text-white"
+          className="rounded-[32px] w-full text-white bg-[#4317FF] px-6 py-[12px] font-semibold text-[16px] font-neue"
         >
-          Next
+          I promise to complete this course in full
         </button>
       </div>
-    </div>
+    </form>
   );
 };
 

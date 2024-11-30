@@ -8,6 +8,7 @@ import { notFound } from "next/navigation";
 import { routing } from "../../i18n/routing";
 import { ReactLenis } from "../../lib/lenis";
 import { FloatingHeader } from "../../components/Nav";
+import { AuthProvider } from "../../context/AuthContext";
 
 const montserratAlt = Montserrat_Alternates({
   weight: ["200", "300", "400", "500", "600", "700", "800"],
@@ -127,7 +128,9 @@ export default async function RootLayout({
           className={`${montserratAlt.variable} ${manrope.variable} ${ovSoge.variable} ${golosText.variable} ${adineue.variable} ${neue.variable} antialiased`}
         >
           <NextIntlClientProvider messages={messages}>
-            {children}
+            <AuthProvider>
+              {children}
+            </AuthProvider>
           </NextIntlClientProvider>
         </body>
       </ReactLenis>

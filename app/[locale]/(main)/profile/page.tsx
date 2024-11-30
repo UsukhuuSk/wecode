@@ -17,6 +17,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "../../../../components/ui/select";
+import { useAuth } from "../../../../context/AuthContext";
 interface LeaderboardUser {
   rank: number;
   name: string;
@@ -25,6 +26,7 @@ interface LeaderboardUser {
 }
 
 export default function Profile({ params }: any) {
+  const { user } = useAuth();
   const locale = params?.locale;
   const token = Cookies.get("authToken");
   const BASEURL = process.env.NEXT_PUBLIC_API_URL;
@@ -93,6 +95,7 @@ export default function Profile({ params }: any) {
   }, []);
   const posts: any = [];
   return (
+    !user ? <></> :
     <div className="min-h-screen wrapContainer pt-[100px] overflow-hidden">
       <div className="w-[800px] h-[800px] rotate-[92] flex-shrink-0 rounded-full bg-[#4317ff] blur-[360px] -z-50 absolute right-0 top-1/4"></div>
       <div className="flex gap-8">

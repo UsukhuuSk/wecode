@@ -6,6 +6,7 @@ const withNextIntl = createNextIntlPlugin();
 const nextConfig = {
   // output: "export",
   distDir: process.env.BUILD_DIR,
+  reactStrictMode: false,
   images: {
     domains: ["images.unsplash.com", "plus.unsplash.com"],
     unoptimized: true,

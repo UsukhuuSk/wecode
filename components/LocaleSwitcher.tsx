@@ -2,7 +2,7 @@
 
 import { useLocale } from "next-intl";
 import React, { useTransition, ChangeEvent, startTransition } from "react";
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import {
   Select,
   SelectContent,
@@ -17,10 +17,15 @@ export default function LocaleSwitcher() {
   const [isPending, setIsPending] = useTransition();
   const router = useRouter();
   const current = useLocale();
+  const pathname = usePathname();
+  const searchParams = useSearchParams();
+  
   const onSelectChange = (e: ChangeEvent<HTMLSelectElement>) => {
-    const nextLocale = e.target.value;
     startTransition(() => {
-      router.replace(`/${nextLocale}`);
+      const nextLocale = e.target.value;
+      const currentPath = pathname.replace(/^\/(mn|en)/, `/${nextLocale}`);
+      const updatedPath = `${currentPath}${searchParams.toString() ? `?${searchParams.toString()}` : ''}`; 
+      router.replace(updatedPath);
     });
   };
 

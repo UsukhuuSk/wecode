@@ -72,20 +72,35 @@ const Step3: React.FC<StepProps> = ({ next, back }) => {
     <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-6">
       <div className="flex gap-2">
         <h1 className="text-start text-[18px] text-[#3f3f46] font-neue">
-          Self Promise
+          <span className="text-start font-bold text-[18px] text-[#3f3f46] font-neue">
+            2.
+          </span> What industry do you work in?
         </h1>
       </div>
 
-      <p className="font-medium text-[16px] font-neue text-[#52525b]">
-        I am starting an online learning program at Al Academy. I know that
-        learning can be challenging, but I have the patience, determination, and
-        discipline to achieve my goals. If I get stuck, I will look for the
-        following solutions…
-      </p>
+      <RadioGroup
+        onValueChange={(value: any) => {
+          const selected = OPTIONS.find((option) => option.id === value);
+          setFormValues({
+            ...formValues,
+            industry: { _id: selected?.id, name: selected?.label },
+          });
+        }}
+        className="space-y-3"
+      >
+        {OPTIONS.map((industry) => (
+          <div key={industry.id} className="flex items-center space-x-2">
+            <RadioGroupItem value={industry.id} id={industry.id} />
+            <Label htmlFor={industry.id} className="text-base text-gray-700">
+              {industry.label}
+            </Label>
+          </div>
+        ))}
+      </RadioGroup>
       <div className="flex gap-4">
-        {/* <button type="button" onClick={back} className="px-4 py-2 bg-gray-300">
+        <button type="button" onClick={back} className="px-4 py-2 bg-gray-300 rounded-[32px]">
           Back
-        </button> */}
+        </button>
         <button
           type="submit"
           className="rounded-[32px] w-full text-white bg-[#4317FF] px-6 py-[12px] font-semibold text-[16px] font-neue"

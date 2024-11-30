@@ -14,10 +14,10 @@ interface StepProps {
 }
 
 interface Step2FormValues {
-  background: Object;
+  work_id: Object;
 }
 
-const Step4: React.FC<StepProps> = ({ next, back }) => {
+const Step3: React.FC<StepProps> = ({ next, back }) => {
   const {
     handleSubmit,
     formState: { errors },
@@ -27,19 +27,43 @@ const Step4: React.FC<StepProps> = ({ next, back }) => {
   const OPTIONS = [
     {
       id: "1",
-      label: "Yes, formal education (degree or certificate)",
+      label: "Student",
     },
     {
       id: "2",
-      label: "Yes, self-taught.",
+      label: "Information Technology",
     },
     {
       id: "3",
-      label: "No, I'm just starting out.",
+      label: "Healthcare",
+    },
+    {
+      id: "4",
+      label: "Financial",
+    },
+    {
+      id: "5",
+      label: "Industrial",
+    },
+    {
+      id: "6",
+      label: "Sales",
+    },
+    {
+      id: "7",
+      label: "Government and public services",
+    },
+    {
+      id: "8",
+      label: "Media",
+    },
+    {
+      id: "9",
+      label: "Other",
     },
   ];
 
-  const onSubmit: SubmitHandler<Step2FormValues> = () => {
+  const onSubmit: SubmitHandler<Step2FormValues> = (data) => {
     console.log("FormValues", formValues);
     if (next) next();
   };
@@ -47,34 +71,17 @@ const Step4: React.FC<StepProps> = ({ next, back }) => {
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-6">
       <div className="flex gap-2">
-        <span className="text-start font-bold text-[18px] text-[#3f3f46] font-neue">
-          3.
-        </span>
         <h1 className="text-start text-[18px] text-[#3f3f46] font-neue">
-          Do you have a background in coding, computer science, or a related
-          field?
+          Self Promise
         </h1>
       </div>
 
-      <RadioGroup
-        onValueChange={(value: any) => {
-          const selected = OPTIONS.find((option) => option.id === value);
-          setFormValues({
-            ...formValues,
-            industry: { _id: selected?.id, name: selected?.label },
-          });
-        }}
-        className="space-y-3"
-      >
-        {OPTIONS.map((industry) => (
-          <div key={industry.id} className="flex items-center space-x-2">
-            <RadioGroupItem value={industry.id} id={industry.id} />
-            <Label htmlFor={industry.id} className="text-base text-gray-700">
-              {industry.label}
-            </Label>
-          </div>
-        ))}
-      </RadioGroup>
+      <p className="font-medium text-[16px] font-neue text-[#52525b]">
+        I am starting an online learning program at Al Academy. I know that
+        learning can be challenging, but I have the patience, determination, and
+        discipline to achieve my goals. If I get stuck, I will look for the
+        following solutions…
+      </p>
       <div className="flex gap-4">
         <button type="button" onClick={back} className="px-4 py-2 bg-gray-300 rounded-[32px]">
           Back
@@ -90,4 +97,4 @@ const Step4: React.FC<StepProps> = ({ next, back }) => {
   );
 };
 
-export default Step4;
+export default Step3;

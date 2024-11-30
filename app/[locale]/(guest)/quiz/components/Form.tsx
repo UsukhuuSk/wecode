@@ -14,11 +14,14 @@ import ten from "../../../../../assets/LandingPage/10.svg";
 import eleven from "../../../../../assets/LandingPage/11.svg";
 import twelve from "../../../../../assets/LandingPage/12.svg";
 import logo from "../../../../../assets/shortlogo.svg";
+import { useTranslations } from "next-intl";
 
 export default function Form() {
   const [currentStep, setCurrentStep] = useState<number>(1);
   const next = () => setCurrentStep((prev) => prev + 1);
   const back = () => setCurrentStep((prev) => prev - 1);
+  const trns = useTranslations("quiz");
+
   return (
     <div className="flex flex-col gap-10 items-center h-screen relative">
       <div className="overflow-hidden h-[200px] xl:h-[450px] absolute bottom-0 -z-50">
@@ -67,11 +70,10 @@ export default function Form() {
           />
         </div>
         <div className="text-[14px] font-normal font-neue text-[rgba(255,255,255,0.5)]">
-          Before we start, please answer a few questions to identify yourself.
-          Thank you.
+          {trns("tip")}
         </div>
       </div>
-      <div className="pt-4 px-6 pb-6 bg-white min-w-[580px] mx-auto rounded-3xl">
+      <div className="pt-4 px-6 pb-6 bg-white w-[620px] mx-auto rounded-3xl">
         {currentStep === 1 && <Step1 next={next} />}
         {currentStep === 2 && <Step2 next={next} back={back} />}
         {currentStep === 3 && <Step3 next={next} back={back} />}

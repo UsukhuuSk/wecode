@@ -2,19 +2,19 @@
 import React, { createContext, useState, ReactNode } from "react";
 
 interface FormValues {
-  firstName?: string;
-  lastName?: string;
-  gender?: string;
-  employmentStatus?: string;
+  given_name?: string;
+  surname?: string;
+  gender_id?: string;
+  work_id?: string;
   age?: string;
   address?: string;
   city?: string;
-  region?: string;
-  educationLevel?: string;
-  acceptTerms?: boolean;
+  aimag_city_id?: string;
+  education_id?: string;
+  is_agreement?: boolean;
   purposes?: string[];
-  work_id?: Object;
   background?: Object;
+  industry?: Object;
 }
 
 interface FormContextProps {

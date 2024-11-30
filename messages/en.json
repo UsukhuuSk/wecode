@@ -222,5 +222,11 @@
         "3": "Provide financial aid or sponsorship: Support our mission by offering financial assistance or sponsorship. Whether it’s funding scholarships, donating equipment, or sponsoring an event, your contribution can help make AI education accessible to underserved communities."
       }
     }
+  },
+  "quiz": {
+    "tip": "Before we start, please answer a few questions to identify yourself. Thank you.",
+    "account": {
+      "firstName": "First name"
+    }
   }
 }
