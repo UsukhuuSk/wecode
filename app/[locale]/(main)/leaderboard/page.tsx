@@ -2,115 +2,128 @@ import React from "react";
 import { leaders } from "../../../../data/dummy";
 import Image from "next/image";
 import workout from "../../../../assets/userDash/sidebar/Workout.svg";
-
+import { CrownIcon } from "@hugeicons/react";
+import { FaTrophy } from "react-icons/fa";
+interface LeaderboardEntry {
+  position: number;
+  name: string;
+  hours: number;
+  image?: string;
+}
 export default function Leaderboard() {
+  const topUsers: LeaderboardEntry[] = [
+    {
+      position: 2,
+      name: "Bataa",
+      hours: 28,
+      image: "/placeholder.svg?height=100&width=100",
+    },
+    {
+      position: 1,
+      name: "Bayasgalan B.",
+      hours: 32,
+      image: "/placeholder.svg?height=100&width=100",
+    },
+    {
+      position: 3,
+      name: "Oyungoo M.",
+      hours: 24,
+      image: "/placeholder.svg?height=100&width=100",
+    },
+  ];
+
+  const otherUsers: LeaderboardEntry[] = Array.from({ length: 15 }, (_, i) => ({
+    position: i + 4,
+    name: "NAME",
+    hours: 2,
+  }));
   return (
-    <div className="px-12 py-14">
-      <div className="px-6 pb-6 flex flex-col gap-6">
-        <span className="flex flex-col gap-2">
-          <h1>Leaderboard</h1>
-          <h2 className="text-[#5C5C5C80] text-[14px]">
-            Сургалт бүр түвшингээр ялгагдаж байгаа тул бүртгүүлээд түвшинээ
-            мэдээрэй.
-          </h2>
-        </span>
-        <div className="flex items-center gap-3">
-          {/* {levels.map((level) => (
-            <div
-              key={level}
-              onClick={() => handleFilter(level)}
-              className={`px-6 py-3 rounded-[32px] border border-[#E3E3E3] font-semibold text-[14px] cursor-pointer ${
-                selectedLevel === level
-                  ? "bg-[#2EBD59] text-white"
-                  : "text-[#5C5C5C]"
-              }`}
-            >
-              {level}
-            </div>
-          ))} */}
+    <div className="min-h-screen wrapContainer py-[100px] overflow-hidden">
+      <div className="w-[800px] h-[800px] rotate-[92] flex-shrink-0 rounded-full bg-[#4317ff] blur-[360px] -z-50 absolute right-0 top-1/4"></div>
+      <div className="flex gap-8"></div>
+      <div className="mx-auto max-w-2xl">
+        <div className="mb-8 text-center flex flex-col gap-2">
+          <FaTrophy className="h-5 w-5 text-green-400 m-auto" />
+          <div className="mb-4 flex items-center justify-center gap-2">
+            <h1 className="text-[36px] font-bold text-white font-neue">
+              Leaderboard
+            </h1>
+          </div>
+          <div className="min-w-[200px] rounded-full m-auto text-white bg-slate-700 border border-[#40404787]">
+            Total learning time
+          </div>
         </div>
-      </div>
-      <div className="px-6 pb-6 bg-[#A0DC9308] h-screen w-full">
-        <div className="flex justify-center gap-[72px]">
-          {leaders.slice(0, 3).map((item, index) => (
-            <div
-              key={index}
-              className={`text-center relative flex flex-col gap-2 ${
-                index === 0
-                  ? "order-1"
-                  : index === 1
-                  ? "order-0 mt-20"
-                  : "order-2 mt-20"
-              }`}
-            >
-              <div className="">
-                <div
-                  className={`relative rounded-full overflow-hidden w-[122px] h-[122px] ${
-                    index === 0
-                      ? "border-[3px] border-[#F9DD41]"
-                      : index === 1
-                      ? "border-[3px] border-[#E5E7EB]"
-                      : "border-[3px] border-[#FED7AA]"
-                  }`}
-                >
-                  <Image
-                    src={item.image}
-                    alt={`Leader ${index + 1}`}
-                    className="w-full h-full object-cover"
-                    width={122}
-                    height={122}
-                  />
-                </div>
-                <span
-                  className={`absolute top-[50%] left-1/2 transform -translate-x-1/2 rounded-full px-3 py-1 font-bold ${
-                    index === 0
-                      ? "bg-[#F9DD41] top-[40%]"
-                      : index === 1
-                      ? "bg-[#E5E7EB]"
-                      : "bg-[#FED7AA]"
-                  }`}
-                >
-                  {index + 1}
-                </span>
-              </div>
-              <p className="font-semibold text-black text-[14px] mt-6">
-                {item.name}
-              </p>
-              <p className="font-semibold text-black text-[14px] flex">
-                <Image src={workout} alt="aaa" />
-                {item.watchedHours} hours
-              </p>
-            </div>
-          ))}
-        </div>
-        <div className="flex flex-col gap-2 mt-16">
-          {leaders.slice(3, 10).map((item, index) => (
-            <div
-              className="flex justify-between items-center rounded-xl border border-[#0000001A] group hover:bg-[#A3E635] transition-colors duration-300 ease-in-out"
-              key={index}
-            >
-              <div className="flex items-center justify-between gap-10">
-                <span className="pl-[52px] text-[#4F4F4F] text-[14px] font-semibold">
-                  {item.id + 1}
-                </span>
-                <div className="py-2 flex items-center gap-3">
-                  <div className=" w-8 h-8 overflow-hidden rounded-full">
+
+        <div className="relative mb-8 flex h-[280px] items-end justify-center">
+          {topUsers
+            .sort((a, b) => a.position - b.position)
+            .map((user, index) => (
+              <div
+                key={user.position}
+                className={`absolute flex flex-col items-center ${
+                  index === 1
+                    ? "bottom-0 z-10 mb-8"
+                    : index === 0
+                    ? "bottom-8 left-4"
+                    : "bottom-8 right-4"
+                }`}
+                style={{
+                  width: index === 1 ? "35.5%" : "30%",
+                }}
+              >
+                <div className="relative mb-2">
+                  {index === 1 && (
                     <Image
-                      src={item.image}
-                      alt={item.name}
+                      src="/placeholder.svg?height=40&width=40"
+                      alt="Crown"
                       width={40}
                       height={40}
+                      className="absolute -top-5 left-1/2 -translate-x-1/2"
+                    />
+                  )}
+                  <div
+                    className={`relative overflow-hidden rounded-full border-2 ${
+                      index === 1 ? "border-yellow-400" : "border-green-400"
+                    }`}
+                    style={{
+                      width: index === 1 ? "100px" : "80px",
+                      height: index === 1 ? "100px" : "80px",
+                    }}
+                  >
+                    <Image
+                      src={user.image || "/placeholder.svg"}
+                      alt={user.name}
+                      fill
                       className="object-cover"
                     />
                   </div>
-                  <span className="text-[#4F4F4F] text-[14px] font-semibold">
-                    {item.name}
-                  </span>
+                </div>
+                <div
+                  className={`w-full rounded-t-xl  p-2 text-center ${
+                    index === 1
+                      ? "h-[140px] bg-slate-800"
+                      : " bg-slate-900 h-[100px]"
+                  }`}
+                >
+                  <p className="font-medium text-white">{user.name}</p>
+                  <p className="text-sm text-yellow-400">{user.hours} hours</p>
                 </div>
               </div>
-              <span className="pr-[52px] text-[#4F4F4F] text-[14px] font-semibold">
-                {item.watchedHours} hours
-              </span>
+            ))}
+        </div>
+        <div className="space-y-2 border pt-3 px-4 pb-4 bg-[#33415533] rounded-xl border-[#33415533]">
+          {otherUsers.map((user) => (
+            <div
+              key={user.position}
+              className="flex items-center justify-between rounded-xl bg-transparent hover:bg-[#FFFFFF1A] duration-300 ease-in-out transition-all py-4 px-[10px]"
+            >
+              <div className="flex items-center gap-3">
+                <span className="w-6 text-center font-medium text-white">
+                  {user.position}
+                </span>
+                <span className="font-medium text-white">{user.name}</span>
+              </div>
+              <span className="text-sm text-gray-300">{user.hours} hours</span>
             </div>
           ))}
         </div>
