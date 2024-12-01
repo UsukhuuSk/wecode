@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "../globals.css";
+
 import { Montserrat_Alternates, Manrope, Golos_Text } from "next/font/google";
 import localFont from "next/font/local";
 import { NextIntlClientProvider } from "next-intl";

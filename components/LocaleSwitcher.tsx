@@ -32,13 +32,13 @@ export default function LocaleSwitcher() {
   return (
     <>
       <select
-        className="custom p-2"
+        className="custom p-2 bg-transparent "
         defaultValue={current}
         onChange={onSelectChange}
         disabled={isPending}
       >
-        <option value="en">EN</option>
-        <option value="mn">MN</option>
+        <option className="text-primary" value="en">EN</option>
+        <option className="text-primary" value="mn">MN</option>
       </select>
     </>
   );

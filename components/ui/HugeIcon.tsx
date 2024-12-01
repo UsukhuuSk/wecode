@@ -1,7 +1,7 @@
 import React from "react";
 
 const icons: any = {
-    bookEdit: (
+    bookEdit: ({ width = 16, height = 16 }: { width?: number; height?: number }) => (
         <svg
             width="24"
             height="24"
@@ -31,33 +31,63 @@ const icons: any = {
                 stroke="green" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
         </svg>
     ),
-    checkSolid: (
+    checkSolid: ({ width = 16, height = 16 }: { width?: number; height?: number }) => (
 
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path fill-rule="evenodd" clip-rule="evenodd" d="M11.75 22.5C5.81294 22.5 1 17.6871 1 11.75C1 5.81294 5.81294 1 11.75 1C17.6871 1 22.5 5.81294 22.5 11.75C22.5 17.6871 17.6871 22.5 11.75 22.5ZM16.5182 9.39018C16.8718 8.9659 16.8145 8.33534 16.3902 7.98177C15.9659 7.62821 15.3353 7.68553 14.9818 8.10981L10.6828 13.2686L8.45711 11.0429C8.06658 10.6524 7.43342 10.6524 7.04289 11.0429C6.65237 11.4334 6.65237 12.0666 7.04289 12.4571L10.0429 15.4571C10.2416 15.6558 10.5146 15.7617 10.7953 15.749C11.076 15.7362 11.3384 15.606 11.5182 15.3902L16.5182 9.39018Z" fill="white" />
         </svg>
 
     ),
-    arrowDown: (
+    arrowDown: ({ width = 16, height = 16 }: { width?: number; height?: number }) => (
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M18 9.00005C18 9.00005 13.5811 15 12 15C10.4188 15 6 9 6 9" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
         </svg>
     ),
-    play: (
+    play: ({ width = 16, height = 16 }: { width?: number; height?: number }) => (
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path opacity="0.4" d="M18.8906 12.846C18.5371 14.189 16.8667 15.138 13.5257 17.0361C10.296 18.8709 8.6812 19.7884 7.37983 19.4196C6.8418 19.2671 6.35159 18.9776 5.95624 18.5787C5 17.6139 5 15.7426 5 12C5 8.2574 5 6.3861 5.95624 5.42132C6.35159 5.02245 6.8418 4.73288 7.37983 4.58042C8.6812 4.21165 10.296 5.12907 13.5257 6.96393C16.8667 8.86197 18.5371 9.811 18.8906 11.154C19.0365 11.7084 19.0365 12.2916 18.8906 12.846Z" fill="gray" />
             <path d="M18.8906 12.846C18.5371 14.189 16.8667 15.138 13.5257 17.0361C10.296 18.8709 8.6812 19.7884 7.37983 19.4196C6.8418 19.2671 6.35159 18.9776 5.95624 18.5787C5 17.6139 5 15.7426 5 12C5 8.2574 5 6.3861 5.95624 5.42132C6.35159 5.02245 6.8418 4.73288 7.37983 4.58042C8.6812 4.21165 10.296 5.12907 13.5257 6.96393C16.8667 8.86197 18.5371 9.811 18.8906 11.154C19.0365 11.7084 19.0365 12.2916 18.8906 12.846Z" stroke="white" stroke-width="1.5" stroke-linejoin="round" />
         </svg>
     ),
-    arrowRight: (
+    arrowRight: ({ width = 16, height = 16 }: { width?: number; height?: number }) => (
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M8.19486 5.40705C8.52237 4.96235 9.14837 4.86736 9.59306 5.19488C9.93847 5.44927 10.2668 5.70372 10.5528 5.92689C11.1236 6.3724 11.8882 6.98573 12.6556 7.65208C13.4181 8.31412 14.2064 9.04815 14.8119 9.73344C15.1136 10.0749 15.3911 10.4279 15.5986 10.7721C15.7895 11.0888 16 11.524 16 12.0001C16 12.4762 15.7895 12.9115 15.5986 13.2282C15.3911 13.5724 15.1136 13.9253 14.8119 14.2668C14.2064 14.9521 13.4181 15.6861 12.6556 16.3482C11.8882 17.0145 11.1236 17.6278 10.5528 18.0734C10.2668 18.2965 9.93847 18.551 9.59307 18.8054C9.14837 19.1329 8.52237 19.0379 8.19486 18.5932C8.0632 18.4144 7.99983 18.2064 8.00001 18.0002L8 12.0001L8 6.00007C7.99983 5.79387 8.0632 5.58581 8.19486 5.40705Z" fill="white" />
         </svg>
     ),
-    circleArrowLeft: (
+    circleArrowLeft: ({ width = 16, height = 16 }: { width?: number; height?: number }) => (
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
             <circle cx="12" cy="12" r="10" stroke="white" stroke-width="1.5" />
             <path d="M13.5 16C13.5 16 10.5 13.054 10.5 12C10.5 10.9459 13.5 8 13.5 8" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+        </svg>
+
+    ),
+    video: ({ width = 16, height = 16 }: { width?: number; height?: number }) => (
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path opacity="0.4" fill-rule="evenodd" clip-rule="evenodd" d="M3.02513 5.02513C2 6.05025 2 7.70017 2 11V13C2 16.2998 2 17.9497 3.02513 18.9749C4.05025 20 5.70017 20 9 20H10C13.2998 20 14.9497 20 15.9749 18.9749C17 17.9497 17 16.2998 17 13V11C17 7.70017 17 6.05025 15.9749 5.02513C14.9497 4 13.2998 4 10 4H9C5.70017 4 4.05025 4 3.02513 5.02513ZM11.5 11C12.3284 11 13 10.3284 13 9.5C13 8.67157 12.3284 8 11.5 8C10.6716 8 10 8.67157 10 9.5C10 10.3284 10.6716 11 11.5 11Z" fill="#141B34" />
+            <path d="M2 11C2 7.70017 2 6.05025 3.02513 5.02513C4.05025 4 5.70017 4 9 4H10C13.2998 4 14.9497 4 15.9749 5.02513C17 6.05025 17 7.70017 17 11V13C17 16.2998 17 17.9497 15.9749 18.9749C14.9497 20 13.2998 20 10 20H9C5.70017 20 4.05025 20 3.02513 18.9749C2 17.9497 2 16.2998 2 13V11Z" stroke="white" stroke-width="1.5" />
+            <path d="M17 8.90585L17.1259 8.80196C19.2417 7.05623 20.2996 6.18336 21.1498 6.60482C22 7.02628 22 8.42355 22 11.2181V12.7819C22 15.5765 22 16.9737 21.1498 17.3952C20.2996 17.8166 19.2417 16.9438 17.1259 15.198L17 15.0941" stroke="white" stroke-width="1.5" stroke-linecap="round" />
+            <circle cx="11.5" cy="9.5" r="1.5" stroke="#141B34" stroke-width="1.5" />
+        </svg>
+    ),
+    attachment: ({ width = 16, height = 16 }: { width?: number; height?: number }) => (
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M19.5 12.0001V13.5001C19.5 17.6422 16.1421 21.0001 12 21.0001C7.85786 21.0001 4.5 17.6422 4.5 13.5001V8C4.5 5.23858 6.73858 3 9.5 3C12.2614 3 14.5 5.23858 14.5 8V13.5C14.5 14.8807 13.3807 16 12 16C10.6193 16 9.5 14.8807 9.5 13.5V9.5" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+        </svg>
+    ),
+    star: ({ width = 16, height = 16 }: { width?: number; height?: number }) => (
+        <svg width={width} height={height} viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M10.6772 2.9544C11.3321 1.68187 13.1679 1.68187 13.8228 2.9544L16.0293 7.24233C16.0659 7.31348 16.1347 7.363 16.2143 7.37556L21.0106 8.13205C22.4332 8.35643 23.0001 10.0828 21.9828 11.093L18.5492 14.5025C18.4923 14.559 18.4661 14.6389 18.4787 14.7177L19.2355 19.4762C19.4598 20.8865 17.9749 21.9539 16.6905 21.3059L12.3645 19.1234C12.2926 19.0871 12.2074 19.0871 12.1355 19.1234L7.80953 21.3059C6.52505 21.9539 5.04024 20.8865 5.26453 19.4762L6.02134 14.7177C6.03387 14.6389 6.00766 14.559 5.95079 14.5025L2.51718 11.093C1.49993 10.0828 2.06681 8.35643 3.48941 8.13205L8.28567 7.37556C8.3653 7.363 8.43407 7.31348 8.47069 7.24233L10.6772 2.9544Z" fill="#FBBC05" />
+        </svg>
+    ),
+    starHalf: ({ width = 16, height = 16 }: { width?: number; height?: number }) => (
+        <svg width={width} height={height} viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M14.8356 6.73297L15.2401 7.52662C15.3853 7.81154 15.658 8.00982 15.9738 8.06012L20.7287 8.8174C21.5346 8.94575 21.8557 9.9333 21.2794 10.5111L17.8754 13.9242C17.6499 14.1503 17.546 14.4705 17.5957 14.786L18.346 19.5494C18.473 20.3561 17.6319 20.9668 16.9042 20.5961L14.76 19.5038" stroke="#FBBC05" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M10.737 2.62958C11.2858 1.55262 12.9116 1.94303 12.9116 3.15175V17.5672C12.9116 18.2253 12.5424 18.8278 11.9559 19.1265L7.75942 21.2644C6.48602 21.9131 5.01402 20.8445 5.23637 19.4328L5.98666 14.6693C5.99908 14.5904 5.97309 14.5104 5.91672 14.4538L2.51272 11.0407C1.50424 10.0296 2.06623 8.30134 3.47657 8.07673L8.23145 7.31945C8.3104 7.30688 8.37857 7.2573 8.41487 7.18608L10.737 2.62958Z" fill="#FBBC05" />
+        </svg>
+    ),
+    starOutlined: ({ width = 16, height = 16 }: { width?: number; height?: number }) => (
+        <svg width={width} height={height} viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M13.7276 3.44418L15.4874 6.99288C15.7274 7.48687 16.3673 7.9607 16.9073 8.05143L20.0969 8.58575C22.1367 8.92853 22.6167 10.4206 21.1468 11.8925L18.6671 14.3927C18.2471 14.8161 18.0172 15.6327 18.1471 16.2175L18.8571 19.3125C19.417 21.7623 18.1271 22.71 15.9774 21.4296L12.9877 19.6452C12.4478 19.3226 11.5579 19.3226 11.0079 19.6452L8.01827 21.4296C5.8785 22.71 4.57865 21.7522 5.13859 19.3125L5.84851 16.2175C5.97849 15.6327 5.74852 14.8161 5.32856 14.3927L2.84884 11.8925C1.389 10.4206 1.85895 8.92853 3.89872 8.58575L7.08837 8.05143C7.61831 7.9607 8.25824 7.48687 8.49821 6.99288L10.258 3.44418C11.2179 1.51861 12.7777 1.51861 13.7276 3.44418Z" stroke="#FBBC05" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
         </svg>
 
     )
@@ -69,9 +99,13 @@ interface IconProps {
     width?: number | string;
     height?: number | string;
     fill?: string;
+    onClick?: () => any
+    onMouseEnter?: () => any
+    onMouseLeave?: () => any,
+    size?: any;
 }
 
-const HugeIcon: React.FC<IconProps> = ({ name, className, width, height }) => {
+const HugeIcon: React.FC<IconProps> = ({ name, className, width, height, onClick, onMouseEnter, onMouseLeave, size = 16 }) => {
     const SelectedIcon = icons[name];
 
     if (!SelectedIcon) {
@@ -81,10 +115,13 @@ const HugeIcon: React.FC<IconProps> = ({ name, className, width, height }) => {
 
     return (
         <div
+            onMouseEnter={onMouseEnter}
+            onMouseLeave={onMouseLeave}
+            onClick={onClick}
             className={className}
-            style={{ width, height }} // Apply inline styles
+            style={{ width, height }}
         >
-            {SelectedIcon}
+            <SelectedIcon width={width || size} height={height || size} />
         </div>
     );
 };

@@ -1,25 +1,21 @@
 import { Search01Icon } from "@hugeicons/react";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { BaseApi } from "../../api/baseApi";
 import { Input } from "../ui/input";
 import { Checkbox } from "../ui/checkbox";
+import { useTranslations } from "next-intl";
 
 type CourseFilterProps = {
-    onChange: (value: any) => void;
+    onChange: (field: any, value: any, d?: any) => void;
+    filter: any;
+    onClear: () => any;
 };
 
-const CourseFilter: React.FC<CourseFilterProps> = ({ onChange }) => {
-
+const CourseFilter: React.FC<CourseFilterProps> = ({ filter, onChange, onClear }) => {
+    const trns = useTranslations("course.detail");
     const [topics, setTopics] = useState<any>([])
     const [levels, setLevels] = useState<any>([])
-    const [selectedTopics, setSelectedTopics] = useState<any>([])
-    const [selectedLevels, setSelectedLevels] = useState<any>([])
-    const [text, setText] = useState<any>("")
 
-
-    useEffect(() => {
-        onChange({ selectedTopics, selectedLevels })
-    }, [selectedTopics, selectedLevels]);
 
     useEffect(() => {
         getTopics()
@@ -45,22 +41,21 @@ const CourseFilter: React.FC<CourseFilterProps> = ({ onChange }) => {
     }
 
     const handleTopicChange = (checked: boolean, topicId: number): void => {
-        if (checked) {
-            setSelectedTopics((prev: any) => [...prev, topicId]); // Add topic to selected
-        } else {
-            setSelectedTopics((prev: any) => prev.filter((_id: any) => _id !== topicId)); // Remove topic from selected
-        }
+        onChange('topics', topicId, checked)
     };
 
 
-    const handleLevelChange = (checked: boolean, topicId: number): void => {
-        if (checked) {
-            setSelectedLevels((prev: any) => [...prev, topicId]); // Add topic to selected
-        } else {
-            setSelectedLevels((prev: any) => prev.filter((_id: any) => _id !== topicId)); // Remove topic from selected
-        }
+    const handleLevelChange = (checked: boolean, levelId: number): void => {
+        onChange('levels', levelId, checked)
     };
 
+    const handleChangeText = (e: any) => {
+        onChange('text', e.target.value)
+    }
+
+    const handleClear = () => {
+        onClear()
+    }
     return (
         <div className="w-[300px] flex flex-col text-white gap-4 pr-8">
             <div className="flex flex-col gap-4">
@@ -71,23 +66,23 @@ const CourseFilter: React.FC<CourseFilterProps> = ({ onChange }) => {
                         className="absolute left-3"
                     />
                     <Input
-                        value={text}
-                        onChange={(e: any) => setText(e.target.value)}
+                        value={filter.text}
+                        onChange={handleChangeText}
                         className="search border-none focus:border-none rounded-[100px] pl-10"
-                        placeholder="Search"
+                        placeholder={trns("search")}
                     />
                 </div>
                 <div className="flex justify-between">
                     <span className="text-[15px] font-neue font-medium">
-                        Filters
+                        {trns("filters")}
                     </span>
-                    <span className="text-[15px] font-neue font-bold">
-                        Clear all
+                    <span className="text-[15px] font-neue font-bold hover:text-gray-100 cursor-pointer" onClick={handleClear}>
+                        {trns("clear")}
                     </span>
                 </div>
                 <div className="flex flex-col gap-4">
                     <h2 className="text-[15px] py-[10px] font-medium font-neue">
-                        Topics
+                        {trns("topics")}
                     </h2>
                     {topics.map((item: { _id: number, name: string }, index: number) => (
                         <div
@@ -98,7 +93,7 @@ const CourseFilter: React.FC<CourseFilterProps> = ({ onChange }) => {
                                 <Checkbox key={item._id} onCheckedChange={(e: any) =>
                                     handleTopicChange(e, item._id)
                                 }
-                                    checked={selectedTopics.includes(item._id)} />
+                                    checked={filter.topics.includes(item._id)} />
                                 {item.name}
                             </label>
                         </div>
@@ -106,7 +101,7 @@ const CourseFilter: React.FC<CourseFilterProps> = ({ onChange }) => {
                 </div>
                 <div className="flex flex-col gap-4">
                     <h2 className="text-[15px] py-[10px] font-medium font-neue">
-                        Levels
+                        {trns("levels")}
                     </h2>
                     {levels.map((item: { _id: number, name: string }, index: number) => (
                         <div
@@ -117,7 +112,7 @@ const CourseFilter: React.FC<CourseFilterProps> = ({ onChange }) => {
                                 <Checkbox key={item._id} onCheckedChange={(e: any) =>
                                     handleLevelChange(e, item._id)
                                 }
-                                    checked={selectedLevels.includes(item._id)} />
+                                    checked={filter.levels.includes(item._id)} />
                                 {item.name}
                             </label>
                         </div>

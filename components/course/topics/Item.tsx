@@ -21,7 +21,7 @@ const TopicItem: React.FC<TopicProps> = ({ topic, index, onPlay }: any) => {
     }
 
     return (
-        <div className=" bg-cardDark rounded-xl border border-slate-500 ">
+        <div className=" bg-cardDark rounded-xl border border-wcBorder ">
             <div onClick={() => handleOpen()} className="flex gap-4  px-4 py-3 justify-between cursor-pointer hover:bg-card">
                 <div className="flex gap-2">
                     <HugeIcon name="bookEdit" />
@@ -32,7 +32,7 @@ const TopicItem: React.FC<TopicProps> = ({ topic, index, onPlay }: any) => {
                 <HugeIcon name="arrowDown" />
             </div>
             <div className={"oveflow-hidden transition-all " + (open ? '' : "h-0")}>
-                <div className={" " + (!open ? 'hidden' : 'p-3')}>
+                <div className={" " + (!open ? 'hidden' : 'px-3 pb-3')}>
                     {
                         <TopicLessons topicId={topic._id}/>
                     }

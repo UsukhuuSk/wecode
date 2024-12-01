@@ -248,7 +248,30 @@
       "video": "video",
       "home": "Home",
       "courses": "Courses",
-      "loading": "loading"
+      "loading": "loading",
+      "popular": "Most popular",
+      "topRated": "Top rated",
+      "allCourses": "All Courses",
+      "allCourseDetail" : "Grow your AI career with foundational specializations and kill-specific short courses taught by leaders in the field.",
+      "search": "Search",
+      "clear": "Clear all",
+      "filters": "Filters",
+      "topics": "Topics",
+      "levels": "Levels",
+      "transcript": "Transcript",
+      "tasks": "Tasks",
+      "download": "Downloads",
+      "ratings": "Rating",
+      "ratingTitle": "Rate this course",
+      "ratingDesc": "We kindly ask your honest review on this course for further advancements, thank you.",
+      "rateButton": "Let’s rate",
+      "yourReview": "Your review",
+      "continue": "Continue",
+      "courseName": "Course name",
+      "reviewDesc": "Write your review (Optional)",
+      "reviewPlaceholder": "Write here",
+      "ratingWarning": "Rate between 1 to 5?",
+      "ratingSuccess": "Successfully rated."
     }
   }
 }

@@ -15,6 +15,19 @@ export class Helper {
     });
   }
 
+  static handleWarning(message?: any) {
+    return toast.warning(message ? message : "Анхаар.", {
+      position: "top-right",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "colored",
+    });
+  }
+
   static handleError(error?: any) {
     return toast.error(error ? error : "Алдаа гарлаа.", {
       position: "top-right",

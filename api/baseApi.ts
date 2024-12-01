@@ -27,7 +27,6 @@ export class BaseApi {
                 ...(token ? { Authorization: `Bearer ${token}` } : {})
             },
         };
-        console.log('token is here', token)
         // GET хүсэлтийн хувьд query string болгоно
         const finalUrl = method === 'GET' && params
             ? `${url}?${new URLSearchParams(params).toString()}`
@@ -50,7 +49,6 @@ export class BaseApi {
 
             if (!response.ok) {
                 const errorData = await response.json();
-                console.log('errorData', errorData)
                 if (errorData.message) {
                     throw `${errorData.message}`;
                   } else {

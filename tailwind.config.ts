@@ -85,7 +85,12 @@ const config: Config = {
       colors: {
         card: "rgba(51, 65, 85, 0.2)",
         cardDark: "rgba(51, 65, 85, 0.4)",
-        primary: "#4317FF"
+        primary: "#4317FF",
+        tpGreen: "#22c55e20",
+        wcSlate: "#475569",
+        wcBorder: "#334155"
+
+
       },
       borderRadius: {
         '4xl': '2rem',

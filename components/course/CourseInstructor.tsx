@@ -2,18 +2,20 @@ import { useTranslations } from "next-intl";
 import { CourseEnroll } from "./Enroll"
 import { GetFileUrl } from "../../lib/utils";
 
-export const CourseInstructor = ({course, teachers, enrolled, onChange}: any) => {
+export const CourseInstructor = ({ course, teachers, enrolled, onChange }: any) => {
     const trns = useTranslations("course.detail");
 
     return (
-        <div className="rounded-xl px-4 py-3 bg-[#334155]">
-            <div className="text-white border-b border-slate-500 p-2 font-medium">
-                {course?.name}
-            </div>
-            <div className="my-2 text-sm">
+        <div className={"rounded-xl px-4 py-3 " + (enrolled ? "bg-cardDark border border-wcBorder" : "bg-[#334155]")}>
+            {
+                !enrolled && <div className="text-white border-b border-slate-500 p-2 font-medium">
+                    {course?.name}
+                </div>
+            }
+            <div className={"text-sm " + (enrolled ? "mb-2" : "my-2 ")}>
                 {trns('instructor')}
             </div>
-            <div className="grid grid-cols-2 mb-4 gap-2">
+            <div className={"grid grid-cols-2 gap-2 " + (enrolled ? "" : "mb-4")}>
                 {teachers.map((t: any) => {
                     return (
                         <div className="col-span-1  lg:col-span-2 xl:col-span2 2xl:col-span-2 flex gap-4">
@@ -30,9 +32,11 @@ export const CourseInstructor = ({course, teachers, enrolled, onChange}: any) =>
                     )
                 })}
             </div>
-            <div>
-                <CourseEnroll course={course} enroll={enrolled} onChange={onChange} />
-            </div>
+            {
+                !enrolled && <div>
+                    <CourseEnroll course={course} enroll={enrolled} onChange={onChange} />
+                </div>
+            }
         </div>
     )
 }

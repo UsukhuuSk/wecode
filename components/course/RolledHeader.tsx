@@ -14,7 +14,7 @@ export const CourseRolledHeader = ({ course }: any) => {
                 <Link href={`/${params.locale}/course`}>
                     <HugeIcon name="circleArrowLeft" />
                 </Link>
-                <p className="text-white font-bold text-[2rem]">
+                <p className="text-white font-bold text-[2rem] font-neue">
                     {course?.name}
                 </p>
             </div>

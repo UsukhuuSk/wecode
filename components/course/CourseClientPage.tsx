@@ -22,6 +22,7 @@ import CourseGuestHeader from "./GuestHeader";
 import { CourseRolledHeader } from "./RolledHeader";
 import { LessonProvider, useLesson } from "../../context/LessonContext";
 import { LessonPlay } from "./lessons/Play";
+import { LessonDetailTabs } from "./lessons/DetailTabs";
 
 
 export default function CourseClientPage({ courseData, params }: any) {
@@ -72,12 +73,13 @@ export default function CourseClientPage({ courseData, params }: any) {
                         </div>
                     </div>
                     :
-                    <div className="container grid grid-cols-12 lg:gap-8 xl:gap-10 2xl:gap-10 mb-8 mt-20">
+                    <div className="container grid grid-cols-12 lg:gap-8 xl:gap-14 2xl:gap-14 mb-8 mt-20">
                         <div className="col-span-12 ">
                             <CourseRolledHeader course={course} />
                         </div>
-                        <div className="flex flex-col gap-8 col-span-12  lg:col-span-8 xl:col-span-8 2xl:col-span-8">
+                        <div className="flex flex-col gap-4 col-span-12  lg:col-span-8 xl:col-span-8 2xl:col-span-8">
                             {activeLesson ? <LessonPlay activeLesson={activeLesson} /> : <VideoCourse id={course.intro_video_id._id} locale="mn" />}
+                            <LessonDetailTabs course={course}/>
                         </div>
                         <div className="col-span-12  lg:col-span-4 xl:col-span-4 2xl:col-span-4 text-white">
                             <CourseInstructor course={course} teachers={teachers} enrolled={enrolled} onChange={handleEnroll} />

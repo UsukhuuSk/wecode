@@ -14,7 +14,7 @@ export default function page({ params }: any) {
   const locale = params?.locale;
   router.push(`/${locale}/course`);
   return (
-    <main className="h-full min-h-screen w-full relative m-auto pt-[200px] overflow-hidden px-5">
+    <main className="h-full min-h-screen relative m-auto pt-[200px] overflow-hidden px-5">
       <div className="absolute -top-1/4 left-0 -translate-x-1/2 bg-[#4317FF] blur-[200px] w-[244px] h-[200px]"></div>
       <div className="absolute -top-1/4 right-0 -translate-x-1/2 bg-[#4317FF] blur-[200px] w-[244px] h-[200px]"></div>
       <div className="flex flex-col justify-center items-center gap-16 relative ">

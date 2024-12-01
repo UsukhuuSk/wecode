@@ -23,6 +23,7 @@ import { useEffect, useState } from "react";
 import { jsonRequestWithToken } from "../api/utils";
 import { getFile } from "../api/serviceuser";
 import { fetchImageFileById } from "../lib/imageUtils";
+import LocaleSwitcher from "./LocaleSwitcher";
 
 export default function Header() {
   const BASEURL = process.env.NEXT_PUBLIC_API_URL;
@@ -98,7 +99,9 @@ export default function Header() {
   return (
     <div className="fixed top-0 z-10 w-full py-3 text-white bg-[#33415566] border-b border-[#40404787]">
       <div className="wrapContainer flex justify-between">
-        <Image src={logo} alt="logo" width={100} height={32} />
+        <Link href={'/'}>
+          <Image src={logo} alt="logo" width={100} height={32} />
+        </Link>
         <div className="flex items-center gap-8">
           <div className="flex items-center gap-6">
             {routes.map((route, index) => {
@@ -115,6 +118,7 @@ export default function Header() {
               );
             })}
             <div className="flex items-center gap-4">
+              <LocaleSwitcher />
               <div className="p-1 bg-[#FFFFFF33] rounded-full">
                 <Notification03Icon
                   size={20}
