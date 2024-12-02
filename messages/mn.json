@@ -280,7 +280,8 @@
       "reviewDesc": "Сэтгэгдлээ бичнэ үү (Заавал биш)",
       "reviewPlaceholder": "Энд бичих",
       "ratingWarning": "1 ээс 5 ын хооронд үнэлнэ үү?",
-      "ratingSuccess": "Амжилттай үнэллээ."
+      "ratingSuccess": "Амжилттай үнэллээ.",
+      "noFile": "Хавсралтгүй." 
     }
   }
 }

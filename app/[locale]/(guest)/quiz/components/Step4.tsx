@@ -14,7 +14,7 @@ interface StepProps {
 }
 
 interface Step2FormValues {
-  background: Object;
+  background: any;
 }
 
 const Step4: React.FC<StepProps> = ({ next, back }) => {

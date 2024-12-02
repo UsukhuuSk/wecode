@@ -16,9 +16,9 @@ export const CourseInstructor = ({ course, teachers, enrolled, onChange }: any) 
                 {trns('instructor')}
             </div>
             <div className={"grid grid-cols-2 gap-2 " + (enrolled ? "" : "mb-4")}>
-                {teachers.map((t: any) => {
+                {teachers.map((t: any, index: number) => {
                     return (
-                        <div className="col-span-1  lg:col-span-2 xl:col-span2 2xl:col-span-2 flex gap-4">
+                        <div key={index} className="col-span-1  lg:col-span-2 xl:col-span2 2xl:col-span-2 flex gap-4">
                             <div className="w-8 h-8 rounded-full overflow-hidden flex justify-center items-start bg-gray-900">
                                 <img
                                     sizes="20px"

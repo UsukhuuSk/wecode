@@ -11,7 +11,7 @@ interface StepProps {
 }
 
 interface Step2FormValues {
-  background: Object;
+  background: any;
 }
 
 const Step5: React.FC<StepProps> = ({ next, back }) => {
@@ -75,9 +75,9 @@ const Step5: React.FC<StepProps> = ({ next, back }) => {
       </p>
       <div className="flex gap-x-3 gap-y-2 w-[550px] flex-wrap justify-center mb-6 mt-3">
         {
-          tags.map(t => {
+          tags.map((t: any, i: number) => {
             return (
-              <div className="text-white text-nowrap px-3 text-sm" style={{ background: t.color }}> {t.name}</div>
+              <div key={i} className="text-white text-nowrap px-3 text-sm" style={{ background: t.color }}> {t.name}</div>
             )
           })
         }

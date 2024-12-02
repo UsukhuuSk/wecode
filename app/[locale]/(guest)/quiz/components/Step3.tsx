@@ -14,7 +14,7 @@ interface StepProps {
 }
 
 interface Step2FormValues {
-  work_id: Object;
+  work_id: any;
 }
 
 const Step3: React.FC<StepProps> = ({ next, back }) => {

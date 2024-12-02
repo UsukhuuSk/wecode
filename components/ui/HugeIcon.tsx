@@ -79,15 +79,49 @@ const icons: any = {
             <path fill-rule="evenodd" clip-rule="evenodd" d="M10.6772 2.9544C11.3321 1.68187 13.1679 1.68187 13.8228 2.9544L16.0293 7.24233C16.0659 7.31348 16.1347 7.363 16.2143 7.37556L21.0106 8.13205C22.4332 8.35643 23.0001 10.0828 21.9828 11.093L18.5492 14.5025C18.4923 14.559 18.4661 14.6389 18.4787 14.7177L19.2355 19.4762C19.4598 20.8865 17.9749 21.9539 16.6905 21.3059L12.3645 19.1234C12.2926 19.0871 12.2074 19.0871 12.1355 19.1234L7.80953 21.3059C6.52505 21.9539 5.04024 20.8865 5.26453 19.4762L6.02134 14.7177C6.03387 14.6389 6.00766 14.559 5.95079 14.5025L2.51718 11.093C1.49993 10.0828 2.06681 8.35643 3.48941 8.13205L8.28567 7.37556C8.3653 7.363 8.43407 7.31348 8.47069 7.24233L10.6772 2.9544Z" fill="#FBBC05" />
         </svg>
     ),
-    starHalf: ({ width = 16, height = 16 }: { width?: number; height?: number }) => (
+    starHalf: ({ width = 16, height = 16, color }: { width?: number; height?: number, color?: any }) => (
         <svg width={width} height={height} viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M14.8356 6.73297L15.2401 7.52662C15.3853 7.81154 15.658 8.00982 15.9738 8.06012L20.7287 8.8174C21.5346 8.94575 21.8557 9.9333 21.2794 10.5111L17.8754 13.9242C17.6499 14.1503 17.546 14.4705 17.5957 14.786L18.346 19.5494C18.473 20.3561 17.6319 20.9668 16.9042 20.5961L14.76 19.5038" stroke="#FBBC05" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-            <path fill-rule="evenodd" clip-rule="evenodd" d="M10.737 2.62958C11.2858 1.55262 12.9116 1.94303 12.9116 3.15175V17.5672C12.9116 18.2253 12.5424 18.8278 11.9559 19.1265L7.75942 21.2644C6.48602 21.9131 5.01402 20.8445 5.23637 19.4328L5.98666 14.6693C5.99908 14.5904 5.97309 14.5104 5.91672 14.4538L2.51272 11.0407C1.50424 10.0296 2.06623 8.30134 3.47657 8.07673L8.23145 7.31945C8.3104 7.30688 8.37857 7.2573 8.41487 7.18608L10.737 2.62958Z" fill="#FBBC05" />
+            <path d="M14.8356 6.73297L15.2401 7.52662C15.3853 7.81154 15.658 8.00982 15.9738 8.06012L20.7287 8.8174C21.5346 8.94575 21.8557 9.9333 21.2794 10.5111L17.8754 13.9242C17.6499 14.1503 17.546 14.4705 17.5957 14.786L18.346 19.5494C18.473 20.3561 17.6319 20.9668 16.9042 20.5961L14.76 19.5038" stroke={color ? color : "#141B34"} stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M10.737 2.62958C11.2858 1.55262 12.9116 1.94303 12.9116 3.15175V17.5672C12.9116 18.2253 12.5424 18.8278 11.9559 19.1265L7.75942 21.2644C6.48602 21.9131 5.01402 20.8445 5.23637 19.4328L5.98666 14.6693C5.99908 14.5904 5.97309 14.5104 5.91672 14.4538L2.51272 11.0407C1.50424 10.0296 2.06623 8.30134 3.47657 8.07673L8.23145 7.31945C8.3104 7.30688 8.37857 7.2573 8.41487 7.18608L10.737 2.62958Z" fill={color ? color : "#141B34"} />
         </svg>
     ),
-    starOutlined: ({ width = 16, height = 16 }: { width?: number; height?: number }) => (
+    starOutlined: ({ width = 16, height = 16, color }: { width?: number; height?: number, color?: any }) => (
         <svg width={width} height={height} viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M13.7276 3.44418L15.4874 6.99288C15.7274 7.48687 16.3673 7.9607 16.9073 8.05143L20.0969 8.58575C22.1367 8.92853 22.6167 10.4206 21.1468 11.8925L18.6671 14.3927C18.2471 14.8161 18.0172 15.6327 18.1471 16.2175L18.8571 19.3125C19.417 21.7623 18.1271 22.71 15.9774 21.4296L12.9877 19.6452C12.4478 19.3226 11.5579 19.3226 11.0079 19.6452L8.01827 21.4296C5.8785 22.71 4.57865 21.7522 5.13859 19.3125L5.84851 16.2175C5.97849 15.6327 5.74852 14.8161 5.32856 14.3927L2.84884 11.8925C1.389 10.4206 1.85895 8.92853 3.89872 8.58575L7.08837 8.05143C7.61831 7.9607 8.25824 7.48687 8.49821 6.99288L10.258 3.44418C11.2179 1.51861 12.7777 1.51861 13.7276 3.44418Z" stroke="#FBBC05" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+            <path d="M13.7276 3.44418L15.4874 6.99288C15.7274 7.48687 16.3673 7.9607 16.9073 8.05143L20.0969 8.58575C22.1367 8.92853 22.6167 10.4206 21.1468 11.8925L18.6671 14.3927C18.2471 14.8161 18.0172 15.6327 18.1471 16.2175L18.8571 19.3125C19.417 21.7623 18.1271 22.71 15.9774 21.4296L12.9877 19.6452C12.4478 19.3226 11.5579 19.3226 11.0079 19.6452L8.01827 21.4296C5.8785 22.71 4.57865 21.7522 5.13859 19.3125L5.84851 16.2175C5.97849 15.6327 5.74852 14.8161 5.32856 14.3927L2.84884 11.8925C1.389 10.4206 1.85895 8.92853 3.89872 8.58575L7.08837 8.05143C7.61831 7.9607 8.25824 7.48687 8.49821 6.99288L10.258 3.44418C11.2179 1.51861 12.7777 1.51861 13.7276 3.44418Z" stroke={color ? color : "#FBBC05"} stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+        </svg>
+
+    ),
+    timeSchedule: ({ width = 16, height = 16, color }: { width?: number; height?: number, color?: any }) => (
+        <svg width={width} height={height} viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 8V12L13.5 13.5" stroke={color ? color : "#141B34"} stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+            <path d="M19.5454 16.4534C21.1818 17.337 22 17.7789 22 18.5C22 19.2211 21.1818 19.663 19.5454 20.5466L18.4311 21.1484C17.1744 21.827 16.5461 22.1663 16.2439 21.9196C15.504 21.3154 16.6567 19.7561 16.9403 19.2037C17.2277 18.644 17.2225 18.3459 16.9403 17.7963C16.6567 17.2439 15.504 15.6846 16.2439 15.0804C16.5461 14.8337 17.1744 15.173 18.4311 15.8516L19.5454 16.4534Z" stroke={color ? color : "#141B34"} stroke-width="1.5" />
+            <path d="M13.0261 21.948C12.6888 21.9824 12.3464 22 12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2C17.5228 2 22 6.47715 22 12C22 12.6849 21.9311 13.3538 21.8 14" stroke={color ? color : "#141B34"} stroke-width="1.5" stroke-linecap="round" />
+        </svg>
+    ),
+    chart01: ({ width = 16, height = 16, color }: { width?: number; height?: number, color?: any }) => (
+
+        <svg width={width} height={height} viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M3.5 9.5V18.5C3.5 18.9659 3.5 19.1989 3.57612 19.3827C3.67761 19.6277 3.87229 19.8224 4.11732 19.9239C4.30109 20 4.53406 20 5 20C5.46594 20 5.69891 20 5.88268 19.9239C6.12771 19.8224 6.32239 19.6277 6.42388 19.3827C6.5 19.1989 6.5 18.9659 6.5 18.5V9.5C6.5 9.03406 6.5 8.80109 6.42388 8.61732C6.32239 8.37229 6.12771 8.17761 5.88268 8.07612C5.69891 8 5.46594 8 5 8C4.53406 8 4.30109 8 4.11732 8.07612C3.87229 8.17761 3.67761 8.37229 3.57612 8.61732C3.5 8.80109 3.5 9.03406 3.5 9.5Z" stroke={color ? color : "#141B34"} stroke-width="1.5" stroke-linecap="square" stroke-linejoin="round" />
+            <path d="M10.5 5.5V18.4995C10.5 18.9654 10.5 19.1984 10.5761 19.3822C10.6776 19.6272 10.8723 19.8219 11.1173 19.9234C11.3011 19.9995 11.5341 19.9995 12 19.9995C12.4659 19.9995 12.6989 19.9995 12.8827 19.9234C13.1277 19.8219 13.3224 19.6272 13.4239 19.3822C13.5 19.1984 13.5 18.9654 13.5 18.4995V5.5C13.5 5.03406 13.5 4.80109 13.4239 4.61732C13.3224 4.37229 13.1277 4.17761 12.8827 4.07612C12.6989 4 12.4659 4 12 4C11.5341 4 11.3011 4 11.1173 4.07612C10.8723 4.17761 10.6776 4.37229 10.5761 4.61732C10.5 4.80109 10.5 5.03406 10.5 5.5Z" stroke={color ? color : "#141B34"} stroke-width="1.5" stroke-linecap="square" stroke-linejoin="round" />
+            <path d="M17.5 12.5V18.5C17.5 18.9659 17.5 19.1989 17.5761 19.3827C17.6776 19.6277 17.8723 19.8224 18.1173 19.9239C18.3011 20 18.5341 20 19 20C19.4659 20 19.6989 20 19.8827 19.9239C20.1277 19.8224 20.3224 19.6277 20.4239 19.3827C20.5 19.1989 20.5 18.9659 20.5 18.5V12.5C20.5 12.0341 20.5 11.8011 20.4239 11.6173C20.3224 11.3723 20.1277 11.1776 19.8827 11.0761C19.6989 11 19.4659 11 19 11C18.5341 11 18.3011 11 18.1173 11.0761C17.8723 11.1776 17.6776 11.3723 17.5761 11.6173C17.5 11.8011 17.5 12.0341 17.5 12.5Z" stroke={color ? color : "#141B34"} stroke-width="1.5" stroke-linecap="square" stroke-linejoin="round" />
+        </svg>
+
+    ),
+    globe: ({ width = 16, height = 16, color }: { width?: number; height?: number, color?: any }) => (
+        <svg width={width} height={height} viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="12" cy="12" r="10" stroke="#141B34" stroke-width="1.5" />
+            <path d="M8 12C8 18 12 22 12 22C12 22 16 18 16 12C16 6 12 2 12 2C12 2 8 6 8 12Z" stroke={color ? color : "#141B34"} stroke-width="1.5" stroke-linejoin="round" />
+            <path d="M21 15H3" stroke={color ? color : "#141B34"} stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+            <path d="M21 9H3" stroke={color ? color : "#141B34"} stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+        </svg>
+    ),
+    diploma: ({ width = 16, height = 16, color }: { width?: number; height?: number, color?: any }) => (
+
+        <svg width={width} height={height} viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M18.5 17.838C19.5305 17.6867 20.2627 17.3941 20.8284 16.8284C22 15.6569 22 13.7712 22 10C22 6.22876 22 4.34315 20.8284 3.17157C19.6569 2 17.7712 2 14 2H10C6.22876 2 4.34315 2 3.17157 3.17157C2 4.34315 2 6.22876 2 10C2 13.7712 2 15.6569 3.17157 16.8284C3.97975 17.6366 5.1277 17.8873 7 17.965" stroke={color ? color : "#141B34"} stroke-width="1.5" stroke-linecap="round" />
+            <path d="M17 7L7 7" stroke={color ? color : "#141B34"} stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+            <path d="M14.5 14.5C14.5 15.8807 13.3807 17 12 17C10.6193 17 9.5 15.8807 9.5 14.5C9.5 13.1193 10.6193 12 12 12C13.3807 12 14.5 13.1193 14.5 14.5Z" stroke={color ? color : "#141B34"} stroke-width="1.5" />
+            <path d="M9.5 14.5C9.5 18.5659 11.2222 20.8706 12 22L13.5 19L15.25 20L17 21C16.2653 20.2888 15.5058 18.0471 15.5058 18.0471" stroke={color ? color : "#141B34"} stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
         </svg>
 
     )
@@ -98,6 +132,7 @@ interface IconProps {
     className?: string;
     width?: number | string;
     height?: number | string;
+    color?: any;
     fill?: string;
     onClick?: () => any
     onMouseEnter?: () => any
@@ -105,7 +140,7 @@ interface IconProps {
     size?: any;
 }
 
-const HugeIcon: React.FC<IconProps> = ({ name, className, width, height, onClick, onMouseEnter, onMouseLeave, size = 16 }) => {
+const HugeIcon: React.FC<IconProps> = ({ name, className, width, height, onClick, onMouseEnter, onMouseLeave, size = 16, color }) => {
     const SelectedIcon = icons[name];
 
     if (!SelectedIcon) {
@@ -121,7 +156,7 @@ const HugeIcon: React.FC<IconProps> = ({ name, className, width, height, onClick
             className={className}
             style={{ width, height }}
         >
-            <SelectedIcon width={width || size} height={height || size} />
+            <SelectedIcon width={width || size} height={height || size} color={color} />
         </div>
     );
 };

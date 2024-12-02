@@ -20,11 +20,11 @@ export const LessonDetailTabs = ({ course }: any) => {
 
 
     return (
-        <div>
+        <div className="mb-6">
             <div className="flex mb-6">
-                {tabs.map((t: any) => {
+                {tabs.map((t: any, i: number) => {
                     return (
-                        <div onClick={() => setTabValue(t.value)}
+                        <div key={i} onClick={() => setTabValue(t.value)}
                             className={"cursor-pointer hover:bg-cardDark flex-1 text-center font-neue border-b-[3px] text-white py-2 " +
                                 (tabValue === t.value ? "border-b-primary font-semibold" : "border-b-wcSlate font-normal")}>
                             {t.label}
@@ -53,6 +53,7 @@ export const LessonDetailTabs = ({ course }: any) => {
             }
             {
                 tabValue === 'download' && <ul className="text-white bg-cardDark rounded-xl border border-wcBorder p-4 flex flex-col gap-4">
+                    { !course.files.lenth && trns("noFile") }
                     {
                         course.files.map((l: any, i: number) => {
                             return (

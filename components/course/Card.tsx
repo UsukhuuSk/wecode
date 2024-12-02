@@ -8,9 +8,9 @@ const CourseCard = ({ course }: any) => {
   return (
     <Link href={`/${params.locale}/course/${course._id}`}>
       <div
-        className="bg-transparent rounded-[32px] overflow-hidden customborder hover:outline hover:outline-1 hover:outline-fuchsia-300 cursor-pointer"
+        className="bg-transparent rounded-[32px] overflow-hidden customborder hover:outline hover:outline-1 hover:outline-primary cursor-pointer"
       >
-        <div className="overflow-hidden object-cover max-w-[470px] max-h-[190px] rounded-t-[24px]">
+        <div className="overflow-hidden object-cover w-full max-h-[190px] rounded-t-[24px]">
           <Image
             src={GetThumbnailUrl(course.image._id)}
             alt="AI for All"

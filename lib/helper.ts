@@ -59,7 +59,7 @@ export class Helper {
       return '0₮';
     }
 
-    let formattedCurrency = new Intl.NumberFormat('en-US', {
+    const formattedCurrency = new Intl.NumberFormat('en-US', {
       style: 'decimal',
       minimumFractionDigits: 0,
       maximumFractionDigits: 0,

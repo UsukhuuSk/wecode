@@ -271,7 +271,8 @@
       "reviewDesc": "Write your review (Optional)",
       "reviewPlaceholder": "Write here",
       "ratingWarning": "Rate between 1 to 5?",
-      "ratingSuccess": "Successfully rated."
+      "ratingSuccess": "Successfully rated.",
+      "noFile": "No attachment found."
     }
   }
 }

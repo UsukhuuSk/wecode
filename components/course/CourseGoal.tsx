@@ -11,9 +11,9 @@ export const CourseGoal = ({ course }: any) => {
             </p>
             <div className="border-t border-slate-500 pt-4 flex flex-col gap-4">
                 {
-                    course?.learns?.map((c: any) => {
+                    course?.learns?.map((c: any, index: number) => {
                         return (
-                            <div className="text-white flex gap-4 items-center">
+                            <div key={index} className="text-white flex gap-4 items-center">
                                 <div>
                                     <HugeIcon name="checkSolid" height={16} width={16} />
                                 </div>
