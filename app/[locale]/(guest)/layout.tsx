@@ -9,12 +9,12 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const { user } = useAuth()
+  const { user, loaded } = useAuth()
   return (
     <div>
       <div className="">
       {
-        user ? <Header /> : <FloatingHeader />
+        loaded && (user ? <Header /> : <FloatingHeader />)
       }
       </div>
       {children}

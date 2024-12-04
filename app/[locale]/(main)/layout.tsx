@@ -13,7 +13,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   const params = useParams<any>()
-  const { user }: any = useAuth()
+  const { user, loaded }: any = useAuth()
   const router = useRouter()
   useEffect(() => {
     if (user && !user.is_agreement) {
@@ -24,7 +24,7 @@ export default function RootLayout({
     <LessonProvider>
       <div>
         {
-          user ? <Header /> : <FloatingHeader />
+         loaded && (user ? <Header /> : <FloatingHeader />)
         }
         {children}
         <NewFooter />

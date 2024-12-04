@@ -24,6 +24,7 @@ import { jsonRequestWithToken } from "../api/utils";
 import { getFile } from "../api/serviceuser";
 import { fetchImageFileById } from "../lib/imageUtils";
 import LocaleSwitcher from "./LocaleSwitcher";
+import { useAuth } from "../context/AuthContext";
 
 export default function Header() {
   const BASEURL = process.env.NEXT_PUBLIC_API_URL;
@@ -33,6 +34,7 @@ export default function Header() {
   const t = useTranslations("footer");
   const [userInfo, setUserInfo] = useState<any>({});
   const [imgUrl, setImgUrl] = useState<string | null | undefined>(null);
+  const { logout } = useAuth()
 
   useEffect(() => {
     const fetchUserInfo = async () => {
@@ -71,14 +73,14 @@ export default function Header() {
         throw new Error("Failed to log out");
       }
       console.log("Logout request successful");
-      Cookies.remove("authToken");
-      router.push(`/${locale}/login`);
+      logout()
+      router.push(`/`);
     } catch (error) {
       console.error("Error during logout:", error);
     }
   };
 
-  const handlePush=(link: string)=> {
+  const handlePush = (link: string) => {
     router.push(link)
   }
 
@@ -145,7 +147,7 @@ export default function Header() {
                   </div>
                 </DropdownMenuTrigger>
                 <DropdownMenuContent className="w-56 mr-[110px] bg-[#1a1a40] border-neutral-700 text-white flex flex-col items-start">
-                  <DropdownMenuItem className="gap-3 py-3 focus:bg-white/10 cursor-pointer w-full"  onClick={()=>handlePush('/settings/profile')}>
+                  <DropdownMenuItem className="gap-3 py-3 focus:bg-white/10 cursor-pointer w-full" onClick={() => handlePush('/settings/profile')}>
                     <PencilEdit01Icon
                       size={24}
                       color={"#fff"}
@@ -153,11 +155,11 @@ export default function Header() {
                     />
                     Edit profile
                   </DropdownMenuItem>
-                  <DropdownMenuItem className="gap-3 py-3 focus:bg-white/10 cursor-pointer w-full"  onClick={()=>handlePush('/settings/purchase-history')}>
+                  <DropdownMenuItem className="gap-3 py-3 focus:bg-white/10 cursor-pointer w-full" onClick={() => handlePush('/settings/purchase-history')}>
                     <Invoice01Icon size={24} color={"#fff"} variant={"bulk"} />
                     Purchase history
                   </DropdownMenuItem>
-                  <DropdownMenuItem className="gap-3 py-3 focus:bg-white/10 cursor-pointer w-full" onClick={()=>handlePush('/settings/notification')}>
+                  <DropdownMenuItem className="gap-3 py-3 focus:bg-white/10 cursor-pointer w-full" onClick={() => handlePush('/settings/notification')}>
                     <Settings02Icon size={24} color={"#fff"} variant={"bulk"} />
                     Notification settings
                   </DropdownMenuItem>
