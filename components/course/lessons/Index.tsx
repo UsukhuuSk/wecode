@@ -30,7 +30,7 @@ const TopicLessons = ({ topicId,onPlay }: any) => {
             {
                 lessons.map((l: any, index: number) => {
                     return (
-                        <LessonItem key={index} lesson={l} locale={params.locale}/>
+                        <LessonItem key={index} lesson={l} locale={params.locale} topicId={topicId}/>
                     )
                 })
             }

@@ -4,7 +4,7 @@ import React, { createContext, useContext, useState, useEffect, ReactNode } from
 
 
 interface LessonContextType {
-    setVideos: (lesson: any) => any;
+    setVideos: (lesson: any, topicId: any) => any;
     activeLesson: any;
 
 }
