@@ -7,7 +7,9 @@ const protectedRoutes = ["/profile", "/leaderboard"];
 export default function middleware(req: NextRequest) {
   const { pathname } = req.nextUrl;
   const locale = pathname.split("/")[1];
-
+  if (pathname === "/firebase-messaging-sw.js") {
+    return NextResponse.next();
+  }
   const isProtectedRoute = protectedRoutes.some((route) =>
     pathname.startsWith(`/${locale}${route}`)
   );
