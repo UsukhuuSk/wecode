@@ -1,14 +1,14 @@
 // public/firebase-messaging-sw.js
-importScripts("https://www.gstatic.com/firebasejs/9.6.7/firebase-app.js");
-importScripts("https://www.gstatic.com/firebasejs/9.6.7/firebase-messaging.js");
+importScripts("https://www.gstatic.com/firebasejs/9.6.11/firebase-app.js");
+importScripts("https://www.gstatic.com/firebasejs/9.6.11/firebase-messaging.js");
 
 const firebaseConfig = {
-  apiKey: "YOUR_API_KEY",
-  authDomain: "YOUR_AUTH_DOMAIN",
-  projectId: "YOUR_PROJECT_ID",
-  storageBucket: "YOUR_STORAGE_BUCKET",
-  messagingSenderId: "YOUR_SENDER_ID",
-  appId: "YOUR_APP_ID",
+  apiKey: "AIzaSyBKzwVXqrlf2WBSihtnkqRUjmqhrdt8kqY",
+  authDomain: "ai-academy-asia.firebaseapp.com",
+  projectId: "ai-academy-asia",
+  storageBucket: "ai-academy-asia.firebasestorage.app",
+  messagingSenderId: "950063556704",
+  appId: "1:950063556704:web:5217ff3c9d3339a8a5fb05"
 };
 
 firebase.initializeApp(firebaseConfig);

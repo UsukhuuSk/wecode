@@ -5,7 +5,7 @@ import { requestNotificationPermission, onForegroundMessage } from "../firebaseM
 export default function FirebaseRegister() {
   useEffect(() => {
     console.log('---')
-    if ("serviceWorker" in navigator) {
+    if (navigator && "serviceWorker" in navigator) {
       navigator.serviceWorker
         .register("/firebase-messaging-sw.js")
         .then((registration) => {
