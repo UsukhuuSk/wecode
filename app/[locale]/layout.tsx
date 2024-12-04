@@ -11,7 +11,7 @@ import { ReactLenis } from "../../lib/lenis";
 import { AuthProvider } from "../../context/AuthContext";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import FirebaseRegister from "../../components/FirebaseRegiter";
+import FirebaseRegister from "../../components/FirebaseRegister";
 
 const montserratAlt = Montserrat_Alternates({
   weight: ["200", "300", "400", "500", "600", "700", "800"],

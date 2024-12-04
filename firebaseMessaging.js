@@ -9,7 +9,8 @@ export const requestNotificationPermission = async () => {
   try {
     const token = await getToken(messaging, { vapidKey: "BJ6_DekZWfXWOxdtifJC2olWB83uXIe6CKtb4jrkD7o46TtX2gxJBmj1PFrKQESXspjxoJpmAM5o_PMgKuQ9zLg" });
     if (token) {
-      console.log("FCM Token:", token);
+      // console.log("FCM Token:", token);
+      return token
       // Save the token to your server if needed
     } else {
       console.error("No registration token available. Request permission.");
