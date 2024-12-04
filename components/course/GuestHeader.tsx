@@ -23,7 +23,7 @@ export const CourseGuestHeader = ({ course }: any) => {
                 </div>
                 <div className="flex-1 flex justify-end">
                     {
-                        course?.intro_video_id && <VideoCourse width={500} id={course.intro_video_id._id} locale="mn" />
+                        course?.intro_video_id && <VideoCourse width={500} id={course.intro_video_id._id} course_id={course._id} locale="mn" />
                     }
                 </div>
             </div>
