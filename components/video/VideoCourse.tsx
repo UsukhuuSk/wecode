@@ -51,7 +51,7 @@ export default function VideoCourse({ id, locale, width, course_id, topic_id, le
         style={{ width: `${parentWidth}px`, height: `${parentWidth / 16 * 9}px` }}
         className="overflow-hidden h-full w-full"
         allowFullScreen
-        src={`${BASEURL}/${id}?lang=${locale}&auth_token=${token}&course_id=${course_id || ''}&topic_id=${topic_id || ''}&lesson_id=${lesson_id || ''}`}
+        src={`${BASEURL}/${id}?lang=${locale}&auth_token=${token || ''}&course_id=${course_id || ''}&topic_id=${topic_id || ''}&lesson_id=${lesson_id || ''}`}
       />
     </div>
   )
