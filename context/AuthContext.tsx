@@ -35,9 +35,11 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
 
     const fetchUser = async () => {
         const token = Cookies.get("authToken");
-        if (token)
+        if (!token) {
+            setLoaded(true);
+        }
+        else {
             try {
-
                 const data = await BaseApi._get('one/9/service_user_profile')
                 setUser(data)
             } catch (error) {
@@ -45,6 +47,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
             } finally {
                 setLoaded(true);
             }
+        }
     };
 
 
