@@ -1,12 +1,12 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-
+import Cookies from "js-cookie";
 const BASEURL = process.env.NEXT_PUBLIC_VIDEO_URL
-export default function VideoCourse({ id, locale, width }: any) {
+export default function VideoCourse({ id, locale, width, course_id, topic_id, lesson_id }: any) {
   const [parentWidth, setParentWidth] = useState(700);
   const parentRef = useRef<HTMLDivElement | null>(null);
-  
+  const token = Cookies.get("authToken");
   const iframeWidth = width || 700
 
   useEffect(() => {
@@ -49,10 +49,9 @@ export default function VideoCourse({ id, locale, width }: any) {
         id="iframevideo"
         // style={{ width: `${iframeWidth}px`, height: `${iframeWidth / 16 * 9}px` }}
         style={{ width: `${parentWidth}px`, height: `${parentWidth / 16 * 9}px` }}
-
         className="overflow-hidden h-full w-full"
         allowFullScreen
-        src={`${BASEURL}/?id=${id}&lang=${locale}`}
+        src={`${BASEURL}/${id}?lang=${locale}&auth_token=${token}&course_id=${course_id || ''}&topic_id=${topic_id || ''}&lesson_id=${lesson_id || ''}`}
       />
     </div>
   )

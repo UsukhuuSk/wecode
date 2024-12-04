@@ -79,7 +79,7 @@ export default function CourseClientPage({ courseData, params }: any) {
                             <CourseRolledHeader course={course} />
                         </div>
                         <div className="flex flex-col gap-4 col-span-12  lg:col-span-8 xl:col-span-8 2xl:col-span-8">
-                            {activeLesson ? <LessonPlay activeLesson={activeLesson} /> : <VideoCourse id={course.intro_video_id._id} locale="mn" />}
+                            {activeLesson ? <LessonPlay activeLesson={activeLesson} /> : <VideoCourse id={course.intro_video_id._id} course_id={course._id} locale="mn" />}
                             <LessonDetailTabs course={course}/>
                         </div>
                         <div className="col-span-12  lg:col-span-4 xl:col-span-4 2xl:col-span-4 text-white">
