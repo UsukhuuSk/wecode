@@ -1,0 +1,86 @@
+import dayjs from 'dayjs';
+import { useState } from 'react';
+import HugeIcon from '../ui/HugeIcon';
+import { useTranslations } from 'next-intl';
+import { HutIcon } from '@hugeicons/react';
+
+export const ProfileCalendar = () => {
+    const trns = useTranslations('profile')
+    const [currentDate, setCurrentDate] = useState(dayjs());
+
+    const daysInMonth = currentDate.daysInMonth();
+    const startOfMonth = currentDate.startOf('month').day();
+    const days = [...Array(daysInMonth).keys()].map((i) => i + 1);
+    const today = dayjs();
+
+    const handleMonthChange = (direction: 'prev' | 'next') => {
+        setCurrentDate((prev) =>
+            direction === 'prev' ? prev.subtract(1, 'month') : prev.add(1, 'month')
+        );
+    };
+
+    return (
+        <div>
+            <p className='flex items-center gap-2 text-white text-lg font-medium font-neue'> <HugeIcon name="fire" color="#FF8500" size={28} /> {trns("daylyStreak")}</p>
+            <div className="max-w-md mx-auto mt-4 p-4 border border-wcBorder rounded-lg shadow-md bg-cardDark">
+                <div className="flex justify-between  mb-4 h-10  border-b border-wcBorder">
+                    <button
+                        onClick={() => handleMonthChange('prev')}
+                        className="hover:bg-cardDark h-6 rounded-full"
+                    >
+                        <HugeIcon name="angleLeft" color={'white'} size={24} />
+                    </button>
+                    <h2 className=" text-white font-medium text-lg ">
+                        {currentDate.format('MMMM YYYY')}
+                    </h2>
+                    <button
+                        onClick={() => handleMonthChange('next')}
+                        className='hover:bg-cardDark h-6 rounded-full'
+                    >
+                        <HugeIcon name="angleRight" color={'white'} size={24} />
+                    </button>
+                </div>
+
+                <div className="grid grid-cols-7 text-center text-white font-normal font-neue mb-2">
+                    {['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'].map((day) => (
+                        <div key={day} className="p-2 uppercase">
+                            {day}
+                        </div>
+                    ))}
+                </div>
+
+                <div className="grid grid-cols-7 text-center gap-4">
+                    {Array.from({ length: startOfMonth }).map((_, index) => (
+                        <div key={`empty-${index}`} className="p-2"></div>
+                    ))}
+
+                    {days.map((day) => {
+                        const nextDay = today.add(1, 'day');
+
+                        const currentDay = currentDate.date(day);
+                        const isToday = currentDay.isSame(today, 'day');
+                        const isNextDay = currentDay.isSame(nextDay, 'day');
+
+                        return (
+                            <div
+                                key={day}
+                                className={`flex flex-col items-center justify-center h-8 w-8
+                                 rounded-full bg-[#FFFFFF10] hover:bg-slate-600 text-white cursor-pointer
+                                  ${isToday ? 'border border-dashed border-red-500' : ''} 
+                                  ${isNextDay ? 'bg-wcOrange text-xs' : ''}
+                                  `}
+                            >
+                                {
+                                    isNextDay && <p>
+                                        <HugeIcon name="fire" color={'white'} />
+                                    </p>
+                                }
+                                {day}
+                            </div>
+                        )
+                    })}
+                </div>
+            </div>
+        </div>
+    )
+}

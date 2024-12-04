@@ -22,6 +22,10 @@ import {
 import Cookies from "js-cookie";
 import { Button } from "../../../../../components/ui/button";
 import { Camera01Icon } from "@hugeicons/react";
+import { BaseApi } from "../../../../../api/baseApi";
+import { Helper } from "../../../../../lib/helper";
+import { useTranslations } from "next-intl";
+import { useParams } from "next/navigation";
 
 const formSchema = z.object({
   given_name: z.string().min(2, {
@@ -37,14 +41,51 @@ const formSchema = z.object({
   city: z.string().min(2, {
     message: "City must be at least 2 characters.",
   }),
-  region: z.string().min(2, {
-    message: "Region must be at least 2 characters.",
-  }),
   profileImage: z.any().optional(),
 });
+
+const fetchAndSetData = async (endpoint: any, params: any, setter: any) => {
+  try {
+    const { list } = await BaseApi._get(endpoint, params);
+    setter(list);
+  } catch (error) {
+    console.error(`Failed to fetch ${endpoint}:`, error);
+  }
+};
+
+
 export default function EditProfile() {
+  const { locale } = useParams()
+
+  const trns = useTranslations('profile')
+  const trnsAcc = useTranslations("quiz");
+
   const [imagePreview, setImagePreview] = useState<string | null>(null);
   const [profileImage, setProfileImage] = useState<File | null>(null);
+  const [genders, setGenders] = useState<any>([])
+  const [user, setUser] = useState<any>(null)
+  const [refEmp, setRefEmp] = useState<any>([])
+  const [refAges, setRefAges] = useState<any>([])
+  const [refaimag_city_ids, setRefaimag_city_ids] = useState<any>([])
+  const [refEdus, setRefEdus] = useState<any>([])
+
+
+  useEffect(() => {
+    const lang = locale;
+    const params = { fields: '_id,code,name', lang };
+
+    const fetchData = async () => {
+      await Promise.all([
+        fetchAndSetData('9/ref_genders', params, setGenders),
+        fetchAndSetData('9/ref_works', params, setRefEmp),
+        fetchAndSetData('9/ref_ages', params, setRefAges),
+        fetchAndSetData('9/ref_aimag_cities', params, setRefaimag_city_ids),
+        fetchAndSetData('9/ref_educations', params, setRefEdus),
+      ]);
+    };
+
+    fetchData();
+  }, []);
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -54,7 +95,6 @@ export default function EditProfile() {
       gender_id: "",
       aimag_city_id: "",
       city: "",
-      region: "",
     },
   });
 
@@ -80,21 +120,20 @@ export default function EditProfile() {
       const userDetails = await response.json();
 
       return userDetails;
-    } catch (error) {}
+    } catch (error) { }
   }
   useEffect(() => {
     async function fetchData() {
       try {
         const userDetails = await getProfileData();
-        console.log(userDetails);
         if (userDetails) {
+          setUser(userDetails)
           form.reset({
             given_name: userDetails.given_name || "",
             surname: userDetails.surname || "",
-            gender_id: userDetails.gender_id.name || "",
-            aimag_city_id: userDetails.aimag_city_id.name || "",
+            gender_id: userDetails.gender_id._id || "",
+            aimag_city_id: userDetails.aimag_city_id._id || "",
             city: userDetails.city || "",
-            region: userDetails.region || "",
           });
           if (userDetails.profileImage) {
             setImagePreview(userDetails.profileImage);
@@ -109,33 +148,20 @@ export default function EditProfile() {
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
     try {
-      const jsonData = {
-        ...values,
-        profileImage: profileImage,
-      };
-
-      //   const response = await fetch("/api/user", {
-      //     method: "POST",
-      //     headers: {
-      //       "Content-Type": "application/json",
-      //     },
-      //     body: JSON.stringify(jsonData),
-      //   });
-
-      //   if (!response.ok) {
-      //     throw new Error("Failed to submit form");
-      //   }
-
-      //   const data = await response.json();
-      console.log("Success:", jsonData);
+      // setSaving(true)
+      await BaseApi._post('/9/service_user_profile', { _id: user?._id, profileImage: profileImage, ...form.getValues() })
+      await Helper.wait();
+      Helper.handleSuccess(trns('updateSuccess'))
     } catch (error) {
-      console.error("Error:", error);
+      Helper.handleError(error);
+    } finally {
+      // setSaving(false)
     }
   }
   return (
     <div className="w-full text-white bg-[#33415566] py-6 px-8 rounded-xl border border-[#40404787]">
       <div className="flex flex-col gap-8">
-        <h1 className="text-[20px] font-adineue font-bold">Profile settings</h1>
+        <h1 className="text-[20px] font-adineue font-bold">{trns('profileSettings')}</h1>
         <div className="">
           <Image src={""} alt="" />
         </div>
@@ -179,10 +205,10 @@ export default function EditProfile() {
                   name="given_name"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel className="text-white">First name</FormLabel>
+                      <FormLabel className="text-white">{trnsAcc("account.firstName")}</FormLabel>
                       <FormControl>
                         <Input
-                          placeholder="First name"
+                          placeholder={trnsAcc("account.firstName")}
                           className="bg-[#13032bcc] text-white border-none"
                           {...field}
                         />
@@ -195,10 +221,10 @@ export default function EditProfile() {
                   name="surname"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel className="text-white">Last Name</FormLabel>
+                      <FormLabel className="text-white">{trnsAcc("account.lastName")}</FormLabel>
                       <FormControl>
                         <Input
-                          placeholder="Last name"
+                          placeholder={trnsAcc("account.lastName")}
                           className="bg-[#13032bcc] text-white border-none"
                           {...field}
                         />
@@ -206,49 +232,26 @@ export default function EditProfile() {
                     </FormItem>
                   )}
                 />
-                {/* <FormField
-                  control={form.control}
-                  name="gender_id"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel className="text-white">Gender</FormLabel>
-                      <Select
-                        onValueChange={field.onChange}
-                        defaultValue={field.value}
-                      >
-                        <FormControl>
-                          <SelectTrigger className="bg-[#13032bcc] text-white border-none">
-                            <SelectValue placeholder="Select gender" />
-                          </SelectTrigger>
-                        </FormControl>
-                        <SelectContent>
-                          <SelectItem value="male">Male</SelectItem>
-                          <SelectItem value="female">Female</SelectItem>
-                          <SelectItem value="other">Other</SelectItem>
-                        </SelectContent>
-                      </Select>
-                    </FormItem>
-                  )}
-                /> */}
                 <FormField
                   control={form.control}
                   name="gender_id"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel className="text-white">Gender</FormLabel>
+                      <FormLabel className="text-white">{trnsAcc("account.gender")}</FormLabel>
                       <Select
                         value={field.value}
                         onValueChange={field.onChange}
                       >
                         <FormControl>
                           <SelectTrigger className="bg-[#13032bda] text-white border-none">
-                            <SelectValue placeholder="Select gender" />
+                            <SelectValue placeholder={trnsAcc("account.select")} />
                           </SelectTrigger>
                         </FormControl>
                         <SelectContent>
-                          <SelectItem value="male">Male</SelectItem>
-                          <SelectItem value="female">Female</SelectItem>
-                          <SelectItem value="other">Other</SelectItem>
+                          {
+
+                            genders.map((g: any, index: number) => <SelectItem className="hover:bg-gray-200" key={index} value={g._id}>{g.name}</SelectItem>)
+                          }
                         </SelectContent>
                       </Select>
                     </FormItem>
@@ -261,15 +264,24 @@ export default function EditProfile() {
                   control={form.control}
                   name="aimag_city_id"
                   render={({ field }) => (
-                    <FormItem className="md:col-span-1">
-                      <FormLabel className="text-white">Address</FormLabel>
-                      <FormControl>
-                        <Input
-                          placeholder="Address"
-                          className="bg-[#13032bcc] text-white border-none"
-                          {...field}
-                        />
-                      </FormControl>
+                    <FormItem>
+                      <FormLabel className="text-white">{trnsAcc("account.region")}</FormLabel>
+                      <Select
+                        value={field.value}
+                        onValueChange={field.onChange}
+                      >
+                        <FormControl>
+                          <SelectTrigger className="bg-[#13032bda] text-white border-none">
+                            <SelectValue placeholder={trnsAcc("account.select")} />
+                          </SelectTrigger>
+                        </FormControl>
+                        <SelectContent>
+                          {
+
+                            refaimag_city_ids.map((g: any, index: number) => <SelectItem className="hover:bg-gray-200" key={index} value={g._id}>{g.name}</SelectItem>)
+                          }
+                        </SelectContent>
+                      </Select>
                     </FormItem>
                   )}
                 />
@@ -278,10 +290,10 @@ export default function EditProfile() {
                   name="city"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel className="text-white">City</FormLabel>
+                      <FormLabel className="text-white">{trnsAcc("account.city")}</FormLabel>
                       <FormControl>
                         <Input
-                          placeholder="City"
+                          placeholder={trnsAcc("account.city")}
                           className="bg-[#13032bcc] text-white border-none"
                           {...field}
                         />
@@ -289,30 +301,16 @@ export default function EditProfile() {
                     </FormItem>
                   )}
                 />
-                <FormField
-                  control={form.control}
-                  name="region"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel className="text-white">Region</FormLabel>
-                      <FormControl>
-                        <Input
-                          placeholder="Region"
-                          className="bg-[#13032bcc] text-white border-none"
-                          {...field}
-                        />
-                      </FormControl>
-                    </FormItem>
-                  )}
-                />
+
               </div>
 
               <div className="flex justify-end">
                 <Button
+                  onClick={(e: any) => onSubmit(e)}
                   type="submit"
                   className=" rounded-[32px] px-6 py-3 bg-[#4317FF] hover:bg-[#4317FF] text-white font-semibold"
                 >
-                  Save
+                  {trnsAcc("account.save")}
                 </Button>
               </div>
             </form>

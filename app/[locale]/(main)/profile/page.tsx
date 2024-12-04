@@ -20,6 +20,8 @@ import {
 import { useAuth } from "../../../../context/AuthContext";
 import { FaTrophy } from "react-icons/fa";
 import Link from "next/link";
+import { useTranslations } from "next-intl";
+import { ProfileCalendar } from "../../../../components/profile/Calendar";
 interface LeaderboardEntry {
   position: number;
   name: string;
@@ -28,6 +30,7 @@ interface LeaderboardEntry {
 }
 
 export default function Profile({ params }: any) {
+  const trns = useTranslations('profile')
   const { user } = useAuth();
   const locale = params?.locale;
   const token = Cookies.get("authToken");
@@ -89,7 +92,7 @@ export default function Profile({ params }: any) {
   return !user ? (
     <></>
   ) : (
-    <div className="min-h-screen wrapContainer pt-[100px] overflow-hidden">
+    <div className="min-h-screen container pt-28 overflow-hidden">
       <div className="w-[800px] h-[800px] rotate-[92] flex-shrink-0 rounded-full bg-[#4317ff] blur-[360px] -z-50 absolute right-0 top-1/4"></div>
       <div className="flex gap-8">
         <div className="flex flex-col gap-6">
@@ -110,120 +113,59 @@ export default function Profile({ params }: any) {
                 <div className="text-white font-neue font-semibold text-[20px]">
                   {userInfo.given_name} {userInfo.surname?.split("")[0]}.
                 </div>
-                <div className="grid grid-cols-2">
-                  <div className="text-slate-400 font-normal text-[14px] font-neue">
-                    0 enrolled
+                <div className="flex justify-center gap-2">
+                  <div className="text-slate-400 font-normal text-[14px] font-neue lowercase">
+                    0 {trns('enrolled')}
                   </div>
-                  <div className="text-slate-400 font-normal text-[14px] font-neue">
-                    0 completed
+                  <div className="text-slate-400 font-normal text-[14px] font-neue lowercase">
+                    0 {trns('completed')}
                   </div>
                 </div>
               </div>
             </div>
           </div>
+
+          <ProfileCalendar />
+
           <div className="max-w-[390px]">
             <div className="mb-2 text-center items-center flex justify-between gap-2">
               <div className="flex items-center justify-start gap-2">
                 <FaTrophy className="h-5 w-5 text-green-400 m-auto" />
                 <h1 className="text-[18px]t font-bold text-white font-neue">
-                  Leaderboard
+                  {trns('leaderboard')}
                 </h1>
               </div>
               <Link
-                href={`/${locale}/leaderboard`}
+                href={`/leaderboard`}
                 className="text-[13px] font-normal font-neue text-[#FFFFFF80]"
               >
-                View full leaderboard
+                {trns('fullBoard')}
               </Link>
             </div>
+
             <div className="border border-[#40404787] bg-[#33415533] min-w-[390px] rounded-xl px-4 pb-4 pt-3 flex flex-col gap-4">
               <Select defaultValue="total">
                 <SelectTrigger className="w-[180px] bg-[#272142] border-none text-white">
-                  <SelectValue placeholder="Total learning time" />
+                  <SelectValue placeholder={trns('totalTime')} />
                 </SelectTrigger>
                 <SelectContent className="bg-[#13032b] text-white border border-[#40404787]">
-                  <SelectItem value="total">Total learning time</SelectItem>
-                  <SelectItem value="weekly">Weekly learning time</SelectItem>
-                  <SelectItem value="monthly">Monthly learning time</SelectItem>
+                  <SelectItem value="total">{trns('totalTime')}</SelectItem>
+                  <SelectItem value="weekly">{trns('weeklyTime')}</SelectItem>
+                  <SelectItem value="monthly">{trns('monthlyTime')}</SelectItem>
                 </SelectContent>
               </Select>
-
-              {/* <div className="relative mb-8 flex h-[280px] items-end justify-center">
-                {topUsers
-                  .sort((a, b) => a.position - b.position)
-                  .map((user, index) => (
-                    <div
-                      key={user.position}
-                      className={`relative flex flex-col items-center ${
-                        index === 1
-                          ? "bottom-0 z-10 mb-8"
-                          : index === 0
-                          ? "bottom-8 left-4"
-                          : "bottom-8 right-4"
-                      }`}
-                      style={{
-                        width: index === 1 ? "35.5%" : "30%",
-                      }}
-                    >
-                      <div className="absolute -top-[50%] mb-2">
-                        {index === 1 && (
-                          <Image
-                            src="/placeholder.svg?height=40&width=40"
-                            alt="Crown"
-                            width={40}
-                            height={40}
-                            className="absolute -top-5 left-1/2 -translate-x-1/2"
-                          />
-                        )}
-                        <div
-                          className={`relative overflow-hidden rounded-full border-2 ${
-                            index === 1
-                              ? "border-yellow-400"
-                              : "border-green-400"
-                          }`}
-                          style={{
-                            width: index === 1 ? "100px" : "80px",
-                            height: index === 1 ? "100px" : "80px",
-                          }}
-                        >
-                          <Image
-                            src={user.image || "/placeholder.svg"}
-                            alt={user.name}
-                            fill
-                            className="object-cover"
-                          />
-                        </div>
-                      </div>
-                      <div
-                        className={`w-full rounded-t-[30px] pt-10 p-2 text-center ${
-                          index === 1
-                            ? "h-[140px] bg-slate-800"
-                            : " bg-slate-900 h-[100px]"
-                        }`}
-                      >
-                        <p className="font-medium text-[14px] font-neue text-white">
-                          {user.name}
-                        </p>
-                        <p className="text-sm text-yellow-400">
-                          {user.hours} hours
-                        </p>
-                      </div>
-                    </div>
-                  ))}
-              </div> */}
               <div className="relative  flex h-[280px] items-end justify-center">
                 {topUsers
                   .sort((a, b) => a.position - b.position)
                   .map((user, index) => (
                     <div
                       key={user.position}
-                      className={`relative flex flex-col items-center ${
-                        index === 1
-                          ? "bottom-0 z-10 mb-8"
-                          : index === 0
+                      className={`relative flex flex-col items-center ${index === 1
+                        ? "bottom-0 z-10 mb-8"
+                        : index === 0
                           ? "bottom-8 left-0"
                           : "bottom-8 right-0"
-                      }`}
+                        }`}
                       style={{
                         width: index === 1 ? "35.5%" : "30%",
                       }}
@@ -239,11 +181,10 @@ export default function Profile({ params }: any) {
                           />
                         )}
                         <div
-                          className={`relative overflow-hidden rounded-full border-2 ${
-                            index === 1
-                              ? "border-yellow-400"
-                              : "border-green-400"
-                          }`}
+                          className={`relative overflow-hidden rounded-full border-2 ${index === 1
+                            ? "border-yellow-400"
+                            : "border-green-400"
+                            }`}
                           style={{
                             width: index === 1 ? "100px" : "80px",
                             height: index === 1 ? "100px" : "80px",
@@ -258,11 +199,10 @@ export default function Profile({ params }: any) {
                         </div>
                       </div>
                       <div
-                        className={`w-full rounded-t-[30px] pt-10 px-2 flex flex-col items-center justify-center ${
-                          index === 1
-                            ? "h-[140px] bg-slate-800"
-                            : "bg-slate-900 h-[100px]"
-                        }`}
+                        className={`w-full rounded-t-[30px] pt-10 px-2 flex flex-col items-center justify-center ${index === 1
+                          ? "h-[140px] bg-slate-800"
+                          : "bg-slate-900 h-[100px]"
+                          }`}
                       >
                         <p className="font-medium text-[12px] font-neue text-white">
                           {user.name}
@@ -278,9 +218,8 @@ export default function Profile({ params }: any) {
                 {otherUsers.map((user, index) => (
                   <div
                     key={user.position}
-                    className={`flex items-center ${
-                      index === 0 ? "border-b" : ""
-                    } justify-between bg-transparent hover:bg-[#FFFFFF1A] duration-300 ease-in-out transition-all py-4 px-[10px]`}
+                    className={`flex items-center ${index === 0 ? "border-b" : ""
+                      } justify-between bg-transparent hover:bg-[#FFFFFF1A] duration-300 ease-in-out transition-all py-4 px-[10px]`}
                   >
                     <div className="flex items-center gap-3">
                       <span className="w-6 text-center font-medium text-white">
@@ -304,12 +243,12 @@ export default function Profile({ params }: any) {
             <div className="flex items-center gap-[10px] text-white">
               <Image src={wave} alt="wave" width={32} height={32} />
               <span className="font-adineue text-[36px] font-bold">
-                Welcome back, {userInfo.given_name}{" "}
+                {trns('welcome')}, {userInfo.given_name}{" "}
                 {userInfo.surname?.split("")[0]}.!
               </span>
             </div>
             <div className="font-normal text-[14px] font-neue text-slate-200">
-              You’ve got 3 days learning streak, keep going!
+              {trns('dayInfo').replace("DAYCOUNT", "5")}
             </div>
           </div>
           <div className="">
@@ -321,7 +260,7 @@ export default function Profile({ params }: any) {
                     data-[state=active]:border-b-2 data-[state=active]:border-[#4317ff] data-[state=active]:text-[#fff] data-[state=active]:font-semibold
                     data-[state=inactive]:border-b-2 data-[state=inactive]:border-transparent data-[state=inactive]:text-[#ffffff80] data-[state=inactive]:font-medium"
                 >
-                  Learning
+                  {trns('learning')}
                 </TabsTrigger>
                 <TabsTrigger
                   value="completed"
@@ -329,7 +268,7 @@ export default function Profile({ params }: any) {
                     data-[state=active]:border-b-2 data-[state=active]:border-[#4317ff] data-[state=active]:text-[#fff] data-[state=active]:font-semibold
                     data-[state=inactive]:border-b-2 data-[state=inactive]:border-transparent data-[state=inactive]:text-[#ffffff80] data-[state=inactive]:font-medium"
                 >
-                  Completed
+                  {trns('completed')}
                 </TabsTrigger>
               </TabsList>
               <TabsContent value="learning">

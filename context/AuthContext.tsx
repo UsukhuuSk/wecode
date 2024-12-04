@@ -40,7 +40,6 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
             try {
                 setLoading(true);
                 const data = await BaseApi._get('one/9/service_user_profile')
-                console.log('data', data)
                 setUser(data)
             } catch (error) {
                 console.error('Failed to fetch user:', error);
@@ -52,7 +51,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
 
 
     const login = async () => {
-        fetchUser()
+        await fetchUser()
     };
 
     const logout = async () => {

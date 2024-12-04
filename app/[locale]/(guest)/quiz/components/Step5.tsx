@@ -4,6 +4,9 @@ import { useForm, SubmitHandler } from "react-hook-form";
 import { FormContext } from "../../../../../context/FormContext";
 import { BaseApi } from "../../../../../api/baseApi";
 import { useAuth } from "../../../../../context/AuthContext";
+import { useTranslations } from "next-intl";
+import { Helper } from "../../../../../lib/helper";
+import { useRouter } from "next/navigation";
 
 interface StepProps {
   next?: () => void;
@@ -15,30 +18,35 @@ interface Step2FormValues {
 }
 
 const Step5: React.FC<StepProps> = ({ next, back }) => {
+  const { login } = useAuth()
   const { user }: any = useAuth()
+  const trns = useTranslations("quiz.promise");
+  const [loading, setLoading] = useState<boolean>(false)
+  const router = useRouter()
+  const [created, setCreated] = useState<boolean>(false)
   const tags = [
     {
-      "name": "Take a deep breath",
+      "name": trns("tag1"),
       "color": "#CC48F4"
     },
     {
-      "name": "Break the problem down into smaller parts",
+      "name": trns("tag2"),
       "color": "#9060F4"
     },
     {
-      "name": "Ask for help",
+      "name": trns("tag3"),
       "color": "#68D8FC"
     },
     {
-      "name": "Do research",
+      "name": trns("tag4"),
       "color": "#6068F4"
     },
     {
-      "name": "Be positive",
+      "name": trns("tag5"),
       "color": "#FF8500"
     },
     {
-      "name": "Discuss your thoughts with others or yourself",
+      "name": trns("tag6"),
       "color": "#94C943"
     }
   ]
@@ -50,12 +58,19 @@ const Step5: React.FC<StepProps> = ({ next, back }) => {
   const { formValues, setFormValues } = useContext(FormContext)!;
 
   const onSubmit: SubmitHandler<Step2FormValues> = async () => {
-    console.log("FormValues", formValues);
-    // if (next) next();
     try {
+      setLoading(true)
       await BaseApi._post('/9/service_user_profile', { _id: user._id, ...formValues })
+      await Helper.wait();
+      Helper.handleSuccess(trns('success'))
+      setCreated(true)
+      await login()
+      await Helper.wait();
+      router.push('/profile')
     } catch (error) {
-
+      Helper.handleError(error);
+    } finally {
+      setLoading(false)
     }
   };
 
@@ -63,15 +78,12 @@ const Step5: React.FC<StepProps> = ({ next, back }) => {
     <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col">
       <div className="flex gap-2">
         <h1 className="text-start text-[18px] text-[#3f3f46] font-neue">
-          Self Promise
+          {trns("self")}
         </h1>
       </div>
 
       <p className="font-medium text-[16px] font-neue text-[#52525b] text-center">
-        I am starting an online learning program at Al Academy. I know that
-        learning can be challenging, but I have the patience, determination, and
-        discipline to achieve my goals. If I get stuck, I will look for the
-        following solutions…
+        {trns("selfDesc")}
       </p>
       <div className="flex gap-x-3 gap-y-2 w-[550px] flex-wrap justify-center mb-6 mt-3">
         {
@@ -84,10 +96,11 @@ const Step5: React.FC<StepProps> = ({ next, back }) => {
       </div>
       <div className="flex gap-4">
         <button
+          disabled={loading || created}
           type="submit"
-          className="rounded-[32px] w-full text-white bg-[#4317FF] px-6 py-[12px] font-semibold text-[16px] font-neue"
+          className={`${created ? 'bg-green-500' : ''} ${loading ? 'bg-slate-500 text-slate-70 animate-pulse' : ''} rounded-[32px] w-full text-white bg-[#4317FF] px-6 py-[12px] font-semibold text-[16px] font-neue"`}
         >
-          I promise to complete this course in full
+          {created ? trns('accCreated') : (loading ? trns('creating') : trns('btnText'))}
         </button>
       </div>
     </form>

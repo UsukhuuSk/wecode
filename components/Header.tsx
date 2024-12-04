@@ -77,6 +77,11 @@ export default function Header() {
       console.error("Error during logout:", error);
     }
   };
+
+  const handlePush=(link: string)=> {
+    router.push(link)
+  }
+
   const routes = [
     {
       name: t("courses"),
@@ -140,7 +145,7 @@ export default function Header() {
                   </div>
                 </DropdownMenuTrigger>
                 <DropdownMenuContent className="w-56 mr-[110px] bg-[#1a1a40] border-neutral-700 text-white flex flex-col items-start">
-                  <DropdownMenuItem className="gap-3 py-3 focus:bg-white/10 cursor-pointer w-full">
+                  <DropdownMenuItem className="gap-3 py-3 focus:bg-white/10 cursor-pointer w-full"  onClick={()=>handlePush('/settings/profile')}>
                     <PencilEdit01Icon
                       size={24}
                       color={"#fff"}
@@ -148,11 +153,11 @@ export default function Header() {
                     />
                     Edit profile
                   </DropdownMenuItem>
-                  <DropdownMenuItem className="gap-3 py-3 focus:bg-white/10 cursor-pointer w-full">
+                  <DropdownMenuItem className="gap-3 py-3 focus:bg-white/10 cursor-pointer w-full"  onClick={()=>handlePush('/settings/purchase-history')}>
                     <Invoice01Icon size={24} color={"#fff"} variant={"bulk"} />
                     Purchase history
                   </DropdownMenuItem>
-                  <DropdownMenuItem className="gap-3 py-3 focus:bg-white/10 cursor-pointer w-full">
+                  <DropdownMenuItem className="gap-3 py-3 focus:bg-white/10 cursor-pointer w-full" onClick={()=>handlePush('/settings/notification')}>
                     <Settings02Icon size={24} color={"#fff"} variant={"bulk"} />
                     Notification settings
                   </DropdownMenuItem>

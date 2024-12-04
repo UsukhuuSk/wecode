@@ -88,8 +88,12 @@ const config: Config = {
         primary: "#4317FF",
         tpGreen: "#22c55e20",
         wcSlate: "#475569",
-        wcBorder: "#334155"
-
+        wcSlate400: "#94A3B8",
+        wcSlate700: "#334155",
+        wcZinc700: "#3F3F46",
+        wcBorder: "#334155",
+        wcOrange: "#FF8500",
+        wcRed: "#F0493E"
 
       },
       borderRadius: {

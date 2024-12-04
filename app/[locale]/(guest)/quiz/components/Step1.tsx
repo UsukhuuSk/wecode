@@ -60,9 +60,9 @@ const Step1: React.FC<StepProps> = ({ next }) => {
   const [refEdus, setRefEdus] = useState<any>([])
   const { locale } = useParams()
 
-  
+
   useEffect(() => {
-    const lang = locale; 
+    const lang = locale;
     const params = { fields: '_id,code,name', lang };
 
     const fetchData = async () => {
@@ -78,6 +78,13 @@ const Step1: React.FC<StepProps> = ({ next }) => {
     fetchData();
   }, []);
 
+  const handleSpanClick = () => {
+    console.log('set form value')
+    setFormValues((prev: any) => {
+      return { ...prev, is_agreement: !prev.is_agreement }
+    })
+  };
+
   const onSubmit: SubmitHandler<Step1FormValues> = (data) => {
     console.log("Form Data:", data);
     setFormValues({ ...formValues, ...data });
@@ -86,14 +93,14 @@ const Step1: React.FC<StepProps> = ({ next }) => {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
-      <h1 className="text-center text-[#3f3f46] font-neue">Account Creation</h1>
+      <h1 className="text-center text-[#3f3f46] font-neue">{trns("account.create")}</h1>
       <div className="flex flex-col gap-4">
         <div className="grid grid-cols-2 gap-4 mt-6">
           <div className="flex flex-col gap-3">
             <Label htmlFor="given_name">{trns("account.firstName")}</Label>
             <Input
-              {...register("given_name", { required: "First name is required" })}
-              placeholder="First Name"
+              {...register("given_name", { required: trns("account.firstNameR") })}
+              placeholder={trns("account.firstName")}
               defaultValue={formValues.given_name || ""}
               className="rounded-[32px]"
             />
@@ -102,10 +109,10 @@ const Step1: React.FC<StepProps> = ({ next }) => {
             )}
           </div>
           <div className="flex flex-col gap-3">
-            <Label htmlFor="surname">Last name</Label>
+            <Label htmlFor="surname">{trns("account.lastName")}</Label>
             <Input
-              {...register("surname", { required: "Last name is required" })}
-              placeholder="Last Name"
+              {...register("surname", { required: trns("account.lastNameR") })}
+              placeholder={trns("account.lastName")}
               defaultValue={formValues.surname || ""}
               className="rounded-[32px]"
             />
@@ -116,16 +123,17 @@ const Step1: React.FC<StepProps> = ({ next }) => {
         </div>
         <div className="flex gap-4 ">
           <div className="basis-1/4">
-            <Label htmlFor="">Gender</Label>
+            <Label htmlFor="">{trns("account.gender")}</Label>
             <Controller
               name="gender"
               control={control}
               defaultValue={formValues.gender_id || ""}
-              rules={{ required: "Gender is required" }}
+              rules={{ required: trns("account.genderR") }}
               render={({ field }) => (
-                <Select value={field.value} onValueChange={field.onChange}>
+                <Select value={field.value} onValueChange={field.onChange}
+                >
                   <SelectTrigger className=" rounded-[32px]">
-                    <SelectValue placeholder="Select" />
+                    <SelectValue placeholder={trns("account.select")} />
                   </SelectTrigger>
                   <SelectContent className="">
                     {
@@ -136,18 +144,21 @@ const Step1: React.FC<StepProps> = ({ next }) => {
                 </Select>
               )}
             />
+            {errors.gender && (
+              <p className="text-red-500 text-sm">{errors.gender.message}</p>
+            )}
           </div>
           <div className="basis-1/2">
-            <Label htmlFor="">Employment status</Label>
+            <Label htmlFor="">{trns("account.employment")}</Label>
             <Controller
               name="work_id"
               control={control}
               defaultValue={formValues.work_id || ""}
-              rules={{ required: "Employment status is required" }}
+              rules={{ required: trns("account.employmentR") }}
               render={({ field }) => (
                 <Select value={field.value} onValueChange={field.onChange}>
                   <SelectTrigger className="rounded-[32px]">
-                    <SelectValue placeholder="Select" />
+                    <SelectValue placeholder={trns("account.select")} />
                   </SelectTrigger>
                   <SelectContent className="">
                     {
@@ -158,18 +169,21 @@ const Step1: React.FC<StepProps> = ({ next }) => {
                 </Select>
               )}
             />
+            {errors.work_id && (
+              <p className="text-red-500 text-sm">{errors.work_id.message}</p>
+            )}
           </div>
           <div className="basis-1/4">
-            <Label htmlFor="">Age</Label>
+            <Label htmlFor="">{trns("account.age")}</Label>
             <Controller
               name="age"
               control={control}
               defaultValue={formValues.age || ""}
-              rules={{ required: "age is required" }}
+              rules={{ required: trns("account.ageR") }}
               render={({ field }) => (
                 <Select value={field.value} onValueChange={field.onChange}>
                   <SelectTrigger className=" rounded-[32px]">
-                    <SelectValue placeholder="Select" />
+                    <SelectValue placeholder={trns("account.select")} />
                   </SelectTrigger>
                   <SelectContent className="">
                     {
@@ -180,26 +194,29 @@ const Step1: React.FC<StepProps> = ({ next }) => {
                 </Select>
               )}
             />
+            {errors.age && (
+              <p className="text-red-500 text-sm">{errors.age.message}</p>
+            )}
           </div>
         </div>
         <div className="grid grid-cols-2 gap-4">
           <div className="flex flex-col gap-3">
-            <Label htmlFor="given_name">Address</Label>
+            <Label htmlFor="given_name">{trns("account.address")}</Label>
             <Input
-              {...register("address", { required: "Address is required" })}
-              placeholder="Ex: BZD, 1-r khoroo, 10-22"
+              {...register("address", { required: trns("account.addressR") })}
+              placeholder={trns("account.addressP")}
               defaultValue={formValues.address || ""}
               className="rounded-[32px]"
             />
-            {errors.given_name && (
-              <p className="text-red-500 text-sm">{errors.given_name.message}</p>
+            {errors.address && (
+              <p className="text-red-500 text-sm">{errors.address.message}</p>
             )}
           </div>
           <div className="flex flex-col gap-3">
-            <Label htmlFor="city">City</Label>
+            <Label htmlFor="city">{trns("account.city")}</Label>
             <Input
-              {...register("city", { required: "City is required" })}
-              placeholder="Ex: BZD, 1-r khoroo, 10-22"
+              {...register("city", { required: trns("account.cityR") })}
+              placeholder={trns("account.addressP")}
               defaultValue={formValues.city || ""}
               className="rounded-[32px]"
             />
@@ -210,16 +227,16 @@ const Step1: React.FC<StepProps> = ({ next }) => {
         </div>
         <div className="grid grid-cols-2 gap-4">
           <div className="">
-            <Label htmlFor="">aimag_city_id</Label>
+            <Label htmlFor="">{trns("account.region")}</Label>
             <Controller
               name="aimag_city_id"
               control={control}
               defaultValue={formValues.aimag_city_id || ""}
-              rules={{ required: "aimag_city_id is required" }}
+              rules={{ required: trns("account.regionR") }}
               render={({ field }) => (
                 <Select value={field.value} onValueChange={field.onChange}>
                   <SelectTrigger className=" rounded-[32px]">
-                    <SelectValue placeholder="Select" />
+                    <SelectValue placeholder={trns("account.select")} />
                   </SelectTrigger>
                   <SelectContent className="max-h-80 overflow-auto">
                     {
@@ -230,18 +247,21 @@ const Step1: React.FC<StepProps> = ({ next }) => {
                 </Select>
               )}
             />
+            {errors.aimag_city_id && (
+              <p className="text-red-500 text-sm">{errors.aimag_city_id.message}</p>
+            )}
           </div>
           <div className="">
-            <Label htmlFor="">Education level</Label>
+            <Label htmlFor="">{trns("account.education")}</Label>
             <Controller
               name="education_id"
               control={control}
               defaultValue={formValues.education_id || ""}
-              rules={{ required: "Education level is required" }}
+              rules={{ required: trns("account.educationR") }}
               render={({ field }) => (
                 <Select value={field.value} onValueChange={field.onChange}>
                   <SelectTrigger className=" rounded-[32px]">
-                    <SelectValue placeholder="Select" />
+                    <SelectValue placeholder={trns("account.select")} />
                   </SelectTrigger>
                   <SelectContent className="">
                     {
@@ -252,6 +272,9 @@ const Step1: React.FC<StepProps> = ({ next }) => {
                 </Select>
               )}
             />
+            {errors.education_id && (
+              <p className="text-red-500 text-sm">{errors.education_id.message}</p>
+            )}
           </div>
         </div>
         <div className="flex justify-center items-center gap-2">
@@ -259,20 +282,30 @@ const Step1: React.FC<StepProps> = ({ next }) => {
             name="is_agreement"
             control={control}
             defaultValue={formValues.is_agreement || false}
-            rules={{ required: "You must accept the terms and conditions" }}
+            rules={{ required: trns("account.conditionR") }}
             render={({ field }) => (
-              <Checkbox
-                checked={field.value}
-                onCheckedChange={field.onChange}
-              />
+              <>
+                <Checkbox
+                className=""
+                  checked={field.value}
+                  onCheckedChange={field.onChange}
+                />
+                <span className="flex items-center  gap-1">
+                  <span onClick={()=>field.onChange(!field.value)} className="cursor-pointer">
+                    {trns("account.agreeWith")}
+                  </span>
+
+                  {" "}
+                  <a href="/terms" className="underline">
+                    {trns("account.condition")}
+
+                  </a>
+                </span>
+              </>
+
             )}
           />
-          <span className="flex items-center  gap-1">
-            I agree with{" "}
-            <a href="/terms" className="underline">
-              Terms & Conditions
-            </a>
-          </span>
+
         </div>
         {errors.is_agreement && (
           <p className="text-red-500 text-sm text-center">
@@ -284,7 +317,7 @@ const Step1: React.FC<StepProps> = ({ next }) => {
           type="submit"
           className="rounded-[32px] w-full text-white bg-[#4317FF] px-6 py-[12px] font-semibold text-[16px] font-neue"
         >
-          Continue
+          {trns("account.continue")}
         </button>
       </div>
     </form>

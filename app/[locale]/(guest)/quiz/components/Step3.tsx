@@ -7,6 +7,7 @@ import {
   RadioGroup,
   RadioGroupItem,
 } from "../../../../../components/ui/radio-group";
+import { useTranslations } from "next-intl";
 
 interface StepProps {
   next?: () => void;
@@ -22,6 +23,7 @@ const Step3: React.FC<StepProps> = ({ next, back }) => {
     handleSubmit,
     formState: { errors },
   } = useForm<Step2FormValues>();
+  const trns = useTranslations("quiz");
   const { formValues, setFormValues } = useContext(FormContext)!;
 
   const OPTIONS = [
@@ -99,13 +101,13 @@ const Step3: React.FC<StepProps> = ({ next, back }) => {
       </RadioGroup>
       <div className="flex gap-4">
         <button type="button" onClick={back} className="px-4 py-2 bg-gray-300 rounded-[32px]">
-          Back
+          {trns("account.back")}
         </button>
         <button
           type="submit"
           className="rounded-[32px] w-full text-white bg-[#4317FF] px-6 py-[12px] font-semibold text-[16px] font-neue"
         >
-          Continue
+          {trns("account.continue")}
         </button>
       </div>
     </form>

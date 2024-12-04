@@ -23,6 +23,7 @@ import { CourseRolledHeader } from "./RolledHeader";
 import { LessonProvider, useLesson } from "../../context/LessonContext";
 import { LessonPlay } from "./lessons/Play";
 import { LessonDetailTabs } from "./lessons/DetailTabs";
+import { CourseExam } from "./exam/Exams";
 
 
 export default function CourseClientPage({ courseData, params }: any) {
@@ -84,6 +85,7 @@ export default function CourseClientPage({ courseData, params }: any) {
                         <div className="col-span-12  lg:col-span-4 xl:col-span-4 2xl:col-span-4 text-white">
                             <CourseInstructor course={course} teachers={teachers} enrolled={enrolled} onChange={handleEnroll} />
                             <CourseTopics topics={topics} />
+                            <CourseExam course={course}/>
                         </div>
                     </div>
             }

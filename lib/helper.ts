@@ -3,6 +3,7 @@ import { toast } from 'react-toastify';
 export class Helper {
 
   static handleSuccess(message?: any) {
+   
     return toast.success(message ? message : "Амжилттай.", {
       position: "top-right",
       autoClose: 5000,
@@ -29,7 +30,7 @@ export class Helper {
   }
 
   static handleError(error?: any) {
-    return toast.error(error ? error : "Алдаа гарлаа.", {
+    return toast.error(error ? error : "Cannot continue this action.", {
       position: "top-right",
       autoClose: 5000,
       hideProgressBar: false,

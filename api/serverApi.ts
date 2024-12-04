@@ -36,6 +36,7 @@ export class ServerApi {
         try {
             const response = await fetch(finalUrl, options);
             if (!response.ok) {
+                console.log('response', response)
                 throw new Error(`HTTP error! Status: ${response.status}`);
             }
 
@@ -51,6 +52,17 @@ export class ServerApi {
             clearTimeout(timeoutId); // Timeout санах ойг цэвэрлэх
         }
 
+    }
+
+    static async _checkExam(params = {}): Promise<any> {
+        const data = await this._get(`exam`, params)
+        return data;
+    }
+
+    static async _getExam(params = {}): Promise<any> {
+        const data = await this._get(`/one/9/service_course_exams`, params)
+        console.log('data detail', data)
+        return data;
     }
 
     static async _checkCourse(courseId: any, params = {}): Promise<any> {

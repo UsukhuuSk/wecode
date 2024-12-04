@@ -23,7 +23,7 @@ const TopicItem: React.FC<TopicProps> = ({ topic, index, onPlay }: any) => {
     return (
         <div className=" bg-cardDark rounded-xl border border-wcBorder ">
             <div onClick={() => handleOpen()} className="flex gap-4  px-4 py-3 justify-between cursor-pointer hover:bg-card">
-                <div className="flex gap-2">
+                <div className="flex items-center gap-2">
                     <HugeIcon name="bookEdit" />
                     <div className=" flex flex-col gap-4">
                         <span className="text-white">{trns("chapter")} {index + 1}: {topic?.name}</span>

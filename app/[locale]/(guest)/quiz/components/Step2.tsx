@@ -4,6 +4,7 @@ import { useForm, SubmitHandler, Controller } from "react-hook-form";
 import { FormContext } from "../../../../../context/FormContext";
 import { Checkbox } from "../../../../../components/ui/checkbox";
 import { Label } from "../../../../../components/ui/label";
+import { useTranslations } from "next-intl";
 
 interface StepProps {
   next?: () => void;
@@ -16,6 +17,7 @@ interface Step2FormValues {
 
 const Step2: React.FC<StepProps> = ({ next, back }) => {
   const [selectedOptions, setSelectedOptions] = useState<string[]>([]);
+  const trns = useTranslations("quiz");
   const {
     control,
     handleSubmit,
@@ -111,13 +113,13 @@ const Step2: React.FC<StepProps> = ({ next, back }) => {
 
       <div className="flex gap-4">
         <button type="button" onClick={back} className="px-4 py-2 bg-gray-300 rounded-[32px]">
-          Back
+          {trns("account.back")}
         </button>
         <button
           type="submit"
           className="rounded-[32px] w-full text-white bg-[#4317FF] px-6 py-[12px] font-semibold text-[16px] font-neue"
         >
-          Continue
+          {trns("account.continue")}
         </button>
       </div>
     </form>

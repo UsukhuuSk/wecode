@@ -226,7 +226,48 @@
   "quiz": {
     "tip": "Before we start, please answer a few questions to identify yourself. Thank you.",
     "account": {
-      "firstName": "First name"
+      "create": "Account Creation",
+      "firstName": "First name",
+      "firstNameR": "First name is required",
+      "lastName": "Last name",
+      "lastNameR": "Last name is required",
+      "gender": "Gender",
+      "genderR": "Gender is required",
+      "employment": "Employment status",
+      "employmentR": "Employment status is required",
+      "age": "Age",
+      "ageR": "Age is required",
+      "address": "Address",
+      "addressR": "Address is required",
+      "city": "City",
+      "cityR": "City is rquired",
+      "region": "Region",
+      "regionR": "Region is required",
+      "education": "Education level",
+      "educationR": "Education level is required",
+      "agreeWith": "I agree with",
+      "agreeWithR": "I agree with",
+      "condition":"Terms & Conditions",
+      "conditionR": "You must accept the terms and conditions",
+      "continue": "Continue",
+      "back": "Back",
+      "select": "Select",
+      "addressP": "Ex: BZD, 1-r khoroo, 10-22",
+      "save": "Save"
+    },
+    "promise": {
+      "self": "Self Promise",
+      "selfDesc": "I am starting an online learning program at Al Academy. I know that learning can be challenging, but I have the patience, determination, and discipline to achieve my goals. If I get stuck, I will look for the following solutions…",
+      "tag1": "Take a deep breath",
+      "tag2": "Break the problem down into smaller parts",
+      "tag3": "Ask for help",
+      "tag4": "Do research",
+      "tag5": "Be positive",
+      "tag6": "Discuss your thoughts with others or yourself",
+      "btnText": "I promise to complete this course in full",
+      "success": "Account successfully created!",
+      "creating": "Creating account...",
+      "accCreated": "Account is created now."
     }
   },
   "course": {
@@ -272,7 +313,56 @@
       "reviewPlaceholder": "Write here",
       "ratingWarning": "Rate between 1 to 5?",
       "ratingSuccess": "Successfully rated.",
-      "noFile": "No attachment found."
+      "noFile": "No attachment found.",
+      "exam": "Exam",
+      "point": "Point"
+    },
+    "exam": {
+      "instruction": "Instruction",
+      "duration": "Exam duration",
+      "questions": "Exam question",
+      "passConditions": "Exam pass conditions",
+      "condition": "Exam condition",
+      "giveup": "Give up",
+      "oneAnswer": "Choose one answer",
+      "twoAnswer": "Choose two answer",
+      "threeAnswer": "Choose three answer",
+      "next": "Next",
+      "finish": "Finish",
+      "loading": "Loading...",
+      "fail": "You have given up this attempt.   You have 2 more attempts remaining. Goodluck",
+      "failBtn": "Lets Prepare Again",
+      "success": "Congratulations, You Passed!",
+      "successBtn": "Download Certificate",
+      "score": "Score",
+      "date": "Date completed",
+      "cert": "Certification",
+      "certDesc": "Exam Completion Certificate is now available for download."
     }
+  },
+  "profile": {
+    "welcome": "Welcome back",
+    "dayInfo": "You’ve got DAYCOUNT days learning streak, keep going!",
+    "learning": "Learning",
+    "completed": "Completed",
+    "enrolled": "enrolled",
+    "fullBoard": " View full leaderboard",
+    "totalTime": "Total learning time",
+    "weeklyTime":"Weekly learning time",
+    "monthlyTime":"Monthly learning time",
+    "daylyStreak": "Dayly streak",
+    "pushDesc": "Notifications of this kind will send you directly to your phone of new updates.",
+    "emailDesc": "Notifications of this kind will send you directly to your phone of new updates.",
+    "updateSuccess": "Updated successfully.",
+    "settings": "Settings",
+    "profileSettings": "Profile settings",
+    "profile": "Profile",
+    "notification": "Notification",
+    "purchaseHistory": "Purchase history"
+  },
+  "leaderboard": {
+    "leaderboard": "Leaderboard",
+    "total": " Total learning time",
+    "hours": "hours"
   }
 }
