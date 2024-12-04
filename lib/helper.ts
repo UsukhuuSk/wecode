@@ -2,17 +2,16 @@ import { toast } from 'react-toastify';
 
 export class Helper {
 
-  static handleSuccess(message?: any) {
-   
+  static handleSuccess(message?: any, options?: any) {
     return toast.success(message ? message : "Амжилттай.", {
-      position: "top-right",
+      position: options?.position || "top-right",
       autoClose: 5000,
       hideProgressBar: false,
       closeOnClick: true,
       pauseOnHover: true,
       draggable: true,
       progress: undefined,
-      theme: "colored",
+      theme: options?.theme || "colored",
     });
   }
 

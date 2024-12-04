@@ -15,20 +15,17 @@ firebase.initializeApp(firebaseConfig);
 const messaging = firebase.messaging();
 
 messaging.onBackgroundMessage((payload) => {
-  // console.log("Received background message: ", payload);
-  const notificationTitle = payload.notification.title;
-  const notificationOptions = {
-    body: payload.notification.body,
-  };
-  console.log('-------')
-  self.clients.matchAll().then(clients => {
+  // const notificationTitle = payload.notification.title;
+  // const notificationOptions = {
+  //   body: payload.notification.body,
+  // };
+  // self.registration.showNotification(notificationTitle, notificationOptions);
+  self.clients.matchAll({includeUncontrolled: true, type: "window"}).then(clients => {
     clients.forEach(client => {
-      console.log('-------')
       client.postMessage({
         type: "backgroundMessage",
         message: payload,
       });
     });
   });
-  self.registration.showNotification(notificationTitle, notificationOptions);
 });
