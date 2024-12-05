@@ -5,14 +5,14 @@ import Cookies from "js-cookie";
 import React, { createContext, useContext, useState, useEffect, ReactNode } from 'react';
 import { BaseApi } from "../api/baseApi";
 interface User {
-    id: string;
+    _id: string;
     name: string;
     email: string;
     // Add other user properties here
 }
 
 interface AuthContextType {
-    user: User | null;
+    user: any;
     loaded: boolean;
     userActions: any;
     menus: any;

@@ -1,12 +1,10 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { Switch } from "../../../../../components/ui/switch";
 import { useTranslations } from "next-intl";
-import { BaseApi } from "../../../../../api/baseApi";
-import { Helper } from "../../../../../lib/helper";
-import { set } from "video.js/dist/types/tech/middleware";
-// import { updateNotificationSetting } from "./actions/notifications";
+import { BaseApi } from "@/api/baseApi";
+import { Helper } from "@/lib/helper";
+import { Switch } from "../ui/switch";
 
 export default function NotificationSettings() {
   const trns = useTranslations('profile')

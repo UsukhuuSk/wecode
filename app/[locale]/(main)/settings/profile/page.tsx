@@ -1,5 +1,5 @@
+import EditProfile from "@/components/profile/EditProfile";
 import React from "react";
-import EditProfile from "../../profile/components/EditProfile";
 
 export default function Settings() {
   return (

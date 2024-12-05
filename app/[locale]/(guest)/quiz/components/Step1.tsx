@@ -25,10 +25,10 @@ interface Step1FormValues {
   surname: string;
   gender: string;
   work_id: string;
-  age: string;
+  age_id: string;
   address: string;
-  city: string;
-  aimag_city_id: string;
+  city_name: string;
+  country_id: string;
   education_id: string;
   is_agreement: boolean;
 }
@@ -56,7 +56,7 @@ const Step1: React.FC<StepProps> = ({ next }) => {
   const [genders, setGenders] = useState<any>([])
   const [refEmp, setRefEmp] = useState<any>([])
   const [refAges, setRefAges] = useState<any>([])
-  const [refaimag_city_ids, setRefaimag_city_ids] = useState<any>([])
+  const [refCountries, setRefCountries] = useState<any>([])
   const [refEdus, setRefEdus] = useState<any>([])
   const { locale } = useParams()
 
@@ -70,7 +70,7 @@ const Step1: React.FC<StepProps> = ({ next }) => {
         fetchAndSetData('9/ref_genders', params, setGenders),
         fetchAndSetData('9/ref_works', params, setRefEmp),
         fetchAndSetData('9/ref_ages', params, setRefAges),
-        fetchAndSetData('9/ref_aimag_cities', params, setRefaimag_city_ids),
+        fetchAndSetData('9/ref_countries', params, setRefCountries),
         fetchAndSetData('9/ref_educations', params, setRefEdus),
       ]);
     };
@@ -176,9 +176,9 @@ const Step1: React.FC<StepProps> = ({ next }) => {
           <div className="basis-1/4">
             <Label htmlFor="">{trns("account.age")}</Label>
             <Controller
-              name="age"
+              name="age_id"
               control={control}
-              defaultValue={formValues.age || ""}
+              defaultValue={formValues.age_id || ""}
               rules={{ required: trns("account.ageR") }}
               render={({ field }) => (
                 <Select value={field.value} onValueChange={field.onChange}>
@@ -194,8 +194,8 @@ const Step1: React.FC<StepProps> = ({ next }) => {
                 </Select>
               )}
             />
-            {errors.age && (
-              <p className="text-red-500 text-sm">{errors.age.message}</p>
+            {errors.age_id && (
+              <p className="text-red-500 text-sm">{errors.age_id.message}</p>
             )}
           </div>
         </div>
@@ -215,13 +215,13 @@ const Step1: React.FC<StepProps> = ({ next }) => {
           <div className="flex flex-col gap-3">
             <Label htmlFor="city">{trns("account.city")}</Label>
             <Input
-              {...register("city", { required: trns("account.cityR") })}
+              {...register("city_name", { required: trns("account.cityR") })}
               placeholder={trns("account.addressP")}
-              defaultValue={formValues.city || ""}
+              defaultValue={formValues.city_name || ""}
               className="rounded-[32px]"
             />
-            {errors.city && (
-              <p className="text-red-500 text-sm">{errors.city.message}</p>
+            {errors.city_name && (
+              <p className="text-red-500 text-sm">{errors.city_name.message}</p>
             )}
           </div>
         </div>
@@ -229,9 +229,9 @@ const Step1: React.FC<StepProps> = ({ next }) => {
           <div className="">
             <Label htmlFor="">{trns("account.region")}</Label>
             <Controller
-              name="aimag_city_id"
+              name="country_id"
               control={control}
-              defaultValue={formValues.aimag_city_id || ""}
+              defaultValue={formValues.country_id || ""}
               rules={{ required: trns("account.regionR") }}
               render={({ field }) => (
                 <Select value={field.value} onValueChange={field.onChange}>
@@ -241,14 +241,14 @@ const Step1: React.FC<StepProps> = ({ next }) => {
                   <SelectContent className="max-h-80 overflow-auto">
                     {
 
-                      refaimag_city_ids.map((g: any, index: number) => <SelectItem className="hover:bg-gray-200" key={index} value={g._id}>{g.name}</SelectItem>)
+                      refCountries.map((g: any, index: number) => <SelectItem className="hover:bg-gray-200" key={index} value={g._id}>{g.name}</SelectItem>)
                     }
                   </SelectContent>
                 </Select>
               )}
             />
-            {errors.aimag_city_id && (
-              <p className="text-red-500 text-sm">{errors.aimag_city_id.message}</p>
+            {errors.country_id && (
+              <p className="text-red-500 text-sm">{errors.country_id.message}</p>
             )}
           </div>
           <div className="">

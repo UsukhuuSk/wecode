@@ -36,7 +36,7 @@ export const Dialog: React.FC<DialogProps> = ({ isOpen, onClose, title, children
     )
   }
   return (
-    <div className="fixed inset-0 flex flex-col items-center justify-start  bg-gray-500 bg-opacity-75 z-50">
+    <div className="fixed inset-0 flex flex-col items-center justify-start  bg-gray-500 bg-opacity-75 z-[800]">
       <div className="h-40" style={{ width }}>
       </div>
       {DialogBody()}

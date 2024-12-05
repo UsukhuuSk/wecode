@@ -3,7 +3,7 @@ import HugeIcon from "../../ui/HugeIcon"
 import { useEffect, useState } from "react"
 import { Helper } from "../../../lib/helper"
 import { BaseApi } from "../../../api/baseApi"
-import { ExamItem } from "../exam/Items"
+import { ExamItem } from "./Items"
 
 export const CourseExam = ({ course }: any) => {
     const [open, setOpen] = useState<boolean>(false)
@@ -11,10 +11,8 @@ export const CourseExam = ({ course }: any) => {
     const [examItems, setExamItems] = useState<any>([])
 
     useEffect(() => {
-        if (open && Helper.isEmptyList(examItems)) {
-            getList()
-        }
-    }, [open])
+        getList()
+    }, [])
     const handleOpen = () => {
         setOpen(!open)
     }

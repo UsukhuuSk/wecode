@@ -8,7 +8,6 @@
     "headline2": "Empowering Every Mind",
     "start": "Get started for free",
     "team": "Our Team",
-
     "cardData": {
       "1": {
         "title": "Comprehensive AI education ",
@@ -129,7 +128,6 @@
     "login": "Login",
     "learning": "My learning"
   },
-
   "blog": {
     "title": "Blog",
     "subheadline": "Our updates will be here",
@@ -247,13 +245,14 @@
       "educationR": "Education level is required",
       "agreeWith": "I agree with",
       "agreeWithR": "I agree with",
-      "condition":"Terms & Conditions",
+      "condition": "Terms & Conditions",
       "conditionR": "You must accept the terms and conditions",
       "continue": "Continue",
       "back": "Back",
       "select": "Select",
       "addressP": "Ex: BZD, 1-r khoroo, 10-22",
-      "save": "Save"
+      "save": "Save",
+      "saving": "Saving"
     },
     "promise": {
       "self": "Self Promise",
@@ -293,7 +292,7 @@
       "popular": "Most popular",
       "topRated": "Top rated",
       "allCourses": "All Courses",
-      "allCourseDetail" : "Grow your AI career with foundational specializations and kill-specific short courses taught by leaders in the field.",
+      "allCourseDetail": "Grow your AI career with foundational specializations and kill-specific short courses taught by leaders in the field.",
       "search": "Search",
       "clear": "Clear all",
       "filters": "Filters",
@@ -348,9 +347,8 @@
     "enrolled": "enrolled",
     "fullBoard": " View full leaderboard",
     "totalTime": "Total learning time",
-    "weeklyTime":"Weekly learning time",
-    "monthlyTime":"Monthly learning time",
-    "daylyStreak": "Dayly streak",
+    "weeklyTime": "Weekly learning time",
+    "monthlyTime": "Monthly learning time",
     "pushDesc": "Notifications of this kind will send you directly to your phone of new updates.",
     "emailDesc": "Notifications of this kind will send you directly to your phone of new updates.",
     "updateSuccess": "Updated successfully.",
@@ -358,7 +356,24 @@
     "profileSettings": "Profile settings",
     "profile": "Profile",
     "notification": "Notification",
-    "purchaseHistory": "Purchase history"
+    "purchaseHistory": "Purchase history",
+    "courseName": "Course name",
+    "dateCompleted": "Date of completion",
+    "exam": "Exam",
+    "certificate": "Certificate",
+    "download": "Download",
+    "noExam": "No exam",
+    "passed": "Passed",
+    "calendar": {
+      "daylyStreak": "Dayly streak",
+      "sunday": "Sun",
+      "monday": "Mon",
+      "tuesday": "Tue",
+      "wednesday": "Wed",
+      "thursday": "Thu",
+      "friday": "Fri",
+      "saturday": "Sat"
+    }
   },
   "leaderboard": {
     "leaderboard": "Leaderboard",

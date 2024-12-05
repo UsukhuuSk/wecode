@@ -17,43 +17,67 @@ export class BaseApi {
         params: any = {},
         timeout: number = DEFAULT_TIMEOUT
     ): Promise<any> {
+        let locale = 'mn'
+        if (window && typeof window !== 'undefined') {
+            const pathSegments = window.location.pathname.split('/').filter(Boolean);
+            const [paramLocale] = pathSegments;
+            locale = paramLocale
+        }
         const url = `${BASEURL}/${endpoint}`;
-        const token =  Cookies.get("authToken");
+        const token = Cookies.get("authToken");
 
-        const options: RequestInit = {
-            method, 
+        const options: any = {
+            method,
             headers: {
-                'Content-Type': 'application/json',
                 ...(token ? { Authorization: `Bearer ${token}` } : {})
             },
         };
-        // GET хүсэлтийн хувьд query string болгоно
-        const finalUrl = method === 'GET' && params
-            ? `${url}?${new URLSearchParams(params).toString()}`
-            : url;
-        if (method !== 'GET' && params) {
-            options.body = JSON.stringify(params);
-        }
 
-        // Timeout механизмыг хэрэгжүүлэх
+        const isFileUpload = params instanceof File || params instanceof Blob;
+
+        if (isFileUpload) {
+            const formData = new FormData();
+            formData.append('file', params);
+
+            for (const [key, value] of Object.entries(params)) {
+                if (key !== 'file') {
+                    formData.append(key, value);
+                }
+            }
+
+            options.body = formData;
+        } else {
+            if (method !== 'GET' && params) {
+                options.body = JSON.stringify(params);
+                options.headers['Content-Type'] = 'application/json';
+            }
+        }
+        options.headers['Accept-Language'] = locale
+
+
+        // Timeout handling
         const controller = new AbortController();
         const signal = controller.signal;
         options.signal = signal;
 
         const timeoutId = setTimeout(() => {
-            controller.abort(); // Хугацаа дуусвал хүсэлтийг цуцална
+            controller.abort(); // Abort request if timeout is reached
         }, timeout);
 
         try {
-            const response: any = await fetch(finalUrl, options);
+            const finalUrl = method === 'GET' && params
+                ? `${url}?${new URLSearchParams(params).toString()}`
+                : url;
+
+            const response: Response = await fetch(finalUrl, options);
 
             if (!response.ok) {
                 const errorData = await response.json();
                 if (errorData.message) {
                     throw `${errorData.message}`;
-                  } else {
-                    throw `Error: ${response.status} - Unknown error`
-                  }
+                } else {
+                    throw `Error: ${response.status} - Unknown error`;
+                }
             }
 
             return await response.json();
@@ -65,9 +89,10 @@ export class BaseApi {
             }
             throw error;
         } finally {
-            clearTimeout(timeoutId); // Timeout санах ойг цэвэрлэх
+            clearTimeout(timeoutId); // Clear the timeout on request completion
         }
     }
+
 
     static async _get(endpoint: string, params = {}, timeout?: number): Promise<any> {
         return this.request('GET', endpoint, params, timeout);

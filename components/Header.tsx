@@ -10,6 +10,7 @@ import {
   Notification03Icon,
   PencilEdit01Icon,
   Settings02Icon,
+  Profile02Icon
 } from "@hugeicons/react";
 import {
   DropdownMenu,
@@ -25,6 +26,7 @@ import { getFile } from "../api/serviceuser";
 import { fetchImageFileById } from "../lib/imageUtils";
 import LocaleSwitcher from "./LocaleSwitcher";
 import { useAuth } from "../context/AuthContext";
+import { NotifBar } from "./NotifBar";
 
 export default function Header() {
   const BASEURL = process.env.NEXT_PUBLIC_API_URL;
@@ -126,13 +128,9 @@ export default function Header() {
             })}
             <div className="flex items-center gap-4">
               <LocaleSwitcher />
-              <div className="p-1 bg-[#FFFFFF33] rounded-full">
-                <Notification03Icon
-                  size={20}
-                  color={"#fff"}
-                  variant="duotone"
-                />
-              </div>
+
+              <NotifBar/>
+
               <DropdownMenu>
                 <DropdownMenuTrigger asChild>
                   <div className="h-8 w-8 rounded-full border border-neutral-700 p-0 relative object-cover">
@@ -147,13 +145,21 @@ export default function Header() {
                   </div>
                 </DropdownMenuTrigger>
                 <DropdownMenuContent className="w-56 mr-[110px] bg-[#1a1a40] border-neutral-700 text-white flex flex-col items-start">
+                  <DropdownMenuItem className="gap-3 py-3 focus:bg-white/10 cursor-pointer w-full" onClick={() => handlePush('/profile')}>
+                    <Profile02Icon
+                      size={24}
+                      color={"#fff"}
+                      variant={"bulk"}
+                    />
+                    Profile
+                  </DropdownMenuItem>
                   <DropdownMenuItem className="gap-3 py-3 focus:bg-white/10 cursor-pointer w-full" onClick={() => handlePush('/settings/profile')}>
                     <PencilEdit01Icon
                       size={24}
                       color={"#fff"}
                       variant={"bulk"}
                     />
-                    Edit profile
+                    Edit Profile
                   </DropdownMenuItem>
                   <DropdownMenuItem className="gap-3 py-3 focus:bg-white/10 cursor-pointer w-full" onClick={() => handlePush('/settings/purchase-history')}>
                     <Invoice01Icon size={24} color={"#fff"} variant={"bulk"} />

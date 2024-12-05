@@ -1,17 +1,39 @@
 import dayjs from 'dayjs';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import HugeIcon from '../ui/HugeIcon';
 import { useTranslations } from 'next-intl';
-import { HutIcon } from '@hugeicons/react';
+import { Helper } from '@/lib/helper';
+import { BaseApi } from '@/api/baseApi';
 
-export const ProfileCalendar = () => {
-    const trns = useTranslations('profile')
-    const [currentDate, setCurrentDate] = useState(dayjs());
+export const ProfileCalendar = ({ locale }: any) => {
+    const trns = useTranslations('profile.calendar')
+    const [currentDate, setCurrentDate] = useState(dayjs().locale(locale));
 
     const daysInMonth = currentDate.daysInMonth();
     const startOfMonth = currentDate.startOf('month').day();
     const days = [...Array(daysInMonth).keys()].map((i) => i + 1);
     const today = dayjs();
+    const [streakDays, setStreakDays] = useState<any>([])
+
+    useEffect(() => {
+        getStreakDays()
+    }, [])
+
+    const getStreakDays = async () => {
+        try {
+            const list = await BaseApi._get('exam/streakdays', { date: today.format('YYYY-MM-DD') })
+            if (Helper.isNotEmptyList(list)) {
+                for (const item of list) {
+                    if (Helper.isNotEmptyList(item['streak_dates'])) {
+                        setStreakDays((prev: any) => [...prev, ...item['streak_dates']]);
+                    }
+                }
+            }
+
+        } catch (error) {
+            Helper.handleError(error)
+        }
+    }
 
     const handleMonthChange = (direction: 'prev' | 'next') => {
         setCurrentDate((prev) =>
@@ -42,7 +64,7 @@ export const ProfileCalendar = () => {
                 </div>
 
                 <div className="grid grid-cols-7 text-center text-white font-normal font-neue mb-2">
-                    {['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'].map((day) => (
+                    {[trns('sunday'), trns('monday'), trns('tuesday'), trns('wednesday'), trns('thursday'), trns('friday'), trns('saturday')].map((day) => (
                         <div key={day} className="p-2 uppercase">
                             {day}
                         </div>
@@ -55,23 +77,22 @@ export const ProfileCalendar = () => {
                     ))}
 
                     {days.map((day) => {
-                        const nextDay = today.add(1, 'day');
-
                         const currentDay = currentDate.date(day);
                         const isToday = currentDay.isSame(today, 'day');
-                        const isNextDay = currentDay.isSame(nextDay, 'day');
-
+                        const isInStreak = () => {
+                            return streakDays.includes(currentDay.format('YYYY-MM-DD'))
+                        }
                         return (
                             <div
                                 key={day}
                                 className={`flex flex-col items-center justify-center h-8 w-8
                                  rounded-full bg-[#FFFFFF10] hover:bg-slate-600 text-white cursor-pointer
                                   ${isToday ? 'border border-dashed border-red-500' : ''} 
-                                  ${isNextDay ? 'bg-wcOrange text-xs' : ''}
+                                  ${isInStreak() ? 'bg-wcOrange text-xs' : ''}
                                   `}
                             >
                                 {
-                                    isNextDay && <p>
+                                    isInStreak() && <p>
                                         <HugeIcon name="fire" color={'white'} />
                                     </p>
                                 }

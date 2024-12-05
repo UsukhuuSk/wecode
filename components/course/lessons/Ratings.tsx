@@ -54,7 +54,7 @@ export const CourseRatings = ({ course }: any) => {
             console.log('data rate', data)
             setRatings(data.rates)
             setTotal(data.total)
-            setAverage(data.avg_rate)
+            setAverage(Math.floor(data.avg_rate))
             setRate(data.avg_rate)
         } catch (error) {
             Helper.handleError(error)
