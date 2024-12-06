@@ -67,8 +67,7 @@ export function FloatingHeader() {
                         key={`link=${idx}`}
                         href={navItem.link}
                         className={cn(
-                          `relative items-center flex rounded-3xl py-2 px-3 text-[#13032B] font-medium text-[14px] font-golosText transition-all ease-in-out duration-300 ${
-                            isActive ? "bg-[#E2E8F0]" : ""
+                          `relative items-center flex rounded-3xl py-2 px-3 text-[#13032B] font-medium text-[14px] font-golosText transition-all ease-in-out duration-300 ${isActive ? "bg-[#E2E8F0]" : ""
                           }`
                         )}
                       >
@@ -79,7 +78,15 @@ export function FloatingHeader() {
                       </Link>
                     );
                   })}
-                </div>
+
+                  <Link
+                    href={`/${locale}/login`}
+                    className="border bg-[#4317FF] text-sm font-medium relative border-neutral-200 dark:border-white/[0.2] text-white px-5 py-2 rounded-[32px]"
+                  >
+                    <span>{t("login")}</span>
+                    {/* <span className="absolute inset-x-0 w-1/2 mx-auto -bottom-px bg-gradient-to-r from-transparent via-blue-500 to-transparent  h-px" /> */}
+
+                  </Link>                </div>
               </SheetDescription>
             </SheetHeader>
 

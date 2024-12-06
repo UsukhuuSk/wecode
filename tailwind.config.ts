@@ -68,18 +68,18 @@ const config: Config = {
       container: {
         center: true,
         padding: {
-          DEFAULT: '1rem', // Default padding for all screen sizes
-          sm: '2rem',      // Padding for small screens
-          md: '4rem',      // Padding for medium screens
-          lg: '6rem',      // Padding for large screens
-          xl: '8rem',      // Padding for extra-large screens
+          DEFAULT: '1rem',
+          sm: '2rem', 
+          md: '2rem', 
+          lg: '6rem', 
+          xl: '8rem',
         },
         screens: {
-          sm: '640px',  // Small screens
-          md: '1020px',  // Medium screens
-          lg: '1344px', // Large screens
-          xl: '1500px', // Extra-large screens
-          '2xl': '1500px', // Custom size (optional)
+          sm: '640px', 
+          md: '768px', 
+          lg: '1024px',
+          xl: '1280px', 
+          '2xl': '1500px',
         },
       },
       colors: {

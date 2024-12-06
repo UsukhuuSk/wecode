@@ -376,6 +376,9 @@
     "download": "Татах",
     "noExam": "Шалгалт өгөөгүй",
     "passed": "Тэнцсэн",
+    "continueLearning": "Үргэлжлүүлж сурах",
+    "total": " Total learning time", 
+    "hours": "цаг",
     "calendar": {
       "daylyStreak": "Үргэлжилсэн өдөр",
       "sunday": "Ня",
@@ -387,9 +390,16 @@
       "saturday": "Бям"
     }
   },
-  "leaderboard": {
-    "leaderboard": "Тэргүүлэгчдийн самбар",
-    "total": "Нийт суралцсан хугацаа",
-    "hours": "цаг"
+  "header": {
+    "login": "Нэвтрэх",
+    "signout": "Гарах",
+    "profile": "Профайл",
+    "editProfile": "Профайл засах",
+    "purchaseHistory": "Худалдан авалтын түүх",
+    "notifSettings": "Мэдэгдлийн тохиргоо"
+  },
+  "page": {
+    "errorText": "Серверт алдаа гарлаа.",
+    "btnText": "Дахин ачаалах"
   }
 }

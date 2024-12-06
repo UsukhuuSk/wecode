@@ -1,4 +1,4 @@
-import { CheckUnread01Icon, FireIcon, Notification01Icon, Notification03Icon, Profile02Icon, Tick01Icon } from "@hugeicons/react"
+import { CheckUnread01Icon, FireIcon, Mortarboard01Icon, Notification01Icon, Notification03Icon, Profile02Icon, Tick01Icon } from "@hugeicons/react"
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "./ui/dropdown-menu"
 import { BaseApi } from "@/api/baseApi"
 import { useEffect, useState } from "react"
@@ -17,6 +17,10 @@ export const NotifBar = () => {
         'success': {
             icon: <Tick01Icon />,
             color: "#22C55E"
+        },
+        'complete': {
+            icon: <Mortarboard01Icon variant="solid" />,
+            color: "#6068F4"
         },
         'else': {
             icon: <Notification01Icon />,
@@ -47,8 +51,15 @@ export const NotifBar = () => {
         }
     }
 
-
+    const getIconObj = (type: any) => {
+        if (iconMap[type]) {
+            return iconMap[type]
+        } else {
+            return iconMap['else']
+        }
+    }
     return (
+
 
         <DropdownMenu >
             <DropdownMenuTrigger asChild>
@@ -68,8 +79,8 @@ export const NotifBar = () => {
                     list.map((item: any, index: any) => {
                         return (
                             <div key={index} className={`w-[360px] h-16 flex items-center gap-2 px-4 hover:bg-[#FFFFFF40] cursor-pointer ${index < list.length - 1 ? 'border-b border-wcSlate700' : ''}`}>
-                                <div className="flex-1 h-8 w-8 flex items-center justify-center rounded-full" style={{ background: iconMap[item.type_id.alert_type] ? iconMap[item.type_id.alert_type].color : iconMap['else'].color }}>
-                                    {iconMap[item.type_id.alert_type] ? iconMap[item.type_id.alert_type].icon : iconMap['else']}
+                                <div className="flex-1 h-8 w-8 flex items-center justify-center rounded-full" style={{ background: getIconObj(item.type_id.alert_type).color }}>
+                                    {getIconObj(item.type_id.alert_type).icon}
                                 </div>
                                 <div className="font-normal font-neue text-wrap max-w-72">
                                     <div dangerouslySetInnerHTML={{ __html: item.notif_text }}></div>

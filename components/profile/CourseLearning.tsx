@@ -1,10 +1,12 @@
 import { BaseApi } from "@/api/baseApi"
 import { Helper } from "@/lib/helper"
 import { GetFileUrl } from "@/lib/utils"
+import { useTranslations } from "next-intl"
 import Link from "next/link"
 import { useEffect, useState } from "react"
 
 export const ProCourseLearning = () => {
+    const trns = useTranslations('profile')
     const [list, setList] = useState<any[]>([])
     const [loading, setLoading] = useState<boolean>(false)
 
@@ -45,22 +47,22 @@ export const ProCourseLearning = () => {
                     {
                         [1, 2].map((item: any, index) => {
                             return (
-                                <li key={'r' + index} className="h-[195px] bg-[#13032B40] border border-[#404047] rounded-3xl overflow-hidden flex items-center justify-between pr-4">
+                                <li key={'r' + index} className="h-[80px] md:h-[195px] bg-[#13032B40] border border-[#404047] rounded-3xl overflow-hidden flex-col md:flex-row flex items-center justify-between pr-4">
                                     <div className="flex gap-4 items-center">
-                                        <div className="rounded-3xl overflow-hidden flex justify-center items-center w-[365px] h-[195px] bg-slate-600">
+                                        <div className="rounded-3xl overflow-hidden flex justify-center items-center w-[75px] md:w-[365px] h-[80px] md:h-[195px] bg-slate-600">
                                         </div>
-                                        <div className="font-neue px-4">
+                                        <div className="font-neue px-4 flex md:block items-center gap-2">
                                             <p className="mb-2 font-medium">{textDiv(150, 20)}</p>
                                             <p className="text-[13px] text-wcSlate400 mb-[10px]">{textDiv(40, 20)}</p>
                                             <div className="rounded-[2rem] px-3 py-[5px] bg-slate-600 text-slate-600 inline-block text-xs">
-                                                passed
+                                                {trns('passed')}
                                             </div>
                                         </div>
                                     </div>
                                     <div>
                                         <Link href={`/course/${item._id}`}>
                                             <button className="bg-slate-600 text-slate-600 px-4 py-3 font-semibold rounded-[2rem]">
-                                                Continue learning
+                                                {trns('continueLearning')}
                                             </button>
                                         </Link>
                                     </div>
@@ -78,21 +80,21 @@ export const ProCourseLearning = () => {
                     {
                         list.map((item: any) => {
                             return (
-                                <li key={item._id} className="h-[195px] bg-[#13032B40] border border-[#404047] rounded-3xl overflow-hidden flex items-center justify-between pr-4">
+                                <li key={item._id} className="h-[80px] md:h-[195px] bg-[#13032B40] border border-[#404047] rounded-xl md:rounded-3xl overflow-hidden flex items-center justify-between pr-4">
                                     <div className="flex gap-4 items-center">
-                                        <div className="rounded-3xl overflow-hidden flex justify-center items-center w-[365px] h-[195px]">
-                                            <img className="w-[365px]" src={GetFileUrl(item.image._id)} />
+                                        <div className="rounded-xl md:rounded-3xl overflow-hidden flex justify-center items-center w-[75px] md:w-[365px] h-[80px] md:h-[195px]">
+                                            <img className="w-[365px] object-fit" src={GetFileUrl(item.image._id)} />
                                         </div>
-                                        <div className="font-neue px-4">
-                                            <p className="mb-2 font-medium">{item.name}</p>
+                                        <div className="font-neue px-4 flex md:block items-center gap-2">
+                                            <p className="mb-2 font-medium text-xs md:text-base">{item.name}</p>
                                             <p className="text-[13px] text-wcSlate400 mb-[10px]">{getDuration(item.duration_seconds)}</p>
                                             <div className="rounded-[2rem] px-3 py-[5px] border inline-block text-xs" style={{ color: item.level_id.color, borderColor: item.level_id.color }}>{item.level_id.name}</div>
                                         </div>
                                     </div>
                                     <div>
                                         <Link href={`/course/${item._id}`}>
-                                            <button className="hover:bg-primary hover:text-white bg-white text-primary px-4 py-3 font-semibold rounded-[2rem] shadow-lg transition-all duration-300">
-                                                Continue learning
+                                            <button className="hover:bg-primary hover:text-white bg-white text-xs md:text-base text-primary px-2 py-1 md:px-4 md:py-3 font-semibold rounded-[1rem] md:rounded-[2rem]transition-all duration-300">
+                                                {trns('continueLearning')}
                                             </button>
                                         </Link>
                                     </div>

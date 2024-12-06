@@ -14,7 +14,7 @@ export default function ProfileLayout({
   const pathName = usePathname()
 
   const routes = [{
-    name:  trns('profile'),
+    name: trns('profile'),
     link: '/settings/profile'
   }, {
     name: trns('notification'),
@@ -37,31 +37,26 @@ export default function ProfileLayout({
           {trns('settings')}
         </h1>
       </div>
-      <div className="max-w-[1024px] mt-10 flex gap-8 overflow-hidden">
-        <div className="max-w-[210px] min-w-[210px]">
-          <div className="flex flex-col gap-2">
-            {
-              routes.map((r: any) => (
-                <Link
-                  key={r.name}
-                  href={r.link}
-                  className={`flex items-center px-4 py-4 gap-2 rounded-xl ${isActive(r.link) ? 'bg-[#4317FF]' : ''}`}
-                >
-                  <span className="">
-                    <Invoice01Icon size={18} color={"#fff"} variant={"bulk"} />
-                  </span>
-                  <span className="text-white font-normal text-sm font-neue">
-                    {r.name}
-                  </span>
-                </Link>
-              ))
-            }
-          </div>
+      <div className=" mt-10 flex flex-col md:flex-row gap-8 overflow-hidden">
+        <div className="flex md:flex-col gap-2">
+          {
+            routes.map((r: any) => (
+              <Link
+                key={r.name}
+                href={r.link}
+                className={`flex items-center flex-1 justify-center md:justify-start md:w-52 min-h-[52px] max-h-[52px] px-4 gap-2 rounded-xl ${isActive(r.link) ? 'bg-[#4317FF]' : ''}`}
+              >
+                <span className="">
+                  <Invoice01Icon size={18} color={"#fff"} variant={"bulk"} />
+                </span>
+                <span className="text-white font-normal text-sm font-neue">
+                  {r.name}
+                </span>
+              </Link>
+            ))
+          }
         </div>
-
-        <div className="flex flex-col gap-8">
-          {children}
-        </div>
+        {children}
       </div>
     </div>
   );

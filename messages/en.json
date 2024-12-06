@@ -364,6 +364,10 @@
     "download": "Download",
     "noExam": "No exam",
     "passed": "Passed",
+    "continueLearning": "Continue learning",
+    "leaderboard": "Leaderboard",
+    "total": " Total learning time",
+    "hours": "hours",
     "calendar": {
       "daylyStreak": "Dayly streak",
       "sunday": "Sun",
@@ -375,9 +379,16 @@
       "saturday": "Sat"
     }
   },
-  "leaderboard": {
-    "leaderboard": "Leaderboard",
-    "total": " Total learning time",
-    "hours": "hours"
+  "header": {
+    "login": "Login",
+    "signout": "Sign out",
+    "profile": "Profile",
+    "editProfile": "Edit profile",
+    "purchaseHistory": "Purchase history",
+    "notifSettings": "Notification settings"
+  },
+  "page": {
+    "errorText": "Internal server error.",
+    "btnText": "Reload"
   }
 }

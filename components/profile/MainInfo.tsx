@@ -23,15 +23,11 @@ export const ProMainInfo = ({ userInfo, trns }: any) => {
     return (
         <div className="max-w-[390px]">
             <div className="border border-[#40404787] bg-[#33415533] min-w-[390px] rounded-xl px-4 pb-4 pt-3 flex flex-col gap-4">
-                <div className="flex justify-center rounded-full max-w-[100px] m-auto">
+                <div className="flex justify-center items-center rounded-full w-[100px] h-[100px] m-auto bg-cardDark overflow-hidden">
                     <Link href={'/settings/profile'}>
                         {userInfo.image && (
-                            <Image
+                            <img
                                 src={GetFileUrl(userInfo.image._id)}
-                                alt="profile"
-                                width={100}
-                                height={100}
-                                className="rounded-full"
                             />
                         )}
                     </Link>

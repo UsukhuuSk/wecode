@@ -30,7 +30,7 @@ export default function PurchaseHistory() {
           {purchases.map((purchase) => (
             <div
               key={purchase.id}
-              className="flex items-center justify-between"
+              className="flex flex-col md:flex-row  items-start md:items-center justify-between"
             >
               <div className="flex items-center gap-4">
                 <div className="flex h-10 w-10 items-center justify-center rounded-full bg-emerald-500/20">

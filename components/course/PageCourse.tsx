@@ -26,7 +26,7 @@ import { LessonDetailTabs } from "./lessons/DetailTabs";
 import { CourseExam } from "./exam/Exams";
 
 
-export default function CourseClientPage({ courseData, params }: any) {
+export default function PageCourse({ courseData, params }: any) {
     const [topics, setTopics] = useState<any>([])
     const [teachers, setTeachers] = useState<any>([])
     const trns = useTranslations("course.detail");

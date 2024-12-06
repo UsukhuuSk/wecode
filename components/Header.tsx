@@ -18,7 +18,7 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "./ui/dropdown-menu";
-import { ChevronDownIcon } from "@radix-ui/react-icons";
+import { ChevronDownIcon, HamburgerMenuIcon } from "@radix-ui/react-icons";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { jsonRequestWithToken } from "../api/utils";
@@ -27,6 +27,7 @@ import { fetchImageFileById } from "../lib/imageUtils";
 import LocaleSwitcher from "./LocaleSwitcher";
 import { useAuth } from "../context/AuthContext";
 import { NotifBar } from "./NotifBar";
+import { Sheet, SheetContent, SheetDescription, SheetHeader, SheetTitle, SheetTrigger } from "./ui/sheet";
 
 export default function Header() {
   const BASEURL = process.env.NEXT_PUBLIC_API_URL;
@@ -37,6 +38,7 @@ export default function Header() {
   const [userInfo, setUserInfo] = useState<any>({});
   const [imgUrl, setImgUrl] = useState<string | null | undefined>(null);
   const { logout } = useAuth()
+  const trns = useTranslations("header")
 
   useEffect(() => {
     const fetchUserInfo = async () => {
@@ -104,73 +106,64 @@ export default function Header() {
       link: `/${locale}/about`,
     },
   ];
-
-  return (
-    <div className="fixed top-0 z-10 w-full py-3 text-white bg-[#33415566] border-b border-[#40404787]">
-      <div className="wrapContainer flex justify-between">
+  const MobileMenu = () => {
+    return (
+      <div className="fixed top-0 w-full flex z-[500] items-center px-4 py-4 md:hidden  bg-[#33415566] justify-between text-white cursor-pointer ">
         <Link href={'/'}>
           <Image src={logo} alt="logo" width={100} height={32} />
         </Link>
-        <div className="flex items-center gap-8">
-          <div className="flex items-center gap-6">
-            {routes.map((route, index) => {
-              return (
-                <div key={index}>
-                  <Link
-                    href={route.link}
-                    key={index}
-                    className="font-neue text-[14px] font-medium px-3"
-                  >
-                    {route.name}
-                  </Link>
-                </div>
-              );
-            })}
-            <div className="flex items-center gap-4">
-              <LocaleSwitcher />
-
-              <NotifBar/>
-
-              <DropdownMenu>
-                <DropdownMenuTrigger asChild>
-                  <div className="h-8 w-8 rounded-full border border-neutral-700 p-0 relative object-cover">
-                    <Image
-                      src={imgUrl || ""}
-                      alt=""
-                      width={32}
-                      height={32}
-                      className="rounded-full object-cover"
-                    />
-                    <ChevronDownIcon className="h-4 w-4 text-white absolute -right-5 top-1/2 transform -translate-y-1/2" />
-                  </div>
-                </DropdownMenuTrigger>
-                <DropdownMenuContent className="w-56 mr-[110px] bg-[#1a1a40] border-neutral-700 text-white flex flex-col items-start">
-                  <DropdownMenuItem className="gap-3 py-3 focus:bg-white/10 cursor-pointer w-full" onClick={() => handlePush('/profile')}>
+        <Sheet>
+          <SheetTrigger asChild>
+            <HamburgerMenuIcon width={24} height={24} />
+          </SheetTrigger>
+          <SheetContent className="bg-[#334155] z-[1000] w-[300px] border-gray-600 text-white">
+            <SheetHeader>
+              <SheetTitle>
+                <Image src={logo} alt="" />
+                <LocaleSwitcher />
+              </SheetTitle>
+              <SheetDescription>
+                <div className="flex flex-col items-start justify-center gap-4">
+                  {routes.map((route, index) => {
+                    return (
+                      <div key={index}>
+                        <Link
+                          href={route.link}
+                          key={index}
+                          className="font-neue text-[14px] font-medium px-3"
+                        >
+                          {route.name}
+                        </Link>
+                      </div>
+                    );
+                  })}
+                  <div className="w-full border my-4"></div>
+                  <div className="cursor-pointer w-full flex items-center gap-2 font-neue text-[14px] font-medium" onClick={() => handlePush('/profile')}>
                     <Profile02Icon
                       size={24}
                       color={"#fff"}
                       variant={"bulk"}
                     />
-                    Profile
-                  </DropdownMenuItem>
-                  <DropdownMenuItem className="gap-3 py-3 focus:bg-white/10 cursor-pointer w-full" onClick={() => handlePush('/settings/profile')}>
+                    {trns('profile')}
+                  </div>
+                  <div className="flex items-center gap-2 cursor-pointer w-full font-neue text-[14px] font-medium" onClick={() => handlePush('/settings/profile')}>
                     <PencilEdit01Icon
                       size={24}
                       color={"#fff"}
                       variant={"bulk"}
                     />
-                    Edit Profile
-                  </DropdownMenuItem>
-                  <DropdownMenuItem className="gap-3 py-3 focus:bg-white/10 cursor-pointer w-full" onClick={() => handlePush('/settings/purchase-history')}>
+                    {trns('editProfile')}
+                  </div>
+                  <div className="flex items-center gap-2 cursor-pointer w-full font-neue text-[14px] font-medium" onClick={() => handlePush('/settings/purchase-history')}>
                     <Invoice01Icon size={24} color={"#fff"} variant={"bulk"} />
-                    Purchase history
-                  </DropdownMenuItem>
-                  <DropdownMenuItem className="gap-3 py-3 focus:bg-white/10 cursor-pointer w-full" onClick={() => handlePush('/settings/notification')}>
+                    {trns('purchaseHistory')}
+                  </div>
+                  <div className="flex items-center gap-2 cursor-pointer w-full font-neue text-[14px] font-medium" onClick={() => handlePush('/settings/notification')}>
                     <Settings02Icon size={24} color={"#fff"} variant={"bulk"} />
-                    Notification settings
-                  </DropdownMenuItem>
-                  <DropdownMenuItem
-                    className="gap-3  focus:bg-white/10 cursor-pointer w-full"
+                    {trns('notifSettings')}
+                  </div>
+                  <div
+                    className="flex items-center gap-2  cursor-pointer w-full font-neue text-[14px] font-medium"
                     onClick={handleLogout}
                   >
                     <LogoutSquare01Icon
@@ -178,14 +171,113 @@ export default function Header() {
                       color={"#fff"}
                       variant={"solid"}
                     />
-                    Sign out
-                  </DropdownMenuItem>
-                </DropdownMenuContent>
-              </DropdownMenu>
+                    {trns('signout')}
+                  </div>
+                </div>
+              </SheetDescription>
+            </SheetHeader>
+
+            {/* <SheetFooter>
+            <SheetClose asChild>
+              <Button type="submit">Save changes</Button>
+            </SheetClose>
+          </SheetFooter> */}
+          </SheetContent>
+        </Sheet>
+      </div>
+    )
+  }
+
+  const MainMenu = () => {
+    return (
+      <div className="hidden  md:block fixed top-0 z-10 w-full py-3 text-white bg-[#33415566] border-b border-[#40404787]">
+        <div className="container flex  justify-between">
+          <Link href={'/'}>
+            <Image src={logo} alt="logo" width={100} height={32} />
+          </Link>
+          <div className="flex items-center gap-8">
+            <div className="flex items-center gap-6">
+              {routes.map((route, index) => {
+                return (
+                  <div key={index}>
+                    <Link
+                      href={route.link}
+                      key={index}
+                      className="font-neue text-[14px] font-medium px-3"
+                    >
+                      {route.name}
+                    </Link>
+                  </div>
+                );
+              })}
+              <div className="flex items-center gap-4">
+                <LocaleSwitcher />
+
+                <NotifBar />
+
+                <DropdownMenu>
+                  <DropdownMenuTrigger asChild>
+                    <div className="h-8 w-8 rounded-full border border-neutral-700 p-0 relative object-cover">
+                      <Image
+                        src={imgUrl || ""}
+                        alt=""
+                        width={32}
+                        height={32}
+                        className="rounded-full object-cover"
+                      />
+                      <ChevronDownIcon className="h-4 w-4 text-white absolute -right-5 top-1/2 transform -translate-y-1/2" />
+                    </div>
+                  </DropdownMenuTrigger>
+                  <DropdownMenuContent className="w-56 mr-[110px] bg-[#1a1a40] border-neutral-700 text-white flex flex-col items-start">
+                    <DropdownMenuItem className="gap-3 py-3 focus:bg-white/10 cursor-pointer w-full" onClick={() => handlePush('/profile')}>
+                      <Profile02Icon
+                        size={24}
+                        color={"#fff"}
+                        variant={"bulk"}
+                      />
+                      Profile
+                    </DropdownMenuItem>
+                    <DropdownMenuItem className="gap-3 py-3 focus:bg-white/10 cursor-pointer w-full" onClick={() => handlePush('/settings/profile')}>
+                      <PencilEdit01Icon
+                        size={24}
+                        color={"#fff"}
+                        variant={"bulk"}
+                      />
+                      Edit Profile
+                    </DropdownMenuItem>
+                    <DropdownMenuItem className="gap-3 py-3 focus:bg-white/10 cursor-pointer w-full" onClick={() => handlePush('/settings/purchase-history')}>
+                      <Invoice01Icon size={24} color={"#fff"} variant={"bulk"} />
+                      Purchase history
+                    </DropdownMenuItem>
+                    <DropdownMenuItem className="gap-3 py-3 focus:bg-white/10 cursor-pointer w-full" onClick={() => handlePush('/settings/notification')}>
+                      <Settings02Icon size={24} color={"#fff"} variant={"bulk"} />
+                      Notification settings
+                    </DropdownMenuItem>
+                    <DropdownMenuItem
+                      className="gap-3  focus:bg-white/10 cursor-pointer w-full"
+                      onClick={handleLogout}
+                    >
+                      <LogoutSquare01Icon
+                        size={20}
+                        color={"#fff"}
+                        variant={"solid"}
+                      />
+                      Sign out
+                    </DropdownMenuItem>
+                  </DropdownMenuContent>
+                </DropdownMenu>
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
+    )
+  }
+
+  return (
+    <>
+      {MainMenu()}
+      {MobileMenu()}
+    </>
   );
 }

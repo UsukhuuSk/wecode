@@ -40,8 +40,8 @@ const CourseCard = ({ course }: any) => {
               Introductory
             </Badge> */}
             <div
-              // style={{ borderColor: item.level_id.color }}
-              className={`font-neue text-[12px] font-semibold border py-1 px-5 rounded-[32px] border-[${course.level_id.color}] text-[${course.level_id.color}]`}
+              style={{ borderColor: course.level_id.color, color: course.level_id.color }}
+              className={`font-neue text-[12px] font-semibold border py-1 px-5 rounded-[32px]`}
             >
               {course.level_id.name}
             </div>

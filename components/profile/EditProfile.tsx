@@ -1,6 +1,6 @@
 "use client";
 import Image from "next/image";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Camera01Icon } from "@hugeicons/react";
 import { useTranslations } from "next-intl";
 import { useParams } from "next/navigation";
@@ -11,7 +11,7 @@ import { Helper } from "../../lib/helper";
 import { GetFileUrl } from "../../lib/utils";
 import { CoFormField } from "./CoFormField";
 import { CoSelect } from "../ui/CoSelect";
-const fetchAndSetData = async (endpoint: any, params: any, setter: any) => {
+const fetchAndSetData = async (endpoint: any, setter: any) => {
   try {
     const { list } = await BaseApi._get(endpoint);
     setter(list);
@@ -23,11 +23,9 @@ const fetchAndSetData = async (endpoint: any, params: any, setter: any) => {
 
 export default function EditProfile() {
   const { user, login } = useAuth()
-  const { locale } = useParams()
   const trns = useTranslations('profile')
   const trnsAcc = useTranslations("quiz");
   const [userData, setUserData] = useState<any>({});
-
   const [genders, setGenders] = useState<any>([])
   const [refEmp, setRefEmp] = useState<any>([])
   const [refAges, setRefAges] = useState<any>([])
@@ -39,19 +37,6 @@ export default function EditProfile() {
   const [saving, setSaving] = useState<boolean>(false)
 
   useEffect(() => {
-    const lang = locale;
-    const params = { fields: '_id,code,name', lang };
-
-    const fetchData = async () => {
-      await Promise.all([
-        fetchAndSetData('9/ref_genders', params, setGenders),
-        fetchAndSetData('9/ref_works', params, setRefEmp),
-        fetchAndSetData('9/ref_ages', params, setRefAges),
-        fetchAndSetData('9/ref_countries', params, setRefCountries),
-        fetchAndSetData('9/ref_educations', params, setRefEdus),
-      ]);
-    };
-
     fetchData();
   }, []);
 
@@ -75,6 +60,15 @@ export default function EditProfile() {
   }, [user])
 
 
+  const fetchData = async () => {
+    await Promise.all([
+      fetchAndSetData('9/ref_genders', setGenders),
+      fetchAndSetData('9/ref_works', setRefEmp),
+      fetchAndSetData('9/ref_ages', setRefAges),
+      fetchAndSetData('9/ref_countries', setRefCountries),
+      fetchAndSetData('9/ref_educations', setRefEdus),
+    ]);
+  };
 
 
   const handleImageChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -128,12 +122,9 @@ export default function EditProfile() {
 
 
   return (
-    <div className="w-full min-w-[620px] text-white bg-[#33415566] py-6 px-8 rounded-xl border border-[#40404787]">
+    <div className="w-full  text-white bg-[#33415566] py-6 px-8 rounded-xl border border-[#40404787]">
       <div className="flex flex-col gap-8">
-        <h1 className="text-[20px] font-adineue font-bold">{trns('profileSettings')}</h1>
-        <div className="">
-
-        </div>
+        <h1 className="text-[20px] font-adineue font-bold text-center md:text-left">{trns('profileSettings')}</h1>
         <div className="">
           <div className="flex justify-center mb-8">
             <div className="relative">
@@ -156,7 +147,7 @@ export default function EditProfile() {
             </div>
           </div>
           <div className="grid grid-cols-12 gap-4">
-            <div className="col-span-4">
+            <div className="col-span-12 md:col-span-6 lg:col-span-4">
               <CoFormField key="firstname" label={'account.firstName'} isError={errors.includes('given_name')}>
                 <input
                   className="h-11 bg-[#13032B80] border border-[#484261] rounded-xl px-4  text-white w-full"
@@ -167,38 +158,38 @@ export default function EditProfile() {
                 />
               </CoFormField>
             </div>
-            <div className="col-span-4">
+            <div className="col-span-12 md:col-span-6 lg:col-span-4">
               <CoFormField label={'account.lastName'} isError={errors.includes('surname')}>
                 <input className="h-11 bg-[#13032B80] border border-[#484261] rounded-xl px-4   text-white w-full" value={userData['surname']} onChange={(e: any) => handleChangeUserData('surname', e.target.value)} />
               </CoFormField>
             </div>
-            <div className="col-span-4">
+            <div className="col-span-12 md:col-span-6 lg:col-span-4">
               <CoFormField label={'account.gender'} isError={errors.includes('gender_id')}>
                 <CoSelect placeholder={trnsAcc('account.select')} value={userData['gender_id']} onChange={(value) => handleChangeUserData('gender_id', value)} items={genders.map((e: any) => { return { label: e.name, value: e._id } })} />
               </CoFormField>
             </div>
-            <div className="col-span-4">
+            <div className="col-span-12 md:col-span-6 lg:col-span-4">
               <CoFormField label={'account.employment'} isError={errors.includes('work_id')}>
                 <CoSelect placeholder={trnsAcc('account.select')} value={userData['work_id']} onChange={(value) => handleChangeUserData('work_id', value)} items={refEmp.map((e: any) => { return { label: e.name, value: e._id } })} />
               </CoFormField>
             </div>
-            <div className="col-span-4">
+            <div className="col-span-12 md:col-span-6 lg:col-span-4">
               <CoFormField label={'account.education'} isError={errors.includes('education_id')}>
                 <CoSelect placeholder={trnsAcc('account.select')} value={userData['education_id']} onChange={(value) => handleChangeUserData('education_id', value)} items={refEdus.map((e: any) => { return { label: e.name, value: e._id } })} />
               </CoFormField>
             </div>
-            <div className="col-span-4">
+            <div className="col-span-12 md:col-span-6 lg:col-span-4">
               <CoFormField label={'account.age'} isError={errors.includes('age_id')}>
                 <CoSelect placeholder={trnsAcc('account.select')} value={userData['age_id']} onChange={(value) => handleChangeUserData('age_id', value)} items={refAges.map((e: any) => { return { label: e.name, value: e._id } })} />
               </CoFormField>
             </div>
 
-            <div className="col-span-3">
+            <div  className="col-span-12 md:col-span-6 lg:col-span-3">
               <CoFormField label={'account.region'} isError={errors.includes('country_id')}>
                 <CoSelect placeholder={trnsAcc('account.select')} value={userData['country_id']} onChange={(value) => handleChangeUserData('country_id', value)} items={refCountries.map((e: any) => { return { label: e.name, value: e._id } })} />
               </CoFormField>
             </div>
-            <div className="col-span-3">
+            <div className="col-span-12 md:col-span-6 lg:col-span-3">
               <CoFormField label={'account.city'} isError={errors.includes('city_name')}>
                 <input
                   className="h-11 bg-[#13032B80] border border-[#484261] rounded-xl px-4  text-white w-full"
@@ -209,7 +200,7 @@ export default function EditProfile() {
                 />
               </CoFormField>
             </div>
-            <div className="col-span-6">
+            <div className="col-span-12 md:col-span-12 lg:col-span-6">
               <CoFormField label={'account.address'} isError={errors.includes('address')}>
                 <input
                   className="h-11 bg-[#13032B80] border border-[#484261] rounded-xl px-4  text-white w-full"

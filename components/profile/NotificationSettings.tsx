@@ -57,7 +57,7 @@ export default function NotificationSettings() {
   }
 
   return (
-    <div className=" text-white bg-[#33415566] py-6 px-8 rounded-xl border border-[#40404787]">
+    <div className="w-full flex flex-col gap-4 text-white bg-[#33415566] py-6 px-8 rounded-xl border border-[#40404787]">
       <div className="flex items-center justify-between">
         <div className="space-y-1">
           <h3 className="text-lg font-medium text-white">Push notifications</h3>

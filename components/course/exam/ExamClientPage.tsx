@@ -78,7 +78,8 @@ export default function ExamClientPage() {
                     type: 'passed',
                     score: {
                         percent: data.student_exam.percent_student,
-                        dateCompleted: data.student_exam.completed_date
+                        dateCompleted: data.student_exam.completed_date,
+                        student_exam_id: data.student_exam._id
                     }
     
                 })
