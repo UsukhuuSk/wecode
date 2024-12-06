@@ -30,7 +30,22 @@ interface FormProviderProps {
 }
 
 export const FormProvider: React.FC<FormProviderProps> = ({ children }) => {
-  const [formValues, setFormValues] = useState<FormValues>({});
+  const [formValues, setFormValues] = useState<FormValues>({
+    country_id: '',
+    given_name: '',
+    surname: '',
+    gender_id: '',
+    work_id: '',
+    age_id: '',
+    address: '',
+    city_name: '',
+    aimag_city_id: '',
+    education_id: '',
+    is_agreement: false,
+    purposes: [],
+    background: '',
+    industry: ','
+  });
 
   return (
     <FormContext.Provider value={{ formValues, setFormValues }}>

@@ -112,7 +112,7 @@ export default function Profile({ params }: any) {
                   .sort((a, b) => a.position - b.position)
                   .map((user, index) => (
                     <div
-                      key={user.position}
+                      key={index}
                       className={`relative flex flex-col items-center ${index === 1
                         ? "bottom-0 z-10 mb-8"
                         : index === 0
@@ -170,7 +170,7 @@ export default function Profile({ params }: any) {
               <div className="">
                 {otherUsers.map((user, index) => (
                   <div
-                    key={user.position}
+                    key={index}
                     className={`flex items-center ${index === 0 ? "border-b" : ""
                       } justify-between bg-transparent hover:bg-[#FFFFFF1A] duration-300 ease-in-out transition-all py-4 px-[10px]`}
                   >
@@ -211,6 +211,7 @@ export default function Profile({ params }: any) {
                   ['learning', 'completed'].map((t: any, i: number) => {
                     return (
                       <TabsTrigger
+                        key={i}
                         value={t}
                         className="text-white rounded-none text-[16px] px-4 py-[5px] transition-colors duration-200 ease-in-out
                         data-[state=active]:border-b-2 data-[state=active]:border-[#4317ff] data-[state=active]:text-[#fff] data-[state=active]:font-semibold
