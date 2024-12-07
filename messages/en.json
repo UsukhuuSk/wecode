@@ -329,14 +329,17 @@
       "next": "Next",
       "finish": "Finish",
       "loading": "Loading...",
-      "fail": "You have given up this attempt.   You have 2 more attempts remaining. Goodluck",
+      "gaveup": "You have given up this attempt.   You have 2 more attempts remaining. Goodluck",
       "failBtn": "Lets Prepare Again",
+      "fail": "Be careful! You now have only 1 attempt left to complete this exam.",
       "success": "Congratulations, You Passed!",
       "successBtn": "Download Certificate",
+      "false": "Congratulations, You Passed!",
       "score": "Score",
       "date": "Date completed",
       "cert": "Certification",
-      "certDesc": "Exam Completion Certificate is now available for download."
+      "certDesc": "Exam Completion Certificate is now available for download.",
+      "start": "Start"
     }
   },
   "profile": {
@@ -385,7 +388,12 @@
     "profile": "Profile",
     "editProfile": "Edit profile",
     "purchaseHistory": "Purchase history",
-    "notifSettings": "Notification settings"
+    "notifSettings": "Notification settings",
+    "markAllAsread": "Mark all as read",
+    "notifications": "Notifications",
+    "notifAll": "All",
+    "notifUnread": "Unread",
+    "noNotif": "No notifications"
   },
   "page": {
     "errorText": "Internal server error.",

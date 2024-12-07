@@ -10,8 +10,9 @@ import { GetFileUrl } from "../../../lib/utils"
 interface QsProps {
     exam: any,
     onNext: () => any
+    onQuestionFinish: () => any
 }
-export const ExamQuestions: React.FC<QsProps> = ({ exam, onNext }) => {
+export const ExamQuestions: React.FC<QsProps> = ({ exam, onNext, onQuestionFinish }) => {
     const params = useParams<any>()
     const trns = useTranslations('course.exam')
     const [studentExam, setStudentExam] = useState<any>({})
@@ -41,6 +42,14 @@ export const ExamQuestions: React.FC<QsProps> = ({ exam, onNext }) => {
         return studentExam.question_index + 1 === index
     }
 
+    const isLast = () => {
+        return studentExam.question_count === studentExam.question_index + 1
+    }
+
+    const isHaveImage = () => {
+        return exam?.current_answers?.some((answer: any) => answer.image !== null);
+    }
+
     const handleCheckboxChange = (id: any) => {
         setCheckedItems((prev: any) => {
             if (prev.includes(id)) {
@@ -56,20 +65,17 @@ export const ExamQuestions: React.FC<QsProps> = ({ exam, onNext }) => {
     const handleNext = async () => {
         try {
             setLoading(true)
-            if (isCompleted()) {
-                await BaseApi._get('exam/finish', {
-                    "course_id": parseInt(params.id),
-                    "exam_id": parseInt(params.exam)
-                })
-            } else {
-                await BaseApi._post('exam/answer', {
-                    "student_exam_id": studentExam._id,
-                    "current_question_id": exam?.current_question._id,
-                    "selected_answer_ids": checkedItems
-                })
-            }
+            await BaseApi._post('exam/answer', {
+                "student_exam_id": studentExam._id,
+                "current_question_id": exam?.current_question._id,
+                "selected_answer_ids": checkedItems
+            })
             Helper.handleSuccess()
-            onNext()
+            if (isLast()) {
+                onQuestionFinish()
+            } else {
+                onNext()
+            }
         } catch (error) {
             Helper.handleError(error)
         } finally {
@@ -77,8 +83,30 @@ export const ExamQuestions: React.FC<QsProps> = ({ exam, onNext }) => {
         }
     }
 
-    const isCompleted = () => {
-        return studentExam.is_completed
+    const RenderImage = (img: any) => {
+
+        return <div className="overflow-hidden mt-2 ">
+            <img className="h-32 hover:h-64 object-contain transition-all" src={GetFileUrl(img._id)}></img>
+        </div>
+    }
+
+    const QuestionTitle = () => {
+        return <div className="border-b border-wcBorder pb-2 flex items-start gap-1">
+            <p className="text-xl ">
+                {studentExam.question_index + 1}.
+            </p>
+            <div>
+                <div>
+                    {exam?.current_question?.image && <img className="w-80" src={GetFileUrl(exam?.current_question?.image._id)} />}
+                    <p className="text-xl mb-2">
+                        {exam?.current_question?.name}
+                    </p>
+                </div>
+                <p className="text-[#FFFFFF50] text-[13px]">
+                    {correctQuestionmap['c' + correctQuestionCount]}
+                </p>
+            </div>
+        </div>
     }
 
     return (
@@ -95,41 +123,42 @@ export const ExamQuestions: React.FC<QsProps> = ({ exam, onNext }) => {
                 ))}
             </div>
             <div className="p-4 bg-card flex flex-col gap-4 border border-wcBorder rounded-xl">
-                <div className="border-b border-wcBorder pb-2 flex items-start gap-1">
-                    <p className="text-xl ">
-                        {studentExam.question_index + 1}.
-                    </p>
-                    <div>
-                        <div>
-                            {exam?.current_question?.image && <img className="w-80" src={GetFileUrl(exam?.current_question?.image._id)} />}
-                            <p className="text-xl mb-2">
-                                {exam?.current_question?.name}
-                            </p>
-                        </div>
-                        <p className="text-[#FFFFFF50] text-[13px]">
-                            {correctQuestionmap['c' + correctQuestionCount]}
-                        </p>
-                    </div>
-                </div>
-                <ul className="flex flex-col justify-center gap-4">
+                <QuestionTitle />
+                <ul className={`grid grid-cols-12    justify-center gap-4`}>
                     {exam?.current_answers.map((a: any) => (
                         <li
                             key={a._id}
-                            className="flex gap-3 items-center cursor-pointer"
+                            className={`${isHaveImage() ? 'col-span-6' : 'col-span-12'} `}
                             onClick={() => handleCheckboxChange(a._id)}
                         >
-                            <Checkbox className="border-[2px] border-wcBorder bg-card rounded-[4px]" checked={checkedItems.includes(a._id)} />
-                            <span className="font-normal"> {a.name}</span>
+                            <div className="flex gap-3 items-center cursor-pointer">
+                                <Checkbox className="border-[2px] border-wcBorder bg-card rounded-[4px]" checked={checkedItems.includes(a._id)} />
+                                <span className="font-normal"> {a.name}</span>
+                            </div>
+                            {a.image && RenderImage(a.image)}
                         </li>
                     ))}
                 </ul>
                 <div className="flex justify-end">
-                    <button disabled={loading} onClick={handleNext}
-                        className={`${isCompleted() ? 'bg-green-500' : 'bg-primary'} disabled:bg-gray-600 hover:opacity-90 text-white text-sm rounded-xl px-4 py-3 flex items-center gap-2 font-bold`}>
-                        {!loading && isCompleted() && <HugeIcon color="white" name="check" />}
-                        {loading ? trns('loading') : (isCompleted() ? trns('finish') : trns('next'))}
-                        {!loading && !isCompleted() && <HugeIcon color="white" name="angleLongRight" />}
-                    </button>
+                    {isLast() ? (
+                        <button
+                            disabled={loading}
+                            onClick={handleNext}
+                            className="bg-green-500 disabled:bg-gray-600 hover:opacity-90 text-white text-sm rounded-xl px-4 py-3 flex items-center gap-2 font-bold"
+                        >
+                            {!loading && <HugeIcon color="white" name="check" />}
+                            {loading ? trns('loading') : trns('finish')}
+                        </button>
+                    ) : (
+                        <button
+                            disabled={loading}
+                            onClick={handleNext}
+                            className="bg-primary disabled:bg-gray-600 hover:opacity-90 text-white text-sm rounded-xl px-4 py-3 flex items-center gap-2 font-bold"
+                        >
+                            {!loading && <HugeIcon color="white" name="angleLongRight" />}
+                            {loading ? trns('loading') : trns('next')}
+                        </button>
+                    )}
                 </div>
             </div>
         </div>

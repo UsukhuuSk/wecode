@@ -6,7 +6,7 @@ import firebaseApp from "../firebaseConfig";
 import { Helper } from "../lib/helper";
 import { BaseApi } from "../api/baseApi";
 const apiUrl = 'auth/firebase/token'
-export default function FirebaseRegister() {
+export default function FirebaseRegister({ onCountChange }: any) {
   useEffect(() => {
     const messaging = getMessaging(firebaseApp)
     const handleBackgroundMessage = (event : any) => {
@@ -33,6 +33,7 @@ export default function FirebaseRegister() {
       // const title = payload.notification.title;
       // const body = payload.notification.body;
       // HANDLE REFRESH NOTIFICATION COUNT
+      onCountChange()
       Helper.handleSuccess(payload.notification.body, { position: 'bottom-right', theme: 'dark' })
     });
 

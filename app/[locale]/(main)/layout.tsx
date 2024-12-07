@@ -15,11 +15,7 @@ export default function RootLayout({
   const params = useParams<any>()
   const { user, loaded }: any = useAuth()
   const router = useRouter()
-  useEffect(() => {
-    if (user && !user.is_agreement) {
-      router.push(`/${params.locale}/quiz`);
-    }
-  }, [user])
+
   return (
     <LessonProvider>
       <div>

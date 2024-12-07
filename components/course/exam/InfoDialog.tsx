@@ -1,12 +1,13 @@
 import { useEffect, useRef, useState } from "react"
 import { Dialog } from "../../ui/Dialog"
-import { useRouter } from "next/navigation"
+import { useParams, useRouter } from "next/navigation"
 import dayjs from "dayjs"
 import { useTranslations } from "next-intl"
 import CertificateView from "@/components/certificate/Viewer"
 
 
-export const InfoDialog = ({ info }: any) => {
+export const InfoDialog = ({ info, onRetry }: any) => {
+    const param = useParams()
     const trns = useTranslations('course.exam')
     const router = useRouter()
     const certRef = useRef<any>(null)
@@ -14,7 +15,7 @@ export const InfoDialog = ({ info }: any) => {
 
     const infoMap: any = {
         giveup: {
-            desc: trns('fail'),
+            desc: trns('gaveup'),
             btn: trns('failBtn'),
             img: '🍀🤞✨'
         },
@@ -22,6 +23,11 @@ export const InfoDialog = ({ info }: any) => {
             desc: trns('success'),
             btn: trns('successBtn'),
             img: '🎉✨'
+        },
+        failed: {
+            desc: trns('fail'),
+            btn: trns('failBtn'),
+            img: '🧐✍️'
         }
     }
     useEffect(() => {
@@ -30,10 +36,10 @@ export const InfoDialog = ({ info }: any) => {
     }, [info])
 
     const handlePush = () => {
-        if (info.score.student_exam_id) {
+        if (info.score && info.score.student_exam_id) {
             certRef.current.handleOpen(info.score.student_exam_id)
         } else {
-            router.push('/course')
+            onRetry()
         }
     }
 

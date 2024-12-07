@@ -17,7 +17,7 @@ export default function Leaderboard() {
           </h1>
         </div>
         <div className="min-w-[200px] rounded-full m-auto text-white bg-slate-700 border border-[#40404787]">
-          {trns('total')}
+          {trns('total')} 
         </div>
       </div>
       <LeaderBoard />

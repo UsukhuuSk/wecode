@@ -21,8 +21,6 @@ import {
 import { ChevronDownIcon, HamburgerMenuIcon } from "@radix-ui/react-icons";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
-import { jsonRequestWithToken } from "../api/utils";
-import { getFile } from "../api/serviceuser";
 import { fetchImageFileById } from "../lib/imageUtils";
 import LocaleSwitcher from "./LocaleSwitcher";
 import { useAuth } from "../context/AuthContext";
@@ -30,6 +28,7 @@ import { NotifBar } from "./NotifBar";
 import { Sheet, SheetContent, SheetDescription, SheetHeader, SheetTitle, SheetTrigger } from "./ui/sheet";
 
 export default function Header() {
+  const { user } = useAuth()
   const BASEURL = process.env.NEXT_PUBLIC_API_URL;
   const router = useRouter();
   const locale = useLocale();
@@ -39,6 +38,12 @@ export default function Header() {
   const [imgUrl, setImgUrl] = useState<string | null | undefined>(null);
   const { logout } = useAuth()
   const trns = useTranslations("header")
+
+  useEffect(() => {
+    if (user && !user.is_agreement) {
+      router.push(`/quiz`);
+    }
+  }, [user])
 
   useEffect(() => {
     const fetchUserInfo = async () => {

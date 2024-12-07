@@ -4,8 +4,6 @@ import { IoIosStar } from "react-icons/io";
 import Video from "next-video";
 
 import { useTranslations } from "next-intl";
-import { CheckCircledIcon } from "@radix-ui/react-icons"
-import Link from "next/link";
 import HugeIcon from "../../ui/HugeIcon";
 import { ExamQuestions } from "./Questions";
 import { BaseApi } from "../../../api/baseApi";
@@ -26,11 +24,19 @@ export default function ExamClientPage() {
     const [fetching, setFetching] = useState<boolean>(false)
     const router = useRouter()
     const [info, setInfo] = useState<any>(null)
+    const [started, setStarted] = useState<boolean>(false)
 
     useEffect(() => {
-        getExam()
+        // getExam()
+        checkExam()
         getDetail()
     }, [])
+
+    useEffect(() => {
+        if (started) {
+            getExam()
+        }
+    }, [started])
 
     useEffect(() => {
         if (remaining <= 0) return;
@@ -58,6 +64,15 @@ export default function ExamClientPage() {
         }
     }
 
+    const checkExam = async () => {
+        try {
+            const data = await BaseApi._get('exam/check', { course_id: params.id, exam_id: params.exam })
+            setStarted(data.is_exam)
+        } catch (error) {
+            Helper.handleError(error)
+        }
+    }
+
     const handleFinish = async () => {
         await BaseApi._get('exam/finish', {
             "course_id": params.id,
@@ -73,18 +88,23 @@ export default function ExamClientPage() {
             setExam(data)
             setStudentExam(data.student_exam)
             setRemaining(data.student_exam?.left_second)
-            if(data.student_exam.is_passed) {
-                setInfo({
-                    type: 'passed',
-                    score: {
-                        percent: data.student_exam.percent_student,
-                        dateCompleted: data.student_exam.completed_date,
-                        student_exam_id: data.student_exam._id
-                    }
+            if (data.student_exam.is_completed) {
+                const { is_passed, percent_student, completed_date, _id } = data.student_exam;
     
-                })
-                handleFinish()
+                if (is_passed) {
+                    setInfo({
+                        type: 'passed',
+                        score: {
+                            percent: percent_student,
+                            dateCompleted: completed_date,
+                            student_exam_id: _id,
+                        },
+                    });
+                } else {
+                    setInfo({ type: 'failed' });
+                }
             }
+            setStarted(true);
         } catch (error) {
             Helper.handleError(error)
         } finally {
@@ -103,6 +123,10 @@ export default function ExamClientPage() {
         }
     }
 
+    const handleStart = () => {
+        getExam()
+    }
+
 
     const handleNext = () => {
         handleRefresh()
@@ -113,7 +137,7 @@ export default function ExamClientPage() {
             await handleFinish()
             setInfo({
                 type: 'giveup',
-              
+
             })
         } catch (error) {
             Helper.handleError(error)
@@ -126,12 +150,22 @@ export default function ExamClientPage() {
         const minutes = Math.floor((remaining % 3600) / 60);
         const seconds = remaining % 60;
 
-        return <button className="bg-primary rounded-xl text-white text-[28px] font-bold py-3 px-8">
-            {remaining > 0 ? (<>{hours}:{minutes}:{seconds < 10 ? "0" + seconds : seconds}</>) : "-"}
-        </button>
+        return <>{remaining > 0 ? (<>{hours}:{minutes}:{seconds < 10 ? "0" + seconds : seconds}</>) : "-"}</>
+
     }
 
+    const handleRetry = async () => {
+        try {
+            await handleFinish()
+            router.push(`/course/${params.id}`)
+        } catch (error) {
+            Helper.handleError(error)
+        }
+    }
 
+    const handleQuestionFinish = () => {
+        getExam()
+    }
 
     if (fetching) {
         return (
@@ -190,7 +224,7 @@ export default function ExamClientPage() {
     } else {
         return (
             <div className="container mt-20">
-                <InfoDialog info={info} />
+                <InfoDialog info={info} onRetry={handleRetry} />
                 <div className="flex flex-col gap-4 ">
                     <div className="flex-1 flex gap-10 items-center ">
                         <button onClick={() => router.back()}>
@@ -216,13 +250,13 @@ export default function ExamClientPage() {
                                     <span>{studentExam?.question_count}</span>
                                 </div>
                                 <div>
-                                    <p className="text-wcSlate400 text-sm mb-1"> {trns('passConditions')}</p>
-                                    <span>{examDetail?.pass_point}</span>
+                                    <p className="text-wcSlate400 text-sm mb-1"> {trns('condition')}</p>
+                                    <span>{examDetail?.exam_point}</span>
 
                                 </div>
 
                                 <div>
-                                    <p className="text-wcSlate400 text-sm mb-1">{trns('condition')}</p>
+                                    <p className="text-wcSlate400 text-sm mb-1">{trns('passConditions')}</p>
                                     <span>{examDetail?.pass_point}</span>
                                 </div>
                                 <div className="col-span-2">
@@ -232,17 +266,26 @@ export default function ExamClientPage() {
                                 </div>
                                 <div className="col-span-2 text-center">
                                     {
-                                        RenderRemaining()
+                                        started ?
+                                            <>
+                                                <button className="bg-primary rounded-xl text-white text-[28px] font-bold py-3 px-8">
+                                                    <>{RenderRemaining()}</>
+                                                </button>
+                                                <div>
+                                                    <button className="bold font-adineue text-wcRed mt-3" onClick={handleGiveup}>{trns('giveup')}</button>
+                                                </div>
+                                            </>
+                                            :
+                                            <button className="bg-primary rounded-xl text-white text-[28px] font-bold py-3 px-8" onClick={handleStart}>
+                                                {trns('start')}
+                                            </button>
                                     }
-                                    <div>
-                                        <button className="bold font-adineue text-wcRed mt-3" onClick={handleGiveup}>{trns('giveup')}</button>
-                                    </div>
                                 </div>
                             </div>
                         </div>
                         <div className="col-span-8 text-white">
                             {
-                                exam && <ExamQuestions exam={exam} onNext={handleNext} />
+                                exam && <ExamQuestions exam={exam} onNext={handleNext} onQuestionFinish={handleQuestionFinish} />
                             }
                         </div>
                     </div>
