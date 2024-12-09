@@ -2,12 +2,12 @@ import PageCourse from "@/components/course/PageCourse";
 import { PageCourseError } from "@/components/course/PageCourseError";
 import { ServerApi } from "@/api/serverApi";
 import Head from "next/head";
+import { GetFileUrl } from "@/lib/utils";
 export default async function Page({ params }: { params: { id: number, locale: any } }) {
     const siteUrl = process.env.NEXT_PUBLIC_SITE_URL;
 
     try {
         const data = await ServerApi._checkCourse(params.id)
-        console.log('--------endrolled----------', data.enrolled)
         return <>
             <Head>
                 <title>{data.name}</title>
@@ -17,6 +17,7 @@ export default async function Page({ params }: { params: { id: number, locale: a
                 <meta property="og:url" content={siteUrl} />
                 <meta property="og:type" content="website" />
                 <meta property="og:locale" content={params.locale} />
+                {data.image && <meta property="og:image" content={GetFileUrl(data.image._id)} />}
                 <meta name="twitter:card" content="summary_large_image" />
             </Head>
             <PageCourse courseData={data} params={params} />;
