@@ -7,6 +7,7 @@ export default async function Page({ params }: { params: { id: number, locale: a
 
     try {
         const data = await ServerApi._checkCourse(params.id)
+        console.log('--------endrolled----------', data.enrolled)
         return <>
             <Head>
                 <title>{data.name}</title>

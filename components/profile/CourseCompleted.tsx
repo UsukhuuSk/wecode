@@ -5,10 +5,8 @@ import { useTranslations } from "next-intl"
 import { useEffect, useRef, useState } from "react"
 import 'dayjs/locale/mn'
 import { useParams } from "next/navigation"
-import Link from "next/link"
-import { Dialog } from "../ui/Dialog"
 import CertificateView from "../certificate/Viewer"
-const BASEURL = process.env.NEXT_PUBLIC_API_URL;
+import { CourseEmpty } from "./Empty"
 
 export const ProCourseCompleted = () => {
     const params: any = useParams()
@@ -81,6 +79,9 @@ export const ProCourseCompleted = () => {
             </div>
         )
     } else {
+        if (list.length === 0) {
+            return <CourseEmpty />
+        }
         return (
             <div className="text-white">
                 <CertificateView ref={certRef} />

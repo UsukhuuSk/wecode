@@ -4,6 +4,7 @@ import { useParams, useRouter } from "next/navigation"
 import dayjs from "dayjs"
 import { useTranslations } from "next-intl"
 import CertificateView from "@/components/certificate/Viewer"
+import { ArrowLeft04Icon } from "@hugeicons/react"
 
 
 export const InfoDialog = ({ info, onRetry }: any) => {
@@ -43,6 +44,11 @@ export const InfoDialog = ({ info, onRetry }: any) => {
         }
     }
 
+    const backtoCourse = () => {
+        router.back()
+    }
+
+
     return (
         <>
             <Dialog isOpen={open} onClose={() => { }} title={""} showHeader={false}>
@@ -77,9 +83,20 @@ export const InfoDialog = ({ info, onRetry }: any) => {
                                 </span>
                             </div>
                         }
-                        <button onClick={handlePush} className="bg-primary rounded-[32px] text-white py-[12px] w-full hover:opacity-90">
-                            {infoMap?.[info.type]?.btn}
-                        </button>
+                        <div className="w-full flex flex-col gap-2">
+                            <button onClick={handlePush} className="w-full bg-primary rounded-[32px] text-white py-[12px] hover:opacity-90 font-semibold">
+                                {infoMap?.[info.type]?.btn}
+                            </button>
+                            {
+                                info.type === 'passed' &&
+                                <button onClick={backtoCourse} className="w-full  rounded-[32px] text-primary py-[12px] transition-all  hover:font-bold font-semibold flex items-center justify-center">
+                                    <span>
+                                        <ArrowLeft04Icon />
+                                    </span>
+                                    {trns('backtoCourse')}
+                                </button>
+                            }
+                        </div>
                     </div>
                 }
             </Dialog>

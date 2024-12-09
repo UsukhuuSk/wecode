@@ -126,7 +126,8 @@
     "blog": "Blog",
     "community": "Community",
     "login": "Login",
-    "learning": "My learning"
+    "learning": "My learning",
+    "profile": "My learning"
   },
   "blog": {
     "title": "Blog",
@@ -339,7 +340,8 @@
       "date": "Date completed",
       "cert": "Certification",
       "certDesc": "Exam Completion Certificate is now available for download.",
-      "start": "Start"
+      "start": "Start",
+      "backtoCourse": "Back to Course"
     }
   },
   "profile": {
@@ -380,7 +382,10 @@
       "thursday": "Thu",
       "friday": "Fri",
       "saturday": "Sat"
-    }
+    },
+    "yourJourney": "Your Learning Journey Awaits!",
+    "yourJourneyDesc": "It seems quiet here. Start exploring courses to expand your knowledge and skills. We’re here to guide you every step of the way.",
+    "browseCourses": "Browse Courses"
   },
   "header": {
     "login": "Login",

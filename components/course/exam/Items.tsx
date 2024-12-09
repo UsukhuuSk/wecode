@@ -26,7 +26,7 @@ export const ExamItem = ({ courseId, exam }: any) => {
                 </div>
                 <span>
                     {trns('point')}: &nbsp;
-                    {exam?.pass_point}
+                    {exam?.exam_point}
                 </span>
             </div>
         </li>

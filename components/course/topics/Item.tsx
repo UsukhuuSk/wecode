@@ -34,7 +34,7 @@ const TopicItem: React.FC<TopicProps> = ({ topic, index, onPlay }: any) => {
             <div className={"oveflow-hidden transition-all " + (open ? '' : "h-0")}>
                 <div className={" " + (!open ? 'hidden' : 'px-3 pb-3')}>
                     {
-                        <TopicLessons topicId={topic._id}/>
+                        <TopicLessons topic={topic}/>
                     }
                 </div>
             </div>

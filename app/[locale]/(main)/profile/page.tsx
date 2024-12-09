@@ -52,7 +52,7 @@ export default function Profile({ params }: any) {
       <div className="block md:hidden">
         {WelcomeProfile()}
       </div>
-      <div className="flex flex-col md:flex-row gap-8">
+      <div className="flex flex-col-reverse md:flex-row gap-8">
         <div className="flex flex-col gap-6 items-center md:items-start ">
           <ProMainInfo userInfo={userInfo} trns={trns} />
           <ProfileCalendar locale={params.locale} />

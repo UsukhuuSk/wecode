@@ -6,9 +6,11 @@ import { DownloadFile, GetFileUrl } from "../../../lib/utils";
 import { Helper } from "../../../lib/helper";
 import { BaseApi } from "../../../api/baseApi";
 import { CourseRatings } from "./Ratings";
+import { useLesson } from "@/context/LessonContext";
 
 export const LessonDetailTabs = ({ course }: any) => {
     const trns = useTranslations("course.detail");
+    const { activeLesson } = useLesson();
     const [tabValue, setTabValue] = useState<any>("transcript")
     const [tabs, setTabs] = useState<any>([
         { value: 'transcript', label: trns('transcript') },
@@ -53,9 +55,9 @@ export const LessonDetailTabs = ({ course }: any) => {
             }
             {
                 tabValue === 'download' && <ul className="text-white bg-cardDark rounded-xl border border-wcBorder p-4 flex flex-col gap-4">
-                    { !course.files.lenth && trns("noFile") }
+                    {(!activeLesson || activeLesson.files && !activeLesson.files.lenth) && trns("noFile")}
                     {
-                        course.files.map((l: any, i: number) => {
+                        activeLesson && activeLesson.files && activeLesson.files.length > 0 && activeLesson.files.map((l: any, i: number) => {
                             return (
                                 <li key={i} className="flex items-center gap-2 text-sm ">
                                     <HugeIcon name="attachment" />

@@ -107,8 +107,8 @@ export default function Header() {
       link: `/${locale}/community`,
     },
     {
-      name: t("about"),
-      link: `/${locale}/about`,
+      name: t("profile"),
+      link: `/${locale}/profile`,
     },
   ];
   const MobileMenu = () => {

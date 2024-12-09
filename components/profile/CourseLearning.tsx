@@ -4,7 +4,8 @@ import { GetFileUrl } from "@/lib/utils"
 import { useTranslations } from "next-intl"
 import Link from "next/link"
 import { useEffect, useState } from "react"
-
+import Image from "next/image"
+import { CourseEmpty } from "./Empty"
 export const ProCourseLearning = () => {
     const trns = useTranslations('profile')
     const [list, setList] = useState<any[]>([])
@@ -33,8 +34,6 @@ export const ProCourseLearning = () => {
         const seconds = remaining % 60;
         return remaining > 0 ? (<>{hours}:{minutes}:{seconds < 10 ? "0" + seconds : seconds}</>) : "-"
     }
-
-
     if (loading) {
         const textDiv = (width: any, height: number) => {
             return (
@@ -74,6 +73,9 @@ export const ProCourseLearning = () => {
             </div>
         )
     } else {
+        if (list.length === 0) {
+            return <CourseEmpty />
+        }
         return (
             <div className="text-white">
                 <ul className="flex flex-col gap-4 ">

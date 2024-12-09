@@ -1,5 +1,4 @@
 const BASEURL = process.env.NEXT_PUBLIC_API_URL;
-const DEFAULT_TIMEOUT = 5000; // Default timeout 5 секунд
 import { cookies } from 'next/headers'
 
 export class ServerApi {
@@ -36,7 +35,6 @@ export class ServerApi {
         try {
             const response = await fetch(finalUrl, options);
             if (!response.ok) {
-                console.log('response', response)
                 throw new Error(`HTTP error! Status: ${response.status}`);
             }
 
@@ -61,7 +59,6 @@ export class ServerApi {
 
     static async _getExam(params = {}): Promise<any> {
         const data = await this._get(`/one/9/service_course_exams`, params)
-        console.log('data detail', data)
         return data;
     }
 
@@ -72,9 +69,6 @@ export class ServerApi {
         const data = await this._get(`9/courses/${courseId}`, params)
         if (token) {
             const enroll = await this._get(`course/9/enroll/check`, { courseId })
-            if (enroll.enrolled) {
-                data.enrolled = true;
-            }
             return {
                 ...data,
                 enrolled: enroll.enrolled

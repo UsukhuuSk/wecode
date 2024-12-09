@@ -39,8 +39,7 @@ export const CourseExam = ({ course }: any) => {
             <div className={"oveflow-hidden transition-all " + (open ? '' : "h-0")}>
                 <ul className={" " + (!open ? 'hidden' : 'px-3 pb-3')}>
                     {
-                        examItems.map((item: any, i: number) => <ExamItem key={i} courseId={course._id} exam={item} />
-                        )
+                        examItems.map((item: any, i: number) => <ExamItem key={i} courseId={course._id} exam={item} />)
                     }
                 </ul>
             </div>

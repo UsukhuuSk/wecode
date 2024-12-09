@@ -165,7 +165,7 @@ export const NotifBar = () => {
 
     return (
         <>
-            <FirebaseRegister onCountChange={handleCountChange} />
+            {/* <FirebaseRegister onCountChange={handleCountChange} /> */}
             <DropdownMenu open={open} onOpenChange={setOpen}>
                 <DropdownMenuTrigger asChild>
                     <div className="p-1 bg-[#FFFFFF33] hover:bg-[#FFFFFF55] cursor-pointer rounded-full relative">
@@ -184,14 +184,16 @@ export const NotifBar = () => {
                     {
                         !loading && list.map((item: any, index: any) => {
                             return (
-                                <div key={index} className={`w-[360px] h-16 flex items-center gap-2 px-4 hover:bg-[#FFFFFF40] cursor-pointer ${index < list.length - 1 ? 'border-b border-wcSlate700' : ''} ${!item.is_read ? 'bg-slate-600' : ''}`} onClick={() => handleRead(item._id)}>
-                                    <div className="h-8 w-8 flex items-center justify-center rounded-full" style={{ background: getIconObj(item.type_id.alert_type).color }}>
-                                        {getIconObj(item.type_id.alert_type).icon}
+                                <Link key={index} href={item.notif_link ? item.notif_link : ''}>
+                                    <div key={index} className={`w-[360px] h-16 flex items-center gap-2 px-4 hover:bg-[#FFFFFF40] cursor-pointer ${index < list.length - 1 ? 'border-b border-wcSlate700' : ''} ${!item.is_read ? 'bg-slate-600' : ''}`} onClick={() => handleRead(item._id)}>
+                                        <div className="h-8 w-8 flex items-center justify-center rounded-full" style={{ background: getIconObj(item.type_id.alert_type).color }}>
+                                            {getIconObj(item.type_id.alert_type).icon}
+                                        </div>
+                                        <div className="font-normal font-neue text-wrap max-w-72">
+                                            <div dangerouslySetInnerHTML={{ __html: item.notif_text }}></div>
+                                        </div>
                                     </div>
-                                    <div className="font-normal font-neue text-wrap max-w-72">
-                                        <div dangerouslySetInnerHTML={{ __html: item.notif_text }}></div>
-                                    </div>
-                                </div>
+                                </Link>
                             )
                         })
                     }

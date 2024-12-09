@@ -24,12 +24,13 @@ import { LessonProvider, useLesson } from "../../context/LessonContext";
 import { LessonPlay } from "./lessons/Play";
 import { LessonDetailTabs } from "./lessons/DetailTabs";
 import { CourseExam } from "./exam/Exams";
+import { useAuth } from "@/context/AuthContext";
 
 
 export default function PageCourse({ courseData, params }: any) {
+    const { user, loaded } = useAuth()
     const [topics, setTopics] = useState<any>([])
     const [teachers, setTeachers] = useState<any>([])
-    const trns = useTranslations("course.detail");
     const [course, setCourse] = useState<any>({})
     const [enrolled, setEnrolled] = useState<boolean>(false)
     const { activeLesson } = useLesson()
@@ -38,12 +39,18 @@ export default function PageCourse({ courseData, params }: any) {
         setCourse(courseData)
         setTeachers(courseData.teachers)
         setEnrolled(courseData.enrolled)
-    }, [course])
+    }, [courseData])
+
+    useEffect(() => {
+        if (loaded && !user) {
+            setEnrolled(false)
+        }
+    }, [loaded])
 
 
     const getTopics = async () => {
         try {
-            const { list } = await BaseApi._get(`9/course_topics`, { search: JSON.stringify({ course_id: { op: 'eq', val: params.id } }) })
+            const list = await BaseApi._get(`list/9/service_inline_topics`, { course_id: params.id })
             setTopics(list)
         } catch (error) {
 
@@ -79,13 +86,13 @@ export default function PageCourse({ courseData, params }: any) {
                             <CourseRolledHeader course={course} />
                         </div>
                         <div className="flex flex-col gap-4 col-span-12  lg:col-span-8 xl:col-span-8 2xl:col-span-8">
-                            {activeLesson ? <LessonPlay activeLesson={activeLesson} course={course}/> : <VideoCourse id={course.intro_video_id._id} course_id={course._id} locale="mn" />}
-                            <LessonDetailTabs course={course}/>
+                            {activeLesson ? <LessonPlay activeLesson={activeLesson} course={course} /> : <VideoCourse id={course.intro_video_id._id} course_id={course._id} locale="mn" />}
+                            <LessonDetailTabs course={course} />
                         </div>
                         <div className="col-span-12  lg:col-span-4 xl:col-span-4 2xl:col-span-4 text-white">
                             <CourseInstructor course={course} teachers={teachers} enrolled={enrolled} onChange={handleEnroll} />
                             <CourseTopics topics={topics} />
-                            <CourseExam course={course}/>
+                            <CourseExam course={course} />
                         </div>
                     </div>
             }

@@ -124,11 +124,11 @@ export const ExamQuestions: React.FC<QsProps> = ({ exam, onNext, onQuestionFinis
             </div>
             <div className="p-4 bg-card flex flex-col gap-4 border border-wcBorder rounded-xl">
                 <QuestionTitle />
-                <ul className={`grid grid-cols-12    justify-center gap-4`}>
+                <ul className={`grid grid-cols-12    justify-center gap-3`}>
                     {exam?.current_answers.map((a: any) => (
                         <li
                             key={a._id}
-                            className={`${isHaveImage() ? 'col-span-6' : 'col-span-12'} `}
+                            className={`${isHaveImage() ? 'col-span-6' : 'col-span-12'} hover:bg-[#FFFFFF20] rounded-md px-2 py-1`}
                             onClick={() => handleCheckboxChange(a._id)}
                         >
                             <div className="flex gap-3 items-center cursor-pointer">

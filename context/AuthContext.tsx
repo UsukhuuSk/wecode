@@ -4,6 +4,7 @@ import Cookies from "js-cookie";
 
 import React, { createContext, useContext, useState, useEffect, ReactNode } from 'react';
 import { BaseApi } from "../api/baseApi";
+
 interface User {
     _id: string;
     name: string;
