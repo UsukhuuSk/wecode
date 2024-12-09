@@ -1,3 +1,4 @@
 NEXT_PUBLIC_API_URL=https://ai-academy.asia/api
 NEXT_PUBLIC_AUTH_URL=https://ai-academy.asia/auth
-NEXT_PUBLIC_VIDEO_URL=https://ai-academy.asia/manage/video
+# NEXT_PUBLIC_VIDEO_URL=https://ai-academy.asia/manage/video
+NEXT_PUBLIC_VIDEO_URL=https://manage.ai-academy.asia/video
