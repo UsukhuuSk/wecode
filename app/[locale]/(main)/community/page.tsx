@@ -16,10 +16,10 @@ export default function page() {
   const t = useTranslations("community");
 
   return (
-    <main className="h-full min-h-screen w-full relative m-auto overflow-hidden ">
+    <main className="h-full  min-h-screen relative overflow-hidden ">
       <div className="absolute -top-1/4 left-0 -translate-x-1/2 bg-[#4317FF] blur-[200px] w-[244px] h-[200px]"></div>
       <div className="absolute -top-1/4 right-0 -translate-x-1/2 bg-[#4317FF] blur-[200px] w-[244px] h-[200px]"></div>
-      <div className="flex flex-col justify-center px-5 py-[200px] items-center max-w-[1280px] m-auto gap-16 relative text-white">
+      <div className="container flex flex-col justify-center px-5 py-[200px] items-center gap-16 relative text-white">
         <div className="flex flex-col gap-4">
           <h1 className="team font-adineue text-5xl md:text-[96px] font-bold tracking-[0.151px] text-center">
             {t("welcome")}

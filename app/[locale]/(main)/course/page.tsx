@@ -123,7 +123,7 @@ export default function Course() {
                 {
                   loading ? <>
                     {
-                      [1, 2].map(item => {
+                      [1, 2, 3].map(item => {
                         return (
                           <div key={item} className="h-72 flex flex-col gap-4 rounded-[32px] animate-pulse overflow-hidden">
                             <div className="bg-[#e2e8f04a] h-48">

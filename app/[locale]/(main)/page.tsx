@@ -30,7 +30,7 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "../../../components/ui/carousel";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import logo1 from "../../../assets/landing/Mask group.svg";
 import logo2 from "../../../assets/landing/Mask group1.svg";
 import logo3 from "../../../assets/landing/Group 12.svg";
@@ -38,16 +38,11 @@ import { FaArrowRight } from "react-icons/fa";
 import { IoPlay } from "react-icons/io5";
 import { motion } from "framer-motion";
 import { useTranslations } from "next-intl";
+import { BaseApi } from "@/api/baseApi";
+import { Helper } from "@/lib/helper";
+import CourseCard from "@/components/course/Card";
 
 export default function Home() {
-  const fetchUsers = async () => {
-    const param = { pageSize: 10, offset: 0, lang: "mn" };
-    const params = new URLSearchParams(Object.entries<any>(param));
-    console.log(params.toString());
-    const users = await usersList({ params });
-    console.log(users);
-    return users;
-  };
   const t = useTranslations("HomePage");
   const cardData = [
     {
@@ -113,53 +108,70 @@ export default function Home() {
       fade: "w-[224px] h-[224px] bg-[#F0493E] absolute blur-[160px] z-10",
     },
   ];
-  const courses = [
-    {
-      id: 0,
-      name: t("courses.course.1.name"),
-      level: t("courses.intro"),
-      teacher: t("courses.course.1.teacher"),
-      length: "16",
-      levelId: "1",
-      image: card3,
-    },
-    {
-      id: 1,
-      name: t("courses.course.2.name"),
-      level: t("courses.inter"),
-      teacher: t("courses.course.2.teacher"),
-      length: "16",
-      levelId: "2",
-      image: card1,
-    },
-    {
-      id: 2,
-      name: t("courses.course.3.name"),
-      level: t("courses.intro"),
-      teacher: t("courses.course.3.teacher"),
-      levelId: "1",
-      length: "16",
-      image: card2,
-    },
-    {
-      id: 3,
-      name: t("courses.course.4.name"),
-      level: t("courses.inter"),
-      levelId: "2",
-      teacher: t("courses.course.4.teacher"),
-      length: "16",
-      image: card3,
-    },
-    {
-      id: 4,
-      name: t("courses.course.5.name"),
-      level: t("courses.advanced"),
-      levelId: "3",
-      teacher: t("courses.course.5.teacher"),
-      length: "16",
-      image: card2,
-    },
-  ];
+  // const courses = [
+  //   {
+  //     id: 0,
+  //     name: t("courses.course.1.name"),
+  //     level: t("courses.intro"),
+  //     teacher: t("courses.course.1.teacher"),
+  //     length: "16",
+  //     levelId: "1",
+  //     image: card3,
+  //   },
+  //   {
+  //     id: 1,
+  //     name: t("courses.course.2.name"),
+  //     level: t("courses.inter"),
+  //     teacher: t("courses.course.2.teacher"),
+  //     length: "16",
+  //     levelId: "2",
+  //     image: card1,
+  //   },
+  //   {
+  //     id: 2,
+  //     name: t("courses.course.3.name"),
+  //     level: t("courses.intro"),
+  //     teacher: t("courses.course.3.teacher"),
+  //     levelId: "1",
+  //     length: "16",
+  //     image: card2,
+  //   },
+  //   {
+  //     id: 3,
+  //     name: t("courses.course.4.name"),
+  //     level: t("courses.inter"),
+  //     levelId: "2",
+  //     teacher: t("courses.course.4.teacher"),
+  //     length: "16",
+  //     image: card3,
+  //   },
+  //   {
+  //     id: 4,
+  //     name: t("courses.course.5.name"),
+  //     level: t("courses.advanced"),
+  //     levelId: "3",
+  //     teacher: t("courses.course.5.teacher"),
+  //     length: "16",
+  //     image: card2,
+  //   },
+  // ];
+
+  const [courses, setCourses] = useState<any>([])
+  const [loading, setLoading] = useState<boolean>(false)
+  useEffect(() => {
+    getCourses()
+  }, [])
+  const getCourses = async () => {
+    try {
+      setLoading(true)
+      const data = await BaseApi._get('9/service_acourses')
+      setCourses(data.list)
+    } catch (error) {
+      Helper.handleError(error)
+    } finally {
+      setLoading(false)
+    }
+  }
 
   return (
     <main className="h-full w-full relative overflow-hidden">
@@ -207,8 +219,8 @@ export default function Home() {
             </div>
           </div>
           <div className="">
-            <div className="flex justify-between md:flex-col md:gap-5 items-center z-50">
-              <div className="grid grid-cols-4 sm:grid-cols-2  xl:grid-cols-4 text-center gap-60 md:gap-5 ">
+            <div className="flex justify-between flex-col gap-4 md:gap-5 items-center z-50">
+              <div className="grid  grid-cols-1 md:grid-cols-4  xl:grid-cols-4 text-center gap-4 md:gap-5 ">
                 {categories.slice(0, 4).map((category, index) => (
                   <CategoryCard
                     key={index}
@@ -219,7 +231,7 @@ export default function Home() {
                   />
                 ))}
               </div>
-              <div className="grid grid-cols-3 sm:grid-cols-2 xl:grid-cols-3 text-center gap-5 m-auto">
+              <div className="grid grid-cols-1 md:grid-cols-3 sm:grid-cols-2 xl:grid-cols-3 text-center gap-4 md:gap-5 m-auto">
                 {categories.slice(4, 7).map((category, index) => (
                   <CategoryCard
                     key={index}
@@ -329,48 +341,15 @@ export default function Home() {
             {t("courses.subtitle")}
           </h1>
         </div>
-        <div className="z-50 px-6">
+        <div className="z-50 px-10">
           <Carousel>
             <CarouselContent className="space-x-5 pl-6">
-              {courses.map((item, index) => (
+              {courses.map((item: any, index: any) => (
                 <div
                   key={index}
-                  className="basis-1/3 pb-6 min-w-[365px] h-auto flex flex-col gap-4 rounded-3xl border border-[#404047] overflow-hidden"
+                  className="basis-1/3 pb-6 min-w-[320px] md:min-w-[365px] h-auto foverflow-hidden"
                 >
-                  <div className=" 2xl:w-[365px] h-[190px] object-cover">
-                    <Image
-                      src={item.image}
-                      alt=""
-                      width={365}
-                      height={190}
-                      className="w-full h-full object-cover"
-                    />
-                  </div>
-                  <div className="px-4">
-                    <div className="flex justify-between items-center">
-                      <div className="flex items-center gap-[10px] text-slate-400">
-                        <span>{item.teacher}</span>
-                        <span className="w-[3px] h-[3px] rounded-full bg-slate-400"></span>
-                        <span>
-                          {item.length} {t("courses.hours")}
-                        </span>
-                      </div>
-                      <div
-                        className={`font-neue text-[12px] font-semibold border py-1 px-5 rounded-[32px] ${
-                          item.levelId === "1"
-                            ? "text-[#22C55E] border-[#22C55E]"
-                            : item.levelId === "2"
-                            ? "text-[#FDBA74] border-[#FDBA74]"
-                            : item.levelId === "3"
-                            ? "text-[#F0493E] border-[#F0493E]"
-                            : ""
-                        }`}
-                      >
-                        {item.level}
-                      </div>
-                    </div>
-                    <div className="">{item.name}</div>
-                  </div>
+                  <CourseCard key={index} course={item} />
                 </div>
               ))}
             </CarouselContent>

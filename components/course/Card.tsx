@@ -11,7 +11,7 @@ const CourseCard = ({ course }: any) => {
       <div
         className="bg-transparent rounded-[32px] overflow-hidden customborder hover:outline hover:outline-1 hover:outline-primary cursor-pointer"
       >
-        <div className="relative overflow-hidden object-cover w-full lg:h-[120px] xl:h-[190px] rounded-t-[24px] bg-wcSlate700">
+        <div className="relative overflow-hidden object-cover w-full h-[150px] lg:h-[150px] xl:h-[190px] rounded-t-[24px] bg-wcSlate700">
           <img
             src={GetThumbnailUrl(course.image._id)}
             alt="AI for All"

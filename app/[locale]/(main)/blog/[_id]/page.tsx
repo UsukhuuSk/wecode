@@ -32,10 +32,9 @@ export default async function BlogDetail({ params }: any) {
       console.error("Error fetching image:", error);
     }
   }
-  console.log(post);
   return (
-    <div className="max-w-[1280px] m-auto my-32">
-      <div className="max-w-[1005px] m-auto flex flex-col gap-8">
+    <div className="container my-32">
+      <div className="flex flex-col gap-8">
         <h1 className="text-white text-[32px] font-bold leading-snug">
           {post.title}
         </h1>
@@ -54,14 +53,14 @@ export default async function BlogDetail({ params }: any) {
             <Image
               src={updatedPost.image}
               alt="picture"
-              className="rounded-3xl w-full"
+              className="rounded-3xl w-full max-w-[600px]"
               height={337}
               width={600} // Add width for Image component
             />
           )}
         </div>
         <div
-          className=" leading-normal text-start text-white font-neue font-bold"
+          className=" leading-normal text-start text-white font-neue"
           dangerouslySetInnerHTML={{
             __html: post.html_content,
           }}
