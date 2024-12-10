@@ -216,7 +216,7 @@ export default function EditProfile() {
                 onClick={handleSave}
                 type="submit"
                 disabled={saving}
-                className={` disabled:opacity-50 disabled:cursor-not-allowed rounded-[32px] px-6 py-3 bg-primary text-white font-semibold flex items-center gap-2`}
+                className={` disabled:opacity-50 disabled:cursor-not-allowed rounded-[32px] px-6 py-3 bg-primary hover:scale-105 transition-all font-neue text-white font-semibold text-sm flex items-center gap-2`}
               >
                 {saving && <SymbolIcon className="animate-spin" />}
                 {saving ? trnsAcc("account.saving") : trnsAcc("account.save")}

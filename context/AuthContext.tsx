@@ -4,6 +4,7 @@ import Cookies from "js-cookie";
 
 import React, { createContext, useContext, useState, useEffect, ReactNode } from 'react';
 import { BaseApi } from "../api/baseApi";
+import { useRouter } from "next/navigation";
 
 interface User {
     _id: string;
@@ -29,7 +30,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
     const [userActions, setUserActions] = useState<any>([])
     const [menus, setMenus] = useState<any>([])
     const [loaded, setLoaded] = useState(false);
-
+    const router = useRouter();
     useEffect(() => {
         fetchUser();
     }, []);
@@ -43,6 +44,9 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
             try {
                 const data = await BaseApi._get('one/9/service_user_profile')
                 setUser(data)
+                if (!data.is_agreement) {
+                    router.push(`/quiz`);
+                }
             } catch (error) {
                 console.error('Failed to fetch user:', error);
             } finally {

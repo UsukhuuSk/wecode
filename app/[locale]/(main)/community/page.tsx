@@ -11,7 +11,6 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "../../../../components/ui/accordion";
-import NewFooter from "../../../../components/NewFooter";
 
 export default function page() {
   const t = useTranslations("community");
@@ -207,7 +206,6 @@ export default function page() {
           </AccordionItem>
         </Accordion>
       </div>
-      <NewFooter />
     </main>
   );
 }

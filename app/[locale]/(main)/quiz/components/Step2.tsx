@@ -1,10 +1,12 @@
 "use client";
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useForm, SubmitHandler, Controller } from "react-hook-form";
 import { FormContext } from "../../../../../context/FormContext";
 import { Checkbox } from "../../../../../components/ui/checkbox";
 import { Label } from "../../../../../components/ui/label";
 import { useTranslations } from "next-intl";
+import { Helper } from "@/lib/helper";
+import { BaseApi } from "@/api/baseApi";
 
 interface StepProps {
   next?: () => void;
@@ -16,8 +18,10 @@ interface Step2FormValues {
 }
 
 const Step2: React.FC<StepProps> = ({ next, back }) => {
-  const [selectedOptions, setSelectedOptions] = useState<string[]>([]);
   const trns = useTranslations("quiz");
+  const [selectedOptions, setSelectedOptions] = useState<any>([]);
+  const [options, setOptions] = useState<any[]>([]);
+
   const {
     control,
     handleSubmit,
@@ -25,48 +29,43 @@ const Step2: React.FC<StepProps> = ({ next, back }) => {
   } = useForm<Step2FormValues>();
   const { formValues, setFormValues } = useContext(FormContext)!;
 
-  const OPTIONS = [
-    {
-      id: "career",
-      label: "Career advancement (e.g., promotion, skill development)",
-    },
-    {
-      id: "academic",
-      label:
-        "Pursuing academic education (e.g., studying independently to deepen your schoolwork)",
-    },
-    {
-      id: "personal",
-      label:
-        "Personal interests/hobbies (e.g., learning out of interest or curiosity)",
-    },
-    {
-      id: "business",
-      label: "Starting a business or self-employment",
-    },
-    {
-      id: "technical",
-      label: "Acquire technical skills for future career opportunities",
-    },
-    {
-      id: "other",
-      label: "Other",
-    },
-  ];
+  useEffect(() => {
+    getQuizRef()
+  }, [])
+
+  useEffect(() => {
+    if (Helper.isNotEmptyList(options) && Helper.isNotEmptyList(formValues.purposes)) {
+      setValues()
+    }
+  }, [options])
+
+  const setValues = () => {
+    setSelectedOptions(formValues.purposes)
+  }
+
+  const getQuizRef = async () => {
+    try {
+      const { list } = await BaseApi._get('9/ref_student_quiz1')
+      setOptions(list)
+    } catch (error) {
+      Helper.handleError(error)
+    }
+  }
+
+
   const handleCheckboxChange = (checked: boolean, id: string) => {
     if (checked) {
       if (selectedOptions.length < 3) {
         setSelectedOptions([...selectedOptions, id]);
       }
     } else {
-      setSelectedOptions(selectedOptions.filter((option) => option !== id));
+      setSelectedOptions(selectedOptions.filter((option: any) => option !== id));
     }
   };
 
   const onSubmit: SubmitHandler<Step2FormValues> = () => {
-    console.log("Form Data:", selectedOptions);
+    if (selectedOptions.length === 0) return Helper.handleWarning(trns('step3Warning'))
     setFormValues({ ...formValues, purposes: selectedOptions });
-    console.log("FormValues", formValues);
     if (next) next();
   };
 
@@ -77,29 +76,29 @@ const Step2: React.FC<StepProps> = ({ next, back }) => {
           1.
         </span>
         <h1 className="text-start text-[18px] text-[#3f3f46] font-neue">
-          What would you describe as your main purpose for using this platform?
+          {trns("step2Title")}
         </h1>
       </div>
 
       <div className="space-y-4">
-        {OPTIONS.map((option) => (
-          <div key={option.id} className="flex items-center space-x-3">
+        {options.map((option) => (
+          <div key={option._id} className="flex items-center space-x-3">
             <Checkbox
-              id={option.id}
-              checked={selectedOptions.includes(option.id)}
+              id={option._id}
+              checked={selectedOptions.includes(option._id)}
               onCheckedChange={(checked) =>
-                handleCheckboxChange(checked as boolean, option.id)
+                handleCheckboxChange(checked as boolean, option._id)
               }
               disabled={
-                !selectedOptions.includes(option.id) &&
+                !selectedOptions.includes(option._id) &&
                 selectedOptions.length >= 3
               }
             />
             <Label
-              htmlFor={option.id}
+              htmlFor={option._id}
               className="text-sm leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
             >
-              {option.label}
+              {option.name}
             </Label>
           </div>
         ))}

@@ -26,51 +26,18 @@ import LocaleSwitcher from "./LocaleSwitcher";
 import { useAuth } from "../context/AuthContext";
 import { NotifBar } from "./NotifBar";
 import { Sheet, SheetContent, SheetDescription, SheetHeader, SheetTitle, SheetTrigger } from "./ui/sheet";
+import { GetFileUrl } from "@/lib/utils";
 
 export default function Header() {
   const { user } = useAuth()
   const BASEURL = process.env.NEXT_PUBLIC_API_URL;
   const router = useRouter();
   const locale = useLocale();
-  const token = Cookies.get("authToken");
   const t = useTranslations("footer");
-  const [userInfo, setUserInfo] = useState<any>({});
-  const [imgUrl, setImgUrl] = useState<string | null | undefined>(null);
+
   const { logout } = useAuth()
   const trns = useTranslations("header")
 
-  useEffect(() => {
-    if (user && !user.is_agreement) {
-      router.push(`/quiz`);
-    }
-  }, [user])
-
-  useEffect(() => {
-    const fetchUserInfo = async () => {
-      try {
-        const param = { lang: locale };
-        const payload = new URLSearchParams(Object.entries(param));
-
-        const response = await fetch(
-          `${BASEURL}/one/9/service_user_profile?${payload}`,
-          {
-            headers: { Authorization: `Bearer ${token}` },
-          }
-        );
-        const data = await response.json();
-        setUserInfo(data);
-
-        if (data.image && data.image._id) {
-          const imgUrl = await fetchImageFileById(data.image._id);
-          setImgUrl(imgUrl);
-        }
-      } catch (err) {
-        console.error("Error fetching user info:", err);
-      }
-    };
-
-    fetchUserInfo();
-  }, []);
   const handleLogout = async () => {
     try {
       const response = await fetch(`${BASEURL}/auth/logout`, {
@@ -81,7 +48,6 @@ export default function Header() {
       if (!response.ok) {
         throw new Error("Failed to log out");
       }
-      console.log("Logout request successful");
       logout()
       router.push(`/`);
     } catch (error) {
@@ -159,14 +125,7 @@ export default function Header() {
                     />
                     {trns('editProfile')}
                   </div>
-                  <div className="flex items-center gap-2 cursor-pointer w-full font-neue text-[14px] font-medium" onClick={() => handlePush('/settings/purchase-history')}>
-                    <Invoice01Icon size={24} color={"#fff"} variant={"bulk"} />
-                    {trns('purchaseHistory')}
-                  </div>
-                  <div className="flex items-center gap-2 cursor-pointer w-full font-neue text-[14px] font-medium" onClick={() => handlePush('/settings/notification')}>
-                    <Settings02Icon size={24} color={"#fff"} variant={"bulk"} />
-                    {trns('notifSettings')}
-                  </div>
+              
                   <div
                     className="flex items-center gap-2  cursor-pointer w-full font-neue text-[14px] font-medium"
                     onClick={handleLogout}
@@ -217,14 +176,12 @@ export default function Header() {
               })}
               <div className="flex items-center gap-4">
                 <LocaleSwitcher />
-
                 <NotifBar />
-
                 <DropdownMenu>
                   <DropdownMenuTrigger asChild>
-                    <div className="h-8 w-8 rounded-full border border-neutral-700 p-0 relative object-cover">
+                    <div className="h-8 w-8 rounded-full border border-neutral-700 p-0 relative object-cover cursor-pointer">
                       <Image
-                        src={imgUrl || ""}
+                        src={GetFileUrl(user.image._id)}
                         alt=""
                         width={32}
                         height={32}
@@ -240,7 +197,7 @@ export default function Header() {
                         color={"#fff"}
                         variant={"bulk"}
                       />
-                      Profile
+                      {trns('profile')}
                     </DropdownMenuItem>
                     <DropdownMenuItem className="gap-3 py-3 focus:bg-white/10 cursor-pointer w-full" onClick={() => handlePush('/settings/profile')}>
                       <PencilEdit01Icon
@@ -248,15 +205,7 @@ export default function Header() {
                         color={"#fff"}
                         variant={"bulk"}
                       />
-                      Edit Profile
-                    </DropdownMenuItem>
-                    <DropdownMenuItem className="gap-3 py-3 focus:bg-white/10 cursor-pointer w-full" onClick={() => handlePush('/settings/purchase-history')}>
-                      <Invoice01Icon size={24} color={"#fff"} variant={"bulk"} />
-                      Purchase history
-                    </DropdownMenuItem>
-                    <DropdownMenuItem className="gap-3 py-3 focus:bg-white/10 cursor-pointer w-full" onClick={() => handlePush('/settings/notification')}>
-                      <Settings02Icon size={24} color={"#fff"} variant={"bulk"} />
-                      Notification settings
+                      {trns('editProfile')}
                     </DropdownMenuItem>
                     <DropdownMenuItem
                       className="gap-3  focus:bg-white/10 cursor-pointer w-full"
@@ -267,7 +216,7 @@ export default function Header() {
                         color={"#fff"}
                         variant={"solid"}
                       />
-                      Sign out
+                      {trns('signout')}
                     </DropdownMenuItem>
                   </DropdownMenuContent>
                 </DropdownMenu>

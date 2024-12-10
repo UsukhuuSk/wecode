@@ -12,9 +12,7 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const params = useParams<any>()
   const { user, loaded }: any = useAuth()
-  const router = useRouter()
 
   return (
     <LessonProvider>

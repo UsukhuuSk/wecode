@@ -16,6 +16,7 @@ interface FormValues {
   purposes?: string[];
   background?: Object;
   industry?: Object;
+  computerScience: Object;
 }
 
 interface FormContextProps {
@@ -44,7 +45,9 @@ export const FormProvider: React.FC<FormProviderProps> = ({ children }) => {
     is_agreement: false,
     purposes: [],
     background: '',
-    industry: ','
+    industry: '',
+    computerScience: ''
+
   });
 
   return (

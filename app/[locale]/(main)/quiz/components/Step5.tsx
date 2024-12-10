@@ -55,12 +55,22 @@ const Step5: React.FC<StepProps> = ({ next, back }) => {
     handleSubmit,
     formState: { errors },
   } = useForm<Step2FormValues>();
-  const { formValues, setFormValues } = useContext(FormContext)!;
+  const { formValues, setFormValues } = useContext<any>(FormContext)!;
 
   const onSubmit: SubmitHandler<Step2FormValues> = async () => {
     try {
+      const quizData = {
+        "student_id": user._id,
+        "quiz1_id": formValues.purposes[0],
+        "quiz2_id": formValues.industry._id,
+        "quiz3_id": formValues.computerScience._id,
+        "quiz1_text": formValues.industry.name,
+        "quiz2_text": formValues.industry.name,
+        "is_promise": true
+      }
       setLoading(true)
-      await BaseApi._post('/9/service_user_profile', { _id: user._id, ...formValues })
+      await BaseApi._post('9/service_user_profile', { _id: user._id, ...formValues })
+      await BaseApi._post('9/service_student_quizs', quizData)
       await Helper.wait();
       Helper.handleSuccess(trns('success'))
       setCreated(true)

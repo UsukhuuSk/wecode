@@ -57,11 +57,11 @@ export default function NotificationSettings() {
   }
 
   return (
-    <div className="w-full flex flex-col gap-4 text-white bg-[#33415566] py-6 px-8 rounded-xl border border-[#40404787]">
-      <div className="flex items-center justify-between">
+    <div className="">
+      <div className="flex items-center justify-between mb-6">
         <div className="space-y-1">
           <h3 className="text-lg font-medium text-white">Push notifications</h3>
-          <p className="text-sm text-purple-300">
+          <p className="text-sm text-wcSlate400">
             {trns('pushDesc')}
           </p>
         </div>
@@ -77,7 +77,7 @@ export default function NotificationSettings() {
           <h3 className="text-lg font-medium text-white">
             E-Mail notifications
           </h3>
-          <p className="text-sm text-purple-300">
+          <p className="text-sm text-wcSlate400">
             {trns('emailDesc')}
           </p>
         </div>

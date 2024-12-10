@@ -223,6 +223,12 @@
     }
   },
   "quiz": {
+    "step2Title": "What would you describe as your main purpose for using this platform?",
+    "step2Warning": "Choose one or more items.",
+    "step3Title": "What industry do you work in?",
+    "step3Warning": "Choose one item.",
+    "step4Title": "Do you have a background in coding, computer science, or a related field?",
+    "step4Warning": "Choose one item.",
     "tip": "Before we start, please answer a few questions to identify yourself. Thank you.",
     "account": {
       "create": "Account Creation",
@@ -385,7 +391,15 @@
     },
     "yourJourney": "Your Learning Journey Awaits!",
     "yourJourneyDesc": "It seems quiet here. Start exploring courses to expand your knowledge and skills. We’re here to guide you every step of the way.",
-    "browseCourses": "Browse Courses"
+    "browseCourses": "Browse Courses",
+    "delTitle": "Account deletion",
+    "delDesc": "Deleting your account will permanently remove all your data. This action cannot be undone.",
+    "delDescConfirm": "Deleting your account will permanently remove all your data. This action cannot be undone. Are you sure?",
+    "delBtn": "Delete My Account",
+    "confirmDelBtn": "Yes",
+    "cancelDelBtn": "No",
+    "deleted":"Your account is deleted. Now redircting to home page.",
+    "purchaseEmpty": "You have not made any purchases."
   },
   "header": {
     "login": "Login",

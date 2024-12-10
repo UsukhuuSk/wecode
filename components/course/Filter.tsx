@@ -1,9 +1,11 @@
-import { Search01Icon } from "@hugeicons/react";
+import { FilterVerticalIcon, Search01Icon } from "@hugeicons/react";
 import { useEffect, useRef, useState } from "react";
 import { BaseApi } from "../../api/baseApi";
 import { Input } from "../ui/input";
 import { Checkbox } from "../ui/checkbox";
 import { useTranslations } from "next-intl";
+import { Sheet, SheetContent, SheetDescription, SheetHeader, SheetTitle, SheetTrigger } from "../ui/sheet";
+import { HamburgerMenuIcon } from "@radix-ui/react-icons";
 
 type CourseFilterProps = {
     onChange: (field: any, value: any, d?: any) => void;
@@ -56,10 +58,10 @@ const CourseFilter: React.FC<CourseFilterProps> = ({ filter, onChange, onClear }
     const handleClear = () => {
         onClear()
     }
-    return (
-        <div className="w-[300px] flex flex-col text-white gap-4 pr-8">
+    const RenderFilter = () => {
+        return (
             <div className="flex flex-col gap-4">
-                <div className="relative flex justify-between items-center bg-slate-700 text-white max-w-[230px] rounded-[100px] border border-[rgba(64,64,71,0.53)]">
+                <div className="relative flex justify-between items-center bg-slate-700 text-white max-w-[230px] rounded-[100px] border border-[rgba(64,64,71,0.79)]">
                     <Search01Icon
                         size={16}
                         color={"#fff"}
@@ -119,7 +121,46 @@ const CourseFilter: React.FC<CourseFilterProps> = ({ filter, onChange, onClear }
                     ))}
                 </div>
             </div>
-        </div>
+        )
+    }
+    const MobileMenu = () => {
+        return (
+
+            <Sheet>
+                <SheetTrigger asChild>
+                    <div className="inline-flex items-center text-white cursor-pointer hover:bg-[#FFFFFF50] px-4 py-1 rounded-md">
+                        <FilterVerticalIcon height={16} />
+                        <span className="text-sm">
+                            {trns("filters")}
+                        </span>
+                    </div>
+                </SheetTrigger>
+                <SheetContent side="left" className="bg-[#13032c] z-[1000] w-[300px] border-gray-900 text-white">
+                    <SheetHeader>
+                        <SheetDescription>
+                            <div className="flex flex-col items-start justify-center gap-4 text-white mt-6">
+                                {RenderFilter()}
+                            </div>
+                        </SheetDescription>
+                    </SheetHeader>
+                    {/* <SheetFooter>
+                <SheetClose asChild>
+                  <Button type="submit">Save changes</Button>
+                </SheetClose>
+              </SheetFooter> */}
+                </SheetContent>
+            </Sheet>
+        )
+    }
+    return (
+        <>
+            <div className="hidden md:flex w-[300px] flex-col text-white gap-4">
+                {RenderFilter()}
+            </div>
+            <div className="flex md:hidden">
+                {MobileMenu()}
+            </div>
+        </>
     )
 }
 

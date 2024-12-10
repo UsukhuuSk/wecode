@@ -78,26 +78,25 @@ export default function Course() {
       levels: []
     })
   }
-
   return (
     <div className="container relative">
       <div className="absolute -top-1/4 left-0 -translate-x-1/2 bg-[#4317FF] blur-[200px] w-[244px] h-[200px]"></div>
       <div className="absolute -top-1/4 right-0 -translate-x-1/2 bg-[#4317FF] blur-[200px] w-[244px] h-[200px]"></div>
       <div className="">
         <div className="border-b border-slate-800">
-          <div className="pt-12 flex justify-between items-center">
+          <div className="pt-24 md:pt-12 flex justify-between items-center">
             <div className="flex flex-col gap-6 text-white">
-              <h1 className="font-bold text-[48px] font-adineue leading-none">
+              <h1 className="font-bold text-2xl md:text-[48px] font-adineue leading-none">
                 {trns("allCourses")}
               </h1>
-              <p className="text-center text-[16px] font-semibold font-neue leading-none">
+              <p className="text-center text-xs md:text-base md:font-semibold font-neue leading-none">
                 {trns("allCourseDetail")}
               </p>
             </div>
-            <Image src={laptop} alt="laptop image" width={200} height={200} />
+            <Image className="h-[100px] md:h-[200px]" src={laptop} alt="laptop image" />
           </div>
         </div>
-        <div className="flex w-full py-12">
+        <div className="flex gap-2 md:gap-8 flex-col md:flex-row w-full py-12">
           <CourseFilter onChange={handleFilterChange} filter={filter} onClear={handleClear} />
           <div className="w-full">
             <div className="bg-transparent min-h-screen">
@@ -120,7 +119,7 @@ export default function Course() {
                   }
                 </TabsList>
               </Tabs>
-              <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-2 gap-6">
+              <div className="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-6">
                 {
                   loading ? <>
                     {

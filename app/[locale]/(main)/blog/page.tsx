@@ -7,7 +7,6 @@ import { useLocale, useTranslations } from "next-intl";
 
 import moment from "moment";
 import { blogList, getFile } from "../../../../api/serviceuser";
-import NewFooter from "../../../../components/NewFooter";
 interface Post {
   _id: string;
   date: string;
@@ -128,7 +127,6 @@ export default function page() {
           </div>
         </div>
       </main>
-      <NewFooter />
     </>
   );
 }

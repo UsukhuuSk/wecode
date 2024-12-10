@@ -1,5 +1,5 @@
 "use client";
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { FormContext } from "../../../../../context/FormContext";
 import { Label } from "../../../../../components/ui/label";
@@ -8,6 +8,8 @@ import {
   RadioGroupItem,
 } from "../../../../../components/ui/radio-group";
 import { useTranslations } from "next-intl";
+import { BaseApi } from "@/api/baseApi";
+import { Helper } from "@/lib/helper";
 
 interface StepProps {
   next?: () => void;
@@ -15,86 +17,64 @@ interface StepProps {
 }
 
 interface Step2FormValues {
-  work_id: any;
+  background: any;
 }
 
-const Step3: React.FC<StepProps> = ({ next, back }) => {
+const Step4: React.FC<StepProps> = ({ next, back }) => {
+  const trns = useTranslations("quiz");
+
   const {
     handleSubmit,
     formState: { errors },
   } = useForm<Step2FormValues>();
-  const trns = useTranslations("quiz");
   const { formValues, setFormValues } = useContext(FormContext)!;
+  const [options, setOptions] = useState<any[]>([]);
 
-  const OPTIONS = [
-    {
-      id: "1",
-      label: "Student",
-    },
-    {
-      id: "2",
-      label: "Information Technology",
-    },
-    {
-      id: "3",
-      label: "Healthcare",
-    },
-    {
-      id: "4",
-      label: "Financial",
-    },
-    {
-      id: "5",
-      label: "Industrial",
-    },
-    {
-      id: "6",
-      label: "Sales",
-    },
-    {
-      id: "7",
-      label: "Government and public services",
-    },
-    {
-      id: "8",
-      label: "Media",
-    },
-    {
-      id: "9",
-      label: "Other",
-    },
-  ];
+  useEffect(() => {
+    getQuizRef()
+  }, [])
 
-  const onSubmit: SubmitHandler<Step2FormValues> = (data) => {
-    console.log("FormValues", formValues);
+  const getQuizRef = async () => {
+    try {
+      const { list } = await BaseApi._get('9/ref_student_quiz3')
+      setOptions(list)
+    } catch (error) {
+      Helper.handleError(error)
+    }
+  }
+
+  const onSubmit: SubmitHandler<Step2FormValues> = () => {
+    console.log("FormValues", formValues.computerScience);
+    if (!formValues.computerScience) return Helper.handleWarning(trns('step4Warning'))
     if (next) next();
   };
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-6">
       <div className="flex gap-2">
+        <span className="text-start font-bold text-[18px] text-[#3f3f46] font-neue">
+          3.
+        </span>
         <h1 className="text-start text-[18px] text-[#3f3f46] font-neue">
-          <span className="text-start font-bold text-[18px] text-[#3f3f46] font-neue">
-            2.
-          </span> What industry do you work in?
+          {trns("step4Title")}
         </h1>
       </div>
 
       <RadioGroup
         onValueChange={(value: any) => {
-          const selected = OPTIONS.find((option) => option.id === value);
+          const selected = options.find((option) => option._id === value);
           setFormValues({
             ...formValues,
-            industry: { _id: selected?.id, name: selected?.label },
+            computerScience: { _id: selected?._id, name: selected?.name },
           });
         }}
         className="space-y-3"
       >
-        {OPTIONS.map((industry) => (
-          <div key={industry.id} className="flex items-center space-x-2">
-            <RadioGroupItem value={industry.id} id={industry.id} />
-            <Label htmlFor={industry.id} className="text-base text-gray-700">
-              {industry.label}
+        {options.map((computerScience) => (
+          <div key={computerScience._id} className="flex items-center space-x-2 hover:bg-blue-50 px-2 rounded-md cursor-pointer">
+            <RadioGroupItem value={computerScience._id} id={computerScience._id} />
+            <Label htmlFor={computerScience._id} className="text-base text-gray-700">
+              {computerScience.name}
             </Label>
           </div>
         ))}
@@ -114,4 +94,4 @@ const Step3: React.FC<StepProps> = ({ next, back }) => {
   );
 };
 
-export default Step3;
+export default Step4;

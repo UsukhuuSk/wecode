@@ -36,7 +36,6 @@ import logo2 from "../../../assets/landing/Mask group1.svg";
 import logo3 from "../../../assets/landing/Group 12.svg";
 import { FaArrowRight } from "react-icons/fa";
 import { IoPlay } from "react-icons/io5";
-import NewFooter from "../../../components/NewFooter";
 import { motion } from "framer-motion";
 import { useTranslations } from "next-intl";
 
@@ -523,7 +522,6 @@ export default function Home() {
           </div>
         </div>
       </motion.div>
-      <NewFooter />
     </main>
   );
 }
