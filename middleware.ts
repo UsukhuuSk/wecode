@@ -26,17 +26,17 @@ export default async function middleware(req: NextRequest) {
     }
 
   }
-  if (token) {
-    const isQuizRoute = pathname.includes('quiz')
-    try {
-      const data = await ServerApi._get('one/9/service_user_profile')
-      if (!data.is_agreement && !isQuizRoute) {
-        return NextResponse.redirect(new URL(`/quiz`, req.url));
-      }
-    } catch (error) {
-      return NextResponse.redirect(new URL(`/`, req.url));
-    }
-  }
+  // if (token) {
+  //   const isQuizRoute = pathname.includes('quiz')
+  //   try {
+  //     const data = await ServerApi._get('one/9/service_user_profile')
+  //     if (!data.is_agreement && !isQuizRoute) {
+  //       return NextResponse.redirect(new URL(`/quiz`, req.url));
+  //     }
+  //   } catch (error) {
+  //     return NextResponse.redirect(new URL(`/`, req.url));
+  //   }
+  // }
   return createMiddleware(routing)(req);
 }
 
