@@ -3,25 +3,35 @@ import { PageCourseError } from "@/components/course/PageCourseError";
 import { ServerApi } from "@/api/serverApi";
 import Head from "next/head";
 import { GetFileUrl } from "@/lib/utils";
-export default async function Page({ params }: { params: { id: number, locale: any } }) {
-    const siteUrl = process.env.NEXT_PUBLIC_SITE_URL;
+import { Metadata, ResolvingMetadata } from "next";
 
+type Props = {
+    params: { id: string }
+    searchParams: { [key: string]: string | string[] | undefined }
+  }
+  
+export async function generateMetadata(
+    { params, searchParams }: Props,
+    parent: ResolvingMetadata
+  ): Promise<Metadata> {
+    const id = params.id
+    const data = await ServerApi._checkCourse(id)
+   
+    const previousImages = (await parent).openGraph?.images || []
+   
+    return {
+      title: data.name,
+      description: data.about,
+      openGraph: {
+        images: [GetFileUrl(data.image._id), ...previousImages],
+      },
+    }
+  }
+
+export default async function Page({ params }: { params: { id: number, locale: any } }) {
     try {
         const data = await ServerApi._checkCourse(params.id)
-        return <>
-            <Head>
-                <title>{data.name}</title>
-                <meta name="description" content={data.about} />
-                <meta property="og:title" content={data.name} />
-                <meta property="og:description" content={data.about} />
-                <meta property="og:url" content={siteUrl} />
-                <meta property="og:type" content="website" />
-                <meta property="og:locale" content={params.locale} />
-                {data.image && <meta property="og:image" content={GetFileUrl(data.image._id)} />}
-                <meta name="twitter:card" content="summary_large_image" />
-            </Head>
-            <PageCourse courseData={data} params={params} />;
-        </>
+        return <PageCourse courseData={data} params={params} />;
     } catch (error) {
         return <PageCourseError />
     }
