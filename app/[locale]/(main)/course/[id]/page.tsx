@@ -23,7 +23,7 @@ export async function generateMetadata(
       title: data.name,
       description: data.about,
       openGraph: {
-        images: [GetFileUrl(data.image._id), ...previousImages],
+        images: [`https://ai-academy.asia/api/file/${data.image._id}`],
       },
     }
   }
