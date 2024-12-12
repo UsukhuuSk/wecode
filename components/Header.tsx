@@ -34,6 +34,7 @@ export default function Header() {
   const router = useRouter();
   const locale = useLocale();
   const t = useTranslations("footer");
+  const [isSheetOpen, setSheetOpen] = useState<boolean>(false)
 
   const { logout } = useAuth()
   const trns = useTranslations("header")
@@ -77,15 +78,20 @@ export default function Header() {
       link: `/${locale}/profile`,
     },
   ];
+  const sheetClose = () => setSheetOpen(false)
   const MobileMenu = () => {
     return (
       <div className="fixed top-0 w-full flex z-[500] items-center px-4 py-4 md:hidden  bg-[#33415566] justify-between text-white cursor-pointer ">
         <Link href={'/'}>
           <Image src={logo} alt="logo" width={100} height={32} />
         </Link>
-        <Sheet>
+        <Sheet open={isSheetOpen} onOpenChange={setSheetOpen}>
           <SheetTrigger asChild>
-            <HamburgerMenuIcon width={24} height={24} />
+            <button onClick={() => {
+              setSheetOpen(true)
+            }}>
+              <HamburgerMenuIcon width={24} height={24} />
+            </button>
           </SheetTrigger>
           <SheetContent className="bg-[#334155] z-[1000] w-[300px] border-gray-600 text-white">
             <SheetHeader>
@@ -102,6 +108,7 @@ export default function Header() {
                           href={route.link}
                           key={index}
                           className="font-neue text-[14px] font-medium px-3"
+                          onClick={sheetClose}
                         >
                           {route.name}
                         </Link>
@@ -109,7 +116,10 @@ export default function Header() {
                     );
                   })}
                   <div className="w-full border my-4"></div>
-                  <div className="cursor-pointer w-full flex items-center gap-2 font-neue text-[14px] font-medium" onClick={() => handlePush('/profile')}>
+                  <div className="cursor-pointer w-full flex items-center gap-2 font-neue text-[14px] font-medium" onClick={() => {
+                    handlePush('/profile')
+                    sheetClose()
+                  }}>
                     <Profile02Icon
                       size={24}
                       color={"#fff"}
@@ -117,7 +127,10 @@ export default function Header() {
                     />
                     {trns('profile')}
                   </div>
-                  <div className="flex items-center gap-2 cursor-pointer w-full font-neue text-[14px] font-medium" onClick={() => handlePush('/settings/profile')}>
+                  <div className="flex items-center gap-2 cursor-pointer w-full font-neue text-[14px] font-medium" onClick={() => {
+                    handlePush('/settings/profile')
+                    sheetClose()
+                  }}>
                     <PencilEdit01Icon
                       size={24}
                       color={"#fff"}
@@ -125,10 +138,13 @@ export default function Header() {
                     />
                     {trns('editProfile')}
                   </div>
-              
+
                   <div
                     className="flex items-center gap-2  cursor-pointer w-full font-neue text-[14px] font-medium"
-                    onClick={handleLogout}
+                    onClick={() => {
+                      handleLogout()
+                      sheetClose()
+                    }}
                   >
                     <LogoutSquare01Icon
                       size={20}
