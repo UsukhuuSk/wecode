@@ -3,9 +3,9 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from ".
 import { useTranslations } from "next-intl"
 import Link from "next/link"
 import { FaTrophy } from "react-icons/fa"
-import { LeaderBoard } from "../leaderBoard/board"
 import { useRef, useState } from "react"
 import { BoardFilter } from "../leaderBoard/filter"
+import LeaderBoard from "../leaderBoard/board"
 
 export const ProLeaderBoard = ({ isMini }: any) => {
     const trns = useTranslations('profile.boardItems')

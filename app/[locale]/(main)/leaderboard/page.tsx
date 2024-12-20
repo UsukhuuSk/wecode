@@ -2,9 +2,9 @@
 import React, { useRef } from "react";
 import { FaTrophy } from "react-icons/fa";
 import { useTranslations } from "next-intl";
-import { LeaderBoard } from "@/components/leaderBoard/board";
 import { BoardFilter } from "@/components/leaderBoard/filter";
 import { useRouter } from "next/navigation";
+import LeaderBoard from "@/components/leaderBoard/board";
 
 export default function Leaderboard() {
   const trns = useTranslations("profile")
