@@ -6,7 +6,7 @@ import Image from "next/image"
 import { forwardRef, useEffect, useImperativeHandle, useState } from "react"
 import crown from "@/assets/crown.svg";
 
-export const LeaderBoard = forwardRef(({ isMini }: any, ref) => {
+const LeaderBoard = forwardRef(({ isMini }: any, ref) => {
     const trns = useTranslations("profile")
 
     const [otherUsers, setOtherUsers] = useState<any[]>([])
@@ -188,3 +188,5 @@ export const LeaderBoard = forwardRef(({ isMini }: any, ref) => {
         </div>
     )
 })
+LeaderBoard.displayName = 'leader-board'
+export default LeaderBoard
