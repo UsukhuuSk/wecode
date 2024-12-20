@@ -15,7 +15,6 @@ export default function Teachers() {
       if (response) {
         const blob = await response.blob();
         const imgUrl = URL.createObjectURL(blob);
-        console.log("Image URL:", imgUrl);
         return imgUrl;
       }
     } catch (error) {
@@ -27,10 +26,8 @@ export default function Teachers() {
     const fetchUsers = async () => {
       const param = { lang: locale };
       const params = new URLSearchParams(Object.entries<any>(param));
-      console.log(params.toString());
 
       const userList = (await usersList({ params })) as any;
-      console.log(userList);
 
       const usersWithImages = await Promise.all(
         userList.map(async (user: any) => {

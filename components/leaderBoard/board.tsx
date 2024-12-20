@@ -3,21 +3,37 @@ import { Helper } from "@/lib/helper"
 import { GetFileUrl } from "@/lib/utils"
 import { useTranslations } from "next-intl"
 import Image from "next/image"
-import { useEffect, useState } from "react"
+import { forwardRef, useEffect, useImperativeHandle, useState } from "react"
 import crown from "@/assets/crown.svg";
 
-export const LeaderBoard = ({ isMini }: any) => {
+export const LeaderBoard = forwardRef(({ isMini }: any, ref) => {
     const trns = useTranslations("profile")
+
     const [otherUsers, setOtherUsers] = useState<any[]>([])
     const [topThree, setTopThree] = useState<any[]>([])
+    const [filterValue, setFilterValue] = useState<any>(null)
+
+    useImperativeHandle(ref, () => ({
+        handleFilter
+    }));
+
+    const handleFilter = (val: any) => {
+        setFilterValue(val)
+    }
+
+
 
     useEffect(() => {
         getList()
-    }, [])
+    }, [filterValue])
 
     const getList = async () => {
         try {
-            const data = await BaseApi._get('/exam/leaderboards')
+            const params: any = {}
+            if (filterValue) {
+                params.last_date = filterValue
+            }
+            const data = await BaseApi._get('/exam/leaderboards', params)
             setOtherUsers(data.length > 3 ? data.slice(3) : []);
             if (data.length === 0) {
                 setTopThree([{}, {}, {}]);
@@ -35,10 +51,9 @@ export const LeaderBoard = ({ isMini }: any) => {
 
     const getHours = (d: number) => {
         const remaining: any = d ? d.toFixed() : 0
-        const hours = Math.floor(remaining / 3600);
-        const minutes = Math.floor((remaining % 3600) / 60);
-        const seconds = remaining % 60;
-        return <>{d ? d.toFixed() : 0}</>
+        const minutes = (remaining / 60)
+        const hours = minutes / 60
+        return <>{hours >= 1 ? hours.toFixed() : hours.toFixed(2)}</>
     }
     const getColorClass = (index: number) => {
         const colors = [
@@ -172,4 +187,4 @@ export const LeaderBoard = ({ isMini }: any) => {
             </div>
         </div>
     )
-}
+})

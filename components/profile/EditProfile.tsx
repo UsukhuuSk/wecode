@@ -124,7 +124,7 @@ export default function EditProfile() {
   return (
     <div className="w-full  text-white bg-[#33415566] py-6 px-8 rounded-xl border border-[#40404787]">
       <div className="flex flex-col gap-8">
-        <h1 className="text-[20px] font-adineue font-bold text-center md:text-left">{trns('profileSettings')}</h1>
+        <h1 className="text-[20px] font-adineue font-bold md:text-left">{trns('profileSettings')}</h1>
         <div className="">
           <div className="flex justify-center mb-8">
             <div className="relative">

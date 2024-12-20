@@ -1,4 +1,4 @@
-const BASEURL = process.env.NEXT_PUBLIC_API_URL;
+const BASEURL = process.env.NEXT_PUBLIC_BASE_URL;
 
 import { clsx, type ClassValue } from "clsx";
 import { twMerge } from "tailwind-merge";

@@ -28,7 +28,7 @@ export const Dialog: React.FC<DialogProps> = ({ isOpen, onClose, title, children
   const DialogBody = () => {
 
     return (
-      <div className="bg-white rounded-[24px] shadow-lg p-6 text-black " style={{ width }}>
+      <div className="bg-white rounded-[24px] shadow-lg p-6 text-black max-w-[90%] " style={{ width }}>
         {DialogHeader()}
         <div>{children ? children : null}</div>
       </div>

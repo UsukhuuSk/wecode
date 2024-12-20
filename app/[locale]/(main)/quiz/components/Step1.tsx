@@ -79,14 +79,12 @@ const Step1: React.FC<StepProps> = ({ next }) => {
   }, []);
 
   const handleSpanClick = () => {
-    console.log('set form value')
     setFormValues((prev: any) => {
       return { ...prev, is_agreement: !prev.is_agreement }
     })
   };
 
   const onSubmit: SubmitHandler<Step1FormValues> = (data) => {
-    console.log("Form Data:", data);
     setFormValues({ ...formValues, ...data });
     if (next) next();
   };

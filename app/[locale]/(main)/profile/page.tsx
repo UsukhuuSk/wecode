@@ -47,8 +47,8 @@ export default function Profile({ params }: any) {
   return !user ? (
     <></>
   ) : (
-    <div className="min-h-screen container pt-28 overflow-hidden pb-4">
-      <div className="w-[800px] h-[800px] rotate-[92] flex-shrink-0 rounded-full bg-[#4317ff] blur-[360px] -z-50 absolute right-0 top-1/4"></div>
+    <div className="bg-[#13032B] md:bg-transparent  min-h-screen container pt-28 overflow-hidden pb-4">
+      <div className="hidden md:block w-[800px] h-[800px] rotate-[92] flex-shrink-0 rounded-full bg-[#4317ff] blur-[360px] -z-50 absolute right-0 top-1/4"></div>
       <div className="block md:hidden">
         {WelcomeProfile()}
       </div>

@@ -16,9 +16,6 @@ export async function generateMetadata(
   ): Promise<Metadata> {
     const id = params.id
     const data = await ServerApi._checkCourse(id)
-   
-    const previousImages = (await parent).openGraph?.images || []
-   
     return {
       title: data.name,
       description: data.about,

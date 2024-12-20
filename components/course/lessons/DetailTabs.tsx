@@ -27,8 +27,8 @@ export const LessonDetailTabs = ({ course }: any) => {
                 {tabs.map((t: any, i: number) => {
                     return (
                         <div key={i} onClick={() => setTabValue(t.value)}
-                            className={"cursor-pointer hover:bg-cardDark flex-1 text-center font-neue border-b-[3px] text-white py-2 " +
-                                (tabValue === t.value ? "border-b-primary font-semibold" : "border-b-wcSlate font-normal")}>
+                            className={"cursor-pointer hover:bg-cardDark flex-1 text-center font-neue border-b-[3px] text-white py-2 text-sm md:text-base " +
+                                (tabValue === t.value ? "border-b-primary md:font-semibold" : "border-b-wcSlate font-normal")}>
                             {t.label}
                         </div>
                     )

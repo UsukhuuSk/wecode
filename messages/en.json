@@ -379,6 +379,7 @@
     "leaderboard": "Leaderboard",
     "total": " Total learning time",
     "hours": "hours",
+    "goBack":"Go back",
     "calendar": {
       "daylyStreak": "Dayly streak",
       "sunday": "Sun",
@@ -389,6 +390,21 @@
       "friday": "Fri",
       "saturday": "Sat"
     },
+    "boardItems": {
+      "fullBoard": " View full leaderboard",
+      "leaderboard": "Leaderboard",
+      "total": "Total learning time",
+      "today": "Today",
+      "day": "Dayly",
+      "week": "Weekly",
+      "this_week": "This week",
+      "month": "Monthly",
+      "this_month": "This month",
+      "quarter_year": "Quarter year",
+      "half_year": "Half year",
+      "year": "Yearly",
+      "this_year": "This year"
+    },
     "yourJourney": "Your Learning Journey Awaits!",
     "yourJourneyDesc": "It seems quiet here. Start exploring courses to expand your knowledge and skills. We’re here to guide you every step of the way.",
     "browseCourses": "Browse Courses",
@@ -398,7 +414,7 @@
     "delBtn": "Delete My Account",
     "confirmDelBtn": "Yes",
     "cancelDelBtn": "No",
-    "deleted":"Your account is deleted. Now redircting to home page.",
+    "deleted": "Your account is deleted. Now redircting to home page.",
     "purchaseEmpty": "You have not made any purchases."
   },
   "header": {

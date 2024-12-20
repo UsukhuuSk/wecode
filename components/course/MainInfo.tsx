@@ -5,10 +5,10 @@ export const CourseMainInfo = ({ course }: any) => {
     const trns = useTranslations("course.detail");
 
     return (
-        <div className="container">
-            <div className="h-20 flex justify-between items-center">
+        <div className="container my-4 md:my-0">
+            <div className="grid grid-cols-2 md:h-20 md:flex md:flex-row justify-between items-center">
                 <div className="flex  gap-[10px]">
-                    <HugeIcon size={20} name="starOutlined" color={"white"}/>
+                    <HugeIcon size={20} name="starOutlined" color={"white"} />
                     <div>
                         <span className="text-white font-semibold">
                             {course?.avg_rate}
@@ -44,7 +44,7 @@ export const CourseMainInfo = ({ course }: any) => {
                     </div>
                 </div>
                 <div className="flex  gap-[10px]">
-                    <HugeIcon size={20} name="globe" color="white"/>
+                    <HugeIcon size={20} name="globe" color="white" />
                     <div>
                         <span className="text-white font-semibold">
                             Online
@@ -56,7 +56,7 @@ export const CourseMainInfo = ({ course }: any) => {
                     </div>
                 </div>
                 <div className="flex  gap-[10px]">
-                    <HugeIcon size={20}  name="diploma" color="white" />
+                    <HugeIcon size={20} name="diploma" color="white" />
                     <div>
                         <span className="text-white font-semibold">
                             {course && (course.is_certificate ? trns("certTrue") : trns("certFalse"))}

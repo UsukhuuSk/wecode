@@ -51,7 +51,6 @@ export const CourseRatings = ({ course }: any) => {
     const getRatings = async () => {
         try {
             const data = await BaseApi._get(`/course/9/rates`, { course_id: course._id })
-            console.log('data rate', data)
             setRatings(data.rates)
             setTotal(data.total)
             setAverage(Math.floor(data.avg_rate))
@@ -65,7 +64,6 @@ export const CourseRatings = ({ course }: any) => {
         try {
             const totalCount = ratings.reduce((total: any, rating: any) => total + rating.count, 0);
             const itemPercentage = Math.round((r.count / totalCount) * 100);
-            console.log(r)
             return {
                 width: `${itemPercentage}%`
             }

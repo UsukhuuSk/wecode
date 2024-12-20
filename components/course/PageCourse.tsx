@@ -1,10 +1,10 @@
 "use client"
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { IoIosStar } from "react-icons/io";
 import Video from "next-video";
 
 import { useTranslations } from "next-intl";
-import { CheckCircledIcon } from "@radix-ui/react-icons"
+import { CheckCircledIcon, HamburgerMenuIcon } from "@radix-ui/react-icons"
 
 import Link from "next/link";
 import { useParams } from "next/navigation";
@@ -25,22 +25,28 @@ import { LessonPlay } from "./lessons/Play";
 import { LessonDetailTabs } from "./lessons/DetailTabs";
 import { CourseExam } from "./exam/Exams";
 import { useAuth } from "@/context/AuthContext";
+import { Hamburger01Icon, PlayIcon } from "@hugeicons/react";
 
 
 export default function PageCourse({ courseData, params }: any) {
+    const trns = useTranslations("course.detail");
+    const topicRef = useRef<any>(null)
     const { user, loaded } = useAuth()
     const [topics, setTopics] = useState<any>([])
     const [teachers, setTeachers] = useState<any>([])
     const [course, setCourse] = useState<any>({})
     const [enrolled, setEnrolled] = useState<boolean>(false)
     const { activeLesson } = useLesson()
+    const [openMiniMenu, setOpenMiniMenu] = useState<boolean>(false)
     useEffect(() => {
         getTopics()
         setCourse(courseData)
         setTeachers(courseData.teachers)
         setEnrolled(courseData.enrolled)
     }, [courseData])
-
+    useEffect(() => {
+        setOpenMiniMenu(false)
+    }, [activeLesson])
     useEffect(() => {
         if (loaded && !user) {
             setEnrolled(false)
@@ -65,6 +71,9 @@ export default function PageCourse({ courseData, params }: any) {
         <div className="">
             {!enrolled && <CourseGuestHeader course={course} />}
             {!enrolled && <div className="border-b border-slate-600">
+                <div className=" md:hidden my-8 mx-4">
+                    <CourseInstructor course={course} teachers={teachers} enrolled={enrolled} onChange={handleEnroll} />
+                </div>
                 <CourseMainInfo course={course} />
 
             </div>}
@@ -76,7 +85,7 @@ export default function PageCourse({ courseData, params }: any) {
                             <CourseAbout course={course} />
                             <CourseTopics topics={topics} />
                         </div>
-                        <div className="col-span-12   lg:col-span-4 xl:col-span-4 2xl:col-span-4 text-white">
+                        <div className="hidden mt-8 lg:mt-0 md:block col-span-12 lg:col-span-4 xl:col-span-4 2xl:col-span-4 text-white">
                             <CourseInstructor course={course} teachers={teachers} enrolled={enrolled} onChange={handleEnroll} />
                         </div>
                     </div>
@@ -85,14 +94,40 @@ export default function PageCourse({ courseData, params }: any) {
                         <div className="col-span-12 ">
                             <CourseRolledHeader course={course} />
                         </div>
-                        <div className="flex flex-col gap-4 col-span-12  lg:col-span-8 xl:col-span-8 2xl:col-span-8">
-                            {activeLesson ? <LessonPlay activeLesson={activeLesson} course={course} /> : <VideoCourse id={course.intro_video_id._id} course_id={course._id} locale="mn" />}
+                        <div className="flex flex-col gap-4 col-span-12 lg:col-span-8 xl:col-span-8 2xl:col-span-8">
+                            {activeLesson ? <LessonPlay activeLesson={activeLesson} course={course} /> :
+                                <div className="flex">
+                                    <VideoCourse id={course.intro_video_id._id} course_id={course._id} locale="mn" />
+                                </div>}
+                            <div className="md:hidden flex gap-2">
+                                <button onClick={() => setOpenMiniMenu((prev) => !prev)} className="text-white h-10 w-10 flex items-center justify-center rounded-full bg-[#FFFFFF10]">
+                                    <HamburgerMenuIcon height={24} width={24} />
+                                </button>
+                                <div className="h-10 w-full bg-[#FFFFFF10] rounded-[32px] flex items-center justify-between px-4 text-white">
+                                    <div className="flex items-center">
+                                        <PlayIcon variant="duotone" /><p className="text-white text-sm font-semibold font-neue text-nowrap max-w-[160px] truncate">
+                                            {activeLesson ? activeLesson.name : course.intro_video_id.name}
+                                        </p>
+                                    </div>
+                                    <div className="flex items-center text-[#CBD5E1] gap-2 text-sm">
+                                        <div className="flex  items-center gap-2 ">
+                                            {trns('video')}
+                                        </div>
+                                        <div className="inline-block w-1 h-1 rounded-full bg-white"></div>
+                                        <span>
+                                            {activeLesson ? activeLesson.video_id.duration_seconds : course.intro_video_id.duration_seconds} min
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
                             <LessonDetailTabs course={course} />
                         </div>
-                        <div className="col-span-12  lg:col-span-4 xl:col-span-4 2xl:col-span-4 text-white">
+                        <div className="col-span-12 lg:col-span-4 xl:col-span-4 2xl:col-span-4 text-white">
                             <CourseInstructor course={course} teachers={teachers} enrolled={enrolled} onChange={handleEnroll} />
-                            <CourseTopics topics={topics} />
-                            <CourseExam course={course} />
+                            <div ref={topicRef} className={`${openMiniMenu ? 'z-[999] block fixed inset-0 bg-[#000000eb] backdrop-blur-sm overflow-auto h-[100vh] px-4 pt-[72px] pb-4' : 'hidden'} md:block transition-all`}>
+                                <CourseTopics openMiniMenu={openMiniMenu} topics={topics} onClose={() => setOpenMiniMenu(false)} />
+                                <CourseExam course={course} />
+                            </div>
                         </div>
                     </div>
             }

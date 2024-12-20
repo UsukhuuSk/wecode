@@ -15,12 +15,8 @@ export const LessonProvider = ({ children }: { children: ReactNode }) => {
     const [activeLesson, setActiveLesson] = useState(null)
 
     const setVideos = async (lesson: any) => {
-        console.log('lool', lesson)
         setActiveLesson(lesson)
     };
-
-
-
 
     return (
         <LessonContext.Provider value={{ setVideos, activeLesson }}>

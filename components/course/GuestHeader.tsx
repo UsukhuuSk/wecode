@@ -9,8 +9,8 @@ export const CourseGuestHeader = ({ course }: any) => {
     const params = useParams()
     const trns = useTranslations("course.detail");
     return (
-        <div className="pt-[160px] pb-[80px] h-[580px]" style={{ background: 'linear-gradient(-20deg, #FF7A1B 0%, #C74AF4 25%, #5C58FF 65%)' }}>
-            <div className="flex items-center flex-col gap-4 lg:flex-row xl:flex-row 2xl:flex-row container">
+        <div className="pb-[72px] pt-[120px] md:pt-[160px] md:pb-[80px] lg:h-[580px]" style={{ background: 'linear-gradient(-20deg, #FF7A1B 0%, #C74AF4 25%, #5C58FF 65%)' }}>
+            <div className="flex lg:items-center flex-col gap-4 lg:flex-row xl:flex-row 2xl:flex-row container">
                 <div className="flex-1 flex flex-col gap-3">
                     <div className="flex gap-2 text-white">
                         <Link href="/" className="hover:underline"> {trns('home')}</Link>
@@ -21,9 +21,9 @@ export const CourseGuestHeader = ({ course }: any) => {
                         {course?.name}
                     </p>
                 </div>
-                <div className="flex-1 flex justify-end">
+                <div className=" md:flex-1 flex md:justify-end">
                     {
-                        course?.intro_video_id && <VideoCourse width={500} id={course.intro_video_id._id} course_id={course._id} locale="mn" />
+                        course?.intro_video_id && <VideoCourse id={course.intro_video_id._id} course_id={course._id} locale="mn" />
                     }
                 </div>
             </div>

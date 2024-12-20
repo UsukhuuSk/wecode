@@ -6,7 +6,7 @@ export const CourseInstructor = ({ course, teachers, enrolled, onChange }: any) 
     const trns = useTranslations("course.detail");
 
     return (
-        <div className={"rounded-xl px-4 py-3 " + (enrolled ? "bg-cardDark border border-wcBorder" : "bg-[#334155]")}>
+        <div className={"rounded-xl px-4 py-3 text-white " + (enrolled ? "bg-cardDark border border-wcBorder" : "bg-[#334155]")}>
             {
                 !enrolled && <div className="text-white border-b border-slate-500 p-2 font-medium">
                     {course?.name}

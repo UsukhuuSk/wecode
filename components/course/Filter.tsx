@@ -1,4 +1,4 @@
-import { FilterVerticalIcon, Search01Icon } from "@hugeicons/react";
+import { FilterIcon, FilterVerticalIcon, Search01Icon } from "@hugeicons/react";
 import { useEffect, useRef, useState } from "react";
 import { BaseApi } from "../../api/baseApi";
 import { Input } from "../ui/input";
@@ -125,31 +125,44 @@ const CourseFilter: React.FC<CourseFilterProps> = ({ filter, onChange, onClear }
     }
     const MobileMenu = () => {
         return (
-
-            <Sheet>
-                <SheetTrigger asChild>
-                    <div className="inline-flex items-center text-white cursor-pointer hover:bg-[#FFFFFF50] px-4 py-1 rounded-md">
-                        <FilterVerticalIcon height={16} />
-                        <span className="text-sm">
-                            {trns("filters")}
-                        </span>
-                    </div>
-                </SheetTrigger>
-                <SheetContent side="left" className="bg-[#13032c] z-[1000] w-[300px] border-gray-900 text-white">
-                    <SheetHeader>
-                        <SheetDescription>
-                            <div className="flex flex-col items-start justify-center gap-4 text-white mt-6">
-                                {RenderFilter()}
-                            </div>
-                        </SheetDescription>
-                    </SheetHeader>
-                    {/* <SheetFooter>
+            <div className="flex items-center justify-between w-full mb-4">
+                <div className="relative flex w-full justify-between items-center bg-slate-700 text-white rounded-[100px] border border-slate-600">
+                    <Search01Icon
+                        size={16}
+                        color={"#fff"}
+                        className="absolute left-3"
+                    />
+                    <Input
+                        value={filter.text}
+                        onChange={handleChangeText}
+                        className="w-full search border-none focus:border-none rounded-[100px] pl-10"
+                        placeholder={trns("search")}
+                    />
+                </div>
+                <Sheet>
+                    <SheetTrigger asChild>
+                        <div className=" text-white cursor-pointer hover:bg-[#FFFFFF50] px-4 py-1 rounded-md">
+                            <button className="h-10 w-10 flex items-center justify-center rounded-full bg-wcSlate700">
+                                <FilterIcon variant="solid" height={16} />
+                            </button>
+                        </div>
+                    </SheetTrigger>
+                    <SheetContent side="right" className="bg-[#13032c] z-[1000] w-[300px] border-gray-900 text-white">
+                        <SheetHeader>
+                            <SheetDescription>
+                                <div className="flex flex-col items-start justify-center gap-4 text-white mt-6">
+                                    {RenderFilter()}
+                                </div>
+                            </SheetDescription>
+                        </SheetHeader>
+                        {/* <SheetFooter>
                 <SheetClose asChild>
                   <Button type="submit">Save changes</Button>
                 </SheetClose>
               </SheetFooter> */}
-                </SheetContent>
-            </Sheet>
+                    </SheetContent>
+                </Sheet>
+            </div>
         )
     }
     return (

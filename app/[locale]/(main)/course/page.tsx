@@ -108,7 +108,7 @@ export default function Course() {
                         <TabsTrigger
                           key={index}
                           value={t.value}
-                          className="text-white rounded-none text-[16px] px-4 py-[5px] transition-colors duration-200 ease-in-out
+                          className="flex-1 md:flex-none text-white rounded-none text-[16px] px-4 py-[5px] transition-colors duration-200 ease-in-out
                         data-[state=active]:border-b-2 data-[state=active]:border-[#4317ff] data-[state=active]:text-[#fff] data-[state=active]:font-semibold
                         data-[state=inactive]:border-b-2 data-[state=inactive]:border-transparent data-[state=inactive]:text-[#ffffff80] data-[state=inactive]:font-medium"
                         >

@@ -62,7 +62,7 @@ export const DeleteAccount = () => {
                     </div>
                 }
             </Dialog>
-            <div className="flex items-center justify-between">
+            <div className="flex items-center justify-between mt-36 md:mt-0">
                 <div >
                     <h3 className="text-lg font-medium text-white mb-1">
                         {trns('delTitle')}

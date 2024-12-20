@@ -1,9 +1,9 @@
 import { useTranslations } from "next-intl"
-import HugeIcon from "../../ui/HugeIcon"
 import { useEffect, useState } from "react"
 import { Helper } from "../../../lib/helper"
 import { BaseApi } from "../../../api/baseApi"
 import { ExamItem } from "./Items"
+import { ArrowDown01Icon, BookEditIcon } from "@hugeicons/react"
 
 export const CourseExam = ({ course }: any) => {
     const [open, setOpen] = useState<boolean>(false)
@@ -26,15 +26,15 @@ export const CourseExam = ({ course }: any) => {
     }
 
     return (
-        <div className=" bg-cardDark rounded-xl border border-wcBorder mt-4 ">
+        <div className=" md:bg-cardDark rounded-xl md:border border-wcBorder mt-4 ">
             <div onClick={handleOpen} className="flex items-center gap-4  px-4 py-3 justify-between cursor-pointer hover:bg-card">
                 <div className="flex items-center gap-2">
-                    <HugeIcon name="bookEdit" color="red" />
+                    <BookEditIcon height={20} width={20} className="text-red-500" variant="duotone" />
                     <div className=" flex flex-col gap-4">
                         <span className="text-white">{trns("exam")}</span>
                     </div>
                 </div>
-                <HugeIcon name="arrowDown" />
+                <ArrowDown01Icon/>
             </div>
             <div className={"oveflow-hidden transition-all " + (open ? '' : "h-0")}>
                 <ul className={" " + (!open ? 'hidden' : 'px-3 pb-3')}>

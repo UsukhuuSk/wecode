@@ -102,7 +102,22 @@ const config: Config = {
       },
     },
   },
-  plugins: [addVariablesForColors, require("tailwindcss-animate")],
+  plugins: [
+    addVariablesForColors,
+    require("tailwindcss-animate"),
+    // function ({ addComponents, theme }: any) {
+    //   addComponents({
+    //     '.container': {
+    //       maxWidth: '100%',
+    //       '@screen sm': { maxWidth: '640px' },
+    //       '@screen md': { maxWidth: '768px' },
+    //       '@screen lg': { maxWidth: '1024px' },
+    //       '@screen xl': { maxWidth: '1280px' },
+    //       '@screen 2xl': { maxWidth: '1440px' }, // Set the container to 1440px at 2xl
+    //     },
+    //   });
+    // },
+  ],
 };
 function addVariablesForColors({ addBase, theme }: any) {
   let allColors = flattenColorPalette(theme("colors"));

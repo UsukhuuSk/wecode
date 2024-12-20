@@ -2,6 +2,7 @@ import HugeIcon from "../../ui/HugeIcon"
 import { useTranslations } from "next-intl";
 import React from "react";
 import { useLesson } from "../../../context/LessonContext";
+import { PlayIcon, Video01Icon } from "@hugeicons/react";
 interface PropLessonItem {
     lesson: any;
     locale: any;
@@ -15,16 +16,16 @@ export const LessonItem: React.FC<PropLessonItem> = ({ lesson, locale, onPlay, t
         return activeLesson?._id === lesson._id
     }
     return (
-        <li className={"flex items-center justify-between rounded-md hover:bg-card py-1 px-2 cursor-pointer " + (isActive() ? "bg-tpGreen" : "")} onClick={() => setVideos(lesson, topicId)}>
+        <li className={"flex items-center justify-between rounded-md hover:bg-card py-1 px-2 cursor-pointer " + (isActive() ? "bg-[#FFFFFF10]" : "")} onClick={() => setVideos(lesson, topicId)}>
             <div className="flex items-center gap-2">
                 {isActive() ?
-                    <HugeIcon name="video" />
+                    <PlayIcon width={16} height={16} />
                     :
-                    <HugeIcon name="play" />
+                    <Video01Icon width={16} height={16} />
                 }
-                <span className="text-sm">
+                <div className="text-sm max-w-[150px] truncate">
                     {lesson.name}
-                </span>
+                </div>
             </div>
             <div className="text-sm flex justify-between w-[6.5rem] items-center">
                 <div className="flex  items-center gap-2">
