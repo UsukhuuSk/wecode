@@ -11,6 +11,7 @@ import { BaseApi } from "../../../../api/baseApi";
 import CourseFilter from "../../../../components/course/Filter";
 import CourseCard from "../../../../components/course/Card";
 import { useTranslations } from "next-intl";
+import { useSearchParams } from 'next/navigation'
 
 
 export default function Course() {
@@ -19,12 +20,22 @@ export default function Course() {
   const [loading, setLoading] = useState(true);
   const [tabValue, setTabValue] = useState<any>("most-popular")
   const [tabs, setTabs] = useState<any>([{ value: 'most-popular', label: trns('popular') }, { value: 'top-rated', label: trns('topRated') }])
+  const searchParams = useSearchParams()
 
   const [filter, setFilter] = useState<any>({
     text: "",
     topics: [],
     levels: []
   })
+  useEffect(() => {
+    const cat = searchParams.get("s");
+    if (cat) {
+      setFilter((prev: any) => ({
+        ...prev,
+        topics: [...prev.topics, cat],
+      }));
+    }
+  }, [searchParams])
 
   useEffect(() => {
     getCourses()
@@ -79,7 +90,7 @@ export default function Course() {
     })
   }
   return (
-    <div className="container relative">
+    <div className="container relative mt-10">
       <div className="absolute -top-1/4 left-0 -translate-x-1/2 bg-[#4317FF] blur-[200px] w-[244px] h-[200px]"></div>
       <div className="absolute -top-1/4 right-0 -translate-x-1/2 bg-[#4317FF] blur-[200px] w-[244px] h-[200px]"></div>
       <div className="">

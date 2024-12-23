@@ -10,7 +10,6 @@ import ten from "../../../assets/LandingPage/10.svg";
 import eleven from "../../../assets/LandingPage/11.svg";
 import twelve from "../../../assets/LandingPage/12.svg";
 import CategoryCard from "../../../components/CategoryCard";
-import { categories } from "../../../constants/constants";
 import Hero from "../../../components/Hero";
 import fancy from "../../../assets/fancy.svg";
 import fancy2 from "../../../assets/fancy2.svg";
@@ -21,9 +20,6 @@ import purple from "../../../assets/landing/purplePlanet.png";
 import mobile from "../../../assets/asadasd.png";
 import gif from "../../../assets/5b7374bbd8f499bfd804b74baa6ebd7a.gif";
 import { FaAppleAlt } from "react-icons/fa";
-import card1 from "../../../assets/course/image.png";
-import card2 from "../../../assets/course/image1.png";
-import card3 from "../../../assets/course/image2.png";
 import {
   Carousel,
   CarouselContent,
@@ -41,6 +37,7 @@ import { useTranslations } from "next-intl";
 import { BaseApi } from "@/api/baseApi";
 import { Helper } from "@/lib/helper";
 import CourseCard from "@/components/course/Card";
+import Link from "next/link";
 
 export default function Home() {
   const t = useTranslations("HomePage");
@@ -156,11 +153,24 @@ export default function Home() {
   //   },
   // ];
 
+  const [topics, setTopics] = useState<any>([])
   const [courses, setCourses] = useState<any>([])
+
   const [loading, setLoading] = useState<boolean>(false)
   useEffect(() => {
     getCourses()
+    getTopics()
   }, [])
+
+  const getTopics = async () => {
+    try {
+      const { list } = await BaseApi._get('9/ref_course_tags')
+      setTopics(list)
+    } catch (error) {
+
+    }
+  }
+
   const getCourses = async () => {
     try {
       setLoading(true)
@@ -213,32 +223,36 @@ export default function Home() {
               <div className="text-[#5c5c5c] font-neue text-[14px] md:text-[20px] font-medium tracking-tight lg:tracking-[0.173px] m-auto">
                 {t("subheadline")}
               </div>
-              <div className="w-auto flex justify-center m-auto text-base font-bold font-neue py-4 px-4 text-center text-white bg-[#4317FF] rounded-[32px]">
+              <Link href="/course" className="w-auto flex justify-center m-auto text-base font-bold font-neue py-4 px-4 text-center text-white bg-[#4317FF] hover:scale-105 transition-all rounded-[32px]">
                 {t("start")}
-              </div>
+              </Link>
             </div>
           </div>
           <div className="">
             <div className="flex justify-between flex-col gap-4 md:gap-5 items-center z-50">
               <div className="grid  grid-cols-1 md:grid-cols-4  xl:grid-cols-4 text-center gap-4 md:gap-5 ">
-                {categories.slice(0, 4).map((category, index) => (
+                {topics.slice(0, 4).map((t: any, index: number) => (
                   <CategoryCard
+                    _id={t._id}
                     key={index}
-                    name={category.name}
-                    className={category.className}
-                    icon={category.icon}
-                    color={category.color}
+                    name={t.name}
+                    className={t.className}
+                    image={t.image}
+                    // icon={category.icon}
+                    color={t.color}
                   />
                 ))}
               </div>
               <div className="grid grid-cols-1 md:grid-cols-3 sm:grid-cols-2 xl:grid-cols-3 text-center gap-4 md:gap-5 m-auto">
-                {categories.slice(4, 7).map((category, index) => (
+                {topics.slice(4, 7).map((t: any, index: any) => (
                   <CategoryCard
+                    _id={t._id}
                     key={index}
-                    name={category.name}
-                    className={category.className}
-                    icon={category.icon}
-                    color={category.color}
+                    name={t.name}
+                    className={t.className}
+                    icon={t.icon}
+                    image={t.image}
+                    color={t.color}
                   />
                 ))}
               </div>
@@ -357,9 +371,9 @@ export default function Home() {
             <CarouselNext className="bg-white text-black" />
           </Carousel>
         </div>
-        <div className="font-bold text-[16px] font-neue px-10 py-4 rounded-[32px] bg-[#4317FF] text-white m-auto">
+        <Link href={'/login?mode=register'} className="transition-all font-bold text-[16px] font-neue px-10 py-4 rounded-[32px] bg-primary hover:bg-white hover:text-primary text-white m-auto">
           {t("courses.signup")}
-        </div>
+        </Link>
       </motion.div>
       <motion.div
         variants={fadeInUp}
@@ -492,10 +506,10 @@ export default function Home() {
                 <h1 className="text-white text-2xl font-bold font-neue">
                   {t("started")}
                 </h1>
-                <button className="flex items-center gap-3 w-auto justify-start rounded-[48px] bg-[#FFFFFF33] border border-[#FFFFFF66]  text-white py-[10px] px-5">
+                <Link href={'/login?mode=register'} className="hover:scale-105 transition-all flex items-center gap-3 w-auto justify-start rounded-[48px] bg-[#FFFFFF33] border border-[#FFFFFF66]  text-white py-[10px] px-5">
                   <span>{t("sign")} </span>
                   <FaArrowRight size={12} color="#fff" />
-                </button>
+                </Link>
               </div>
             </div>
           </div>

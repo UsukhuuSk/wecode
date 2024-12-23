@@ -1,14 +1,30 @@
 import { NextRequest, NextResponse } from "next/server";
 import createMiddleware from "next-intl/middleware";
 import { routing } from "./i18n/routing";
-import { BaseApi } from "./api/baseApi";
 import { ServerApi } from "./api/serverApi";
 
+let locales = ['mn', 'en']
+
+
 const protectedRoutes = ["/profile", "/leaderboard"];
+function getLocale() {
+  return locales[0]
+}
 
 
 export default async function middleware(req: NextRequest) {
   const { pathname } = req.nextUrl;
+
+  const pathnameHasLocale = locales.some(
+    (locale) => pathname.startsWith(`/${locale}/`) || pathname === `/${locale}`
+  )
+  if (!pathnameHasLocale) {
+    const locale = getLocale()
+    req.nextUrl.pathname = `/${locale}${pathname}`
+    return NextResponse.redirect(req.nextUrl)
+  }
+
+
   if (pathname?.startsWith('/firebase')) {
     return NextResponse.next();
   }
@@ -16,6 +32,7 @@ export default async function middleware(req: NextRequest) {
   const isProtectedRoute = protectedRoutes.some((route) =>
     pathname.startsWith(`/${locale}${route}`)
   );
+  
   const token = req.cookies.get("authToken");
 
   if (isProtectedRoute) {
