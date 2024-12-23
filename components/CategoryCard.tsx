@@ -46,7 +46,7 @@ export default function CategoryCard({
       <div className="flex-shrink-0 flex justify-start items-center">
         {/* <Icon size={24} variant={"bulk"} color={color} /> */}
         {/* <Brain02Icon variant={"bulk"} color={color} /> */}
-        <img className="h-6" src={GetFileUrl(image._id)} />
+        {image && <img className="h-6" src={GetFileUrl(image._id)} />}
       </div>
 
       <p style={{ color }} className="text-[14px] font-semibold">
