@@ -25,23 +25,24 @@ export default function page({ params }: any) {
           <div className="grid xl:grid-cols-4 text-center gap-5">
             {categories.slice(0, 4).map((category, index) => (
               <CategoryCard
+                image={null}
                 key={index}
                 name={category.name}
                 className={category.className}
                 icon={category.icon}
-                color={category.color}
+                color={category.color} _id={undefined}
               />
             ))}
           </div>
           <div className="grid xl:grid-cols-3 text-center gap-5 m-auto">
             {categories.slice(4, 7).map((category, index) => (
               <CategoryCard
+                image={null}
                 key={index}
                 name={category.name}
                 className={category.className}
                 icon={category.icon}
-                color={category.color}
-              />
+                color={category.color} _id={undefined} />
             ))}
           </div>
         </div>
