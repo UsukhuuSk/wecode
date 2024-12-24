@@ -44,16 +44,16 @@ export const CourseEnroll: React.FC<PropEnroll> = ({ course, enroll, onChange })
         <>
             <Dialog isOpen={openInfo} onClose={handleClose} title={""}>
                 {
-                    <div className="flex flex-col items-center gap-6">
+                    <div className="flex flex-col items-center gap-6 p-4">
                         <div className="text-[72px] text-center">
-                        🚪🔒
+                            🚪🔒
                         </div>
-                        <div className="font-bold w-[430px] text-center text-2xl text-wcZinc700">
-                            Та системд нэвтрээгүй байгаа тул худалдан авах боломжгүй байна.
+                        <div className="font-bold text-center text-lg md:text-2xl text-wcZinc700">
+                            {trns("enrollAuth")}
                         </div>
                         <Link className="w-full" href={'/login'}>
                             <button className="bg-primary rounded-[32px] text-white py-[12px] w-full hover:opacity-90 font-bold">
-                                Нэвтрэх хуудасруу очих
+                            {trns("enrollAuthBtn")}
                             </button>
                         </Link>
                     </div>

@@ -292,6 +292,8 @@
       "instructor": "Instructor",
       "enroll": "Enroll for free",
       "enrolled": "Already enrolled.",
+      "enrollAuth": "You are not logged into the system, so purchasing is not available.",
+      "enrollAuthBtn": "Go to the login page",
       "video": "video",
       "home": "Home",
       "courses": "Courses",
@@ -379,7 +381,7 @@
     "leaderboard": "Leaderboard",
     "total": " Total learning time",
     "hours": "hours",
-    "goBack":"Go back",
+    "goBack": "Go back",
     "calendar": {
       "daylyStreak": "Dayly streak",
       "sunday": "Sun",

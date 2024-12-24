@@ -6,31 +6,32 @@ import { GetFileUrl } from "@/lib/utils";
 import { Metadata, ResolvingMetadata } from "next";
 
 type Props = {
-    params: { id: string }
-    searchParams: { [key: string]: string | string[] | undefined }
-  }
-  
+  params: { id: string }
+  searchParams: { [key: string]: string | string[] | undefined }
+}
+
 export async function generateMetadata(
-    { params, searchParams }: Props,
-    parent: ResolvingMetadata
-  ): Promise<Metadata> {
-    const id = params.id
-    const data = await ServerApi._checkCourse(id)
-    return {
-      title: data.name,
-      description: data.about,
-      openGraph: {
-        images: [GetFileUrl(data.image._id)],
-      },
-    }
+  { params, searchParams }: Props,
+  parent: ResolvingMetadata
+): Promise<Metadata> {
+  const id = params.id
+  const data = await ServerApi._checkCourse(id)
+  return {
+    title: data.name,
+    description: data.about,
+    openGraph: {
+      images: [GetFileUrl(data.image._id)],
+    },
   }
+}
 
 export default async function Page({ params }: { params: { id: number, locale: any } }) {
-    try {
-        const data = await ServerApi._checkCourse(params.id)
-        return <PageCourse courseData={data} params={params} />;
-    } catch (error) {
-        return <PageCourseError />
-    }
+  try {
+    const data = await ServerApi._checkCourse(params.id)
+    return <PageCourse courseData={data} params={params} />;
+  } catch (error) {
+    console.error('course fetch error: ', error)
+    return <PageCourseError />
+  }
 
 }
