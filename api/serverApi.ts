@@ -21,6 +21,7 @@ export class ServerApi {
         const finalUrl = method === 'GET' && params
             ? `${url}?${new URLSearchParams(params).toString()}`
             : url;
+            console.log('finalUrl', finalUrl)
         if (method !== 'GET' && params) {
             options.body = JSON.stringify(params);
         }

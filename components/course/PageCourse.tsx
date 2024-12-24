@@ -68,7 +68,7 @@ export default function PageCourse({ courseData, params }: any) {
     }
 
     return (
-        <div className="">
+        <div>
             {!enrolled && <CourseGuestHeader course={course} />}
             {!enrolled && <div className="border-b border-slate-600">
                 <div className=" md:hidden my-8 mx-4">
@@ -79,7 +79,7 @@ export default function PageCourse({ courseData, params }: any) {
             </div>}
             {
                 !enrolled ?
-                    <div className="container grid grid-cols-12 lg:gap-16 xl:gap-20 2xl:gap-20 py-8">
+                    <div className="container grid grid-cols-12 lg:gap-16 xl:gap-20 2xl:gap-20">
                         <div className="flex flex-col gap-8 col-span-12  lg:col-span-8 xl:col-span-8 2xl:col-span-8">
                             <CourseGoal course={course} />
                             <CourseAbout course={course} />
@@ -90,15 +90,14 @@ export default function PageCourse({ courseData, params }: any) {
                         </div>
                     </div>
                     :
-                    <div className="container grid grid-cols-12 lg:gap-8 xl:gap-14 2xl:gap-14 mb-8 mt-20">
+                    <div className="container grid grid-cols-12 lg:gap-8 xl:gap-8 2xl:gap-8  pt-20">
                         <div className="col-span-12 ">
                             <CourseRolledHeader course={course} />
                         </div>
                         <div className="flex flex-col gap-4 col-span-12 lg:col-span-8 xl:col-span-8 2xl:col-span-8">
                             {activeLesson ? <LessonPlay activeLesson={activeLesson} course={course} /> :
-                                <div className="flex">
-                                    <VideoCourse id={course.intro_video_id._id} course_id={course._id} locale="mn" />
-                                </div>}
+                                <VideoCourse id={course.intro_video_id._id} course_id={course._id} locale="mn" />
+                            }
                             <div className="md:hidden flex gap-2">
                                 <button onClick={() => setOpenMiniMenu((prev) => !prev)} className="text-white h-10 w-10 flex items-center justify-center rounded-full bg-[#FFFFFF10]">
                                     <HamburgerMenuIcon height={24} width={24} />
