@@ -61,7 +61,8 @@ const Step5: React.FC<StepProps> = ({ next, back }) => {
     try {
       const quizData = {
         "student_id": user._id,
-        "quiz1_id": formValues.purposes[0],
+        "quiz1_id": null,
+        "quiz1_ids": formValues.purposes,
         "quiz2_id": formValues.industry._id,
         "quiz3_id": formValues.computerScience._id,
         "quiz1_text": formValues.industry.name,

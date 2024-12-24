@@ -32,10 +32,10 @@ export default function NewFooter() {
       <div className="m-auto">
         <Image src={logo} alt="AI ACADEMY" />
       </div>
-      <div className="flex flex-col items-start m-auto md:flex-row md:justify-center gap-8 md:gap-[85px] ">
+      <div className="flex flex-col items-start m-auto md:flex-row md:justify-center gap-4 md:gap-[5.25rem] ">
         {routes.map((route, index) => (
           <Link href={route.path} key={index}>
-            <p className="text-slate-300 font-base font-bold tracking-[0.173px] text-[40px] font-adineue text-start">
+            <p className="text-slate-300 font-base font-bold tracking-[0.173px] text-2xl md:text-[2.5rem] font-adineue text-start">
               {route.name}
             </p>
           </Link>

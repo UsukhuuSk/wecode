@@ -1,70 +1,95 @@
 import Image from "next/image";
-import { getBlogDetail, getFile } from "../../../../../api/serviceuser";
+import { CircleArrowLeft02Icon } from "@hugeicons/react";
+import Link from "next/link";
+import { ServerApi } from "@/api/serverApi";
+import { headers } from 'next/headers';
+import { GetFileUrl } from "@/lib/utils";
+import { Metadata, ResolvingMetadata } from "next";
 
-interface Post {
-  _id: string;
-  date: string;
-  title: string;
-  image: any;
-  excerpt: string;
-  slug: string;
-  html_content: string;
-  publish_at: string;
+
+
+export async function generateMetadata(
+  { params, searchParams }: any,
+  parent: ResolvingMetadata
+): Promise<Metadata> {
+  const id = params._id
+  const data = await ServerApi._get(`/9/service_news/${id}?${params}`)
+
+  return {
+    title: data.title,
+    description: data.html_content,
+    openGraph: {
+      images: [GetFileUrl(data.image._id)],
+    },
+  }
 }
 
 export default async function BlogDetail({ params }: any) {
   const { _id } = params;
+  const headersList = headers();
 
-  const param = { lang: "mn" };
-  const stringParams = new URLSearchParams(Object.entries<any>(param));
-  const post: any = await getBlogDetail({ id: _id, params: stringParams });
+  let post: any = null
 
-  let updatedPost = { ...post };
-
-  if (post.image && post.image._id) {
-    try {
-      const imageFile = await getFile(post.image._id);
-      updatedPost = {
-        ...post,
-        image: imageFile?.url,
-      };
-    } catch (error) {
-      console.error("Error fetching image:", error);
-    }
+  const ErrorPage = () => {
+    const fullUrl = headersList.get('referer') || "";
+    return <div className="container min-h-screen flex flex-col items-center justify-center text-white gap-4">
+      <p className="text-2xl text-white font-bold">
+        {params.locale === 'en' ? 'Internal server error.' : 'Сервер алдаа гарлаа.'}
+      </p>
+      <a className="px-4 py-2 rounded-xl bg-primary text-white" href={fullUrl}>
+        {params.locale === 'en' ? 'reload' : 'Дахин ачаалах'}
+      </a>
+    </div>
   }
+
+
+  try {
+    // if (1 == 1) throw new Error('test error')
+    post = await ServerApi._get(`/9/service_news/${_id}?${params}`)
+  } catch (error) {
+    console.log('blog fetch', error)
+    return ErrorPage()
+  }
+
   return (
-    <div className="container my-32">
-      <div className="flex flex-col gap-8">
-        <h1 className="text-white text-[32px] font-bold leading-snug">
-          {post.title}
-        </h1>
-        <div className="text-white text-sm font-medium tracking-[0.151px] leading-normal">
-          <span className="text-[#FFFFFF66] font-normal text-sm">by </span>
-          <span className="text-white font-medium text-sm">
-            {post.created_by.surname} {post.created_by.given_name}
-          </span>
-          <span className="text-[#FFFFFF66] font-normal text-sm"> on </span>
-          <span className="text-white font-medium text-sm">
-            {post.publish_at}
-          </span>
+    <div className=" my-32">
+      <div className="container">
+        <div className="flex flex-col gap-8">
+          <h1 className="text-white text-[32px] font-bold leading-snug flex items-center gap-4">
+            <Link href={'/blog'} className="hover:scale-105 transition-all">
+              <CircleArrowLeft02Icon />
+            </Link>
+            {post.title}
+          </h1>
+          <div className="text-white text-sm font-medium tracking-[0.151px] leading-normal">
+            <span className="text-[#FFFFFF66] font-normal text-sm">by </span>
+            <span className="text-white font-medium text-sm">
+              {post.created_by.surname} {post.created_by.given_name}
+            </span>
+            <span className="text-[#FFFFFF66] font-normal text-sm"> on </span>
+            <span className="text-white font-medium text-sm">
+              {post.publish_at}
+            </span>
+          </div>
+          <div className="rounded-3xl ">
+            {
+              post.image &&
+              <Image
+                src={GetFileUrl(post.image._id)}
+                alt="picture"
+                className="rounded-3xl w-full max-w-[600px]"
+                height={337}
+                width={600} // Add width for Image component
+              />
+            }
+          </div>
+          <div
+            className=" leading-normal text-start text-white font-neue"
+            dangerouslySetInnerHTML={{
+              __html: post.html_content,
+            }}
+          />
         </div>
-        <div className="rounded-3xl ">
-          {updatedPost.image && (
-            <Image
-              src={updatedPost.image}
-              alt="picture"
-              className="rounded-3xl w-full max-w-[600px]"
-              height={337}
-              width={600} // Add width for Image component
-            />
-          )}
-        </div>
-        <div
-          className=" leading-normal text-start text-white font-neue"
-          dangerouslySetInnerHTML={{
-            __html: post.html_content,
-          }}
-        />
       </div>
     </div>
   );

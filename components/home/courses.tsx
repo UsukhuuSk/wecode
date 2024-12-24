@@ -39,11 +39,11 @@ const HomeCourses = () => {
                 <div className="max-w-[205px] flex justify-center m-auto text-[18px] font-bold font-neue py-2 px-4 text-center text-white border-2 border-[#4317FF] rounded-[32px]">
                     {t("courses.title")}
                 </div>
-                <h1 className=" font-neue font-bold text-4xl md:text-5xl max-w-[960px] m-auto">
+                <h1 className=" font-neue  text-2xl font-semibold md:text-5xl md:font-bold max-w-[960px] m-auto">
                     {t("courses.subtitle")}
                 </h1>
             </div>
-            <div className="z-50 px-10">
+            <div className="z-1 px-10">
                 <Carousel>
                     <CarouselContent className="space-x-5 pl-6">
                         {courses.map((item: any, index: any) => (
@@ -59,7 +59,7 @@ const HomeCourses = () => {
                     <CarouselNext className="bg-white text-black" />
                 </Carousel>
             </div>
-            <Link href={'/login?mode=register'} className="transition-all font-bold text-[16px] font-neue px-10 py-4 rounded-[32px] bg-primary hover:bg-white hover:text-primary text-white m-auto">
+            <Link href={'/login?mode=register'} className="transition-all font-bold text-[1rem] text-center font-neue px-10 py-4 rounded-[32px] bg-primary hover:bg-white hover:text-primary text-white m-auto">
                 {t("courses.signup")}
             </Link>
         </>

@@ -30,9 +30,9 @@ const HomeJourney = () => {
 
             <div className="2xl:px-[120px] 2xl:py-[210px] px-5 py-5 sm:py-20 ">
                 <div className="relative text-center text-white ">
-                    <h1 className=" text-4xl xl:text-[80px] font-bold font-adineue leading-none">
+                    <p className="font-neue  text-2xl font-semibold md:text-5xl md:font-bold max-w-[960px] m-auto">
                         {t("journey")}
-                    </h1>
+                    </p>
                     {/* <Image
               src={half}
               alt=""
@@ -43,18 +43,18 @@ const HomeJourney = () => {
                 </div>
                 <div className="mt-[68px] grid md:grid-cols-7 gap-5 mx-auto">
                     <div
-                        className={`rainbow text-start md:col-span-5 p-16 rounded-3xl relative overflow-hidden flex gap-4 justify-start items-start font-neue `}
+                        className={`rainbow text-start md:col-span-5 p-16 rounded-3xl relative overflow-hidden flex gap-4 justify-center md:justify-start items-start font-neue `}
                     >
-                        <div className="flex flex-col items-start gap-3 z-20 ">
-                            <h1 className="">
-                                <span className="text-white text-2xl font-bold font-neue">
+                        <div className="flex flex-col justify-center items-center md:items-start gap-3 z-20 ">
+                            <h1 className="text-xl md:text-2xl">
+                                <span className="text-white  font-semibold md:font-bold font-neue">
                                     {t("mobile")}{" "}
                                 </span>
-                                <span className="text-2xl text-white font-light">
+                                <span className=" text-white font-light">
                                     {t("soon")}
                                 </span>
                             </h1>
-                            <div className="flex md:flex-row flex-col items-start md:items-center justify-start gap-3">
+                            <div className="flex flex-row items-start md:items-center justify-start gap-3">
                                 <div className="flex items-center  gap-3 w-[170px] rounded-[48px] bg-[#FFFFFF33] border border-[#FFFFFF66] justify-start text-white py-[10px] px-5">
                                     <FaAppleAlt size={16} color="#fff" />
                                     <span>App Store</span>
@@ -77,10 +77,10 @@ const HomeJourney = () => {
                         className={`bg-[#13032bcc] border-2 md:col-span-2 p-12 border-[#404047] rounded-3xl relative text-start overflow-hidden flex flex-col gap-4 items-center font-neue `}
                     >
                         <div className="flex flex-col items-start gap-6 z-20 ">
-                            <h1 className="text-white text-2xl font-bold font-neue">
+                            <h1 className="text-white text-xl font-semibold md:text-2xl md:font-bold font-neue">
                                 {t("started")}
                             </h1>
-                            <Link href={'/login?mode=register'} className="hover:scale-105 transition-all flex items-center gap-3 w-auto justify-start rounded-[48px] bg-[#FFFFFF33] border border-[#FFFFFF66]  text-white py-[10px] px-5">
+                            <Link href={'/login?mode=register'} className="hover:scale-95 transition-all flex items-center gap-3 w-auto justify-start rounded-[48px] bg-[#FFFFFF33] border border-[#FFFFFF66]  text-white py-[10px] px-5">
                                 <span>{t("sign")} </span>
                                 <FaArrowRight size={12} color="#fff" />
                             </Link>

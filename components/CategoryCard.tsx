@@ -39,7 +39,7 @@ export default function CategoryCard({
       href={`/course?s=${_id}`}
       style={{ borderColor: color }}
       className={cn(
-        `hover:scale-105 transition-all flex-1 px-6 py-4 border min-w-[236px] rounded-[32px] flex items-center gap-[10px] justify-start`,
+        `hover:scale-105 transition-all flex-1 px-6 py-4 border-[2px] min-w-[320px] md:min-w-[236px] rounded-[32px] flex items-center gap-[10px] justify-start`,
         className
       )}
     >

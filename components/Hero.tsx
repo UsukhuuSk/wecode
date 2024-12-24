@@ -99,7 +99,7 @@ export default function Hero() {
         <WavyText
           text={hoverText}
           replay={true}
-          className={`font-bold ${locale === 'mn' ? 'text-3xl sm:text-4xl xl:text-6xl' : 'text-4xl sm:text-6xl xl:text-8xl'}  font-adineue m-auto text-center flex justify-center`}
+          className={`transition-all font-bold ${locale === 'mn' ? 'text-3xl sm:text-4xl xl:text-6xl' : 'text-4xl sm:text-6xl xl:text-8xl'}  font-adineue m-auto text-center flex justify-center`}
         />
         {/* </span> */}
       </div>

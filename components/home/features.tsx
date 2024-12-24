@@ -6,10 +6,6 @@ import nine from "@/assets/LandingPage/9.svg";
 import ten from "@/assets/LandingPage/10.svg";
 import eleven from "@/assets/LandingPage/11.svg";
 import twelve from "@/assets/LandingPage/12.svg";
-
-
-import CategoryCard from "@/components/CategoryCard";
-import Hero from "@/components/Hero";
 import fancy from "@/assets/fancy.svg";
 import fancy2 from "@/assets/fancy2.svg";
 import fancy3 from "@/assets/fancy3.svg";
@@ -42,11 +38,11 @@ const HomeFeatures = () => {
 
     return (
         <div className="block xl:flex items-center gap-[45px]">
-            <div className="flex flex-col gap-12 items-center xl:items-start">
+            <div className="flex-1 flex flex-col gap-12 items-center xl:items-start">
                 <div className="border-2 border-[#4317FF] rounded-[32px] px-5 py-2 font-neue text-[18px] font-bold">
                     {t("cardData.feature")}
                 </div>
-                <h1 className="font-bold font-neue text-4xl md:text-5xl text-center xl:text-start">
+                <h1 className=" font-neue font-semibold text-2xl md:font-bold md:text-5xl text-center xl:text-start">
                     {t("cardData.explore")}
                 </h1>
                 <p className="font-normal font-neue text-[16px] text-slate-300 text-center">
@@ -85,12 +81,12 @@ const HomeFeatures = () => {
                     />
                 </div>
             </div>
-            <div className="my-10 xl:my-0">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+            <div className="flex-1 my-10 xl:my-0">
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-5">
                     {cardData.map((card, index) => (
                         <div
                             key={index}
-                            className="flex flex-col 2xl:w-[340px] min-h-[315px] border border-[#404047] rounded-3xl"
+                            className="flex flex-col min-h-[315px] border border-[#404047] rounded-3xl"
                         >
                             <Image
                                 src={card.img}
