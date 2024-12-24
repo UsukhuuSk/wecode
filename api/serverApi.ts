@@ -1,5 +1,5 @@
-// const BASEURL = process.env.NEXT_PUBLIC_API_URL;
-const BASEURL = 'http://localhost:8000'
+const BASEURL = process.env.NEXT_PUBLIC_API_URL;
+// const BASEURL = 'http://localhost:8000'
 import { cookies } from 'next/headers'
 
 export class ServerApi {
@@ -21,7 +21,6 @@ export class ServerApi {
         const finalUrl = method === 'GET' && params
             ? `${url}?${new URLSearchParams(params).toString()}`
             : url;
-            console.log('finalUrl', finalUrl)
         if (method !== 'GET' && params) {
             options.body = JSON.stringify(params);
         }
