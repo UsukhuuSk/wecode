@@ -79,7 +79,7 @@ export default function PageCourse({ courseData, params }: any) {
             </div>}
             {
                 !enrolled ?
-                    <div className="container grid grid-cols-12 lg:gap-16 xl:gap-20 2xl:gap-20 my-8">
+                    <div className="container grid grid-cols-12 lg:gap-16 xl:gap-20 2xl:gap-20 py-8">
                         <div className="flex flex-col gap-8 col-span-12  lg:col-span-8 xl:col-span-8 2xl:col-span-8">
                             <CourseGoal course={course} />
                             <CourseAbout course={course} />
