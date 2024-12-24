@@ -65,7 +65,9 @@ export default function RootLayout({
         {
           showHeader && loaded && (user ? <Header /> : <FloatingHeader />)
         }
-        {children}
+        <div>
+          {children}
+        </div>
         <NewFooter />
       </div>
     </LessonProvider>

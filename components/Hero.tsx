@@ -11,9 +11,12 @@ import { useTranslations } from "next-intl";
 import globe from "../assets/globe.gif";
 import { motion, AnimatePresence } from "framer-motion";
 import WavyText from "./ui/wavytext";
+import { useParams } from "next/navigation";
 
 export default function Hero() {
   const t = useTranslations("HomePage");
+  const { locale } = useParams()
+
   const [hoverText, setHoverText] = useState(t("hero.title"));
   return (
     <div className="flex flex-col sm:gap-5 relative">
@@ -96,7 +99,7 @@ export default function Hero() {
         <WavyText
           text={hoverText}
           replay={true}
-          className="font-bold text-4xl sm:text-6xl xl:text-8xl font-adineue m-auto text-center flex justify-center"
+          className={`font-bold ${locale === 'mn' ? 'text-3xl sm:text-4xl xl:text-6xl' : 'text-4xl sm:text-6xl xl:text-8xl'}  font-adineue m-auto text-center flex justify-center`}
         />
         {/* </span> */}
       </div>

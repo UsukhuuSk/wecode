@@ -239,3 +239,34 @@ h1 {
     border: 1.2px solid rgba(255, 255, 255, 0.4);
   }
 }
+
+
+.container {
+  width: 100%;
+  max-width: 1440px;
+  margin: 0 auto;  /* Center the container */
+}
+
+@media (min-width: 640px) {
+  .container {
+    max-width: 800px;
+  }
+}
+
+@media (min-width: 768px) {
+  .container {
+    max-width: 928px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .container {
+    max-width: 1184px;
+  }
+}
+
+@media (min-width: 1280px) {
+  .container {
+    max-width: 1440px; 
+  }
+}

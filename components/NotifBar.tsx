@@ -165,7 +165,7 @@ export const NotifBar = () => {
 
     return (
         <>
-            {/* <FirebaseRegister onCountChange={handleCountChange} /> */}
+            <FirebaseRegister onCountChange={handleCountChange} />
             <DropdownMenu open={open} onOpenChange={setOpen}>
                 <DropdownMenuTrigger asChild>
                     <div className="p-1 bg-[#FFFFFF33] hover:bg-[#FFFFFF55] cursor-pointer rounded-full relative">

@@ -230,7 +230,7 @@ export default function Header() {
                     <Link
                       href={route.link}
                       key={index}
-                      className="font-neue text-[14px] font-medium px-3"
+                      className={`${isActiveMenu(route.link) ? 'bg-white text-primary' : ''} hover:bg-[#FFFFFF20] hover:opacity-90 font-neue text-sm font-medium px-3 py-2 rounded-[2rem]`}
                     >
                       {route.name}
                     </Link>

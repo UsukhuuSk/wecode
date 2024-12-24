@@ -16,7 +16,7 @@ export default function page() {
   const t = useTranslations("community");
 
   return (
-    <main className="h-full  min-h-screen relative overflow-hidden ">
+    <main className="h-full  min-h-screen relative overflow-hidden">
       <div className="absolute -top-1/4 left-0 -translate-x-1/2 bg-[#4317FF] blur-[200px] w-[244px] h-[200px]"></div>
       <div className="absolute -top-1/4 right-0 -translate-x-1/2 bg-[#4317FF] blur-[200px] w-[244px] h-[200px]"></div>
       <div className="container flex flex-col justify-center px-5 py-[200px] items-center gap-16 relative text-white">
