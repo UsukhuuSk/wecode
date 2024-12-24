@@ -33,7 +33,7 @@ export default async function BlogDetail({ params }: any) {
 
   try {
     if (1 == 1) throw new Error('test error')
-    post = await ServerApi._get(`/9/service_news/${_id}?${params}`)
+    post = await ServerApi._get(`/9/service_news/${_id}`)
   } catch (error) {
     console.log('blog fetch', error)
 
