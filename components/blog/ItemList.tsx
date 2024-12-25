@@ -50,7 +50,10 @@ const BlogListItem = ({ post }: any) => {
                 }
             </div>
             <div className="col-span-12 md:col-span-7 ">
-                <h1 className="text-white">{post.title}</h1>
+                <Link
+                    href={`/${locale}/blog/${post._id}`}>
+                    <h1 className="text-white hover:text-yellow-400 hover:underline transition-all">{post.title}</h1>
+                </Link>
                 <div className="text-white mb-4 font-bold flex flex-col justify-between">
                     <span>
                         <span className="text-gray-200">{locale === 'en' ? `By` : `Бичсэн`}</span> <span className="text-yellow-400">{`${post.created_by && post.created_by.surname ? post.created_by.surname.charAt(0) : ''}.${post.created_by?.given_name}`}</span>

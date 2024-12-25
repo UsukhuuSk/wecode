@@ -6,7 +6,9 @@ import { headers } from 'next/headers';
 import { GetFileUrl } from "@/lib/utils";
 import { Metadata, ResolvingMetadata } from "next";
 
-
+function stripHTMLTags(html: any) {
+  return html.replace(/<[^>]*>/g, "");
+}
 
 export async function generateMetadata(
   { params, searchParams }: any,
@@ -14,11 +16,12 @@ export async function generateMetadata(
 ): Promise<Metadata> {
   try {
     const id = params._id
+
     const data = await ServerApi._get(`9/service_news/${id}`)
 
     return {
       title: data.title,
-      description: data.html_content,
+      description: stripHTMLTags(data.html_content),
       openGraph: {
         images: [GetFileUrl(data.image._id)],
       },
@@ -64,11 +67,12 @@ export default async function BlogDetail({ params }: any) {
             {post.title}
           </h1>
           <div className="text-white text-sm font-medium tracking-[0.151px] leading-normal">
-            <span className="text-[#FFFFFF66] font-normal text-sm">by </span>
+
+            <span className="text-[#FFFFFF66] font-normal text-sm"> {params.locale === 'en' ? 'by' : 'нийтэлсэн'} </span>
             <span className="text-white font-medium text-sm">
               {post.created_by.surname} {post.created_by.given_name}
             </span>
-            <span className="text-[#FFFFFF66] font-normal text-sm"> on </span>
+            <span className="text-[#FFFFFF66] font-normal text-sm"> {params.locale === 'end' ? 'on' : '-'} </span>
             <span className="text-white font-medium text-sm">
               {post.publish_at}
             </span>
