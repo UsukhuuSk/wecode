@@ -33,7 +33,7 @@ export function FloatingHeader() {
     },
     {
       name: t("courses"),
-      link: `/${locale}/courses`,
+      link: `/${locale}/course`,
     },
     {
       name: t("blog"),
