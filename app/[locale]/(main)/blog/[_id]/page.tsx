@@ -39,13 +39,9 @@ export default async function BlogDetail({ params }: any) {
 
   let post: any = null
 
-
   try {
-    if (1 == 1) throw new Error('test error')
     post = await ServerApi._get(`/9/service_news/${_id}`)
   } catch (error) {
-    console.log('blog fetch', error)
-
     const fullUrl = headersList.get('referer') || "";
     return <div className="container min-h-screen flex flex-col items-center justify-center text-white gap-4">
       <p className="text-2xl text-white font-bold">

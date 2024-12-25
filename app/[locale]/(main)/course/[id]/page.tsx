@@ -14,15 +14,23 @@ export async function generateMetadata(
   { params, searchParams }: Props,
   parent: ResolvingMetadata
 ): Promise<Metadata> {
-  const id = params.id
-  const data = await ServerApi._checkCourse(id)
-  return {
-    title: data.name,
-    description: data.about,
-    openGraph: {
-      images: [GetFileUrl(data.image._id)],
-    },
+  try {
+    const id = params.id
+    const data = await ServerApi._checkCourse(id)
+    return {
+      title: data.name,
+      description: data.about,
+      openGraph: {
+        images: [GetFileUrl(data.image._id)],
+      },
+    }
+  } catch (error) {
+    return {
+      title: 'Ai academy',
+      description: 'Ai academy'
+    }
   }
+
 }
 
 export default async function Page({ params }: { params: { id: number, locale: any } }) {
