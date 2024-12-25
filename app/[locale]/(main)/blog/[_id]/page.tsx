@@ -12,15 +12,24 @@ export async function generateMetadata(
   { params, searchParams }: any,
   parent: ResolvingMetadata
 ): Promise<Metadata> {
-  const id = params._id
-  const data = await ServerApi._get(`/9/service_news/${id}?${params}`)
+  try {
+    const id = params._id
+    const data = await ServerApi._get(`/9/service_news/${id}?${params}`)
 
-  return {
-    title: data.title,
-    description: data.html_content,
-    openGraph: {
-      images: [GetFileUrl(data.image._id)],
-    },
+    return {
+      title: data.title,
+      description: data.html_content,
+      openGraph: {
+        images: [GetFileUrl(data.image._id)],
+      },
+    }
+
+  } catch (error) {
+    console.error('error on generating metadata: ', error)
+    return {
+      title: 'title',
+      description: 'description'
+    }
   }
 }
 
