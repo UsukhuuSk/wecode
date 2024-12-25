@@ -52,7 +52,7 @@ export default function Teachers() {
         </div>
       </div>
 
-      <div className="mt-16 grid xl:grid-cols-4 lg:gap-14 gap-7 max-w-[1280px] m-auto z-50">
+      <div className="mt-16 grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 lg:gap-14 gap-7 max-w-[1280px] m-auto z-50">
         {users.map((teacher: any) => (
           <TeacherCard
             key={teacher._id}

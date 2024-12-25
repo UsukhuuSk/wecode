@@ -21,10 +21,10 @@ export default function page() {
       <div className="absolute -top-1/4 right-0 -translate-x-1/2 bg-[#4317FF] blur-[200px] w-[244px] h-[200px]"></div>
       <div className="container flex flex-col justify-center px-5 py-[200px] items-center gap-16 relative text-white">
         <div className="flex flex-col gap-4">
-          <h1 className="team font-adineue text-5xl md:text-[96px] font-bold tracking-[0.151px] text-center">
+          <h1 className="team font-adineue text-5xl md:text-[3.5rem] lg:text-[4.5rem] xl:text-[6rem] font-bold tracking-[0.151px] text-center">
             {t("welcome")}
           </h1>
-          <p className="font-neue text-xl font-normal text-center">
+          <p className="font-neue text-base md:text-lg lg:text-xl font-normal text-center">
             {t("subheadline")}
           </p>
         </div>
@@ -40,36 +40,36 @@ export default function page() {
                   <Image src={eight} alt="" className="h-[18px] w-[18px]" />
                 </div>
                 <span>
-                  <h1 className="font-bold font-adineue text-[24px]">
+                  <h1 className="font-semibold lg:font-bold font-adineue text-base md:text-lg lg:text-xl xl:text-2xl">
                     {t("content.name")}
                   </h1>
-                  <p className="font-bold text-[16px] font-adineue text-[rgba(255,255,255,0.5)]">
+                  <p className="font-semibold lg:font-bold text-sm md:text-base font-adineue text-[rgba(255,255,255,0.5)]">
                     {t("content.subTitle")}
                   </p>
                 </span>
               </div>
-              <div className=" text-black py-3 px-5 font-bold text-[14px] font-neue bg-[#78ff57] rounded-[48px]">
+              <div className=" text-black py-1 px-2 md:py-3 md:px-5 font-semibold md:font-bold text-xs md:text-sm font-neue bg-[#78ff57] rounded-[48px]">
                 {t("content.action")}
               </div>
             </AccordionTrigger>
             <AccordionContent>
-              <div className="p-8  mx-auto text-white font-neue ">
+              <div className="px-8 py-4 md:py-8 text-sm md:text-base  mx-auto text-white font-neue ">
                 <p className="mb-6">{t("content.intro")}</p>
 
-                <h3 className="text-lg font-semibold mt-8 mb-4">
+                <h3 className="text-base md:text-lg font-semibold mt-4 mb-4 md:mt-8 md:mb-4">
                   {t("content.eligibilityTitle")}
                 </h3>
-                <ul className="list-disc list-inside space-y-2 mb-6">
+                <ul className="text-sm md:text-base list-disc list-inside space-y-2 mb-3 md:mb-6">
                   <li>{t("content.eligibility.1")}</li>
                   <li>{t("content.eligibility.2")}</li>
                   <li>{t("content.eligibility.3")}</li>
                   <li>{t("content.eligibility.4")}</li>
                 </ul>
 
-                <h3 className="text-lg font-semibold mt-8 mb-4">
+                <h3 className="text-base md:text-lg font-semibold mt-4 mb-4 md:mt-8 md:mb-4">
                   {t("content.responsibilitiesTitle")}
                 </h3>
-                <ul className="list-disc list-inside space-y-2 mb-6">
+                <ul className="text-sm md:text-base list-disc list-inside space-y-2 mb-3 md:mb-6">
                   <li>{t("content.responsibilities.1")}</li>
                   <li>{t("content.responsibilities.2")}</li>
                   <li>{t("content.responsibilities.3")}</li>
@@ -77,7 +77,7 @@ export default function page() {
                   <li>{t("content.responsibilities.5")}</li>
                 </ul>
 
-                <h3 className="text-lg font-semibold mt-8 mb-4">
+                <h3 className="text-base md:text-lg font-semibold mt-4 mb-4 md:mt-8 md:mb-4">
                   {t("content.whyBecomeTitle")}
                 </h3>
                 <p className="mb-4">{t("content.whyBecomeIntro")}</p>
@@ -123,22 +123,22 @@ export default function page() {
                   <Image src={nine} alt="" className="h-[18px] w-[18px]" />
                 </div>
                 <span>
-                  <h1 className="font-bold font-adineue text-[24px]">
+                  <h1 className="font-semibold lg:font-bold font-adineue text-base md:text-lg lg:text-xl xl:text-2xl">
                     {t("meetups.name")}
                   </h1>
-                  <p className="font-bold text-[16px] font-adineue text-[rgba(255,255,255,0.5)]">
+                  <p className="font-semibold lg:font-bold text-sm md:text-base font-adineue text-[rgba(255,255,255,0.5)]">
                     {t("meetups.subTitle")}
                   </p>
                 </span>
               </div>{" "}
-              <div className=" text-black font-bold text-[14px] font-neue py-3 px-5 bg-[#FF8500] rounded-[48px]">
+              <div className=" text-black py-1 px-2 md:py-3 md:px-5 font-semibold md:font-bold text-xs md:text-sm font-neue bg-[#FF8500] rounded-[48px]">
                 {t("meetups.action")}
               </div>
             </AccordionTrigger>
             <AccordionContent>
-              <div className="p-8 mx-auto text-white font-neue ">
+              <div className="px-8 py-4 md:py-8 mx-auto  font-neue text-sm md:text-base">
                 <p className="mb-6">{t("meetups.content.communityHost")}</p>
-                <ul className="list-disc list-inside space-y-2 mb-6">
+                <ul className="list-disc list-inside space-y-1 md:space-y-2 mb-3 md:mb-6">
                   <li>{t("meetups.content.communityContent.1")}</li>
                   <li>{t("meetups.content.communityContent.2")}</li>
                   <li>{t("meetups.content.communityContent.3")}</li>
@@ -153,26 +153,26 @@ export default function page() {
                   <Image src={ten} alt="" className="h-[18px] w-[18px]" />
                 </div>
                 <span>
-                  <h1 className="font-bold font-adineue text-[24px]">
+                  <h1 className="font-semibold lg:font-bold font-adineue text-base md:text-lg lg:text-xl xl:text-2xl">
                     {t("stories.name")}
                   </h1>
-                  <p className="font-bold text-[16px] font-adineue text-[rgba(255,255,255,0.5)]">
+                  <p className="font-semibold lg:font-bold text-sm md:text-base font-adineue text-[rgba(255,255,255,0.5)]">
                     {t("stories.subTitle")}
                   </p>
                 </span>
               </div>
-              <div className=" text-black font-bold text-[14px] font-neue py-3 px-5 bg-[#785EFF] rounded-[48px]">
+              <div className=" text-black py-1 px-2 md:py-3 md:px-5 font-semibold md:font-bold text-xs md:text-sm font-neue bg-[#785EFF] rounded-[48px]">
                 {t("stories.action")}
               </div>
             </AccordionTrigger>
             <AccordionContent>
-              <div className="p-8 mx-auto text-white font-neue ">
-                <p className="mb-6">{t("stories.content.1.title")}</p>
-                <p className="mb-6">{t("stories.content.2.title")}</p>
+              <div className="px-8 py-4 md:py-8 mx-auto text-white font-neue text-sm md:text-base">
+                <p className="mb-3 md:mb-6">{t("stories.content.1.title")}</p>
+                <p className="mb-3 md:mb-6">{t("stories.content.2.title")}</p>
               </div>
             </AccordionContent>
           </AccordionItem>
-          <AccordionItem value="item-3" className="border-[#FF9FE4]">
+          <AccordionItem value="item-4" className="border-[#FF9FE4]">
             <AccordionTrigger>
               {" "}
               <div className="flex items-center justify-start text-start gap-[20px]">
@@ -180,22 +180,21 @@ export default function page() {
                   <Image src={eleven} alt="" className="h-[18px] w-[18px]" />
                 </div>
                 <span>
-                  <h1 className="font-bold font-adineue text-[24px]">
+                  <h1 className="font-semibold lg:font-bold font-adineue text-base md:text-lg lg:text-xl xl:text-2xl">
                     {t("involved.name")}
                   </h1>
-                  <p className="font-bold text-[16px] font-adineue text-[rgba(255,255,255,0.5)]">
+                  <p className="font-semibold lg:font-bold text-sm md:text-base font-adineue text-[rgba(255,255,255,0.5)]">
                     {t("involved.subTitle")}
                   </p>
                 </span>
               </div>
-              <div className=" text-black font-bold text-[14px] font-neue py-3 px-5 bg-[#FF9FE4] rounded-[48px]">
+              <div className=" text-black py-1 px-2 md:py-3 md:px-5 font-semibold md:font-bold text-xs md:text-sm font-neue bg-[#FF9FE4] rounded-[48px]">
                 {t("involved.action")}
               </div>
             </AccordionTrigger>
             <AccordionContent>
-              <div className="p-8 mx-auto text-white font-neue ">
-                <p className="mb-6"></p>
-                <ul className="list-disc list-inside space-y-2 mb-6">
+              <div className="px-8 py-4 md:py-8 mx-auto text-white font-neue text-sm md:text-base ">
+                <ul className="list-disc list-inside space-y-2 mb-3 md:mb-6">
                   <li>{t("involved.content.title")}</li>
                   <li>{t("involved.content.1")}</li>
                   <li>{t("involved.content.2")}</li>

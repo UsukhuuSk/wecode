@@ -11,7 +11,9 @@ import {
   PencilEdit01Icon,
   Settings02Icon,
   Profile02Icon,
-  Cancel01Icon
+  Cancel01Icon,
+  Settings01Icon,
+  SquareArrowRight02Icon
 } from "@hugeicons/react";
 import {
   DropdownMenu,
@@ -28,18 +30,38 @@ import { useAuth } from "../context/AuthContext";
 import { NotifBar } from "./NotifBar";
 import { Sheet, SheetContent, SheetDescription, SheetHeader, SheetTitle, SheetTrigger } from "./ui/sheet";
 import { GetFileUrl } from "@/lib/utils";
+import { BaseApi } from "@/api/baseApi";
+import { Helper } from "@/lib/helper";
 
 export default function Header() {
+  const trns = useTranslations("header")
+  const trnsp = useTranslations('profile')
+
+  const t = useTranslations("footer");
+
+  const { logout } = useAuth()
   const { user } = useAuth()
   const BASEURL = process.env.NEXT_PUBLIC_API_URL;
   const router = useRouter();
   const path = usePathname()
   const locale = useLocale();
-  const t = useTranslations("footer");
   const [isSheetOpen, setSheetOpen] = useState<boolean>(false)
+  const [learningCnt, setLearninCnt] = useState(0)
+  const [passedCnt, setPassedCnt] = useState(0)
+  useEffect(() => {
+    getCounts()
+  }, [])
+  const getCounts = async () => {
+    try {
+      const { learning_count, passed_count } = await BaseApi._get('/exam/count/courses')
+      setLearninCnt(learning_count)
+      setPassedCnt(passed_count)
+    } catch (error) {
+      Helper.handleError(error)
+    }
+  }
 
-  const { logout } = useAuth()
-  const trns = useTranslations("header")
+
 
   const handleLogout = async () => {
     try {
@@ -58,7 +80,13 @@ export default function Header() {
     }
   };
 
+  const handleSettings = () => {
+    setSheetOpen(false)
+    router.push('/settings/profile')
+  }
+
   const handlePush = (link: string) => {
+    setSheetOpen(false)
     router.push(link)
   }
 
@@ -119,6 +147,41 @@ export default function Header() {
                 </div>
               );
             })}
+          </div>
+        }
+        {
+          isSheetOpen &&
+          <div className="absolute bottom-28 h-16 px-4 flex w-11/12 m-auto items-center gap-2 justify-between rounded-xl bg-[rgba(51, 65, 85, 0.2)] border border-neutral-700">
+            <div className="flex items-center gap-2">
+              <div className="h-8 w-8 rounded-full border border-neutral-700 p-0 relative object-cover cursor-pointer">
+                <Image
+                  src={GetFileUrl(user.image._id)}
+                  alt=""
+                  width={32}
+                  height={32}
+                  className="rounded-full object-cover"
+                />
+              </div>
+              <div>
+                {user.given_name}
+                <div className="flex justify-center gap-2">
+                  <div className="text-slate-400 font-normal text-[14px] font-neue lowercase">
+                    {learningCnt} {trnsp('enrolled')}
+                  </div>
+                  <div className="text-slate-400 font-normal text-[14px] font-neue lowercase">
+                    {passedCnt} {trnsp('completed')}
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className="flex items-center gap-2">
+              <button onClick={handleSettings}>
+                <Settings01Icon variant="bulk" className="text-xl" />
+              </button>
+              <button onClick={handleLogout}>
+                <SquareArrowRight02Icon variant="bulk" className="text-red-500 text-xl" />
+              </button>
+            </div>
           </div>
         }
       </div>

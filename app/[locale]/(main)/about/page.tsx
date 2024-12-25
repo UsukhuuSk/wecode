@@ -15,7 +15,7 @@ export default function About() {
   const t = useTranslations("about");
 
   return (
-    <div className="flex flex-col gap-24 justify-center px-5 items-center py-[150px] h-full w-full relative overflow-hidden">
+    <div className="flex flex-col gap-24 justify-center px-5 items-center py-[150px] h-full w-full relative overflow-hidden container">
       <div className="absolute z-50 -top-1/4 left-0 -translate-x-1/2 bg-[#4317FF] blur-[200px] w-[244px] h-[200px]"></div>
       <div className="absolute z-50 -top-1/4 right-0 -translate-x-1/2 bg-[#4317FF] blur-[200px] w-[244px] h-[200px]"></div>
       {/* <div className="bg-[#3BC9E833] blur-[200px] rounded-full w-full h-[168px] absolute top-40"></div> */}
@@ -35,11 +35,11 @@ export default function About() {
             </div>
           </div>
           <div className="flex flex-col md:flex-row md:items-start gap-12 max-w-[1270px]">
-            <div className="border-2 flex m-auto justify-center items-center mt-4 min-w-[150px] min-h-[35px] text-[18px] font-bold font-neue border-[#4317FF] rounded-[32px] py-3 px-4 text-white">
+            <div className="border-2 flex justify-center m-auto items-center mt-4 min-w-[150px] h-[35px] text-[18px] font-bold font-neue border-[#4317FF] rounded-[32px] py-3 px-4 text-white">
               {t("mission")}
             </div>
 
-            <span className="text-white text-2xl md:text-5xl font-normal font-neue  text-justify leading-normal">
+            <span className="text-white text-xl md:3xl lg:text-4xl xl:text-5xl font-normal font-neue  text-justify leading-normal">
               {t("missionlong")}
             </span>
           </div>
@@ -54,17 +54,17 @@ export default function About() {
               alt=""
               className="lg:h-[600px] lg:w-[600px] m-auto absolute md:translate-x-1/2 md:-top-[100%] -z-10 rotate-[120deg]"
             />
-            <span className="font-neue">
-              <span className="text-[24px] story font-normal leading-normal tracking-[0.302px]">
+            <span className="font-neue text-lg md:text-xl lg:text-2xl">
+              <span className=" story font-normal leading-normal tracking-[0.302px]">
                 {t("long.name")}{" "}
               </span>
-              <span className="text-[24px] story font-normal leading-normal tracking-[0.302px]">
+              <span className=" story font-normal leading-normal tracking-[0.302px]">
                 {t("long.1")}{" "}
               </span>
               <Link href="https://girlscode.mn/">
                 <span className="title">{t("long.girls")} </span>
               </Link>
-              <span className="text-[24px] story font-normal leading-normal tracking-[0.302px]">
+              <span className=" story font-normal leading-normal tracking-[0.302px]">
                 {t("long.2")}
               </span>
             </span>

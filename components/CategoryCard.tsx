@@ -39,7 +39,7 @@ export default function CategoryCard({
       href={`/course?s=${_id}`}
       style={{ borderColor: color }}
       className={cn(
-        `hover:scale-105 transition-all flex-1 px-6 py-4 border-[2px] min-w-[320px] md:min-w-[236px] rounded-[32px] flex items-center gap-[10px] justify-start`,
+        `hover:bg-[#FFFFFF30] flex-1 lg:px-4 px-4 py-2 xl:px-6 xl:py-4 border-[2px] w-full rounded-[32px] flex items-center gap-[10px] justify-start`,
         className
       )}
     >
@@ -49,7 +49,7 @@ export default function CategoryCard({
         {image && <img className="h-6" src={GetFileUrl(image._id)} />}
       </div>
 
-      <p style={{ color }} className="text-[14px] font-semibold">
+      <p style={{ color }} className="text-[14px] font-semibold text-nowrap max-w-[80%] truncate">
         {name}
       </p>
     </Link>

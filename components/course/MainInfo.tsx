@@ -5,7 +5,7 @@ export const CourseMainInfo = ({ course }: any) => {
     const trns = useTranslations("course.detail");
 
     return (
-        <div className="container my-4 md:my-0">
+        <div className="container my-4 pb-6 md:pb-0 md:my-0">
             <div className="grid grid-cols-2 md:h-20 md:flex md:flex-row justify-between items-center">
                 <div className="flex  gap-[10px]">
                     <HugeIcon size={20} name="starOutlined" color={"white"} />

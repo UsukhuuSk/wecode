@@ -20,30 +20,19 @@ const HomeCatArea = () => {
     return (
         <div className="">
             <div className="flex justify-between flex-col gap-4 md:gap-5 items-center z-50">
-                <div className="grid  grid-cols-1 md:grid-cols-4  xl:grid-cols-4 text-center gap-4 md:gap-5 ">
-                    {topics.slice(0, 4).map((t: any, index: number) => (
-                        <CategoryCard
-                            _id={t._id}
-                            key={index}
-                            name={t.name}
-                            className={t.className}
-                            image={t.image}
-                            // icon={category.icon}
-                            color={t.color}
-                        />
-                    ))}
-                </div>
-                <div className="grid grid-cols-1 md:grid-cols-3 sm:grid-cols-2 xl:grid-cols-3 text-center gap-4 md:gap-5 m-auto">
-                    {topics.slice(4, 7).map((t: any, index: any) => (
-                        <CategoryCard
-                            _id={t._id}
-                            key={index}
-                            name={t.name}
-                            className={t.className}
-                            icon={t.icon}
-                            image={t.image}
-                            color={t.color}
-                        />
+                <div className="flex flex-wrap justify-center gap-6 ">
+                    {topics.map((t: any, index: number) => (
+                        <div key={index} className="w-[80%] md:w-[30%] xl:w-[23%]">
+                            <CategoryCard
+                                _id={t._id}
+                                key={index}
+                                name={t.name}
+                                className={t.className}
+                                image={t.image}
+                                // icon={category.icon}
+                                color={t.color}
+                            />
+                        </div>
                     ))}
                 </div>
             </div>

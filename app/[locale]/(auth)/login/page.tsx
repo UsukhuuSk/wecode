@@ -119,7 +119,7 @@ export default function page({ params }: any) {
             className="h-[24px] w-[24px] 2xl:h-[28px] 2xl:w-[28px]"
           />
         </div>
-        <div className=" w-[500px] min-h-[500px] bg-white pt-4 pb-6 px-6 rounded-3xl overflow-hidden ">
+        <div className=" w-[450px] max-w-[95%] min-h-[500px] bg-white rounded-3xl overflow-hidden ">
           {/* <div className="w-[390px] min-h-[480px] bg-white pt-4 pb-6 px-6 rounded-3xl overflow-hidden "> */}
           {/* <div className="!text-gray-500 text-2xl text-center">Нэвтрэх</div> */}
           <iframe

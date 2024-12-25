@@ -68,9 +68,9 @@ export default function PageCourse({ courseData, params }: any) {
     }
 
     return (
-        <div>
+        <div className="pb-8">
             {!enrolled && <CourseGuestHeader course={course} />}
-            {!enrolled && <div className="border-b border-slate-600">
+            {!enrolled && <div className="border-b border-slate-600 mb-8">
                 <div className=" md:hidden my-8 mx-4">
                     <CourseInstructor course={course} teachers={teachers} enrolled={enrolled} onChange={handleEnroll} />
                 </div>
