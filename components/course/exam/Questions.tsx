@@ -133,7 +133,7 @@ export const ExamQuestions: React.FC<QsProps> = ({ fetching, exam, onNext, onQue
                 {QuestionTitle()}
                 <ul className={`grid grid-cols-12    justify-center gap-3`}>
                     {exam?.current_answers.map((a: any) => (
-                        <li className={`${isHaveImage() ? 'col-span-6' : 'col-span-12'} hover:bg-[#FFFFFF20] rounded-md px-2 py-1`}   >
+                        <li key={a._id} className={`${isHaveImage() ? 'col-span-6' : 'col-span-12'} hover:bg-[#FFFFFF20] rounded-md px-2 py-1`}   >
                             <div
                                 key={a._id}
                                 onClick={() => handleCheckboxChange(a._id)}
