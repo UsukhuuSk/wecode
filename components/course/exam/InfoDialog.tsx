@@ -54,10 +54,10 @@ export const InfoDialog = ({ info, onRetry }: any) => {
             <Dialog isOpen={open} onClose={() => { }} title={""} showHeader={false}>
                 {
                     info && <div className="flex flex-col items-center gap-6">
-                        <div className="text-[72px] text-center">
+                        <div className="text-[2rem] md:text-[4.5rem] text-center">
                             {infoMap?.[info.type]?.img}
                         </div>
-                        <div className="font-bold w-[430px] text-center text-2xl text-wcZinc700">
+                        <div className=" md:w-[430px] text-center font-semibold text-lg md:font-bold md:text-2xl text-wcZinc700">
                             {infoMap?.[info.type]?.desc}
                         </div>
                         {

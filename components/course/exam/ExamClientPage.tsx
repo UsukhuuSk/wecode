@@ -22,6 +22,8 @@ export default function ExamClientPage() {
     const [studentExam, setStudentExam] = useState<any>()
     const [remaining, setRemaining] = useState(0)
     const [fetching, setFetching] = useState<boolean>(false)
+    const [fetchingNext, setFetchingNext] = useState<boolean>(false)
+
     const router = useRouter()
     const [info, setInfo] = useState<any>(null)
     const [started, setStarted] = useState<boolean>(false)
@@ -90,7 +92,7 @@ export default function ExamClientPage() {
             setRemaining(data.student_exam?.left_second)
             if (data.student_exam.is_completed) {
                 const { is_passed, percent_student, completed_date, _id } = data.student_exam;
-    
+
                 if (is_passed) {
                     setInfo({
                         type: 'passed',
@@ -114,12 +116,15 @@ export default function ExamClientPage() {
 
     const handleRefresh = async () => {
         try {
+            setFetchingNext(true)
             const data = await BaseApi._get('exam', { course_id: params.id, exam_id: params.exam })
             setExam(data)
             setStudentExam(data.student_exam)
             setRemaining(data.student_exam?.left_second)
         } catch (error) {
             Helper.handleError(error)
+        } finally {
+            setFetchingNext(false)
         }
     }
 
@@ -169,7 +174,7 @@ export default function ExamClientPage() {
 
     if (fetching) {
         return (
-            <div className="container mt-20 animate-pulse">
+            <div className="container py-20 pb-10 animate-pulse">
                 <div className="flex flex-col gap-4 ">
                     <div className="flex-1 flex gap-10 items-center ">
                         <div className="h-6 w-6 rounded-full">
@@ -179,7 +184,7 @@ export default function ExamClientPage() {
                         </div>
                     </div>
                     <div className="grid grid-cols-12 gap-6 font-neue">
-                        <div className="bg-wcBorder col-span-4 p-4 rounded-xl">
+                        <div className="bg-wcBorder col-span-12 md:col-span-5 lg:col-span-4 p-4 rounded-xl">
                             <div className="text-white font-neue h-[38px] border-b border-b-slate-500 mb-4">
                                 <div className="bg-slate-500 h-5 w-60 rounded-md" />
                             </div>
@@ -213,7 +218,7 @@ export default function ExamClientPage() {
                             </div>
 
                         </div>
-                        <div className="col-span-8 text-white">
+                        <div className="col-span-12 md:col-span-7 lg:col-span-8 text-white">
                             <div className="h-8 bg-slate-500 rounded-md"></div>
                             <div className=" mt-4 h-60 bg-slate-500 rounded-md"></div>
                         </div>
@@ -223,7 +228,7 @@ export default function ExamClientPage() {
         )
     } else {
         return (
-            <div className="container mt-20">
+            <div className="container pt-20 pb-10">
                 <InfoDialog info={info} onRetry={handleRetry} />
                 <div className="flex flex-col gap-4 ">
                     <div className="flex-1 flex gap-10 items-center ">
@@ -235,7 +240,7 @@ export default function ExamClientPage() {
                         </p>
                     </div>
                     <div className="grid grid-cols-12 gap-6 font-neue">
-                        <div className="bg-wcBorder col-span-4 p-4 rounded-xl">
+                        <div className="bg-wcBorder col-span-12 md:col-span-5 lg:col-span-4 p-4 rounded-xl">
                             <div className="text-white font-neue h-[38px] border-b border-b-slate-500 mb-4">
                                 {trns('instruction')}
                             </div>
@@ -268,7 +273,7 @@ export default function ExamClientPage() {
                                     {
                                         started ?
                                             <>
-                                                <button className="bg-primary rounded-xl text-white text-[28px] font-bold py-3 px-8">
+                                                <button className="bg-primary rounded-xl text-white text-xl md:text-[28px] font-bold py-2 px-4 md:py-3 md:px-8">
                                                     <>{RenderRemaining()}</>
                                                 </button>
                                                 <div>
@@ -276,16 +281,16 @@ export default function ExamClientPage() {
                                                 </div>
                                             </>
                                             :
-                                            <button className="bg-primary rounded-xl text-white text-[28px] font-bold py-3 px-8" onClick={handleStart}>
+                                            <button className="bg-primary rounded-xl text-whiteext-xl md:text-[28px] font-bold py-2 px-4 md:py-3 md:px-8" onClick={handleStart}>
                                                 {trns('start')}
                                             </button>
                                     }
                                 </div>
                             </div>
                         </div>
-                        <div className="col-span-8 text-white">
+                        <div className="col-span-12 md:col-span-7 lg:col-span-8 text-white">
                             {
-                                exam && <ExamQuestions exam={exam} onNext={handleNext} onQuestionFinish={handleQuestionFinish} />
+                                exam && <ExamQuestions fetching={fetchingNext} exam={exam} onNext={handleNext} onQuestionFinish={handleQuestionFinish} />
                             }
                         </div>
                     </div>

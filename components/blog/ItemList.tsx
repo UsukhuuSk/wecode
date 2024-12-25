@@ -56,7 +56,7 @@ const BlogListItem = ({ post }: any) => {
                 </Link>
                 <div className="text-white mb-4 font-bold flex flex-col justify-between">
                     <span>
-                        <span className="text-gray-200">{locale === 'en' ? `By` : `Бичсэн`}</span> <span className="text-yellow-400">{`${post.created_by && post.created_by.surname ? post.created_by.surname.charAt(0) : ''}.${post.created_by?.given_name}`}</span>
+                        <span className="text-gray-200">{locale === 'en' ? `By` : `Нийтэлсэн`}</span> <span className="text-yellow-400">{`${post.created_by && post.created_by.surname ? post.created_by.surname.charAt(0) : ''}.${post.created_by?.given_name}`}</span>
                     </span>
                     <span className="font-normal text-xs text-gray-400">
                         {post.publish_at}

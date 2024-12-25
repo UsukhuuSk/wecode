@@ -6,13 +6,15 @@ import { Helper } from "../../../lib/helper"
 import { BaseApi } from "../../../api/baseApi"
 import { useParams } from "next/navigation"
 import { GetFileUrl } from "../../../lib/utils"
+import PhotoView from "@/components/ui/photoview"
 
 interface QsProps {
-    exam: any,
-    onNext: () => any
-    onQuestionFinish: () => any
+    exam: any;
+    onNext: () => any;
+    onQuestionFinish: () => any;
+    fetching: boolean;
 }
-export const ExamQuestions: React.FC<QsProps> = ({ exam, onNext, onQuestionFinish }) => {
+export const ExamQuestions: React.FC<QsProps> = ({ fetching, exam, onNext, onQuestionFinish }) => {
     const params = useParams<any>()
     const trns = useTranslations('course.exam')
     const [studentExam, setStudentExam] = useState<any>({})
@@ -86,7 +88,9 @@ export const ExamQuestions: React.FC<QsProps> = ({ exam, onNext, onQuestionFinis
     const RenderImage = (img: any) => {
 
         return <div className="overflow-hidden mt-2 ">
-            <img className="h-32 hover:h-64 object-contain transition-all" src={GetFileUrl(img._id)}></img>
+            <PhotoView size={'10rem'} src={GetFileUrl(img._id)}>
+            </PhotoView>
+            {/*  */}
         </div>
     }
 
@@ -97,8 +101,11 @@ export const ExamQuestions: React.FC<QsProps> = ({ exam, onNext, onQuestionFinis
             </p>
             <div>
                 <div>
-                    {exam?.current_question?.image && <img className="w-80" src={GetFileUrl(exam?.current_question?.image._id)} />}
-                    <p className="text-xl mb-2">
+                    {exam?.current_question?.image &&
+                        <PhotoView size={'20rem'} src={GetFileUrl(exam?.current_question?.image._id)}>
+                        </PhotoView>
+                    }
+                    <p className="text-md md:text-lg lg:text-xl mb-2">
                         {exam?.current_question?.name}
                     </p>
                 </div>
@@ -110,7 +117,7 @@ export const ExamQuestions: React.FC<QsProps> = ({ exam, onNext, onQuestionFinis
     }
 
     return (
-        <div className="text-white rounded-md">
+        <div className={`text-white rounded-md ${fetching ? 'animate-pulse' : ''}`}>
             <div className={`flex justify-between mb-6`}>
                 {numbers.map((number) => (
                     <div key={number}
@@ -123,26 +130,27 @@ export const ExamQuestions: React.FC<QsProps> = ({ exam, onNext, onQuestionFinis
                 ))}
             </div>
             <div className="p-4 bg-card flex flex-col gap-4 border border-wcBorder rounded-xl">
-                <QuestionTitle />
+                {QuestionTitle()}
                 <ul className={`grid grid-cols-12    justify-center gap-3`}>
                     {exam?.current_answers.map((a: any) => (
-                        <li
-                            key={a._id}
-                            className={`${isHaveImage() ? 'col-span-6' : 'col-span-12'} hover:bg-[#FFFFFF20] rounded-md px-2 py-1`}
-                            onClick={() => handleCheckboxChange(a._id)}
-                        >
-                            <div className="flex gap-3 items-center cursor-pointer">
-                                <Checkbox className="border-[2px] border-wcBorder bg-card rounded-[4px]" checked={checkedItems.includes(a._id)} />
-                                <span className="font-normal"> {a.name}</span>
+                        <li className={`${isHaveImage() ? 'col-span-6' : 'col-span-12'} hover:bg-[#FFFFFF20] rounded-md px-2 py-1`}   >
+                            <div
+                                key={a._id}
+                                onClick={() => handleCheckboxChange(a._id)}
+                            >
+                                <div className="flex gap-3 items-center cursor-pointer">
+                                    <Checkbox className="border-[2px] border-wcBorder bg-card rounded-[4px]" checked={checkedItems.includes(a._id)} />
+                                    <span className="font-normal"> {a.name}</span>
+                                </div>
                             </div>
                             {a.image && RenderImage(a.image)}
                         </li>
                     ))}
                 </ul>
-                <div className="flex justify-end">
+                <div className="flex justify-center md:justify-end">
                     {isLast() ? (
                         <button
-                            disabled={loading}
+                            disabled={loading || fetching}
                             onClick={handleNext}
                             className="bg-green-500 disabled:bg-gray-600 hover:opacity-90 text-white text-sm rounded-xl px-4 py-3 flex items-center gap-2 font-bold"
                         >
@@ -151,7 +159,7 @@ export const ExamQuestions: React.FC<QsProps> = ({ exam, onNext, onQuestionFinis
                         </button>
                     ) : (
                         <button
-                            disabled={loading}
+                            disabled={loading || fetching}
                             onClick={handleNext}
                             className="bg-primary disabled:bg-gray-600 hover:opacity-90 text-white text-sm rounded-xl px-4 py-3 flex items-center gap-2 font-bold"
                         >
