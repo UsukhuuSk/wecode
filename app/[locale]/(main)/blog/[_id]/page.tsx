@@ -14,7 +14,7 @@ export async function generateMetadata(
 ): Promise<Metadata> {
   try {
     const id = params._id
-    const data = await ServerApi._get(`/9/service_news/${id}?${params}`)
+    const data = await ServerApi._get(`9/service_news/${id}`)
 
     return {
       title: data.title,
@@ -40,7 +40,7 @@ export default async function BlogDetail({ params }: any) {
   let post: any = null
 
   try {
-    post = await ServerApi._get(`/9/service_news/${_id}`)
+    post = await ServerApi._get(`9/service_news/${_id}`)
   } catch (error) {
     const fullUrl = headersList.get('referer') || "";
     return <div className="container min-h-screen flex flex-col items-center justify-center text-white gap-4">
