@@ -90,7 +90,7 @@ export default function Course() {
     })
   }
   return (
-    <div className="container relative mt-10">
+    <div className="container relative pt-20">
       <div className="absolute -top-1/4 left-0 -translate-x-1/2 bg-[#4317FF] blur-[200px] w-[244px] h-[200px]"></div>
       <div className="absolute -top-1/4 right-0 -translate-x-1/2 bg-[#4317FF] blur-[200px] w-[244px] h-[200px]"></div>
       <div className="">
@@ -100,11 +100,11 @@ export default function Course() {
               <h1 className="font-bold text-2xl md:text-[48px] font-adineue leading-none">
                 {trns("allCourses")}
               </h1>
-              <p className="text-center text-xs md:text-base md:font-semibold font-neue leading-none">
+              {/* <p className="text-center text-xs md:text-base md:font-semibold font-neue leading-none">
                 {trns("allCourseDetail")}
-              </p>
+              </p> */}
             </div>
-            <Image className="h-[100px] md:h-[200px]" src={laptop} alt="laptop image" />
+            {/* <Image className="h-[100px] md:h-[200px]" src={laptop} alt="laptop image" /> */}
           </div>
         </div>
         <div className="flex gap-2 md:gap-8 flex-col md:flex-row w-full py-12">

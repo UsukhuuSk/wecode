@@ -26,19 +26,8 @@ export default function Teachers() {
     const fetchUsers = async () => {
       const param = { lang: locale };
       const params = new URLSearchParams(Object.entries<any>(param));
-
       const userList = (await usersList({ params })) as any;
-
-      const usersWithImages = await Promise.all(
-        userList.map(async (user: any) => {
-          if (user.image && user.image._id) {
-            const imgUrl = await fetchImageFileById(user.image._id);
-            return { ...user, imgUrl };
-          }
-          return user;
-        })
-      );
-      setUsers(usersWithImages);
+      setUsers(userList);
     };
 
     fetchUsers();
@@ -46,18 +35,22 @@ export default function Teachers() {
 
   return (
     <div className="">
-      <div className="m-auto">
-        <div className="border-2 flex justify-center m-auto items-center mt-4 max-w-[200px] h-[35px] text-[18px] font-bold font-neue border-[#4317FF] rounded-[32px] py-3 px-4 text-white">
+      {/* <div className="m-auto">
+        <div className="border-2 flex justify-center m-auto items-center mt-4 max-w-[200px] h-[35px] text-[18px] font-bold font-neue border-primary text-primary rounded-[32px] py-3 px-4 ">
           {t("team")}
         </div>
-      </div>
+      </div> */}
+      <p className="text-2xl font-bold mb-2 font-neue text-center">
+        {t("team")}
+      </p>
 
-      <div className="mt-16 grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 lg:gap-14 gap-7 max-w-[1280px] m-auto z-50">
+
+      <div className="mt-4 grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4  gap-5 m-auto z-50">
         {users.map((teacher: any) => (
           <TeacherCard
             key={teacher._id}
             name={teacher.given_name}
-            image={teacher.imgUrl}
+            image={teacher.image}
             profession={teacher.position_name}
           />
         ))}

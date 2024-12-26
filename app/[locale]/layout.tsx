@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import "../globals.css";
 
-// import { Montserrat_Alternates, Manrope, Golos_Text } from "next/font/google";
+import { Montserrat_Alternates, Manrope, Golos_Text } from "next/font/google";
 import localFont from "next/font/local";
 import { NextIntlClientProvider } from "next-intl";
 import { getMessages } from "next-intl/server";
@@ -12,30 +12,30 @@ import { AuthProvider } from "../../context/AuthContext";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-// const montserratAlt = Montserrat_Alternates({
-//   weight: ["200", "300", "400", "500", "600", "700", "800"],
-//   preload: true,
-//   style: ["normal"],
-//   subsets: ["latin"],
-//   display: "swap",
-//   variable: "--font-montserrat-alt",
-// });
-// const manrope = Manrope({
-//   weight: ["200", "300", "400", "500", "600", "700", "800"],
-//   style: ["normal"],
-//   subsets: ["latin"],
-//   preload: true,
-//   display: "swap",
-//   variable: "--font-manrope",
-// });
-// const golosText = Golos_Text({
-//   weight: ["400", "500", "600", "700", "800"],
-//   style: ["normal"],
-//   subsets: ["latin"],
-//   preload: true,
-//   display: "swap",
-//   variable: "--font-golos-text",
-// });
+const montserratAlt = Montserrat_Alternates({
+  weight: ["200", "300", "400", "500", "600", "700", "800"],
+  preload: true,
+  style: ["normal"],
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-montserrat-alt",
+});
+const manrope = Manrope({
+  weight: ["200", "300", "400", "500", "600", "700", "800"],
+  style: ["normal"],
+  subsets: ["latin"],
+  preload: true,
+  display: "swap",
+  variable: "--font-manrope",
+});
+const golosText = Golos_Text({
+  weight: ["400", "500", "600", "700", "800"],
+  style: ["normal"],
+  subsets: ["latin"],
+  preload: true,
+  display: "swap",
+  variable: "--font-golos-text",
+});
 const ovSoge = localFont({
   src: [
     {
@@ -127,8 +127,8 @@ export default async function RootLayout({
     <html lang={locale}>
       <ReactLenis root>
         <body
-          // className={`${montserratAlt.variable} ${manrope.variable} ${ovSoge.variable} ${golosText.variable} ${adineue.variable} ${neue.variable} antialiased`}
-          className={`${ovSoge.variable} ${adineue.variable} ${neue.variable} antialiased`}
+          className={`${montserratAlt.variable} ${manrope.variable} ${ovSoge.variable} ${golosText.variable} ${adineue.variable} ${neue.variable} antialiased`}
+          // className={`${ovSoge.variable} ${adineue.variable} ${neue.variable} antialiased`}
 
         >
           <NextIntlClientProvider messages={messages}>

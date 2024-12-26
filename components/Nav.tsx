@@ -36,6 +36,10 @@ export function FloatingHeader() {
       link: `/${locale}/course`,
     },
     {
+      name: t("classTraining"),
+      link: `/${locale}/classTraining`,
+    },
+    {
       name: t("blog"),
       link: `/${locale}/blog`,
     },
@@ -108,7 +112,7 @@ export function FloatingHeader() {
   return (
     <div className="relative w-full z-[51]">
       <div className="flex w-full items-center md:hidden justify-center fixed top-4  ">
-        <div className="bg-white w-[90%] flex justify-between items-center px-4 py-2 rounded-[32px]">
+        <div className="bg-white w-[90%] flex justify-between items-center px-4 py-2 rounded-[32px] ">
           <Link href={"/"}>
             <Image src={logo} alt="" />
           </Link>

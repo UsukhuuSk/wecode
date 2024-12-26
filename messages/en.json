@@ -127,7 +127,8 @@
     "community": "Community",
     "login": "Login",
     "learning": "My learning",
-    "profile": "My learning"
+    "profile": "My learning",
+    "classTraining": "Class room training"
   },
   "blog": {
     "title": "Blog",
@@ -435,5 +436,19 @@
   "page": {
     "errorText": "Internal server error.",
     "btnText": "Reload"
+  },
+  "classTraining": {
+    "title": "Classroom  training",
+    "duration": "Duration",
+    "totalHours": "Total Training Hours",
+    "schedule": "Class Schedule",
+    "dailyDuration": "Daily Duration",
+    "capacity": "Class Capacity",
+    "fee": "Training Fee",
+    "methodology": "Training Methodology",
+    "learninMethod": "Learning Methods",
+    "overview": "Program Overview",
+    "capstone": "Capstone Projects",
+    "result": "Expected Outcomes"
   }
 }

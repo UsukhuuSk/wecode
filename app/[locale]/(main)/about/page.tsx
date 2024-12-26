@@ -1,77 +1,102 @@
 import React from "react";
 import Image from "next/image";
+import logo from "@/assets/newLogo.svg";
 
 import { useTranslations } from "next-intl";
-import seventh from "../../../../assets/LandingPage/7.svg";
-import eight from "../../../../assets/LandingPage/8.svg";
-import nine from "../../../../assets/LandingPage/9.svg";
-import ten from "../../../../assets/LandingPage/10.svg";
-import eleven from "../../../../assets/LandingPage/11.svg";
-import twelve from "../../../../assets/LandingPage/12.svg";
-import purple from "../../../../assets/landing/purplePlanet.png";
+import seventh from "@/assets/LandingPage/7.svg";
+import eight from "@/assets/LandingPage/8.svg";
+import nine from "@/assets/LandingPage/9.svg";
+import ten from "@/assets/LandingPage/10.svg";
+import eleven from "@/assets/LandingPage/11.svg";
+import twelve from "@/assets/LandingPage/12.svg";
+import purple from "@/assets/landing/purplePlanet.png";
 import Link from "next/link";
-import Teachers from "../../../../components/Teachers";
+import Teachers from "@/components/Teachers";
+import logo1 from "@/assets/landing/Mask group.svg";
+import logo2 from "@/assets/landing/Mask group1.svg";
+import logo3 from "@/assets/landing/Group 12.svg";
+
 export default function About() {
   const t = useTranslations("about");
-
+  //style={{ borderBottomLeftRadius: '50% 5%', borderBottomRightRadius: '50% 5%' }}
   return (
-    <div className="flex flex-col gap-24 justify-center px-5 items-center py-[150px] h-full w-full relative overflow-hidden container">
+    <div className="flex flex-col justify-center items-center h-full w-full relative overflow-hidden mb-20  bg-gray-200">
       <div className="absolute z-50 -top-1/4 left-0 -translate-x-1/2 bg-[#4317FF] blur-[200px] w-[244px] h-[200px]"></div>
       <div className="absolute z-50 -top-1/4 right-0 -translate-x-1/2 bg-[#4317FF] blur-[200px] w-[244px] h-[200px]"></div>
       {/* <div className="bg-[#3BC9E833] blur-[200px] rounded-full w-full h-[168px] absolute top-40"></div> */}
-      <div className="flex flex-col gap-[240px]">
-        <div className=" flex flex-col gap-[80px]">
-          <div className="flex flex-col gap-5">
-            <div className="flex justify-center items-center gap-2 sm:gap-5 lg:gap-5 z-[50]">
-              <Image src={seventh} alt="" className="h-[24px] w-[24px] " />
-              <Image src={eight} alt="" className="h-[24px] w-[24px] " />
-              <Image src={nine} alt="" className="h-[24px] w-[24px] " />
-              <Image src={ten} alt="" className="h-[24px] w-[24px] " />
-              <Image src={eleven} alt="" className="h-[24px] w-[24px] " />
-              <Image src={twelve} alt="" className="h-[24px] w-[24px] " />
-            </div>
-            <div className="team font-adineue text-5xl md:text-[96px] font-bold tracking-[0.151px] text-center">
-              {t("team")}
-            </div>
-          </div>
-          <div className="flex flex-col md:flex-row md:items-start gap-12 max-w-[1270px]">
-            <div className="border-2 flex justify-center m-auto items-center mt-4 min-w-[150px] h-[35px] text-[18px] font-bold font-neue border-[#4317FF] rounded-[32px] py-3 px-4 text-white">
+      <div className="flex flex-col gap-5 bg-[#13032c] w-full pt-40 pb-10" >
+        <div className="flex justify-center items-center gap-2 sm:gap-5 lg:gap-5 z-[50]">
+          <Image src={seventh} alt="" className="h-[24px] w-[24px] " />
+          <Image src={eight} alt="" className="h-[24px] w-[24px] " />
+          <Image src={nine} alt="" className="h-[24px] w-[24px] " />
+          <Image src={ten} alt="" className="h-[24px] w-[24px] " />
+          <Image src={eleven} alt="" className="h-[24px] w-[24px] " />
+          <Image src={twelve} alt="" className="h-[24px] w-[24px] " />
+        </div>
+        <div className="team font-adineue text-5xl md:text-[96px] font-bold tracking-[0.151px] text-center">
+          {t("team")}
+        </div>
+      </div>
+      <div className="bg-[#13032c] h-20 w-full" style={{ borderBottomLeftRadius: '50% 50%', borderBottomRightRadius: '50% 50%' }}></div>
+      <div className="container flex py-8 flex-wrap gap-8 md:gap-0 flex-col-reverse md:flex-row">
+        <div className="w-full md:w-1/2 flex flex-col gap-4 font-manrope">
+          <div className=" text-justify">
+            <p className="text-2xl font-bold mb-2 font-neue">
               {t("mission")}
-            </div>
-
-            <span className="text-white text-xl md:3xl lg:text-4xl xl:text-5xl font-normal font-neue  text-justify leading-normal">
+            </p>
+            <span className="text-gray-700 text-base font-normal text-justify font-manrope">
               {t("missionlong")}
             </span>
           </div>
-        </div>
-        <div className=" flex flex-col gap-[72px]">
-          <div className="border-2 flex justify-center m-auto items-center mt-4 min-w-[150px] h-[35px] text-[18px] font-bold font-neue border-[#4317FF] rounded-[32px] py-3 px-4 text-white">
-            {t("story")}
-          </div>
-          <div className="px-6 max-w-[1270px] relative flex flex-col gap-3 xl:gap-5 text-start md:text-center">
-            <Image
-              src={purple}
-              alt=""
-              className="lg:h-[600px] lg:w-[600px] m-auto absolute md:translate-x-1/2 md:-top-[100%] -z-10 rotate-[120deg]"
-            />
-            <span className="font-neue text-lg md:text-xl lg:text-2xl">
-              <span className=" story font-normal leading-normal tracking-[0.302px]">
+          <div className=" text-justify">
+            <p className="text-2xl font-bold mb-2 font-neue">
+              {t("story")}
+            </p>
+            <span className="text-gray-700 text-base font-normal font-manrope ">
+              <span className="  font-normal ">
                 {t("long.name")}{" "}
               </span>
-              <span className=" story font-normal leading-normal tracking-[0.302px]">
+              <span className="  font-normal">
                 {t("long.1")}{" "}
               </span>
               <Link href="https://girlscode.mn/">
-                <span className="title">{t("long.girls")} </span>
+                <span className=" text-base text-pink-400 underline font-semibold">{t("long.girls")} </span>
               </Link>
-              <span className=" story font-normal leading-normal tracking-[0.302px]">
+              <span className="  font-normal ">
                 {t("long.2")}
               </span>
             </span>
           </div>
         </div>
+        <div className="w-full md:w-1/2 flex items-center justify-center lg:justify-end">
+          <Image className="w-[15rem] md:w-[20rem] lg:w-[25rem] xl:w-[30rem]" src={logo} alt="" />
+        </div>
       </div>
-      <Teachers />
+
+      <div className="container py-16">
+        <Teachers />
+      </div>
+
+      <div className="container pt-16">
+        <div className=" ">
+          <p className="text-2xl font-bold mb-2 font-neue text-center">
+            Our partners
+          </p>
+        </div>
+        <div className="grid grid-cols-3 gap-8">
+          <div className="rounded-xl flex items-center justify-center h-28">
+            <Image src={logo3} alt="" />
+          </div>
+          <div className="rounded-xl flex items-center justify-center h-28">
+            <Image src={logo1} alt="" />
+          </div>
+          <div className="rounded-xl flex items-center justify-center h-28">
+            <Image src={logo2} alt="" />
+          </div>
+        </div>
+      </div>
+
+      <div className="bg-[#13032c] h-20 w-full mt-20" style={{ borderTopLeftRadius: '50% 50%', borderTopRightRadius: '50% 50%' }}></div>
     </div>
   );
 }

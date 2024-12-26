@@ -1,6 +1,6 @@
 import Image from "next/image";
-import React from "react";
-import { cn } from "../lib/utils";
+import React, { useState } from "react";
+import { cn, GetFileUrl } from "../lib/utils";
 import { motion } from "framer-motion";
 // interface TeacherProps {
 //   name: string;
@@ -8,14 +8,28 @@ import { motion } from "framer-motion";
 //   profession: string;
 // }
 const TeacherCard = ({ name, image, profession }: any) => {
+
+  const [isLoading, setIsLoading] = useState(true);
+  const [isError, setIsError] = useState(false);
+
+  const handleImageLoad = () => {
+    setIsLoading(false);
+  };
+
+  const handleImageError = () => {
+    setIsLoading(false);
+    setIsError(true);
+  };
   return (
     <motion.div
       className={cn(
-        "card flex relative flex-col items-center w-[284px] h-[360px] rounded-3xl"
+        `card flex relative flex-col items-center bg-slate-600  h-[360px] rounded-3xl ${isLoading ? 'animate-pulse' : ''}`
       )}
     >
       <Image
-        src={image}
+        onLoad={handleImageLoad}
+        onError={handleImageError}
+        src={GetFileUrl(image?._id)}
         alt=""
         className="w-full h-full object-cover rounded-3xl "
         width={200}

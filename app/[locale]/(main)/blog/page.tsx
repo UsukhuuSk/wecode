@@ -20,8 +20,7 @@ export default function page() {
 
   return (
     <>
-      <main className="h-full min-h-screen w-full relative  py-24 md:py-24 overflow-hidden mb-8">
-
+      <main className="h-full min-h-screen w-full relative  py-24 md:py-32 overflow-hidden mb-8">
         <div className=" md:mt-0">
           <div className="flex flex-col items-center gap-8">
             <h1 className=" text-white font-neue font-semibold text-4xl">
@@ -33,7 +32,7 @@ export default function page() {
             <div className="border border-[#FFFFFF33] w-full "></div>
           </div>
           <div className="h-[1px] blogline mt-[48px] md:mt-[95px] mb-[48px] bg-[#FFFFFF33]"></div>
-          <ul className="container flex flex-col gap-24 md:gap-8 ">
+          <ul className="container grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3  gap-24 md:gap-8 ">
             {postList.map((post: any, index: any) => (
               <BlogListItem post={post} key={index} />
             ))}
