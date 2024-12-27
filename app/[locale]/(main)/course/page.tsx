@@ -157,6 +157,9 @@ export default function Course() {
                     ))}
                     </>
                 }
+                {
+                  !loading && courses.length === 0 && <p className="text-white">{trns('noResult')}</p>
+                }
               </div>
             </div>
           </div>

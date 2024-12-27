@@ -3,7 +3,7 @@
     "title": "Hello world!",
     "about": "Go to the about page",
     "students": "students",
-    "subheadline": "Democratizing AI and Coding education for everyone, everywhere.",
+    "subheadline": "Artificial intelligence for everyone!",
     "headline": "AI for All: ",
     "headline2": "Empowering Every Mind",
     "start": "Get started for free",
@@ -109,6 +109,7 @@
     "data": "Data Science"
   },
   "about": {
+    "partners": "Our partners",
     "mission": "Our Mission",
     "story": "Our Story",
     "team": "Our Team",
@@ -136,6 +137,11 @@
     "read": "Read more"
   },
   "community": {
+    "dialogTitle": "Form",
+    "inputPlaceHolder": "Enter text",
+    "saving": "Submitting...",
+    "submit": "Submit",
+    "selectOption": "Select an option",
     "welcome": "Welcome to our Community!",
     "subheadline": "Join a dynamic network of passionate individuals dedicated to democratizing AI and coding education in Mongolia. Our Community Hub is designed for local leaders, innovators, and educators committed to building strong, inclusive learning opportunities and empowering others in their region.",
     "content": {
@@ -324,7 +330,8 @@
       "ratingSuccess": "Successfully rated.",
       "noFile": "No attachment found.",
       "exam": "Exam",
-      "point": "Point"
+      "point": "Point",
+      "noResult": "No search results found."
     },
     "exam": {
       "instruction": "Instruction",

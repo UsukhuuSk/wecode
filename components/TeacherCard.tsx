@@ -2,12 +2,13 @@ import Image from "next/image";
 import React, { useState } from "react";
 import { cn, GetFileUrl } from "../lib/utils";
 import { motion } from "framer-motion";
+import Link from "next/link";
 // interface TeacherProps {
 //   name: string;
 //   image: any;
 //   profession: string;
 // }
-const TeacherCard = ({ name, image, profession }: any) => {
+const TeacherCard = ({ name, image, profession, linkedin }: any) => {
 
   const [isLoading, setIsLoading] = useState(true);
   const [isError, setIsError] = useState(false);
@@ -43,6 +44,11 @@ const TeacherCard = ({ name, image, profession }: any) => {
         <span className="font-manrope text-[14px] font-medium text-white">
           {profession}
         </span>
+        {
+          linkedin && <Link href={linkedin} className="font-manrope text-[14px] font-medium text-white" target="_blank">
+            {linkedin}
+          </Link>
+        }
       </div>
       <div className="absolute bottom-0 cardText w-full z-10 h-[35px] rounded-b-3xl"></div>
     </motion.div>

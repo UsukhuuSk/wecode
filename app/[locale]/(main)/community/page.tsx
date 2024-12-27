@@ -1,4 +1,5 @@
-import React from "react";
+'use client'
+import React, { useState } from "react";
 import { useTranslations } from "next-intl";
 import eight from "../../../../assets/LandingPage/8.svg";
 import nine from "../../../../assets/LandingPage/9.svg";
@@ -11,12 +12,24 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "../../../../components/ui/accordion";
+import CommmunityButton from "@/components/community/button";
+import CommunityForm from "@/components/community/form";
 
 export default function page() {
+  const [formOpen, setFormOpen] = useState(false)
+  const [tableName, setTableName] = useState<any>(null)
+
   const t = useTranslations("community");
+
+  const handleOpenForm = (tableName: any) => {
+    setTableName(tableName)
+    setFormOpen(true)
+  }
+
 
   return (
     <main className="h-full  min-h-screen relative overflow-hidden">
+      <CommunityForm open={formOpen} handleClose={() => { setFormOpen(false) }} table={tableName}/>
       <div className="absolute -top-1/4 left-0 -translate-x-1/2 bg-[#4317FF] blur-[200px] w-[244px] h-[200px]"></div>
       <div className="absolute -top-1/4 right-0 -translate-x-1/2 bg-[#4317FF] blur-[200px] w-[244px] h-[200px]"></div>
       <div className="container flex flex-col justify-center px-5 py-[200px] items-center gap-16 relative text-white">
@@ -48,9 +61,7 @@ export default function page() {
                   </p>
                 </span>
               </div>
-              <div className=" text-black py-1 px-2 md:py-3 md:px-5 font-semibold md:font-bold text-xs md:text-sm font-neue bg-[#78ff57] rounded-[48px]">
-                {t("content.action")}
-              </div>
+              <CommmunityButton text={t("content.action")} table="com_agent_requests" color={"#78ff57"} onOpen={handleOpenForm} />
             </AccordionTrigger>
             <AccordionContent>
               <div className="px-8 py-4 md:py-8 text-sm md:text-base  mx-auto text-white font-neue ">
@@ -131,9 +142,7 @@ export default function page() {
                   </p>
                 </span>
               </div>{" "}
-              <div className=" text-black py-1 px-2 md:py-3 md:px-5 font-semibold md:font-bold text-xs md:text-sm font-neue bg-[#FF8500] rounded-[48px]">
-                {t("meetups.action")}
-              </div>
+              <CommmunityButton text={t("content.action")} table={null} color={"#FF8500"} onOpen={handleOpenForm} />
             </AccordionTrigger>
             <AccordionContent>
               <div className="px-8 py-4 md:py-8 mx-auto  font-neue text-sm md:text-base">
@@ -161,9 +170,7 @@ export default function page() {
                   </p>
                 </span>
               </div>
-              <div className=" text-black py-1 px-2 md:py-3 md:px-5 font-semibold md:font-bold text-xs md:text-sm font-neue bg-[#785EFF] rounded-[48px]">
-                {t("stories.action")}
-              </div>
+              <CommmunityButton text={t("content.action")} table={null} color={"#785EFF"} onOpen={handleOpenForm} />
             </AccordionTrigger>
             <AccordionContent>
               <div className="px-8 py-4 md:py-8 mx-auto text-white font-neue text-sm md:text-base">
@@ -188,9 +195,7 @@ export default function page() {
                   </p>
                 </span>
               </div>
-              <div className=" text-black py-1 px-2 md:py-3 md:px-5 font-semibold md:font-bold text-xs md:text-sm font-neue bg-[#FF9FE4] rounded-[48px]">
-                {t("involved.action")}
-              </div>
+              <CommmunityButton text={t("content.action")} table={null} color={"#FF9FE4"} onOpen={handleOpenForm} />
             </AccordionTrigger>
             <AccordionContent>
               <div className="px-8 py-4 md:py-8 mx-auto text-white font-neue text-sm md:text-base ">

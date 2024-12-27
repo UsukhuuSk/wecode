@@ -1,4 +1,5 @@
-import React from "react";
+'use client'
+import React, { useEffect } from "react";
 import Image from "next/image";
 import logo from "@/assets/newLogo.svg";
 
@@ -15,9 +16,15 @@ import Teachers from "@/components/Teachers";
 import logo1 from "@/assets/landing/Mask group.svg";
 import logo2 from "@/assets/landing/Mask group1.svg";
 import logo3 from "@/assets/landing/Group 12.svg";
+import unicefLogo from "@/assets/landing/unicefLogo.png"
+import { motion } from "framer-motion";
 
 export default function About() {
   const t = useTranslations("about");
+  useEffect(() => {
+    document.body.scrollTo(0, 0);
+  }, []);
+
   //style={{ borderBottomLeftRadius: '50% 5%', borderBottomRightRadius: '50% 5%' }}
   return (
     <div className="flex flex-col justify-center items-center h-full w-full relative overflow-hidden mb-20  bg-gray-200">
@@ -41,35 +48,65 @@ export default function About() {
       <div className="container flex py-8 flex-wrap gap-8 md:gap-0 flex-col-reverse md:flex-row">
         <div className="w-full md:w-1/2 flex flex-col gap-4 font-manrope">
           <div className=" text-justify">
-            <p className="text-2xl font-bold mb-2 font-neue">
-              {t("mission")}
-            </p>
-            <span className="text-gray-700 text-base font-normal text-justify font-manrope">
-              {t("missionlong")}
-            </span>
+            <motion.div initial={{ opacity: 0, translateY: 20 }}
+              animate={{ opacity: 1, translateY: 0 }}
+              transition={{
+                duration: 0.5,
+              }}>
+              <p className="text-2xl font-bold mb-2 font-neue">
+                {t("mission")}
+              </p>
+            </motion.div>
+            <motion.div initial={{ opacity: 0, translateY: 20 }}
+              animate={{ opacity: 1, translateY: 0 }}
+              transition={{
+                duration: 0.5,
+              }}>
+              <span className="text-gray-700 text-base font-normal text-justify font-manrope">
+                {t("missionlong")}
+              </span>
+            </motion.div>
           </div>
           <div className=" text-justify">
-            <p className="text-2xl font-bold mb-2 font-neue">
-              {t("story")}
-            </p>
-            <span className="text-gray-700 text-base font-normal font-manrope ">
-              <span className="  font-normal ">
-                {t("long.name")}{" "}
+            <motion.div initial={{ opacity: 0, translateY: 20 }}
+              animate={{ opacity: 1, translateY: 0 }}
+              transition={{
+                duration: 0.5,
+              }}>
+              <p className="text-2xl font-bold mb-2 font-neue">
+                {t("story")}
+              </p>
+            </motion.div>
+            <motion.div initial={{ opacity: 0, translateY: 20 }}
+              animate={{ opacity: 1, translateY: 0 }}
+              transition={{
+                duration: 0.5,
+              }}>
+              <span className="text-gray-700 text-base font-normal font-manrope ">
+                <span className="  font-normal ">
+                  {t("long.name")}{" "}
+                </span>
+                <span className="  font-normal">
+                  {t("long.1")}{" "}
+                </span>
+                <Link href="https://girlscode.mn/">
+                  <span className=" text-base text-pink-400 underline font-semibold">{t("long.girls")} </span>
+                </Link>
+                <span className="  font-normal ">
+                  {t("long.2")}
+                </span>
               </span>
-              <span className="  font-normal">
-                {t("long.1")}{" "}
-              </span>
-              <Link href="https://girlscode.mn/">
-                <span className=" text-base text-pink-400 underline font-semibold">{t("long.girls")} </span>
-              </Link>
-              <span className="  font-normal ">
-                {t("long.2")}
-              </span>
-            </span>
+            </motion.div>
           </div>
         </div>
         <div className="w-full md:w-1/2 flex items-center justify-center lg:justify-end">
-          <Image className="w-[15rem] md:w-[20rem] lg:w-[25rem] xl:w-[30rem]" src={logo} alt="" />
+          <motion.div initial={{ opacity: 0, translateY: -20 }}
+            animate={{ opacity: 1, translateY: 0 }}
+            transition={{
+              duration: 0.5,
+            }}>
+            <Image className="w-[15rem] md:w-[20rem] lg:w-[25rem] xl:w-[30rem]" src={logo} alt="" />
+          </motion.div>
         </div>
       </div>
 
@@ -80,7 +117,7 @@ export default function About() {
       <div className="container pt-16">
         <div className=" ">
           <p className="text-2xl font-bold mb-2 font-neue text-center">
-            Our partners
+            {t('partners')}
           </p>
         </div>
         <div className="grid grid-cols-3 gap-8">
@@ -88,7 +125,9 @@ export default function About() {
             <Image src={logo3} alt="" />
           </div>
           <div className="rounded-xl flex items-center justify-center h-28">
-            <Image src={logo1} alt="" />
+            <div className="h-24">
+              <Image className="h-24 w-auto" src={unicefLogo} alt="" />
+            </div>
           </div>
           <div className="rounded-xl flex items-center justify-center h-28">
             <Image src={logo2} alt="" />

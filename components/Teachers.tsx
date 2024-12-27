@@ -52,6 +52,7 @@ export default function Teachers() {
             name={teacher.given_name}
             image={teacher.image}
             profession={teacher.position_name}
+            linkedin={teacher.link_linkedin}
           />
         ))}
       </div>

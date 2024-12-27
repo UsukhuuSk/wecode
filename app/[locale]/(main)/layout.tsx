@@ -12,6 +12,7 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+
   const { user, loaded }: any = useAuth()
   const [scrollDirection, setScrollDirection] = useState<any>("down");
   const lastScrollTop = useRef<any>(0);

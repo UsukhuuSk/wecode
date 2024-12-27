@@ -13,6 +13,7 @@ import HomeFeatures from "@/components/home/features";
 import HomeCourses from "@/components/home/courses";
 import HomeInstruction from "@/components/home/instruction";
 import HomeJourney from "@/components/home/journey";
+import ClassroomTraining from "@/components/home/classroomTraining";
 
 export default function Home() {
 
@@ -72,9 +73,11 @@ export default function Home() {
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, amount: 0.3 }}
-        className="px-5 py-5 2xl:py-[175px] 2xl:px-[120px] text-white"
+        className="px-5 py-5 2xl:py-[175px] 2xl:px-[120px] text-white border-t border-t-[#FFFFFF33]  border-b-[#FFFFFF33] "
       >
-        <HomeFeatures />
+        {/**@deprecetad*/}
+        {/* <HomeFeatures /> */}
+        <ClassroomTraining />
       </motion.div>
       <motion.div
         variants={fadeInUp}
