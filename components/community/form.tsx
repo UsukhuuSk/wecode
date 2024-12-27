@@ -21,6 +21,7 @@ const CommunityForm = ({ open, handleClose, table }: FormProps) => {
     const [saving, setSaving] = useState<boolean>(false)
     const [errors, setErrors] = useState<any>([])
     const [groupFields, setGroupFields] = useState<any>([])
+    const [loading, setLoading] = useState<any>(false)
 
 
 
@@ -45,12 +46,16 @@ const CommunityForm = ({ open, handleClose, table }: FormProps) => {
 
     const getConfig = async () => {
         try {
+            setLoading(true)
             const data: any = await BaseApi._get(`config/table/9/${table}`)
             setConfig(data)
             setGroupFields(data.config_group_fields)
             clearFormData(data.columns)
         } catch (error) {
             Helper.handleError(error)
+        } finally {
+            setLoading(false)
+
         }
     }
 
@@ -136,8 +141,10 @@ const CommunityForm = ({ open, handleClose, table }: FormProps) => {
                             saving ? trns("saving") : trns("submit")
                         }</button>
                         <Dialog.Close asChild>
-                            <button className="btn-close">
-                            </button>
+                            {
+                                !loading && <button className="btn-close">
+                                </button>
+                            }
                         </Dialog.Close>
                     </Dialog.Content>
                 </Dialog.Portal>

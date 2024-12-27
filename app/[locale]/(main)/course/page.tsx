@@ -12,6 +12,7 @@ import CourseFilter from "../../../../components/course/Filter";
 import CourseCard from "../../../../components/course/Card";
 import { useTranslations } from "next-intl";
 import { useSearchParams } from 'next/navigation'
+import { ReactLenis } from "@/lib/lenis";
 
 
 export default function Course() {
@@ -90,81 +91,83 @@ export default function Course() {
     })
   }
   return (
-    <div className="container relative pt-20">
-      <div className="absolute -top-1/4 left-0 -translate-x-1/2 bg-[#4317FF] blur-[200px] w-[244px] h-[200px]"></div>
-      <div className="absolute -top-1/4 right-0 -translate-x-1/2 bg-[#4317FF] blur-[200px] w-[244px] h-[200px]"></div>
-      <div className="">
-        <div className="border-b border-slate-800">
-          <div className="pt-24 md:pt-12 flex justify-between items-center">
-            <div className="flex flex-col gap-6 text-white">
-              <h1 className="font-bold text-2xl md:text-[48px] font-adineue leading-none">
-                {trns("allCourses")}
-              </h1>
-              {/* <p className="text-center text-xs md:text-base md:font-semibold font-neue leading-none">
+    <ReactLenis root>
+      <div className="container relative pt-20">
+        <div className="absolute -top-1/4 left-0 -translate-x-1/2 bg-[#4317FF] blur-[200px] w-[244px] h-[200px]"></div>
+        <div className="absolute -top-1/4 right-0 -translate-x-1/2 bg-[#4317FF] blur-[200px] w-[244px] h-[200px]"></div>
+        <div className="">
+          <div className="border-b border-slate-800">
+            <div className="pt-24 md:pt-12 flex justify-between items-center">
+              <div className="flex flex-col gap-6 text-white">
+                <h1 className="font-bold text-2xl md:text-[48px] font-adineue leading-none">
+                  {trns("allCourses")}
+                </h1>
+                {/* <p className="text-center text-xs md:text-base md:font-semibold font-neue leading-none">
                 {trns("allCourseDetail")}
               </p> */}
+              </div>
+              {/* <Image className="h-[100px] md:h-[200px]" src={laptop} alt="laptop image" /> */}
             </div>
-            {/* <Image className="h-[100px] md:h-[200px]" src={laptop} alt="laptop image" /> */}
           </div>
-        </div>
-        <div className="flex gap-2 md:gap-8 flex-col md:flex-row w-full py-12">
-          <CourseFilter onChange={handleFilterChange} filter={filter} onClear={handleClear} />
-          <div className="w-full">
-            <div className="bg-transparent min-h-screen">
-              <Tabs value={tabValue} onValueChange={setTabValue} defaultValue="most-popular" className="w-full">
-                <TabsList className="flex justify-start  rounded-none space-x-4 mb-6 border-b border-gray-600">
-                  {
-                    tabs.map((t: any, index: any) => {
-                      return (
-                        <TabsTrigger
-                          key={index}
-                          value={t.value}
-                          className="flex-1 md:flex-none text-white rounded-none text-[16px] px-4 py-[5px] transition-colors duration-200 ease-in-out
+          <div className="flex gap-2 md:gap-8 flex-col md:flex-row w-full py-12">
+            <CourseFilter onChange={handleFilterChange} filter={filter} onClear={handleClear} />
+            <div className="w-full">
+              <div className="bg-transparent min-h-screen">
+                <Tabs value={tabValue} onValueChange={setTabValue} defaultValue="most-popular" className="w-full">
+                  <TabsList className="flex justify-start  rounded-none space-x-4 mb-6 border-b border-gray-600">
+                    {
+                      tabs.map((t: any, index: any) => {
+                        return (
+                          <TabsTrigger
+                            key={index}
+                            value={t.value}
+                            className="flex-1 md:flex-none text-white rounded-none text-[16px] px-4 py-[5px] transition-colors duration-200 ease-in-out
                         data-[state=active]:border-b-2 data-[state=active]:border-[#4317ff] data-[state=active]:text-[#fff] data-[state=active]:font-semibold
                         data-[state=inactive]:border-b-2 data-[state=inactive]:border-transparent data-[state=inactive]:text-[#ffffff80] data-[state=inactive]:font-medium"
-                        >
-                          {t.label}
-                        </TabsTrigger>
-                      )
-                    })
-                  }
-                </TabsList>
-              </Tabs>
-              <div className="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-6">
-                {
-                  loading ? <>
-                    {
-                      [1, 2, 3].map(item => {
-                        return (
-                          <div key={item} className="h-72 flex flex-col gap-4 rounded-[32px] animate-pulse overflow-hidden">
-                            <div className="bg-[#e2e8f04a] h-48">
-
-                            </div>
-                            <div className="bg-[#e2e8f04a] h-6 rounded-md">
-
-                            </div>
-                            <div className="bg-[#e2e8f04a] h-6 rounded-md">
-
-                            </div>
-                          </div>
+                          >
+                            {t.label}
+                          </TabsTrigger>
                         )
                       })
                     }
-                  </>
-                    :
-                    <> {courses.map((item: any, index: number) => (
-                      <CourseCard key={index} course={item} />
-                    ))}
+                  </TabsList>
+                </Tabs>
+                <div className="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-6">
+                  {
+                    loading ? <>
+                      {
+                        [1, 2, 3].map(item => {
+                          return (
+                            <div key={item} className="h-72 flex flex-col gap-4 rounded-[32px] animate-pulse overflow-hidden">
+                              <div className="bg-[#e2e8f04a] h-48">
+
+                              </div>
+                              <div className="bg-[#e2e8f04a] h-6 rounded-md">
+
+                              </div>
+                              <div className="bg-[#e2e8f04a] h-6 rounded-md">
+
+                              </div>
+                            </div>
+                          )
+                        })
+                      }
                     </>
-                }
-                {
-                  !loading && courses.length === 0 && <p className="text-white">{trns('noResult')}</p>
-                }
+                      :
+                      <> {courses.map((item: any, index: number) => (
+                        <CourseCard key={index} course={item} />
+                      ))}
+                      </>
+                  }
+                  {
+                    !loading && courses.length === 0 && <p className="text-white">{trns('noResult')}</p>
+                  }
+                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
+    </ReactLenis>
   );
 }

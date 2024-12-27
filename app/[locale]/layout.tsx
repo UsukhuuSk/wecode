@@ -125,7 +125,6 @@ export default async function RootLayout({
   const messages = await getMessages();
   return (
     <html lang={locale}>
-      <ReactLenis root>
         <body
           className={`${montserratAlt.variable} ${manrope.variable} ${ovSoge.variable} ${golosText.variable} ${adineue.variable} ${neue.variable} antialiased`}
           // className={`${ovSoge.variable} ${adineue.variable} ${neue.variable} antialiased`}
@@ -138,7 +137,6 @@ export default async function RootLayout({
             </AuthProvider>
           </NextIntlClientProvider>
         </body>
-      </ReactLenis>
     </html>
   );
 }
