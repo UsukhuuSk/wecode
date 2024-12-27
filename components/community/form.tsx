@@ -132,17 +132,24 @@ const CommunityForm = ({ open, handleClose, table }: FormProps) => {
             <Dialog.Root open={open} onOpenChange={handleClose}>
                 <Dialog.Portal>
                     <Dialog.Overlay className="dialog-overlay" />
-                    <Dialog.Content className="dialog-content">
+                    <Dialog.Content className="dialog-content  w-[90%] md:w-auto">
                         <Dialog.Title className="dialog-title">{trns("dialogTitle")}</Dialog.Title>
                         <Dialog.Description className="dialog-description" ref={contentRef} >
                             {config && RenderForm()}
                         </Dialog.Description>
-                        <button className="px-4 py-2 rounded-md bg-primary text-white font-semibold disabled:animate-pulse disabled:bg-gray-400 text-xl" onClick={handleConfirm} disabled={saving}>{
-                            saving ? trns("saving") : trns("submit")
-                        }</button>
+                        <div className="flex gap-4 justify-center">
+                            {
+                                !loading && <button className="px-4 py-2 rounded-md bg-primary text-white font-semibold disabled:animate-pulse disabled:bg-gray-400 text-xl" onClick={handleConfirm} disabled={saving}>{
+                                    saving ? trns("saving") : trns("submit")
+                                }</button>
+                            }
+                            <button className="px-4 py-2 rounded-md  text-black font-semibold disabled:animate-pulse disabled:bg-gray-400 text-xl" onClick={handleClose} disabled={saving}>{
+                                trns("close")
+                            }</button>
+                        </div>
                         <Dialog.Close asChild>
                             {
-                                !loading && <button className="btn-close">
+                                <button className="btn-close">
                                 </button>
                             }
                         </Dialog.Close>

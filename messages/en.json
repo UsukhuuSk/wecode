@@ -137,6 +137,7 @@
     "read": "Read more"
   },
   "community": {
+    "close": "Close",
     "dialogTitle": "Form",
     "inputPlaceHolder": "Enter text",
     "saving": "Submitting...",

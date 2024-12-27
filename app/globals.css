@@ -278,7 +278,7 @@ h1 {
   position: fixed;
   inset: 0;
   background: rgba(0, 0, 0, 0.5);
-  z-index: 150;
+  z-index: 998;
 }
 
 .dialog-content {
@@ -289,7 +289,7 @@ h1 {
   background: white;
   padding: 20px;
   border-radius: 8px;
-  z-index: 160;
+  z-index: 999;
   box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
 }
 
