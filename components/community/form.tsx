@@ -25,9 +25,10 @@ const CommunityForm = ({ open, handleClose, table }: FormProps) => {
 
 
     useEffect(() => {
-        getConfig()
+        if (table)
+            getConfig()
     }, [table])
-    
+
     const clearFormData = (columns: any) => {
         const formObj: any = {}
         for (const col of columns) {
@@ -108,8 +109,8 @@ const CommunityForm = ({ open, handleClose, table }: FormProps) => {
                                                 label={col.col_title}
                                                 col_field={col.col_field}
                                                 col_type={col.col_type}
-                                                ref_table={col.ref_table} 
-                                                col_nullable={col.col_nullable}/>
+                                                ref_table={col.ref_table}
+                                                col_nullable={col.col_nullable} />
                                         })
                                     }
                                 </div>
@@ -128,7 +129,7 @@ const CommunityForm = ({ open, handleClose, table }: FormProps) => {
                     <Dialog.Overlay className="dialog-overlay" />
                     <Dialog.Content className="dialog-content">
                         <Dialog.Title className="dialog-title">{trns("dialogTitle")}</Dialog.Title>
-                        <Dialog.Description className="dialog-description"  ref={contentRef} >
+                        <Dialog.Description className="dialog-description" ref={contentRef} >
                             {config && RenderForm()}
                         </Dialog.Description>
                         <button className="px-4 py-2 rounded-md bg-primary text-white font-semibold disabled:animate-pulse disabled:bg-gray-400 text-xl" onClick={handleConfirm} disabled={saving}>{
