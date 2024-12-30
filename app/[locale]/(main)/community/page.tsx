@@ -170,7 +170,7 @@ export default function page() {
                     </p>
                   </span>
                 </div>
-                <CommmunityButton text={t("content.action")} table={null} color={"#785EFF"} onOpen={handleOpenForm} />
+                <CommmunityButton text={t("content.action")} table={"com_story_requests"} color={"#785EFF"} onOpen={handleOpenForm} />
               </AccordionTrigger>
               <AccordionContent>
                 <div className="px-8 py-4 md:py-8 mx-auto text-white font-neue text-sm md:text-base">
@@ -195,7 +195,7 @@ export default function page() {
                     </p>
                   </span>
                 </div>
-                <CommmunityButton text={t("content.action")} table={null} color={"#FF9FE4"} onOpen={handleOpenForm} />
+                <CommmunityButton text={t("content.action")} table={"com_influence_requests"} color={"#FF9FE4"} onOpen={handleOpenForm} />
               </AccordionTrigger>
               <AccordionContent>
                 <div className="px-8 py-4 md:py-8 mx-auto text-white font-neue text-sm md:text-base ">

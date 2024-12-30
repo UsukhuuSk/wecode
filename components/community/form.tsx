@@ -9,8 +9,9 @@ import { Loading03Icon } from "@hugeicons/react";
 
 
 interface FormProps {
+    type?: any
 }
-const CommunityForm = forwardRef(({ }: FormProps, ref) => {
+const CommunityForm = forwardRef(({ type }: FormProps, ref) => {
     const contentRef = useRef<HTMLDivElement>(null);
     const { locale } = useParams()
 
@@ -223,5 +224,5 @@ const CommunityForm = forwardRef(({ }: FormProps, ref) => {
         </>
     )
 })
-
+CommunityForm.displayName ='community-form'
 export default CommunityForm
