@@ -26,9 +26,9 @@ export default function page() {
             <h1 className=" text-white font-neue font-semibold text-4xl">
               {t("title")}
             </h1>
-            <p className="text-[#cdafaf99] text-base font-semibold">
+            {/* <p className="text-[#cdafaf99] text-base font-semibold">
               {t("subheadline")}
-            </p>
+            </p> */}
             <div className="border border-[#FFFFFF33] w-full "></div>
           </div>
           <div className="h-[1px] blogline mt-[48px] md:mt-[95px] mb-[48px] bg-[#FFFFFF33]"></div>

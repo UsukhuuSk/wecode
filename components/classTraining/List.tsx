@@ -1,8 +1,11 @@
 
 'use client'
+import { BaseApi } from "@/api/baseApi";
 import { Helper } from "@/lib/helper";
+import { GetFileUrl } from "@/lib/utils";
 import { getMaxListeners } from "events";
 import { useTranslations } from "next-intl";
+import Link from "next/link";
 import { useEffect, useState } from "react";
 
 const ClassTrainingList = () => {
@@ -15,36 +18,25 @@ const ClassTrainingList = () => {
     const getList = async () => {
         try {
             const a = []
-            for (let i = 0; i < 7; i++) {
-                a.push({
-                    "title": "Танхимын сургалт " + i,
-                    "duration": "Үргэлжлэх хугацаа " + i,
-                    "totalHours": "Сургалтын нийт цаг " + i,
-                    "schedule": "Хичээлийн хуваарь " + i,
-                    "dailyDuration": "Өдөрт хичээллэх цаг " + i,
-                    "capacity": "Анги дүүргэлт " + i,
-                    "fee": "Сургалтын төлбөр " + i,
-                    "methodology": "Сургалтын арга зүй " + i,
-                    "learninMethod": "Суралцахуйн аргачлал " + i,
-                    "overview": "Сургалтын хөтөлбөрийн тойм " + i,
-                    "capstone": "Capstone төслүүд " + i,
-                    "result": "Хүлээгдэж буй үр дүн  + i"
-                })
-            }
-            setList(a)
+            const data = await BaseApi._get('9/service_classroom_courses')
+            setList(data.list)
         } catch (error) {
             Helper.handleError(error)
         }
     }
 
     return (
-        <div className="grid grid-cols-3 gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             {
                 list.map((item: any, index: number) => (
-                    <div key={index} className="relative bg-center bg-contain bg-no-repeat text-white h-80 border border-neutral-600 rounded-2xl p-1 overflow-hidden" style={{ backgroundImage: 'url(https://ai-academy.asia/api/file/thumbnail/1718)' }}>
-                        <div className=" top-4 h-10 bg-[#000000a6] text-lg font-semibold rounded-t-lg rounded-b-md flex items-center px-4"> Хэрэглээний AI инженерчлэл
+                    <Link  key={index} href={`/classTraining/${item._id}`}>
+                        <div key={index} className="relative bg-center bg-contain bg-no-repeat text-white h-80 border border-neutral-600 rounded-2xl p-1 overflow-hidden"
+                            style={{ backgroundImage: `url(${GetFileUrl(item?.image?._id)})` }}>
+                            <div className=" top-4 h-10 bg-[#000000a6] text-lg font-semibold rounded-t-lg rounded-b-md flex items-center px-4">
+                                {item.name}
+                            </div>
                         </div>
-                    </div>
+                    </Link>
                 ))
             }
         </div>

@@ -43,8 +43,11 @@ const HomeJourney = () => {
                 </div>
                 <div className="mt-[68px] grid md:grid-cols-7 gap-5 mx-auto">
                     <div
-                        className={`rainbow text-start md:col-span-5 p-16 rounded-3xl relative overflow-hidden flex gap-4 justify-center md:justify-start items-start font-neue `}
+                        className={`rainbow text-start col-span-7  p-16 rounded-3xl relative overflow-hidden flex gap-4 justify-center md:justify-start items-start font-neue `}
                     >
+                        {/* <div
+                        className={`rainbow text-start md:col-span-5 p-16 rounded-3xl relative overflow-hidden flex gap-4 justify-center md:justify-start items-start font-neue `}
+                    > */}
                         <div className="flex flex-col justify-center items-center md:items-start gap-3 z-20 ">
                             <h1 className="text-xl md:text-2xl">
                                 <span className="text-white  font-semibold md:font-bold font-neue">
@@ -73,7 +76,7 @@ const HomeJourney = () => {
                             />
                         </div>
                     </div>
-                    <div
+                    {/* <div
                         className={`bg-[#13032bcc] border-2 md:col-span-2 p-12 border-[#404047] rounded-3xl relative text-start overflow-hidden flex flex-col gap-4 items-center font-neue `}
                     >
                         <div className="flex flex-col items-start gap-6 z-20 ">
@@ -85,7 +88,7 @@ const HomeJourney = () => {
                                 <FaArrowRight size={12} color="#fff" />
                             </Link>
                         </div>
-                    </div>
+                    </div> */}
                 </div>
             </div>
         </>

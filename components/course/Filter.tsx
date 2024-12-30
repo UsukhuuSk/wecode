@@ -147,7 +147,7 @@ const CourseFilter: React.FC<CourseFilterProps> = ({ filter, onChange, onClear }
                             </button>
                         </div>
                     </SheetTrigger>
-                    <SheetContent side="right" className="bg-[#13032c] z-[1000] w-[300px] border-gray-900 text-white">
+                    <SheetContent side="right" className="bg-main z-[1000] w-[300px] border-gray-900 text-white">
                         <SheetHeader>
                             <SheetDescription>
                                 <div className="flex flex-col items-start justify-center gap-4 text-white mt-6">

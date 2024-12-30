@@ -33,7 +33,7 @@ export default function About() {
         <div className="absolute z-50 -top-1/4 left-0 -translate-x-1/2 bg-[#4317FF] blur-[200px] w-[244px] h-[200px]"></div>
         <div className="absolute z-50 -top-1/4 right-0 -translate-x-1/2 bg-[#4317FF] blur-[200px] w-[244px] h-[200px]"></div>
         {/* <div className="bg-[#3BC9E833] blur-[200px] rounded-full w-full h-[168px] absolute top-40"></div> */}
-        <div className="flex flex-col gap-5 bg-[#13032c] w-full pt-40 pb-10" >
+        <div className="flex flex-col gap-5 bg-main w-full pt-40 pb-10" >
           <div className="flex justify-center items-center gap-2 sm:gap-5 lg:gap-5 z-[50]">
             <Image src={seventh} alt="" className="h-[24px] w-[24px] " />
             <Image src={eight} alt="" className="h-[24px] w-[24px] " />
@@ -46,7 +46,7 @@ export default function About() {
             {t("team")}
           </div>
         </div>
-        <div className="bg-[#13032c] h-20 w-full" style={{ borderBottomLeftRadius: '50% 50%', borderBottomRightRadius: '50% 50%' }}></div>
+        <div className="bg-main h-20 w-full" style={{ borderBottomLeftRadius: '50% 50%', borderBottomRightRadius: '50% 50%' }}></div>
         <div className="container flex py-8 flex-wrap gap-8 md:gap-0 flex-col-reverse md:flex-row">
           <div className="w-full md:w-1/2 flex flex-col gap-4 font-manrope">
             <div className=" text-justify">
@@ -137,7 +137,7 @@ export default function About() {
           </div>
         </div>
 
-        <div className="bg-[#13032c] h-20 w-full mt-20" style={{ borderTopLeftRadius: '50% 50%', borderTopRightRadius: '50% 50%' }}></div>
+        <div className="bg-main h-20 w-full mt-20" style={{ borderTopLeftRadius: '50% 50%', borderTopRightRadius: '50% 50%' }}></div>
       </div>
     </ReactLenis>
   );

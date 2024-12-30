@@ -36,6 +36,7 @@ const CommunityForm = forwardRef(({ type }: FormProps, ref) => {
     }, [config])
 
     const openForm = async (table: string) => {
+        setErrors([])
         if (table) {
             await getConfig(table)
             setOpen(true)

@@ -94,8 +94,8 @@ const config: Config = {
         wcZinc700: "#3F3F46",
         wcBorder: "#334155",
         wcOrange: "#FF8500",
-        wcRed: "#F0493E"
-
+        wcRed: "#F0493E",
+        main: "#13032c"
       },
       borderRadius: {
         '4xl': '2rem',

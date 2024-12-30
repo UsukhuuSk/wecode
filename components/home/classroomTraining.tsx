@@ -10,7 +10,7 @@ import { Carousel, CarouselContent, CarouselNext, CarouselPrevious } from "../ui
 const ClassroomTraining = () => {
     const [ytList, setYtList] = useState<any>([])
     const [loading, setLoading] = useState<boolean>(false)
-
+    
     useEffect(() => {
         getYtList()
     }, [])
