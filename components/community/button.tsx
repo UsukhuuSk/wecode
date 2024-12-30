@@ -10,10 +10,8 @@ const CommmunityButton = ({ text, table, color, onOpen }: any) => {
     }
 
     return (
-        <div>
-            <span style={{ background: color }} onClick={(e: any) => handleApplicant(e, '1')} className=" text-black py-1 px-2 md:py-3 md:px-5 font-semibold md:font-bold text-xs md:text-sm font-neue rounded-[48px] hover:scale-105 transition-all">
-                {text}
-            </span>
+        <div style={{ background: color }} onClick={(e: any) => handleApplicant(e, '1')} className=" text-black py-1 px-2 md:py-3 md:px-5 font-semibold md:font-bold text-xs md:text-sm font-neue rounded-[48px] hover:scale-105 transition-all">
+            {text}
         </div>
     )
 }

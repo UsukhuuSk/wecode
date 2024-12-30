@@ -1,5 +1,5 @@
 'use client'
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import { useTranslations } from "next-intl";
 import eight from "../../../../assets/LandingPage/8.svg";
 import nine from "../../../../assets/LandingPage/9.svg";
@@ -17,20 +17,18 @@ import CommunityForm from "@/components/community/form";
 import { ReactLenis } from "@/lib/lenis";
 
 export default function page() {
-  const [formOpen, setFormOpen] = useState(false)
-  const [tableName, setTableName] = useState<any>(null)
+  const refFrom = useRef<any>(null)
 
   const t = useTranslations("community");
 
   const handleOpenForm = (tableName: any) => {
-    setTableName(tableName)
-    setFormOpen(true)
+    refFrom.current.openForm(tableName)
   }
 
 
   return (
     <>
-      <CommunityForm open={formOpen} handleClose={() => { setFormOpen(false) }} table={tableName} />
+      <CommunityForm ref={refFrom} />
       <main className="h-full  min-h-screen relative overflow-hidden">
         <div className="absolute -top-1/4 left-0 -translate-x-1/2 bg-[#4317FF] blur-[200px] w-[244px] h-[200px]"></div>
         <div className="absolute -top-1/4 right-0 -translate-x-1/2 bg-[#4317FF] blur-[200px] w-[244px] h-[200px]"></div>
@@ -144,7 +142,7 @@ export default function page() {
                     </p>
                   </span>
                 </div>{" "}
-                <CommmunityButton text={t("content.action")} table={null} color={"#FF8500"} onOpen={handleOpenForm} />
+                <CommmunityButton text={t("content.action")} table={'com_meetup_requests'} color={"#FF8500"} onOpen={handleOpenForm} />
               </AccordionTrigger>
               <AccordionContent>
                 <div className="px-8 py-4 md:py-8 mx-auto  font-neue text-sm md:text-base">

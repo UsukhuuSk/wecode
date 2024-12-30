@@ -1,12 +1,10 @@
 import { useEffect, useState } from "react";
 import { Checkbox } from "../ui/checkbox";
-import { Helper } from "@/lib/helper";
-import { BaseApi } from "@/api/baseApi";
-import { error } from "console";
 import { useTranslations } from "next-intl";
 
 interface ComponentProps {
     label: any;
+    columns?: any;
     col_field: string;
     col_length?: any;
     col_type?: any;
@@ -15,27 +13,36 @@ interface ComponentProps {
     onChange: (field: any, value: any) => any;
     errors: any[]
     col_nullable: any;
+    field_show_trigger?: any;
+    unitedRefs?: any;
+    description?: any;
 }
-const FormComponent = ({ label, col_field, col_length, col_type, ref_table, formData, onChange, errors = [], col_nullable }: ComponentProps) => {
+const FormComponent = ({ description, columns = [], label, col_field, col_length, col_type, ref_table, formData, onChange, errors = [], col_nullable, field_show_trigger, unitedRefs }: ComponentProps) => {
     const trns = useTranslations("community")
     const [refList, setRefList] = useState<any>([])
+    // useEffect(() => {
+    //     if (col_type === 'manyToOne') {
+    //         getRef()
+    //     }
+    // }, [])
+
+    // const getRef = async () => {
+    //     try {
+    //         const data = await BaseApi._get(`list/9/${ref_table}`)
+    //         setRefList(data)
+    //     } catch (error) {
+    //         Helper.handleError(error)
+    //     }
+    // }
     useEffect(() => {
-
-        if (col_type === 'manyToOne') {
-            getRef()
+        if (unitedRefs) {
+            const t = unitedRefs[ref_table]
+            if (t) {
+                setRefList(t)
+            }
         }
-    }, [])
-
-    const getRef = async () => {
-        try {
-            const data = await BaseApi._get(`list/9/${ref_table}`)
-            setRefList(data)
-        } catch (error) {
-            Helper.handleError(error)
-        }
-    }
+    }, [unitedRefs])
     const handleInputChange = (e: any) => {
-        console.log('--e', e.target.value)
         onChange(col_field, e.target.value)
 
     }
@@ -50,14 +57,33 @@ const FormComponent = ({ label, col_field, col_length, col_type, ref_table, form
     }
 
     const RenderInput = () => {
+        let InputItem: any = null
+        if (field_show_trigger) {
+            try {
+                const { field, value, type, operation } = field_show_trigger;
+                const a = field.split('.')
+                const watchFieldName = a[0]
+                const watchData = formData[watchFieldName]
+                if (!watchData) return;
+                const configField = columns.find((r: any) => r.col_field === watchFieldName)
+                if (configField) {
+                    const valueToEq = unitedRefs[configField.ref_table].find((rf: any) => rf[a[1]] === value)
+                    if (!valueToEq || watchData !== valueToEq._id) {
+                        return
+                    }
+                }
+            } catch (error) {
+                console.error('render error: ', error)
+            }
+        }
         if (col_type === 'string') {
-            return (<input placeholder={trns('inputPlaceHolder')} type="text"
+            InputItem = <input placeholder={trns('inputPlaceHolder')} type="text"
                 value={formData[col_field]} onChange={handleInputChange}
                 className={` border  ${isError() ? 'border-red-500' : 'border-gray-200'} rounded-md text-md px-3 py-1 w-full hover:border-primary outline-none focus:bg-gray-200`}
             />
-            )
+
         } else if (col_type === 'manyToOne') {
-            return (<select onChange={handleSelectChange} value={formData[col_field]} className={` border  ${isError() ? 'border-red-500' : 'border - gray - 200'} rounded-md text-md px-3 py-1 w-full hover:border-primary outline-none  focus:bg-gray-200`
+            InputItem = (<select onChange={handleSelectChange} value={formData[col_field]} className={` border  ${isError() ? 'border-red-500' : 'border - gray - 200'} rounded-md text-md px-3 py-1 w-full hover:border-primary outline-none  focus:bg-gray-200`
             } >
                 <option key={887} value="">{trns("selectOption")}</option>
                 {
@@ -70,22 +96,26 @@ const FormComponent = ({ label, col_field, col_length, col_type, ref_table, form
             </select >
             )
         } else if (col_type === 'boolean') {
-            return (
+            InputItem = (
                 <Checkbox className={`${isError() ? 'outline outline-red-500' : ''}`} value={formData[col_field]} onCheckedChange={handleCheckboxChange} />
             )
         } else {
-            return (<>-</>)
+            InputItem = <>-</>
         }
 
-    }
-    return (
-        <div className="flex flex-col gap-2">
+        return (<div className="flex flex-col gap-2">
             <p className={`${isError() ? 'text-red-500' : ''}`}>
                 {col_nullable === false && <span className="text-red-500">* &nbsp;</span>}
                 {label}</p>
-            {RenderInput()}
+            {InputItem}
+            {description &&
+                <p className="text-gray-400 text-xs">  {description}</p>
+            }
         </div>
-    )
+        )
+
+    }
+    return RenderInput()
 
 
 }

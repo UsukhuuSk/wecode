@@ -273,46 +273,8 @@ h1 {
 }
 
 
-/* styles.css */
-.dialog-overlay {
-  position: fixed;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.5);
-  z-index: 998;
-}
 
-.dialog-content {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background: white;
-  padding: 20px;
-  border-radius: 8px;
-  z-index: 999;
-  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
-}
 
-.dialog-title {
-  font-size: 1.5rem;
-  margin-bottom: 1rem;
-}
-
-.dialog-description {
-  font-size: 1rem;
-  margin-bottom: 1.5rem;
-  max-height: 80vh;
-  overflow: auto;
-}
-
-.btn {
-  padding: 0.5rem 1rem;
-  background: blue;
-  color: white;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-}
 
 .btn-close {
   position: absolute;

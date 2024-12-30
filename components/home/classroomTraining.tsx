@@ -29,8 +29,8 @@ const ClassroomTraining = () => {
     }
 
     return (
-        <div className="text-white grid grid-cols-12 gap-16 px-14">
-            <div className="flex-1 flex flex-col items-center justify-center col-span-4">
+        <div className="text-white grid grid-cols-12 gap-0 md:gap-16 px-4 md:px-14">
+            <div className="flex flex-col items-center justify-center col-span-12 md:col-span-4 mb-16 md:mb-0">
                 <div className="text-center">
                     <Link href={'/classTraining'} className=" font-neue  text-xl font-semibold md:text-5xl md:font-bold max-w-[960px] m-auto  hover:underline text-center">
                         Танхимын сургалтын бүртгэл эхэллээ.
@@ -40,7 +40,7 @@ const ClassroomTraining = () => {
                     </div>
                 </div>
             </div>
-            <div className="flex-1 col-span-8 flex flex-col gap-2 bg-[#1f086090] rounded-[32px] p-6  font-neue rainbow">
+            <div className="col-span-12 md:col-span-8 flex flex-col gap-2 bg-[#1f086090] rounded-[32px] p-6  font-neue rainbow">
                 <p className="text-2xl font-neue">Хиймэл оюун ухааны тухай ярилцая. </p>
                 <p className="flex items-center gap-2 mb-4 text-md">
                     <FaYoutube className="text-red-500" /> <Link href={"https://www.youtube.com/@AI_Academy_asia"} rel="noopener noreferrer" target="_blank">AI Academy    </Link>

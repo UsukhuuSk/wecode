@@ -9,7 +9,7 @@ const YtCard = ({ yt }: any) => {
     }
     return (
         <div>
-            <div className="cursor-pointer h-52 relative  group overflow-hidden min-w-80" onClick={handlePlay}>
+            <div className="cursor-pointer h-52 relative  group overflow-hidden min-w-60 md:min-w-80" onClick={handlePlay}>
                 <img className={`${isOnPlay ? 'hidden' : ""} transition-all group-hover:scale-105 duration-1000 h-52 w-full object-cover`} src={yt.thumbnail?.url} />
                 <PlayIcon size={'3rem'} className={`${isOnPlay ? 'hidden' : ""} absolute  top-1/2 left-1/2 z-10 -translate-x-1/2 -translate-y-1/2 group-hover:text-gray-400 `} variant="solid" />
                 <iframe

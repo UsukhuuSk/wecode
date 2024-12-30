@@ -1,19 +1,18 @@
-import { useEffect, useRef, useState } from "react"
+import { forwardRef, useEffect, useImperativeHandle, useRef, useState } from "react"
 import { Helper } from "@/lib/helper"
 import { BaseApi } from "@/api/baseApi"
 import FormComponent from "./component"
 import * as Dialog from '@radix-ui/react-dialog';
 import { useTranslations } from "next-intl";
-import { error } from "console";
+import { useParams } from "next/navigation";
+import { Loading03Icon } from "@hugeicons/react";
 
 
 interface FormProps {
-    open: boolean,
-    handleClose: () => any
-    table?: any
 }
-const CommunityForm = ({ open, handleClose, table }: FormProps) => {
+const CommunityForm = forwardRef(({ }: FormProps, ref) => {
     const contentRef = useRef<HTMLDivElement>(null);
+    const { locale } = useParams()
 
     const trns = useTranslations("community")
     const [config, setConfig] = useState<any>(null)
@@ -22,13 +21,29 @@ const CommunityForm = ({ open, handleClose, table }: FormProps) => {
     const [errors, setErrors] = useState<any>([])
     const [groupFields, setGroupFields] = useState<any>([])
     const [loading, setLoading] = useState<any>(false)
+    const [open, setOpen] = useState<boolean>(false)
+    const [unitedRefs, setUnitedRefs] = useState<any>([])
 
-
+    useImperativeHandle(ref, () => ({
+        openForm
+    }));
 
     useEffect(() => {
-        if (table)
-            getConfig()
-    }, [table])
+        if (config) {
+            getRefs()
+        }
+    }, [config])
+
+    const openForm = async (table: string) => {
+        if (table) {
+            await getConfig(table)
+            setOpen(true)
+        }
+    }
+
+    const handleClose = () => {
+        setOpen(false)
+    }
 
     const clearFormData = (columns: any) => {
         const formObj: any = {}
@@ -44,7 +59,32 @@ const CommunityForm = ({ open, handleClose, table }: FormProps) => {
         setFormData(formObj)
     }
 
-    const getConfig = async () => {
+
+    const getRef = async (ref_table: any) => {
+        try {
+            return await BaseApi._get(`list/9/${ref_table}`)
+        } catch (error) {
+            Helper.handleError(error)
+        }
+    }
+
+    const getRefs = async () => {
+        try {
+            const tempUnited: any = {}
+            for (const c of config.columns) {
+                if (c.col_type === 'manyToOne' && c.ref_table) {
+                    const data = await getRef(c.ref_table)
+                    tempUnited[c.ref_table] = data
+                }
+            }
+            setUnitedRefs(tempUnited)
+        } catch (error) {
+            Helper.handleError(error)
+        }
+    }
+
+    const getConfig = async (table: string) => {
+        if (!table) return;
         try {
             setLoading(true)
             const data: any = await BaseApi._get(`config/table/9/${table}`)
@@ -97,25 +137,30 @@ const CommunityForm = ({ open, handleClose, table }: FormProps) => {
 
     const RenderForm = () => {
         return (
-            <div className="flex flex-col gap-4 p-4">
+            <div className="flex flex-col gap-4 p-1 md:p-4">
                 {
                     groupFields.map((g: any, index: any) => {
                         return (
                             <div key={index} className="border rounded-xl p-4 bg-gray-100">
-                                <p className="font-bold mb-4 text-xl">{g.title_mn}</p>
+                                <p className="font-bold mb-4 text-xl">{locale === 'en' ? g.title_en : g.title_mn}</p>
                                 <div className="flex flex-col gap-4">
                                     {
-                                        config.columns.filter((col: any) => g.group_columns.some((groupCol: any) => groupCol.col_field === col.col_field)).map((col: any, itemIndex: any) => {
+                                        g.group_columns.map((col: any, itemIndex: any) => {
                                             return <FormComponent
+                                                columns={config.columns}
+                                                unitedRefs={unitedRefs}
                                                 key={itemIndex}
                                                 errors={errors}
                                                 onChange={handleChange}
+                                                description={locale === 'en' ? col.description_en : col.description_mn}
                                                 formData={formData}
-                                                label={col.col_title}
+                                                label={locale === 'en' ? col.title_en : col.title_mn}
                                                 col_field={col.col_field}
                                                 col_type={col.col_type}
                                                 ref_table={col.ref_table}
-                                                col_nullable={col.col_nullable} />
+                                                col_nullable={col.col_nullable}
+                                                field_show_trigger={col.field_show_trigger}
+                                            />
                                         })
                                     }
                                 </div>
@@ -129,12 +174,17 @@ const CommunityForm = ({ open, handleClose, table }: FormProps) => {
     }
     return (
         <>
+
+            {loading && <div className="fixed inset-0 w-full min-h-screen bg-[#00000070] z-[250] flex flex-col items-center justify-center">
+                <Loading03Icon className="animate-spin text-white" />
+                <p className="text-white">{locale === 'en' ? 'Loading...' : 'Уншиж байна...'}</p>
+            </div>}
             <Dialog.Root open={open} onOpenChange={handleClose}>
                 <Dialog.Portal>
-                    <Dialog.Overlay className="dialog-overlay" />
-                    <Dialog.Content className="dialog-content  w-[90%] md:w-auto">
-                        <Dialog.Title className="dialog-title">{trns("dialogTitle")}</Dialog.Title>
-                        <Dialog.Description className="dialog-description" ref={contentRef} >
+                    <Dialog.Overlay className="fixed inset-0 bg-black/50 z-[998]" />
+                    <Dialog.Content className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white p-3 md:p-5 rounded-lg z-[999] shadow-lg  w-[90%] md:w-auto">
+                        <Dialog.Title className="text-xl mb-4">{trns("dialogTitle")}</Dialog.Title>
+                        <Dialog.Description className="text-base mb-6 max-h-[75vh] overflow-auto" ref={contentRef} >
                             {config && RenderForm()}
                         </Dialog.Description>
                         <div className="flex gap-4 justify-center">
@@ -172,6 +222,6 @@ const CommunityForm = ({ open, handleClose, table }: FormProps) => {
             </Dialog> */}
         </>
     )
-}
+})
 
 export default CommunityForm
