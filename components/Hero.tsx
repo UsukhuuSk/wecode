@@ -22,13 +22,7 @@ export default function Hero() {
     <div className="flex flex-col sm:gap-5 relative">
       <div className="flex justify-center items-center gap-2 sm:gap-5 lg:gap-12 z-[50]">
         <div className="flex gap-1 sm:gap-5">
-          <Image
-            src={seventh}
-            alt=""
-            className="h-[24px] w-[24px] 2xl:h-[32px] 2xl:w-[32px]"
-            onMouseEnter={() => setHoverText(t("hero.first"))}
-            onMouseLeave={() => setHoverText(t("hero.title"))}
-          />
+      
           <Image
             src={eight}
             alt=""

@@ -15,6 +15,7 @@ import HomeInstruction from "@/components/home/instruction";
 import HomeJourney from "@/components/home/journey";
 import ClassroomTraining from "@/components/home/classroomTraining";
 import { ReactLenis } from "@/lib/lenis";
+import HomeYtArea from "@/components/home/ytArea";
 
 export default function Home() {
 
@@ -89,6 +90,15 @@ export default function Home() {
           className="px-5 py-20 2xl:py-[125px] 2xl:px-[120px] text-white relative border-t-2 border-t-[#FFFFFF33] rounded-[32px] md:rounded-t-[240px] flex flex-col gap-[120px]"
         >
           <HomeCourses />
+        </motion.div>
+        <motion.div
+          variants={fadeInUp}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.3 }}
+          className="relative text-white "
+        >
+          <HomeYtArea />
         </motion.div>
         <motion.div
           variants={fadeInUp}

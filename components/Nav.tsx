@@ -3,6 +3,9 @@ import React, { useState } from "react";
 import { FloatingNav } from "../components/ui/floating-navbar";
 import { useLocale, useTranslations } from "next-intl";
 import { HamburgerMenuIcon } from "@radix-ui/react-icons";
+import seventh from "@/assets/LandingPage/7.svg";
+import twelve from "@/assets/LandingPage/12.svg";
+
 import {
   Sheet,
   SheetClose,
@@ -32,10 +35,20 @@ export function FloatingHeader() {
       link: `/${locale}/about`,
     },
     {
+      icon: <Image
+        src={seventh}
+        alt=""
+        className="h-[24px] w-[24px]"
+      />,
       name: t("courses"),
       link: `/${locale}/course`,
     },
     {
+      icon: <Image
+        src={twelve}
+        alt=""
+        className="h-[24px] w-[24px]"
+      />,
       name: t("classTraining"),
       link: `/${locale}/classTraining`,
     },
