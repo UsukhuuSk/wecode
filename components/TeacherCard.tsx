@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { cn, GetFileUrl } from "../lib/utils";
 import { motion } from "framer-motion";
 import Link from "next/link";
+import { LinkedInLogoIcon } from "@radix-ui/react-icons";
 // interface TeacherProps {
 //   name: string;
 //   image: any;
@@ -45,8 +46,8 @@ const TeacherCard = ({ name, image, profession, linkedin }: any) => {
           {profession}
         </span>
         {
-          linkedin && <Link href={linkedin} className="font-manrope text-[14px] font-medium text-white" target="_blank">
-            {linkedin}
+          linkedin && <Link href={linkedin} className="text-2xl font-medium text-white mt-4" target="_blank">
+            <LinkedInLogoIcon fontSize={'1.5rem'} />
           </Link>
         }
       </div>
