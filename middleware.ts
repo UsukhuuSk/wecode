@@ -41,16 +41,16 @@ export default async function middleware(req: NextRequest) {
     if (!token) {
       return NextResponse.redirect(loginUrl);
     } else {
-      const isQuizRoute = pathname.includes('quiz')
-      try {
-        const data = await ServerApi._get('one/9/service_user_profile')
-        if (!data.is_agreement && !isQuizRoute && !['/mn', '/en'].includes(pathname)) {
-          return NextResponse.redirect(new URL(`/quiz`, req.url));
-        }
-      } catch (error) {
-        console.error('error', error)
-        return NextResponse.redirect(new URL(`/`, req.url));
-      }
+      // const isQuizRoute = pathname.includes('quiz')
+      // try {
+      //   const data = await ServerApi._get('one/9/service_user_profile')
+      //   if (!data.is_agreement && !isQuizRoute && !['/mn', '/en'].includes(pathname)) {
+      //     return NextResponse.redirect(new URL(`/quiz`, req.url));
+      //   }
+      // } catch (error) {
+      //   console.error('error', error)
+      //   return NextResponse.redirect(new URL(`/`, req.url));
+      // }
     }
   }
 
