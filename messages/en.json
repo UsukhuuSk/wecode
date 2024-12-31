@@ -3,7 +3,7 @@
     "title": "Hello world!",
     "about": "Go to the about page",
     "students": "students",
-    "subheadline": "Artificial intelligence for everyone!",
+    "subheadline": "If you want to boost your productivity using artificial intelligence, click below",
     "headline": "AI for All: ",
     "headline2": "Empowering Every Mind",
     "start": "Start learning now",
@@ -81,7 +81,7 @@
       }
     },
     "hero": {
-      "title": "Empowering Every Mind",
+      "title": "Artificial intelligence for everyone!",
       "subtitle": "Democratizing AI and Coding education for everyone, everywhere.",
       "button": "Start learning now",
       "first": "Empower",

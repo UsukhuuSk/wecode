@@ -1,6 +1,8 @@
 import logo1 from "@/assets/landing/Mask group.svg";
 import logo2 from "@/assets/landing/Mask group1.svg";
 import logo3 from "@/assets/landing/Group 12.svg";
+import WefLogo from "@/assets/WEFlogo.png"
+import unicefLogo from "@/assets/landing/unicefLogo.png"
 
 import Image from "next/image";
 import { useTranslations } from "next-intl";
@@ -22,8 +24,9 @@ const HomeJourney = () => {
                     <span className="text-slate-400 font-medium text-2xl text-center">
                         {t("partners")}
                     </span>
+                    <Image height={80} src={WefLogo} alt="" />
                     <Image src={logo3} alt="" />
-                    <Image src={logo1} alt="" />
+                    <Image height={80} src={unicefLogo} alt="" />
                     <Image src={logo2} alt="" />
                 </div>
             </div>
@@ -45,7 +48,7 @@ const HomeJourney = () => {
                     {/* <div
                         className={`rainbow text-start col-span-7  p-16 rounded-3xl relative overflow-hidden flex gap-4 justify-center md:justify-start items-start font-neue `}
                     > */}
-                        <div
+                    <div
                         className={`rainbow text-start md:col-span-5 p-16 rounded-3xl relative overflow-hidden flex gap-4 justify-center md:justify-start items-start font-neue `}
                     >
                         <div className="flex flex-col justify-center items-center md:items-start gap-3 z-20 ">
