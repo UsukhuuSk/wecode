@@ -31,8 +31,8 @@ export default function Home() {
   return (
     <ReactLenis root>
       <main className="h-full w-full relative overflow-hidden">
-        <div className="absolute top-0 left-0 -translate-x-1/2 bg-[#4317FF] blur-[200px] w-[244px] h-[200px] -z-[100]"></div>
-        <div className="absolute top-0 right-0 -translate-x-1/2 bg-[#4317FF] blur-[200px] w-[244px] h-[200px] -z-[100]"></div>
+        <div className="absolute top-0 left-0 -translate-x-1/2 bg-primary blur-[200px] w-[244px] h-[200px] -z-[100]"></div>
+        <div className="absolute top-0 right-0 -translate-x-1/2 bg-primary blur-[200px] w-[244px] h-[200px] -z-[100]"></div>
 
         <motion.div
           variants={fadeInUp}

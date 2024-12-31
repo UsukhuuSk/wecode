@@ -14,7 +14,7 @@ export default function Settings() {
 
   return (
     <div className="min-h-screen container pt-[100px] pb-8 overflow-hidden bg-[#13032B] md:bg-transparent">
-      <div className="w-[800px] h-[800px] rotate-[92] flex-shrink-0 rounded-full bg-[#4317ff] blur-[360px] -z-50 absolute right-0 top-1/4"></div>
+      <div className="w-[800px] h-[800px] rotate-[92] flex-shrink-0 rounded-full bg-primary blur-[360px] -z-50 absolute right-0 top-1/4"></div>
       <div className="flex items-center gap-[10px] pt-4 pb-8 border-b border-slate-700">
         <Image src={settings} alt="" />
         <h1 className="text-white text-[36px] font-bold font-adineue">

@@ -39,7 +39,7 @@ const HomeFeatures = () => {
     return (
         <div className="block xl:flex items-center gap-[45px]">
             <div className="flex-1 flex flex-col gap-12 items-center xl:items-start">
-                <div className="border-2 border-[#4317FF] rounded-[32px] px-5 py-2 font-neue text-[18px] font-bold">
+                <div className="border-2 border-primary rounded-[32px] px-5 py-2 font-neue text-[18px] font-bold">
                     {t("cardData.feature")}
                 </div>
                 <h1 className=" font-neue font-semibold text-2xl md:font-bold md:text-5xl text-center xl:text-start">

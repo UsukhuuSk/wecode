@@ -79,7 +79,7 @@ export const FloatingNav = ({
             <Image src={logo} alt="" />{" "}
           </Link>
         </div>
-        <div className="flex justify-center gap-4">
+        <div className="flex justify-center gap-2 lg:gap-4">
           {navItems.map((navItem: any, idx: number) => {
             const isActive = navItem.link === pathname;
             return (
@@ -87,7 +87,7 @@ export const FloatingNav = ({
                 key={`link=${idx}`}
                 href={navItem.link}
                 className={cn(
-                  `relative items-center flex rounded-3xl py-2 px-3 text-[#13032B] font-medium text-[14px] font-golosText transition-all ease-in-out duration-300 ${isActive ? "bg-[#E2E8F0]" : ""
+                  `relative items-center flex rounded-3xl py-2 px-3 text-[#13032B] font-medium text-xs lg:text-sm font-golosText transition-all ease-in-out duration-300 ${isActive ? "bg-[#E2E8F0]" : ""
                   }`
                 )}
               >
@@ -102,13 +102,13 @@ export const FloatingNav = ({
           {user ?
             <Link
               href={`/${locale}/profile`}
-              className="border bg-[#4317FF] text-sm font-medium relative border-neutral-200 dark:border-white/[0.2] text-white px-5 py-2 rounded-[32px]"
+              className="border bg-primary text-sm font-medium relative border-neutral-200 dark:border-white/[0.2] text-white px-5 py-2 rounded-[32px]"
             >
               {user.email}
             </Link> :
             <Link
               href={`/${locale}/login`}
-              className="border bg-[#4317FF] text-sm font-medium relative border-neutral-200 dark:border-white/[0.2] text-white px-5 py-2 rounded-[32px]"
+              className="border bg-primary text-sm font-medium relative border-neutral-200 dark:border-white/[0.2] text-white px-5 py-2 rounded-[32px]"
             >
               <span>{t("login")}</span>
               {/* <span className="absolute inset-x-0 w-1/2 mx-auto -bottom-px bg-gradient-to-r from-transparent via-blue-500 to-transparent  h-px" /> */}

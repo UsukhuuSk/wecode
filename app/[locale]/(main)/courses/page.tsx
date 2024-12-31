@@ -15,8 +15,8 @@ export default function page({ params }: any) {
   router.push(`/${locale}/course`);
   return (
     <main className="h-full min-h-screen relative m-auto pt-[200px] overflow-hidden px-5">
-      <div className="absolute -top-1/4 left-0 -translate-x-1/2 bg-[#4317FF] blur-[200px] w-[244px] h-[200px]"></div>
-      <div className="absolute -top-1/4 right-0 -translate-x-1/2 bg-[#4317FF] blur-[200px] w-[244px] h-[200px]"></div>
+      <div className="absolute -top-1/4 left-0 -translate-x-1/2 bg-primary blur-[200px] w-[244px] h-[200px]"></div>
+      <div className="absolute -top-1/4 right-0 -translate-x-1/2 bg-primary blur-[200px] w-[244px] h-[200px]"></div>
       <div className="flex flex-col justify-center items-center gap-16 relative ">
         <div className="soon text-center font-adineue text-5xl xl:text-8xl">
           {t("soon")}

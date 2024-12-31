@@ -313,7 +313,7 @@ const Step1: React.FC<StepProps> = ({ next }) => {
 
         <button
           type="submit"
-          className="rounded-[32px] w-full text-white bg-[#4317FF] px-6 py-[12px] font-semibold text-[16px] font-neue"
+          className="rounded-[32px] w-full text-white bg-primary px-6 py-[12px] font-semibold text-[16px] font-neue"
         >
           {trns("account.continue")}
         </button>

@@ -28,7 +28,7 @@ export default function NewFooter() {
   ];
   return (
     <div className="w-full flex flex-col gap-[72px] px-5 py-10 md:py-20 2xl:px-[120px] 2xl:py-12 overflow-hidden rounded-t-[48px] md:rounded-t-[240px] border-t border-[#FFFFFF33] relative">
-      <div className="absolute -top-0 w-full h-[104px] bg-[#4317FF] blur-[160px] rounded-full"></div>
+      <div className="absolute -top-0 w-full h-[104px] bg-primary blur-[160px] rounded-full"></div>
       <div className="m-auto">
         <Image src={logo} alt="AI ACADEMY" />
       </div>

@@ -93,8 +93,8 @@ export default function Course() {
   return (
     <ReactLenis root>
       <div className="container relative pt-20">
-        <div className="absolute -top-1/4 left-0 -translate-x-1/2 bg-[#4317FF] blur-[200px] w-[244px] h-[200px]"></div>
-        <div className="absolute -top-1/4 right-0 -translate-x-1/2 bg-[#4317FF] blur-[200px] w-[244px] h-[200px]"></div>
+        <div className="absolute -top-1/4 left-0 -translate-x-1/2 bg-primary blur-[200px] w-[244px] h-[200px]"></div>
+        <div className="absolute -top-1/4 right-0 -translate-x-1/2 bg-primary blur-[200px] w-[244px] h-[200px]"></div>
         <div className="">
           <div className="border-b border-slate-800">
             <div className="pt-24 md:pt-12 flex justify-between items-center">
@@ -122,7 +122,7 @@ export default function Course() {
                             key={index}
                             value={t.value}
                             className="flex-1 md:flex-none text-white rounded-none text-[16px] px-4 py-[5px] transition-colors duration-200 ease-in-out
-                        data-[state=active]:border-b-2 data-[state=active]:border-[#4317ff] data-[state=active]:text-[#fff] data-[state=active]:font-semibold
+                        data-[state=active]:border-b-2 data-[state=active]:border-primary data-[state=active]:text-[#fff] data-[state=active]:font-semibold
                         data-[state=inactive]:border-b-2 data-[state=inactive]:border-transparent data-[state=inactive]:text-[#ffffff80] data-[state=inactive]:font-medium"
                           >
                             {t.label}

@@ -13,7 +13,7 @@ const HomeTopArea = () => {
                 {/* <div className="text-gray-100 font-neue text-[14px] md:text-[20px] font-medium tracking-tight lg:tracking-[0.173px] m-auto">
                     {t("subheadline")}
                 </div> */}
-                <Link href="/course" className="w-auto flex justify-center m-auto text-base font-semibold md:font-bold font-neue py-2 px-3 md:py-3 md:px-4 text-center text-white bg-[#4317FF] hover:scale-110 transition-all  rounded-[2rem]">
+                <Link href="/course" className="w-auto flex justify-center m-auto text-base font-semibold md:font-bold font-neue py-2 px-3 md:py-3 md:px-4 text-center text-white bg-primary hover:scale-110 transition-all  rounded-[2rem]">
                     {t("start")}
                 </Link>
             </div>

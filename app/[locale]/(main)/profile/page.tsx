@@ -48,7 +48,7 @@ export default function Profile({ params }: any) {
     <></>
   ) : (
     <div className="bg-[#13032B] md:bg-transparent  min-h-screen container pt-20 overflow-hidden pb-4">
-      <div className="hidden md:block w-[800px] h-[800px] rotate-[92] flex-shrink-0 rounded-full bg-[#4317ff] blur-[360px] -z-50 absolute right-0 top-1/4"></div>
+      <div className="hidden md:block w-[800px] h-[800px] rotate-[92] flex-shrink-0 rounded-full bg-primary blur-[360px] -z-50 absolute right-0 top-1/4"></div>
       <div className="block md:hidden">
         {WelcomeProfile()}
       </div>
@@ -72,7 +72,7 @@ export default function Profile({ params }: any) {
                         key={i}
                         value={t}
                         className="text-white rounded-none text-[16px] px-4 py-[5px] transition-colors duration-200 ease-in-out
-                        data-[state=active]:border-b-2 data-[state=active]:border-[#4317ff] data-[state=active]:text-[#fff] data-[state=active]:font-semibold
+                        data-[state=active]:border-b-2 data-[state=active]:border-primary data-[state=active]:text-[#fff] data-[state=active]:font-semibold
                         data-[state=inactive]:border-b-2 data-[state=inactive]:border-transparent data-[state=inactive]:text-[#ffffff80] data-[state=inactive]:font-medium"
                       >
                         {trns(t)}

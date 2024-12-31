@@ -6,7 +6,7 @@
     "subheadline": "Artificial intelligence for everyone!",
     "headline": "AI for All: ",
     "headline2": "Empowering Every Mind",
-    "start": "Get started for free",
+    "start": "Start learning now",
     "team": "Our Team",
     "cardData": {
       "1": {
@@ -83,7 +83,7 @@
     "hero": {
       "title": "Empowering Every Mind",
       "subtitle": "Democratizing AI and Coding education for everyone, everywhere.",
-      "button": "Get started for free",
+      "button": "Start learning now",
       "first": "Empower",
       "second": "Educate",
       "third": "Include",
@@ -123,13 +123,13 @@
   },
   "footer": {
     "about": "About us",
-    "courses": "Courses",
+    "courses": "Online course",
     "blog": "Blog",
     "community": "Community",
     "login": "Login",
     "learning": "My learning",
     "profile": "My learning",
-    "classTraining": "Class room training"
+    "classTraining": "In-person training"
   },
   "blog": {
     "title": "Blog",

@@ -22,7 +22,13 @@ export default function Hero() {
     <div className="flex flex-col sm:gap-5 relative">
       <div className="flex justify-center items-center gap-2 sm:gap-5 lg:gap-12 z-[50]">
         <div className="flex gap-1 sm:gap-5">
-      
+          <Image
+            src={seventh}
+            alt=""
+            className="h-[24px] w-[24px] 2xl:h-[32px] 2xl:w-[32px]"
+            onMouseEnter={() => setHoverText(t("hero.first"))}
+            onMouseLeave={() => setHoverText(t("hero.title"))}
+          />
           <Image
             src={eight}
             alt=""
@@ -75,7 +81,7 @@ export default function Hero() {
         />
       </div>
       <div className="herosub text-center px-1 xl:p-0 mb-[80px]">
-        <div className="bg-[#4317FF] blur-[160px] hidden sm:flex w-[341px] h-[278px] absolute translate-x-1/2 sm:left-0 md:left-[15%] xl:left-1/3 -z-[105]"></div>
+        <div className="bg-primary blur-[160px] hidden sm:flex w-[341px] h-[278px] absolute translate-x-1/2 sm:left-0 md:left-[15%] xl:left-1/3 -z-[105]"></div>
         {/* <span className="font-bold text-4xl sm:text-6xl xl:text-8xl font-adineue transition-all duration-300 ease-in-out"> */}
         {/* <AnimatePresence mode="wait">
           <motion.span

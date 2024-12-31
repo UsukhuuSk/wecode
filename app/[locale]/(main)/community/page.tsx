@@ -29,15 +29,15 @@ export default function page() {
   return (
     <>
       <CommunityForm ref={refFrom} />
-      <main className="h-full  min-h-screen relative overflow-hidden">
-        <div className="absolute -top-1/4 left-0 -translate-x-1/2 bg-[#4317FF] blur-[200px] w-[244px] h-[200px]"></div>
-        <div className="absolute -top-1/4 right-0 -translate-x-1/2 bg-[#4317FF] blur-[200px] w-[244px] h-[200px]"></div>
-        <div className="container flex flex-col justify-center px-5 py-[200px] items-center gap-16 relative text-white">
+      <main className="h-full  min-h-screen relative overflow-hidden max-w-[90%] md:max-w-[720px] lg:max-w-[900px] m-auto">
+        <div className="absolute -top-1/4 left-0 -translate-x-1/2 bg-primary blur-[10rem] w-[12rem] h-[10rem]"></div>
+        <div className="absolute -top-1/4 right-0 -translate-x-1/2 bg-primary blur-[10rem] w-[12rem] h-[10rem]"></div>
+        <div className=" flex flex-col justify-center py-[10rem] items-center gap-16 relative text-white">
           <div className="flex flex-col gap-4">
-            <h1 className="team font-adineue text-5xl md:text-[3.5rem] lg:text-[4.5rem] xl:text-[6rem] font-bold tracking-[0.151px] text-center">
+            <h1 className="team font-adineue text-5xl md:text-[2rem] lg:text-[2.5rem] xl:text-[3em] font-bold tracking-[0.151px] text-center ">
               {t("welcome")}
             </h1>
-            <p className="font-neue text-base md:text-lg lg:text-xl font-normal text-center">
+            <p className="font-manrope text-base md:text-lg lg:text-xl font-normal text-center">
               {t("subheadline")}
             </p>
           </div>

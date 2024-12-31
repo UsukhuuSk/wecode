@@ -109,7 +109,7 @@ const Step5: React.FC<StepProps> = ({ next, back }) => {
         <button
           disabled={loading || created}
           type="submit"
-          className={`${created ? 'bg-green-500' : ''} ${loading ? 'bg-slate-500 text-slate-70 animate-pulse' : ''} rounded-[32px] w-full text-white bg-[#4317FF] px-6 py-[12px] font-semibold text-[16px] font-neue"`}
+          className={`${created ? 'bg-green-500' : ''} ${loading ? 'bg-slate-500 text-slate-70 animate-pulse' : ''} rounded-[32px] w-full text-white bg-primary px-6 py-[12px] font-semibold text-[16px] font-neue"`}
         >
           {created ? trns('accCreated') : (loading ? trns('creating') : trns('btnText'))}
         </button>

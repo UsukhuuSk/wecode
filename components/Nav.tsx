@@ -75,7 +75,7 @@ export function FloatingHeader() {
             <HamburgerMenuIcon width={24} height={24} />
           </button>
         </SheetTrigger>
-        <SheetContent className="bg-white z-[100] w-[200px]">
+        <SheetContent className="bg-white z-[100] w-4/6">
           <SheetHeader>
             <SheetTitle>
               <Image src={logo} alt="" />
@@ -105,7 +105,7 @@ export function FloatingHeader() {
 
                 <Link
                   href={`/${locale}/login`}
-                  className="border bg-[#4317FF] text-sm font-medium relative border-neutral-200 dark:border-white/[0.2] text-white px-5 py-2 rounded-[32px]"
+                  className="border bg-primary text-sm font-medium relative border-neutral-200 dark:border-white/[0.2] text-white px-5 py-2 rounded-[32px]"
                 >
                   <span>{t("login")}</span>
                 </Link>

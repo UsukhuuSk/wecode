@@ -84,7 +84,7 @@ const LeaderBoard = forwardRef(({ isMini }: any, ref) => {
 
     return (
         <div className={isMini ? "overflow-hidden pty-" : "min-h-screen wrapContainer py-[100px] overflow-hidden"}>
-            <div className="w-[800px] h-[800px] rotate-[92] flex-shrink-0 rounded-full bg-[#4317ff] blur-[360px] -z-50 absolute right-0 top-1/4 font-nu"></div>
+            <div className="w-[800px] h-[800px] rotate-[92] flex-shrink-0 rounded-full bg-primary blur-[360px] -z-50 absolute right-0 top-1/4 font-nu"></div>
             <div className="flex gap-8"></div>
             <div className="mx-auto max-w-2xl">
                 <div className={`flex items-end pt-16 font-neue ${isMini ? 'pt-24' : 'pt-16'}`}>

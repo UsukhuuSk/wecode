@@ -30,8 +30,8 @@ export default function About() {
   return (
     <ReactLenis root>
       <div className="flex flex-col justify-center items-center h-full w-full relative overflow-hidden mb-20  bg-gray-200">
-        <div className="absolute z-50 -top-1/4 left-0 -translate-x-1/2 bg-[#4317FF] blur-[200px] w-[244px] h-[200px]"></div>
-        <div className="absolute z-50 -top-1/4 right-0 -translate-x-1/2 bg-[#4317FF] blur-[200px] w-[244px] h-[200px]"></div>
+        <div className="absolute z-50 -top-1/4 left-0 -translate-x-1/2 bg-primary blur-[200px] w-[244px] h-[200px]"></div>
+        <div className="absolute z-50 -top-1/4 right-0 -translate-x-1/2 bg-primary blur-[200px] w-[244px] h-[200px]"></div>
         {/* <div className="bg-[#3BC9E833] blur-[200px] rounded-full w-full h-[168px] absolute top-40"></div> */}
         <div className="flex flex-col gap-5 bg-main w-full pt-40 pb-10" >
           <div className="flex justify-center items-center gap-2 sm:gap-5 lg:gap-5 z-[50]">

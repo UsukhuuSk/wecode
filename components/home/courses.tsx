@@ -34,9 +34,9 @@ const HomeCourses = () => {
 
     return (
         <>
-            <div className="absolute top-1/4 left-1/2 -translate-x-1/2 bg-[#4317FF] blur-[200px] min-w-[500px] max-w-[752px] h-[124px] -z-[10]"></div>
+            <div className="absolute top-1/4 left-1/2 -translate-x-1/2 bg-primary blur-[200px] min-w-[500px] max-w-[752px] h-[124px] -z-[10]"></div>
             <div className="text-center flex flex-col gap-8">
-                <div className="max-w-[205px] flex justify-center m-auto text-[18px] font-bold font-neue py-2 px-4 text-center text-white border-2 border-[#4317FF] rounded-[32px]">
+                <div className="max-w-[205px] flex justify-center m-auto text-[18px] font-bold font-neue py-2 px-4 text-center text-white border-2 border-primary rounded-[32px]">
                     {t("courses.title")}
                 </div>
                 <h1 className=" font-neue  text-2xl font-semibold md:text-5xl md:font-bold max-w-[960px] m-auto">

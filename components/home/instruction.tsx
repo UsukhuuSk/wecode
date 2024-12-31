@@ -13,8 +13,8 @@ const HomeInstruction = () => {
             title: t("steps.1.title"),
             description: t("steps.1.description"),
             className: "col-span-1 px-6 py-8",
-            numberStyle: "bg-[#4317FF]",
-            fade: "w-[120px] h-[120px] bg-[#4317FF] absolute blur-[80px] z-10 ",
+            numberStyle: "bg-primary",
+            fade: "w-[120px] h-[120px] bg-primary absolute blur-[80px] z-10 ",
         },
         {
             number: 2,
@@ -51,7 +51,7 @@ const HomeInstruction = () => {
             <div className="flex flex-col gap-[72px] px-5 py-5 2xl:px-[120px] 2xl:pt-[180px]">
                 <div className="flex justify-between">
                     <div className="flex flex-col gap-8 items-start">
-                        <div className="border-2 border-[#4317FF] rounded-[32px] px-5 py-2 font-neue md:text-[18px] font-bold ">
+                        <div className="border-2 border-primary rounded-[32px] px-5 py-2 font-neue md:text-[18px] font-bold ">
                             {t("steps.title")}
                         </div>
                         <h1 className="text-4xl md:text-5xl"> {t("steps.subtitle")}</h1>
