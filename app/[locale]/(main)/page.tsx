@@ -76,7 +76,7 @@ export default function Home() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.3 }}
-          className="px-5 py-5 2xl:py-[175px] 2xl:px-[120px] text-white border-t border-t-[#FFFFFF33]  border-b-[#FFFFFF33] "
+          className="px-5 py-16 md:py-24 xl:py-32 2xl:py-[175px] 2xl:px-[120px] text-white border-t border-t-[#FFFFFF33]  border-b-[#FFFFFF33] "
         >
           {/**@deprecetad*/}
           {/* <HomeFeatures /> */}
