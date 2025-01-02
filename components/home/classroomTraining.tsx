@@ -4,21 +4,27 @@ import twelve from "@/assets/LandingPage/12.svg";
 import Image
     from "next/image";
 import { useParams } from "next/navigation";
+import { useRef } from "react";
+import CommunityForm from "../community/form";
 const ClassroomTraining = () => {
     const { locale } = useParams()
-
+    const refForm = useRef<any>(null);
     const isEn = () => locale === 'en'
+
+    const handleOpenForm = () => {
+        refForm.current.openForm('classroom_requests')
+    }
+
     return (
         <div className="text-white grid grid-cols-12 gap-0 md:gap-16 px-4 md:px-14 ">
+            <CommunityForm ref={refForm}/>
             <div className="flex flex-col items-center justify-center col-span-12 lg:col-span-4 mb-16 md:mb-0">
                 <div className="text-center">
                     <Link href={'/classTraining'} className=" font-neue  text-xl font-semibold md:text-5xl md:font-bold max-w-[960px] m-auto  hover:underline text-center">
                         Танхимын сургалтын бүртгэл эхэллээ.
                     </Link>
                     <div className="flex justify-center mt-8">
-                        <Link href={'/classTraining'}>
-                            <button className="bg-red-500 hover:border border-red-500 hover:bg-transparent hover:text-red-500 hover:scale-110 rounded-[2rem] text-white text-2xl py-2 px-6 font-bold uppercase transition-all">Бүртгүүлэх</button>
-                        </Link>
+                        <button onClick={handleOpenForm} className="bg-red-500 hover:border border-red-500 hover:bg-transparent hover:text-red-500 hover:scale-110 rounded-[2rem] text-white text-2xl py-2 px-6 font-bold uppercase transition-all">Бүртгүүлэх</button>
                     </div>
                 </div>
             </div>

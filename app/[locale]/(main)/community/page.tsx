@@ -22,7 +22,7 @@ export default function page() {
   const t = useTranslations("community");
 
   const handleOpenForm = (tableName: any) => {
-    refFrom.current.openForm(tableName)
+    refFrom.current.openForm(tableName, true)
   }
 
 

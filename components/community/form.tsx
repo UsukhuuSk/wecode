@@ -35,8 +35,13 @@ const CommunityForm = forwardRef(({ type }: FormProps, ref) => {
         }
     }, [config])
 
-    const openForm = async (table: string) => {
+    const openForm = async (table: string, clearable?: boolean) => {
         setErrors([])
+        if (clearable) {
+            setConfig(null)
+            setGroupFields([])
+            setFormData({})
+        }
         if (table) {
             await getConfig(table)
             setOpen(true)
@@ -225,5 +230,5 @@ const CommunityForm = forwardRef(({ type }: FormProps, ref) => {
         </>
     )
 })
-CommunityForm.displayName ='community-form'
+CommunityForm.displayName = 'community-form'
 export default CommunityForm
