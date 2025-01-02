@@ -1,5 +1,7 @@
-const BASEURL = process.env.NEXT_PUBLIC_BASE_URL;
-
+let BASEURL = process.env.NEXT_PUBLIC_API_URL;
+if (!BASEURL?.endsWith('/')) {
+  BASEURL += '/'
+}
 import { clsx, type ClassValue } from "clsx";
 import { twMerge } from "tailwind-merge";
 
@@ -8,11 +10,11 @@ export function cn(...inputs: ClassValue[]) {
 }
 
 export function GetFileUrl(fileId: any) {
-  return `/api/file/${fileId}`
+  return `${BASEURL}file/${fileId}`
 }
 
 export function GetThumbnailUrl(fileId: any) {
-  return `/api/file/thumbnail/${fileId}`
+  return `${BASEURL}file/thumbnail/${fileId}`
 }
 
 export async function DownloadFile(fileUrl: any) {

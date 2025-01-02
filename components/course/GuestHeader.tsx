@@ -3,6 +3,7 @@ import HugeIcon from "../ui/HugeIcon";
 import VideoCourse from "../video/VideoCourse";
 import { useParams } from "next/navigation";
 import { useTranslations } from "next-intl";
+import { GetFileUrl } from "@/lib/utils";
 
 
 export const CourseGuestHeader = ({ course }: any) => {
@@ -23,7 +24,8 @@ export const CourseGuestHeader = ({ course }: any) => {
                 </div>
                 <div className=" md:flex-1 flex md:justify-end">
                     {
-                        course?.intro_video_id && <VideoCourse id={course.intro_video_id._id} course_id={course._id} locale="mn" />
+                        course?.intro_video_id?._id ? <VideoCourse id={course.intro_video_id._id} course_id={course._id} locale="mn" /> :
+                        <img src={GetFileUrl(course?.image?._id)} className="rounded-xl overflow-hidden aspect-video"></img>
                     }
                 </div>
             </div>

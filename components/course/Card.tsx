@@ -9,17 +9,17 @@ const CourseCard = ({ course, children }: any) => {
   return (
     <Link href={`/${params.locale}/course/${course._id}`}>
       <div
-        className="relative bg-transparent rounded-[20px] border border-slate-600  overflow-hidden hover:outline hover:outline-1 hover:outline-primary cursor-pointer"
+        className="relative bg-transparent rounded-[20px] border border-slate-600 overflow-hidden hover:outline hover:outline-1 hover:outline-primary cursor-pointer"
       >
-        <div className="relative overflow-hidden object-cover w-full h-[150px] lg:h-[150px] xl:h-[190px] rounded-t-[24px] bg-wcSlate700">
+        <div className="relative overflow-hidden object-cover w-full h-[150px] lg:h-[150px] xl:h-[190px] rounded-t-[20px] bg-wcSlate700">
           <img
             src={GetThumbnailUrl(course.image._id)}
             alt="AI for All"
-            className="object-cover w-full h-full" />
+            className="object-cover w-full h-full " />
         </div>
         <div className="p-4">
           <div className="flex justify-between items-center mb-2">
-            <span className="text-wcSlate400 font-normal text-sm flex items-center text-sm 2xl:text-base  gap-[4px] xl:gap-[10px]">
+            <span className="text-wcSlate400 font-normal text-sm flex items-center text-sm 2xl:text-base gap-[4px] xl:gap-[10px]">
               {/* {item.teachers.map((item: any, index: number) => (
                 <span key={index}>{item.given_name}</span>
               ))}{" "} */}

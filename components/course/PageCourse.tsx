@@ -96,7 +96,8 @@ export default function PageCourse({ courseData, params }: any) {
                         </div>
                         <div className="flex flex-col gap-4 col-span-12 lg:col-span-8 xl:col-span-8 2xl:col-span-8">
                             {activeLesson ? <LessonPlay activeLesson={activeLesson} course={course} /> :
-                                <VideoCourse id={course.intro_video_id._id} course_id={course._id} locale="mn" />
+                               course.intro_video_id?._id ? <VideoCourse id={course.intro_video_id._id} course_id={course._id} locale="mn" /> : 
+                               <img src={GetFileUrl(course.image._id)} className="rounded-xl overflow-hidden aspect-video"></img>
                             }
                             <div className="md:hidden flex gap-2">
                                 <button onClick={() => setOpenMiniMenu((prev) => !prev)} className="text-white h-10 w-10 flex items-center justify-center rounded-full bg-[#FFFFFF10]">
