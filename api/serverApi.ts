@@ -1,5 +1,5 @@
-// const BASEURL = process.env.NEXT_PUBLIC_API_URL;
-const BASEURL = 'http://localhost:8000'
+const BASEURL = process.env.NEXT_PUBLIC_API_SERVER_SIDE_URL;
+// const BASEURL = 'http://localhost:8000'
 import { cookies } from 'next/headers'
 
 export class ServerApi {
