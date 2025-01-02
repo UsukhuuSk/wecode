@@ -24,6 +24,7 @@ const CommunityForm = forwardRef(({ type }: FormProps, ref) => {
     const [loading, setLoading] = useState<any>(false)
     const [open, setOpen] = useState<boolean>(false)
     const [unitedRefs, setUnitedRefs] = useState<any>([])
+    const [tableName, setTableName] = useState<any>('')
 
     useImperativeHandle(ref, () => ({
         openForm
@@ -43,6 +44,7 @@ const CommunityForm = forwardRef(({ type }: FormProps, ref) => {
             setFormData({})
         }
         if (table) {
+            setTableName(table)
             await getConfig(table)
             setOpen(true)
         }
@@ -130,7 +132,7 @@ const CommunityForm = forwardRef(({ type }: FormProps, ref) => {
                 return
             };
             setSaving(true)
-            await BaseApi._post('9/com_agent_requests', formData)
+            await BaseApi._post(`9/${tableName}`, formData)
             await Helper.wait()
             Helper.handleInfo("Таны хүсэлт илгээгдлээ.")
             handleClose()
