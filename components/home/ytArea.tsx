@@ -19,7 +19,7 @@ const HomeYtArea = () => {
         try {
             setLoading(true)
             const data = await BaseApi._get('youtube/all')
-            setYtList((prev: any) => [...data, ...data])
+            setYtList((prev: any) => [...data])
 
         } catch (error) {
             Helper.handleError(error)
