@@ -4,7 +4,7 @@ import Cookies from "js-cookie";
 
 import React, { createContext, useContext, useState, useEffect, ReactNode } from 'react';
 import { BaseApi } from "../api/baseApi";
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
 
 interface User {
     _id: string;
@@ -26,11 +26,20 @@ interface AuthContextType {
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
 export const AuthProvider = ({ children }: { children: ReactNode }) => {
-    const [user, setUser] = useState<User | null>(null);
+    const [user, setUser] = useState<any>(null);
     const [userActions, setUserActions] = useState<any>([])
     const [menus, setMenus] = useState<any>([])
     const [loaded, setLoaded] = useState(false);
     const router = useRouter();
+    const pathname = usePathname();
+    const searchParams = useSearchParams();
+
+    useEffect(() => {
+        if (user && !user.is_agreement) {
+            router.push(`/quiz`);
+        }
+    }, [pathname, searchParams]);
+
     useEffect(() => {
         fetchUser();
     }, []);
