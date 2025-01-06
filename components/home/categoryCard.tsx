@@ -11,7 +11,7 @@ const HomeCatArea = () => {
 
     const getTopics = async () => {
         try {
-            const { list } = await BaseApi._get('9/ref_course_tags')
+            const { list } = await BaseApi._get('9/service_ref_course_tags')
             setTopics(list)
         } catch (error) {
 

@@ -35,7 +35,7 @@ const CourseFilter: React.FC<CourseFilterProps> = ({ filter, onChange, onClear }
 
     const getLevels = async () => {
         try {
-            const { list } = await BaseApi._get('9/service_ref_course_levels')
+            const { list } = await BaseApi._get('9/ref_course_levels')
             setLevels(list)
         } catch (error) {
 
