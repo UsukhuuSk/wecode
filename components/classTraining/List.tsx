@@ -38,7 +38,7 @@ const ClassTrainingList = () => {
                             {
                                 item.image ? <Image width={0}
                                     height={0} alt="free" className="w-full h-full min-h-80 absolute object-cover select-none" src={GetFileUrl(item.image._id)} /> : <Image width={0}
-                                        height={0} alt="free" className="w-full h-full h-80 absolute object-cover select-none" src={empAi} />
+                                        height={0} alt="free" className="w-full h-full min-h-80 absolute object-cover select-none" src={empAi} />
                             }
                             <div className="group-hover:scale-110 text-center transition-all duration-300 z-10 top-4 min-h-10 text-xl font-semibold rounded-t-lg rounded-b-md flex items-center p-4 rounded-[2rem] max-w-[90%]">
                                 {item.name}
