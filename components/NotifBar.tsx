@@ -4,7 +4,7 @@ import { BaseApi } from "@/api/baseApi"
 import { useEffect, useState } from "react"
 import { Helper } from "@/lib/helper"
 import FirebaseRegister from "./FirebaseRegister"
-import { useTranslations } from "next-intl"
+import { useLocale, useTranslations } from "next-intl"
 import Link from "next/link"
 import { useRouter } from "next/navigation"
 
@@ -14,6 +14,7 @@ export const NotifBar = () => {
     const [count, setCount] = useState(0)
     const [list, setList] = useState<any>([])
     const [loading, setLoading] = useState(false);
+    const locale = useLocale()
 
     const [isAll, setAll] = useState(true);
 
@@ -110,7 +111,7 @@ export const NotifBar = () => {
 
     const handleSettings = () => {
         // handleCloseMenu()
-        router.push('/settings/notification')
+        router.push(`/${locale}/settings/profile`)
     }
 
     const SettingsHeader = () => {

@@ -96,6 +96,10 @@ export default function Header() {
       link: `/${locale}/course`,
     },
     {
+      name: t("classTraining"),
+      link: `/${locale}/classTraining`,
+    },
+    {
       name: t("blog"),
       link: `/${locale}/blog`,
     },
@@ -188,101 +192,11 @@ export default function Header() {
     )
   }
 
-
-  // const MobileMenu = () => {
-  //   return (
-  //     <div className="fixed top-0 w-full flex z-[500] items-center px-4 py-4 md:hidden  bg-[#33415566] justify-between text-white cursor-pointer ">
-  //       <Link href={'/'}>
-  //         <Image src={logo} alt="logo" width={100} height={32} />
-  //       </Link>
-  //       <Sheet open={isSheetOpen} onOpenChange={setSheetOpen}>
-  //         <SheetTrigger asChild>
-  //           <button onClick={() => {
-  //             setSheetOpen(true)
-  //           }}>
-  //             <HamburgerMenuIcon width={24} height={24} />
-  //           </button>
-  //         </SheetTrigger>
-  //         <SheetContent className="bg-[#334155] z-[1000] w-[300px] border-gray-600 text-white">
-  //           <SheetHeader>
-  //             <SheetTitle>
-  //               <Image src={logo} alt="" />
-  //               <LocaleSwitcher />
-  //             </SheetTitle>
-  //             <SheetDescription>
-  //               <div className="flex flex-col items-start justify-center gap-4">
-  //                 {routes.map((route, index) => {
-  //                   return (
-  //                     <div key={index}>
-  //                       <Link
-  //                         href={route.link}
-  //                         key={index}
-  //                         className="font-neue text-[14px] font-medium px-3"
-  //                         onClick={sheetClose}
-  //                       >
-  //                         {route.name}
-  //                       </Link>
-  //                     </div>
-  //                   );
-  //                 })}
-  //                 <div className="w-full border my-4"></div>
-  //                 <div className="cursor-pointer w-full flex items-center gap-2 font-neue text-[14px] font-medium" onClick={() => {
-  //                   handlePush('/profile')
-  //                   sheetClose()
-  //                 }}>
-  //                   <Profile02Icon
-  //                     size={24}
-  //                     color={"#fff"}
-  //                     variant={"bulk"}
-  //                   />
-  //                   {trns('profile')}
-  //                 </div>
-  //                 <div className="flex items-center gap-2 cursor-pointer w-full font-neue text-[14px] font-medium" onClick={() => {
-  //                   handlePush('/settings/profile')
-  //                   sheetClose()
-  //                 }}>
-  //                   <PencilEdit01Icon
-  //                     size={24}
-  //                     color={"#fff"}
-  //                     variant={"bulk"}
-  //                   />
-  //                   {trns('editProfile')}
-  //                 </div>
-
-  //                 <div
-  //                   className="flex items-center gap-2  cursor-pointer w-full font-neue text-[14px] font-medium"
-  //                   onClick={() => {
-  //                     handleLogout()
-  //                     sheetClose()
-  //                   }}
-  //                 >
-  //                   <LogoutSquare01Icon
-  //                     size={20}
-  //                     color={"#fff"}
-  //                     variant={"solid"}
-  //                   />
-  //                   {trns('signout')}
-  //                 </div>
-  //               </div>
-  //             </SheetDescription>
-  //           </SheetHeader>
-
-  //           {/* <SheetFooter>
-  //           <SheetClose asChild>
-  //             <Button type="submit">Save changes</Button>
-  //           </SheetClose>
-  //         </SheetFooter> */}
-  //         </SheetContent>
-  //       </Sheet>
-  //     </div>
-  //   )
-  // }
-
   const MainMenu = () => {
     return (
       <div className="hidden md:block fixed top-0 z-10 w-full py-3 text-white bg-[#33415566] backdrop-blur-sm border-b border-[#40404787]">
         <div className="container flex  justify-between">
-          <Link href={'/'}>
+          <Link href={`/${locale}`}>
             <Image src={logo} alt="logo" width={100} height={32} />
           </Link>
           <div className="flex items-center gap-8">
@@ -317,7 +231,7 @@ export default function Header() {
                     </div>
                   </DropdownMenuTrigger>
                   <DropdownMenuContent className="w-56 mr-[110px] bg-[#1a1a40] border-neutral-700 text-white flex flex-col items-start">
-                    <DropdownMenuItem className="gap-3 py-3 focus:bg-white/10 cursor-pointer w-full" onClick={() => handlePush('/profile')}>
+                    <DropdownMenuItem className="gap-3 py-3 focus:bg-white/10 cursor-pointer w-full" onClick={() => handlePush(`/${locale}/profile`)}>
                       <Profile02Icon
                         size={24}
                         color={"#fff"}
@@ -325,7 +239,7 @@ export default function Header() {
                       />
                       {trns('profile')}
                     </DropdownMenuItem>
-                    <DropdownMenuItem className="gap-3 py-3 focus:bg-white/10 cursor-pointer w-full" onClick={() => handlePush('/settings/profile')}>
+                    <DropdownMenuItem className="gap-3 py-3 focus:bg-white/10 cursor-pointer w-full" onClick={() => handlePush(`/${locale}/settings/profile`)}>
                       <PencilEdit01Icon
                         size={24}
                         color={"#fff"}

@@ -5,11 +5,13 @@ import { useEffect, useState } from "react";
 import { FaYoutube } from "react-icons/fa";
 import { Carousel, CarouselContent, CarouselNext, CarouselPrevious } from "../ui/carousel";
 import YtCard from "./ytCard";
+import { useLocale } from "next-intl";
 
 const HomeYtArea = () => {
 
     const [ytList, setYtList] = useState<any>([])
     const [loading, setLoading] = useState<boolean>(false)
+    const locale = useLocale()
 
     useEffect(() => {
         getYtList()
@@ -31,7 +33,7 @@ const HomeYtArea = () => {
     return (
         <div className="container">
             <div className=" my-6 lg:my-0 flex flex-col gap-2 bg-[#1f086090] rounded-[32px] p-6  font-neue rainbow">
-                <p className="text-2xl font-neue">Хиймэл оюун ухааны тухай ярилцая. </p>
+                <p className="text-2xl font-neue"> {locale === 'mn' ? 'Хиймэл оюун ухааны тухай ярилцая.' : `Let's talk about artificial intelligence.`} </p>
                 <p className="flex items-center gap-2 mb-4 text-md">
                     <FaYoutube className="text-red-500" /> <Link href={"https://www.youtube.com/@AI_Academy_asia"} rel="noopener noreferrer" target="_blank">AI Academy    </Link>
                 </p>

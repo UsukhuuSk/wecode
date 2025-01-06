@@ -74,7 +74,7 @@ export const FloatingNav = ({
       >
         {" "}
         <div>
-          <Link href={"/"}>
+          <Link href={`/${locale}`}>
             {" "}
             <Image src={logo} alt="" />{" "}
           </Link>

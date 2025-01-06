@@ -1,31 +1,25 @@
 "use client"
 import React, { useEffect, useRef, useState } from "react";
-import { IoIosStar } from "react-icons/io";
-import Video from "next-video";
 
 import { useTranslations } from "next-intl";
-import { CheckCircledIcon, HamburgerMenuIcon } from "@radix-ui/react-icons"
+import { HamburgerMenuIcon } from "@radix-ui/react-icons"
 
-import Link from "next/link";
-import { useParams } from "next/navigation";
 import { BaseApi } from "../../api/baseApi";
-import HugeIcon from "../ui/HugeIcon";
 import VideoCourse from "../video/VideoCourse";
 import CourseTopics from "./topics";
 import { GetFileUrl } from "../../lib/utils";
-import { CourseEnroll } from "./Enroll";
 import { CourseMainInfo } from "./MainInfo";
 import { CourseGoal } from "./CourseGoal";
 import { CourseAbout } from "./CourseAbout";
 import { CourseInstructor } from "./CourseInstructor";
 import CourseGuestHeader from "./GuestHeader";
 import { CourseRolledHeader } from "./RolledHeader";
-import { LessonProvider, useLesson } from "../../context/LessonContext";
+import { useLesson } from "../../context/LessonContext";
 import { LessonPlay } from "./lessons/Play";
 import { LessonDetailTabs } from "./lessons/DetailTabs";
 import { CourseExam } from "./exam/Exams";
 import { useAuth } from "@/context/AuthContext";
-import { Hamburger01Icon, PlayIcon } from "@hugeicons/react";
+import { PlayIcon } from "@hugeicons/react";
 
 
 export default function PageCourse({ courseData, params }: any) {
@@ -96,8 +90,8 @@ export default function PageCourse({ courseData, params }: any) {
                         </div>
                         <div className="flex flex-col gap-4 col-span-12 lg:col-span-8 xl:col-span-8 2xl:col-span-8">
                             {activeLesson ? <LessonPlay activeLesson={activeLesson} course={course} /> :
-                               course.intro_video_id?._id ? <VideoCourse id={course.intro_video_id._id} course_id={course._id} locale="mn" /> : 
-                               <img src={GetFileUrl(course.image._id)} className="rounded-xl overflow-hidden aspect-video"></img>
+                                course.intro_video_id?._id ? <VideoCourse id={course.intro_video_id._id} course_id={course._id} locale="mn" /> :
+                                    <img src={GetFileUrl(course.image._id)} className="rounded-xl overflow-hidden aspect-video"></img>
                             }
                             <div className="md:hidden flex gap-2">
                                 <button onClick={() => setOpenMiniMenu((prev) => !prev)} className="text-white h-10 w-10 flex items-center justify-center rounded-full bg-[#FFFFFF10]">

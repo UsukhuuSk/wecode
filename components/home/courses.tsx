@@ -1,4 +1,4 @@
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import {
     Carousel,
     CarouselContent,
@@ -13,6 +13,7 @@ import Link from "next/link";
 const HomeCourses = () => {
     const t = useTranslations("HomePage");
     const [courses, setCourses] = useState<any>([])
+    const locale = useLocale()
 
     const [loading, setLoading] = useState<boolean>(false)
     useEffect(() => {
@@ -59,7 +60,7 @@ const HomeCourses = () => {
                     <CarouselNext className="bg-white text-black" />
                 </Carousel>
             </div>
-            <Link href={'/login?mode=register'} className="transition-all font-bold text-[1rem] text-center font-neue px-10 py-4 rounded-[32px] bg-primary hover:bg-white hover:text-primary text-white m-auto">
+            <Link href={`/${locale}/login?mode=register`} className="transition-all font-bold text-[1rem] text-center font-neue px-10 py-4 rounded-[32px] bg-primary hover:bg-white hover:text-primary text-white m-auto">
                 {t("courses.signup")}
             </Link>
         </>

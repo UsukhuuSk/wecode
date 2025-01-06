@@ -1,16 +1,17 @@
 import { transcode } from "buffer";
 import HugeIcon from "../../ui/HugeIcon";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import { useRouter } from "next/navigation";
 
 export const ExamItem = ({ courseId, exam }: any) => {
     const trns = useTranslations('course.detail')
     const router = useRouter()
+    const locale = useLocale()
     const isActive = () => {
         return false;
     }
     const handleExam = () => {
-        router.push(`/course/${courseId}/${exam._id}`)
+        router.push(`/${locale}/course/${courseId}/${exam._id}`)
     }
     return (
         <li className={"flex items-center justify-between rounded-md hover:bg-card py-1 px-2 cursor-pointer " + (isActive() ? "bg-tpGreen" : "")} onClick={handleExam}>

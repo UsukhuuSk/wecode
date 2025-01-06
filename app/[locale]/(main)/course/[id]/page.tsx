@@ -1,7 +1,6 @@
 import PageCourse from "@/components/course/PageCourse";
 import { PageCourseError } from "@/components/course/PageCourseError";
 import { ServerApi } from "@/api/serverApi";
-import Head from "next/head";
 import { GetFileUrl } from "@/lib/utils";
 import { Metadata, ResolvingMetadata } from "next";
 

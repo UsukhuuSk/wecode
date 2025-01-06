@@ -5,7 +5,7 @@ import WefLogo from "@/assets/WEFlogo.png"
 import unicefLogo from "@/assets/landing/unicefLogo.png"
 
 import Image from "next/image";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import { FaAppleAlt } from "react-icons/fa";
 import { IoPlay } from "react-icons/io5";
 import mobile from "@/assets/asadasd.png";
@@ -16,6 +16,7 @@ import { useParams } from "next/navigation";
 
 const HomeJourney = () => {
     const t = useTranslations("HomePage");
+    const locale = useLocale()
 
     return (
         <>
@@ -86,7 +87,7 @@ const HomeJourney = () => {
                             <h1 className="text-white text-xl font-semibold md:text-2xl md:font-bold font-neue">
                                 {t("started")}
                             </h1>
-                            <Link href={'/login?mode=register'} className="hover:scale-95 transition-all flex items-center gap-3 w-auto justify-start rounded-[48px] bg-[#FFFFFF33] border border-[#FFFFFF66]  text-white py-[10px] px-5">
+                            <Link href={`/${locale}/login?mode=register`} className="hover:scale-95 transition-all flex items-center gap-3 w-auto justify-start rounded-[48px] bg-[#FFFFFF33] border border-[#FFFFFF66]  text-white py-[10px] px-5">
                                 <span>{t("sign")} </span>
                                 <FaArrowRight size={12} color="#fff" />
                             </Link>

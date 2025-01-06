@@ -1,7 +1,7 @@
 import { BaseApi } from "@/api/baseApi"
 import { Helper } from "@/lib/helper"
 import { GetFileUrl } from "@/lib/utils"
-import { useTranslations } from "next-intl"
+import { useLocale, useTranslations } from "next-intl"
 import Link from "next/link"
 import { useEffect, useState } from "react"
 import Image from "next/image"
@@ -9,6 +9,7 @@ import { CourseEmpty } from "./Empty"
 import CourseCard from "../course/Card"
 export const ProCourseLearning = () => {
     const trns = useTranslations('profile')
+    const locale = useLocale()
     const [list, setList] = useState<any[]>([])
     const [loading, setLoading] = useState<boolean>(false)
 
@@ -62,11 +63,9 @@ export const ProCourseLearning = () => {
                                             </div>
                                         </div>
                                         <div>
-                                            <Link href={`/course/${item._id}`}>
-                                                <button className="bg-slate-600 text-slate-600 px-4 py-3 font-semibold rounded-[2rem]">
-                                                    {trns('continueLearning')}
-                                                </button>
-                                            </Link>
+                                            <button className="bg-slate-600 text-slate-600 px-4 py-3 font-semibold rounded-[2rem]">
+                                                {trns('continueLearning')}
+                                            </button>
                                         </div>
                                     </div>
                                 </div>
@@ -89,7 +88,7 @@ export const ProCourseLearning = () => {
                                 <div key={item._id}>
                                     <div className="md:hidden">
                                         <CourseCard course={item} >
-                                            <Link href={`/course/${item._id}`}>
+                                            <Link href={`/${locale}/course/${item._id}`}>
                                                 <button className="mt-4 font-neue hover:bg-primary hover:text-white bg-white text-xs md:text-base text-primary px-2 py-1 md:px-4 md:py-3 font-semibold rounded-[1rem] md:rounded-[2rem] transition-all duration-300">
                                                     {trns('continueLearning')}
                                                 </button>
@@ -108,7 +107,7 @@ export const ProCourseLearning = () => {
                                             </div>
                                         </div>
                                         <div>
-                                            <Link href={`/course/${item._id}`}>
+                                            <Link href={`/${locale}/course/${item._id}`}>
                                                 <button className="hover:bg-primary hover:text-white bg-white text-xs md:text-base text-primary px-2 py-1 md:px-4 md:py-3 font-semibold rounded-[1rem] md:rounded-[2rem]transition-all duration-300">
                                                     {trns('continueLearning')}
                                                 </button>

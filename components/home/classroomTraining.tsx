@@ -20,7 +20,7 @@ const ClassroomTraining = () => {
             <CommunityForm ref={refForm} />
             <div className="flex flex-col items-center justify-center col-span-12 lg:col-span-4 mb-16 md:mb-0">
                 <div className="text-center">
-                    <Link href={'/classTraining'} className=" font-neue  text-xl font-semibold md:text-5xl md:font-bold max-w-[960px] m-auto  hover:underline text-center">
+                    <Link href={`/${locale}/classTraining`} className=" font-neue  text-xl font-semibold md:text-5xl md:font-bold max-w-[960px] m-auto  hover:underline text-center">
                         {isEn() ? 'In-person training registration has started.' : 'Танхимын сургалтын бүртгэл эхэллээ.'}
                     </Link>
                     <div className="flex justify-center mt-8">

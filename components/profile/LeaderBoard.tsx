@@ -1,6 +1,6 @@
 import Image from "next/image"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "../ui/select"
-import { useTranslations } from "next-intl"
+import { useLocale, useTranslations } from "next-intl"
 import Link from "next/link"
 import { FaTrophy } from "react-icons/fa"
 import { useRef, useState } from "react"
@@ -9,6 +9,7 @@ import LeaderBoard from "../leaderBoard/board"
 
 export const ProLeaderBoard = ({ isMini }: any) => {
     const trns = useTranslations('profile.boardItems')
+    const locale = useLocale()
     const boardRef = useRef<any>();
     const handleFilterChange = (val: any) => {
         boardRef.current.handleFilter(val)
@@ -23,7 +24,7 @@ export const ProLeaderBoard = ({ isMini }: any) => {
                     </h1>
                 </div>
                 <Link
-                    href={`/leaderboard`}
+                    href={`/${locale}/leaderboard`}
                     className="text-[13px] font-normal font-neue text-[#FFFFFF80]"
                 >
                     {trns('fullBoard')}
