@@ -55,7 +55,7 @@ const ClassroomTraining = () => {
             </div>
             <div className="col-span-12 lg:col-span-8 flex flex-col gap-8 bg-[#1f086090] rounded-[32px] p-8  font-neue shadow-xl shadow-violet-500/50 relative overflow-hidden
 ">
-                <div className="flex items-center justify-center mb-4">
+                <div className="flex items-center justify-center mb-4 pt-2">
                     <Image className="absolute hidden md:block right-[-150px] top-1/2 -translate-y-[50%] select-none" height={300} alt="In-person training" src={twelve} />
                     <div className="flex flex-col md:flex-row relative items-center gap-2 justify-center">
                         <div className="bg-gray-50  md:absolute left-0 rounded-xl h-24 w-24 inline-flex justify-center items-center">
