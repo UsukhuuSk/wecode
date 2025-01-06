@@ -13,7 +13,6 @@ import { LinkedInLogoIcon } from "@radix-ui/react-icons"
 import Link from "next/link"
 import { FaArrowAltCircleLeft, FaArrowCircleLeft } from "react-icons/fa"
 import { ArrowLeft01Icon, CircleArrowLeft01Icon } from "@hugeicons/react"
-
 const ClientPageClassTraining = ({ detail }: any) => {
     const params = useParams<any>()
     const refFrom = useRef<any>(null)

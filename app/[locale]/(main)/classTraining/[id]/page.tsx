@@ -16,11 +16,12 @@ export async function generateMetadata(
 ): Promise<Metadata> {
     try {
         const data = await ServerApi._get(`9/service_classroom_courses/${params.id}`)
+        console.log('meta img:', GetFileUrl(data.image?._id))
         return {
             title: data.name,
             description: data.description,
             openGraph: {
-                images: [data.image ? GetFileUrl(data.image._id) : 'https://ai-academy.asia/_next/static/media/newLogo.8c1df633.svg'],
+                images: [data.image ? GetFileUrl(data.image?._id) : 'http://localhost:3000/_next/static/media/freebg.4bd5bea3.png'],
             },
         }
     } catch (error) {
