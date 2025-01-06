@@ -16,7 +16,6 @@ export async function generateMetadata(
 ): Promise<Metadata> {
     try {
         const data = await ServerApi._get(`9/service_classroom_courses/${params.id}`)
-        console.log('meta img:', GetFileUrl(data.image?._id))
         return {
             title: data.name,
             description: data.description,

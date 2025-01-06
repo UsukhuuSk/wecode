@@ -32,7 +32,7 @@ export default function page() {
             <div className="border border-[#FFFFFF33] w-full "></div>
           </div>
           <div className="h-[1px] blogline mt-[48px] md:mt-[95px] mb-[48px] bg-[#FFFFFF33]"></div>
-          <ul className="container grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3  gap-24 md:gap-8 ">
+          <ul className="container grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3  gap-24 md:gap-10 ">
             {postList.map((post: any, index: any) => (
               <BlogListItem post={post} key={index} />
             ))}

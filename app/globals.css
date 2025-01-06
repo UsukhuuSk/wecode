@@ -284,3 +284,28 @@ h1 {
   border: none;
   cursor: pointer;
 }
+
+.blogItemTitle {
+  background-color: #1c0b38;
+  height: 3rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  border-top-right-radius: 1.5rem;
+  border-top-left-radius: 1.5rem;
+  display: flex;
+  align-items: center;
+
+}
+
+.blogItemTitle::after {
+  content: "";
+  position: absolute;
+  background-color: transparent;
+  bottom: 0;
+  right: -3rem;
+  min-height: 3rem;
+  width: 3rem;
+  aspect-ratio: 1 / 2;
+  border-bottom-left-radius: 2rem;
+  box-shadow: 0 2rem 0 0 #1c0b38;
+}
