@@ -24,7 +24,7 @@ export async function generateMetadata(
       title: data.title,
       description: stripHTMLTags(data.html_content),
       openGraph: {
-        images: [GetFileUrl(data.image._id)],
+        images: [`https://ai-academy.asia/api/file/${data.image._id}`],
       },
     }
 

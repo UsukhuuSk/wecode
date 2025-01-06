@@ -21,7 +21,7 @@ export async function generateMetadata(
             title: data.name,
             description: data.description,
             openGraph: {
-                images: [data.image ? GetFileUrl(data.image?._id) : 'http://localhost:3000/_next/static/media/freebg.4bd5bea3.png'],
+                images: [data.image ? `https://ai-academy.asia/api/file/${data.image._id}` : 'https://ai-academy.asia/_next/static/media/freebg.4bd5bea3.png'],
             },
         }
     } catch (error) {
