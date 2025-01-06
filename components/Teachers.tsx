@@ -9,19 +9,6 @@ export default function Teachers() {
   const t = useTranslations("HomePage");
   const locale = useLocale();
 
-  const fetchImageFileById = async (id: string) => {
-    try {
-      const response = await getFile(id);
-      if (response) {
-        const blob = await response.blob();
-        const imgUrl = URL.createObjectURL(blob);
-        return imgUrl;
-      }
-    } catch (error) {
-      console.error("Error fetching image file:", error);
-    }
-  };
-
   useEffect(() => {
     const fetchUsers = async () => {
       const param = { lang: locale };
