@@ -5,6 +5,7 @@ import { ReactLenis } from "@/lib/lenis"
 import { useParams } from "next/navigation"
 import { useEffect, useRef, useState } from "react"
 import CommunityForm from "@/components/community/form";
+import SafeHtmlContent from "@/components/SafeHtmlContent"
 
 const ClassTrainingDetail = () => {
     const params = useParams<any>()
@@ -31,13 +32,16 @@ const ClassTrainingDetail = () => {
                 <div className="bg-gray-100">
                     <div className="bg-main h-20 w-full" style={{ borderBottomLeftRadius: '50% 50%', borderBottomRightRadius: '50% 50%' }}></div>
                     <div className=" rounded-[2rem] md:px-16  py-16 container">
-                        {
+                        {/* {
                             detail && <div
                                 className=" leading-normal text-start font-neue"
                                 dangerouslySetInnerHTML={{
                                     __html: detail.html_content,
                                 }}
                             />
+                        } */}
+                        {
+                            detail && <SafeHtmlContent htmlContent={detail.html_content} />
                         }
                     </div>
                     {

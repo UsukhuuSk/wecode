@@ -4,12 +4,35 @@ import twelve from "@/assets/LandingPage/12.svg";
 import Image
     from "next/image";
 import { useParams } from "next/navigation";
-import { useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import CommunityForm from "../community/form";
+import { Helper } from "@/lib/helper";
+import { BaseApi } from "@/api/baseApi";
+import { GetFileUrl } from "@/lib/utils";
+import SafeHtmlContent from "../SafeHtmlContent";
 const ClassroomTraining = () => {
     const { locale } = useParams()
     const refForm = useRef<any>(null);
     const isEn = () => locale === 'en'
+    const [course, setCourse] = useState<any>(null)
+    const [htmlContent, setHtmlContent] = useState<any>(null)
+
+    useEffect(() => {
+        getAnnouncement()
+    }, [])
+
+    const getAnnouncement = async () => {
+        try {
+            const { list } = await BaseApi._get('9/service_classroom_announcements')
+            if (Helper.isNotEmptyList(list)) {
+                const c = list[0]
+                setCourse(c);
+                setHtmlContent(c.html_content)
+            }
+        } catch (error) {
+            Helper.handleError(error)
+        }
+    }
 
     const handleOpenForm = () => {
         refForm.current.openForm('classroom_requests')
@@ -32,46 +55,20 @@ const ClassroomTraining = () => {
             </div>
             <div className="col-span-12 lg:col-span-8 flex flex-col gap-8 bg-[#1f086090] rounded-[32px] p-8  font-neue shadow-xl shadow-violet-500/50 relative overflow-hidden
 ">
-                <div className="flex items-center justify-center">
+                <div className="flex items-center justify-center mb-4">
                     <Image className="absolute hidden md:block right-[-150px] top-1/2 -translate-y-[50%] select-none" height={300} alt="In-person training" src={twelve} />
-                    <p className="w-3/5 text-center text-lg font-bold text-gray-200 ">
-                        {
-                            isEn() ? `Enrollment is now open for the evening classes of  the Machine Learning Engineering program for adults.` : `  Машин сургалтын инженерчлэлийн хөтөлбөрийн   Насанд хүрэгчдэд зориулсан оройн ангийн элсэлт эхэллээ.`
-                        }
-
-                    </p>
+                    <div className="flex relative justify-center">
+                        <div className="bg-gray-50 absolute left-0 p-2 rounded-xl">
+                            <img className="h-20 " alt="In-person training" src={GetFileUrl(course?.logo?._id)} />
+                        </div>
+                        <p className="w-3/5 text-center text-lg font-bold text-gray-200 ">
+                            {course?.name}
+                        </p>
+                    </div>
                 </div>
-                <p className="text-gray-300">
-                    <span className="font-semibold">  {isEn() ? 'Duration:' : 'Үргэлжлэх хугацаа:'} </span>
-                    {isEn() ? '6 months' : '6 сар'}
-                </p>
-                <p className="text-gray-300">
-                    <span className="font-semibold">
-                        {isEn() ? 'Class schedule:' : ' Хичээлийн хуваарь:'}
-                    </span>
-                    <span>
-                        {isEn() ? 'Tuesday, Thursday and Saturday, from 6:30 to  8:00 PM' : ' Мягмар, Пүрэв, Бямба гаргуудад 18:30-20:00 цагт'}
-                    </span>
-                </p>
-                <p className="text-gray-300">
-                    {isEn() ? 'What will you learn in this program?' : ' Энэхүү хөтөлбөрөөр та юу суралцах вэ?'}
-                </p>
-                <ul className="list-disc pl-8 text-gray-300">
-                    <li>
-                        {isEn() ? `Deepening Python Skills and Introducing Data Manipulation
-`: ` Python ур чадварыг гүнзгийрүүлж, өгөгдөл боловсруулах аргуудыг сурах`}
-                    </li>
-                    <li>
-                        {isEn() ? `Introduction to Data Visualization and Basic AI Concepts
-`: `Өгөгдөл дүрслэх үндэс болон хиймэл оюуны үндсэн ойлголтуудтай танилцах`}
-                    </li>
-                    <li> {isEn() ? `Web Fundamentals & Python Integration
-`: `Веб хөгжүүлэлтийн үндэс болон Python-ийг интеграцчилах`}
-                    </li>
-                    <li>{isEn() ? `Building ML Models, Working with Real-World Data, and Web + AI Integration
-` : `Машин сургалтын загварууд бүтээж, бодит өгөгдөл дээр ажиллах, веб ба AI интеграцчилах`}
-                    </li>
-                </ul>
+                <div className="z-10">
+                    {htmlContent && <SafeHtmlContent htmlContent={htmlContent} color="white" />}
+                </div>
             </div>
         </div>
     )

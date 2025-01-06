@@ -33,7 +33,7 @@ const ClassTrainingList = () => {
                     <Link  key={index} href={`/${locale}/classTraining/${item._id}`}>
                         <div key={index} className="relative bg-center bg-contain bg-no-repeat text-white h-80 border border-neutral-600 rounded-2xl p-1 overflow-hidden"
                             style={{ backgroundImage: `url(${GetFileUrl(item?.image?._id)})` }}>
-                            <div className=" top-4 h-10 bg-[#000000a6] text-lg font-semibold rounded-t-lg rounded-b-md flex items-center px-4">
+                            <div className=" top-4 min-h-10 bg-[#000000a6] text-lg font-semibold rounded-t-lg rounded-b-md flex items-center px-4">
                                 {item.name}
                             </div>
                         </div>

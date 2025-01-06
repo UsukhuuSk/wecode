@@ -16,7 +16,8 @@ import Teachers from "@/components/Teachers";
 import logo1 from "@/assets/landing/Mask group.svg";
 import logo2 from "@/assets/landing/Mask group1.svg";
 import logo3 from "@/assets/landing/Group 12.svg";
-import WefLogo from "@/assets/WEFlogo.png"
+import WefLogo from "@/assets/landing/weflogo.svg"
+import CamLogo from "@/assets/landing/cambridge.png"
 
 import unicefLogo from "@/assets/landing/unicefLogo.png"
 import { motion } from "framer-motion";
@@ -124,13 +125,18 @@ export default function About() {
               {t('partners')}
             </p>
           </div>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+          <div className="grid grid-cols-2 md:grid-cols-5 gap-8">
             <div className="rounded-xl flex items-center justify-center h-28">
               <Image src={logo3} alt="" />
             </div>
             <div className="rounded-xl flex items-center justify-center h-28">
               <div className="h-24">
                 <Image className="h-24 w-auto" src={WefLogo} alt="" />
+              </div>
+            </div>
+            <div className="rounded-xl flex items-center justify-center h-28">
+              <div className="h-24">
+                <Image className="h-24 w-auto" src={CamLogo} alt="" />
               </div>
             </div>
             <div className="rounded-xl flex items-center justify-center h-28">

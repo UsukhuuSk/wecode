@@ -3,7 +3,7 @@ import React from "react";
 import logo from "../assets/logo.svg";
 import Link from "next/link";
 import { ArrowRight02Icon } from "@hugeicons/react";
-import { FaFacebook, FaInstagram, FaLinkedin } from "react-icons/fa";
+import { FaFacebook, FaInstagram, FaLinkedin, FaMobile, FaPhone } from "react-icons/fa";
 import { useTranslations } from "next-intl";
 
 export default function NewFooter() {
@@ -67,6 +67,13 @@ export default function NewFooter() {
             className="p-[10px] border border-[#FFFFFF66] rounded-full bg-[#FFFFFF33]"
           >
             <FaLinkedin size={20} color={"#FFFFFF"} />
+          </Link>
+          <Link
+            href="tel:+97675051055"
+            className="p-[10px] border border-[#FFFFFF66] rounded-full bg-[#FFFFFF33] text-white inline-flex items-center gap-2"
+          >
+            <FaPhone />
+            {'(+976) 75051055'}
           </Link>
         </div>
       </div>

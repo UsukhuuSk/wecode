@@ -5,6 +5,7 @@ import { ServerApi } from "@/api/serverApi";
 import { headers } from 'next/headers';
 import { GetFileUrl } from "@/lib/utils";
 import { Metadata, ResolvingMetadata } from "next";
+import SafeHtmlContent from "@/components/SafeHtmlContent";
 
 function stripHTMLTags(html: any) {
   return html.replace(/<[^>]*>/g, "");
@@ -85,16 +86,12 @@ export default async function BlogDetail({ params }: any) {
                 alt="picture"
                 className="rounded-3xl w-full max-w-[600px]"
                 height={337}
-                width={600} // Add width for Image component
+                width={600}
               />
             }
           </div>
-          <div
-            className=" leading-normal text-start text-white font-neue"
-            dangerouslySetInnerHTML={{
-              __html: post.html_content,
-            }}
-          />
+
+          <SafeHtmlContent htmlContent={post.html_content} color="white" />
         </div>
       </div>
     </div>
