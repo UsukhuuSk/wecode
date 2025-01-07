@@ -309,3 +309,110 @@ h1 {
   border-bottom-left-radius: 2rem;
   box-shadow: 0 2rem 0 0 #1c0b38;
 }
+
+
+.cl-training-footer {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  background-color: #13032b;
+  height: 4rem;
+  width: 4rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  border-top-left-radius: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+}
+
+.cl-training-footer::before {
+  content: "";
+  position: absolute;
+  background-color: transparent;
+  bottom: 0;
+  left: -2rem;
+  min-height: 4rem;
+  width: 2rem;
+  aspect-ratio: 1 / 2;
+  border-bottom-right-radius: 1rem;
+  box-shadow: 0 2rem 0 0 #13032b;
+}
+
+.cl-training-footer::after {
+  content: "";
+  position: absolute;
+  background-color: transparent;
+  top: -4rem;
+  right: 0;
+  min-height: 4rem;
+  width: 2rem;
+  aspect-ratio: 1 / 2;
+  border-bottom-right-radius: 1rem;
+  box-shadow: 0 2rem 0 0 #13032b;
+
+  /* box-shadow: 0 2rem 0 0 #13032b; */
+}
+
+.hover-button {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  cursor: pointer;
+  overflow: hidden;
+}
+
+.hover-button .button-icon {
+  display: inline-block;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+  position: relative;
+}
+
+.hover-button:hover .button-icon {
+  animation: slide-out-in 0.6s ease both;
+}
+
+.hover-button .button-icon {
+  animation: slide-in-out 0.6s ease both;
+}
+
+@keyframes slide-out-in {
+  0% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  50% {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  51% {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slide-in-out {
+  0% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  50% {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  51% {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}

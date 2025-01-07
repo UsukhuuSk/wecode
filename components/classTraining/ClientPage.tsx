@@ -19,16 +19,6 @@ const ClientPageClassTraining = ({ detail }: any) => {
     const locale = useLocale()
     const router = useRouter()
 
-    useEffect(() => {
-        getDetail()
-    }, [])
-    const getDetail = async () => {
-        try {
-            const data = await BaseApi._get(`9/service_classroom_courses/${params.id}`)
-        } catch (error) {
-            Helper.handleError(error)
-        }
-    }
     const handleOpenForm = () => {
         refFrom.current.openForm('classroom_requests')
     }
@@ -40,7 +30,7 @@ const ClientPageClassTraining = ({ detail }: any) => {
                     <button className="" onClick={() => router.back()}>
                         <CircleArrowLeft01Icon size={'2rem'} />
                     </button>
-                    <p className="font-semibold text-2xl">{detail?.name}</p>
+                    <p className="font-semibold text-2xl max-w-[70%]">{detail?.name}</p>
                     <span></span>
                 </div>
                 <div className="bg-gray-100">
@@ -54,7 +44,7 @@ const ClientPageClassTraining = ({ detail }: any) => {
                     </div>
                     <div className="container flex flex-col gap-4 pb-4">
                         <h1 className="text-center">{locale === 'mn' ? 'Багш нар' : 'Teachers'}</h1>
-                        <div className="grid grid-cols-4 gap-4">
+                        <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
                             {detail?.teachers.map((t: any, index: any) => {
                                 return <div className="flex justify-center group" key={index}>
                                     <div className="py-2 rounded-[2rem]  inline-flex gap-2 items-center">
