@@ -20,7 +20,6 @@ const ClassTrainingPage = () => {
     const trns = useTranslations("classTraining")
     return (
         <ReactLenis root>
-      
                 <div className="pt-40 pb-20 ">
                     <div className="absolute top-[10%] -left-[10%] -z-50">
                         <Image src={purple} alt="" width={500} height={500} />

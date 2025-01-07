@@ -11,6 +11,7 @@ import empAi from "@/assets/course/ai.png"
 import Image from "next/image";
 import { motion } from "framer-motion";
 import CLFooterButton from "./FooterButton";
+import { useClassTraining } from "@/context/ClassTrainingContext";
 
 const fadeInUp = {
     hidden: { opacity: 0, y: 50 },
@@ -22,31 +23,19 @@ const fadeInUp = {
 };
 
 const ClassTrainingList = () => {
-    const [list, setList] = useState<any>([])
-    const trns = useTranslations("classTraining")
+    const { courseList } = useClassTraining()
     const locale = useLocale()
-    useEffect(() => {
-        getList()
-    }, [])
 
-    const getList = async () => {
-        try {
-            const a = []
-            const data = await BaseApi._get('9/service_classroom_courses')
-            setList(data.list)
-        } catch (error) {
-            Helper.handleError(error)
-        }
-    }
+
 
     const getGridClasses = (index: number) => {
-        return `${index == 0 ? 'md:row-span-2' : (index === 1 ? 'md:row-span-2' : 'md:row-span-1')} ${index === list.length - 1 ? 'md:col-span-3' : ''}`
+        return `${index == 0 ? 'md:row-span-2' : (index === 1 ? 'md:row-span-2' : 'md:row-span-1')} ${index === courseList.length - 1 ? 'md:col-span-3' : ''}`
     }
 
     return (
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {
-                list.map((item: any, index: number) => (
+                courseList.map((item: any, index: number) => (
                     <motion.div
                         key={index}
                         variants={fadeInUp}
@@ -60,8 +49,8 @@ const ClassTrainingList = () => {
                             >
                                 {
                                     item.image ? <Image width={0}
-                                        height={0} alt="free" className="w-full h-full min-h-80 absolute object-cover select-none" src={GetFileUrl(item.image._id)} /> : <Image width={0}
-                                            height={0} alt="free" className="w-full h-full min-h-80 absolute object-cover select-none" src={empAi} />
+                                        height={0} alt="free" className="group-hover:translate-x-2 transition-all scale-110 w-full  h-full min-h-80 absolute object-cover select-none" src={GetFileUrl(item.image._id)} /> : <Image width={0}
+                                            height={0} alt="free" className="group-hover:translate-x-2 transition-all scale-110  w-full h-full min-h-80 absolute object-cover select-none" src={empAi} />
                                 }
                                 <div className="group-hover:scale-110 text-center transition-all duration-300 z-10 top-4 min-h-10 text-xl font-semibold rounded-t-lg rounded-b-md flex items-center p-4 rounded-[2rem] max-w-[90%]">
                                     {item.name}
