@@ -28,12 +28,16 @@ const ClassTrainingList = () => {
         }
     }
 
+    const getGridClasses = (index: number) => {
+        return `${index == 0 ? 'md:row-span-2' : (index === 1 ? 'md:row-span-2' : 'md:row-span-1')} ${index === list.length - 1 ? 'md:col-span-3' : ''}`
+    }
+
     return (
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {
                 list.map((item: any, index: number) => (
-                    <Link className={`${index == 0 ? 'row-span-2' : (index === 1 ? 'row-span-2' : 'row-span-1')} ${index === list.length - 1 ? 'col-span-3' : ''}`} key={index} href={`/${locale}/classTraining/${item._id}`}>
-                        <div key={index} className="group relative flex flex-col items-center justify-center bg-center bg-contain bg-no-repeat border-neutral-600 hover:border-primary text-white h-full min-h-80 border  rounded-2xl overflow-hidden"
+                    <Link className={getGridClasses(index)} key={index} href={`/${locale}/classTraining/${item._id}`}>
+                        <div key={index} className={`group relative flex flex-col  items-center ${index === 1 ? 'justify-end ' : 'justify-center'} bg-center bg-contain bg-no-repeat  hover:border-primary text-white h-full min-h-80 rounded-2xl overflow-hidden`}
                         >
                             {
                                 item.image ? <Image width={0}
@@ -43,7 +47,7 @@ const ClassTrainingList = () => {
                             <div className="group-hover:scale-110 text-center transition-all duration-300 z-10 top-4 min-h-10 text-xl font-semibold rounded-t-lg rounded-b-md flex items-center p-4 rounded-[2rem] max-w-[90%]">
                                 {item.name}
                             </div>
-                            <div className="group-hover:translate-y-2 z-10 text-center transition-all duration-300">
+                            <div className="group-hover:translate-y-2 z-10 text-center transition-all duration-300 mb-8">
                                 {item.description.slice(0, 50)}...
                             </div>
                         </div>
