@@ -71,10 +71,10 @@ const ClientPageClassTraining = ({ detail }: any) => {
                                             <Image className="rounded-md group-hover:scale-110 transition-all duration-1000" height={50} width={50} alt={t.full_name} src={GetFileUrl(t.image)} />
                                             <div>
                                                 {
-                                                    t.link_linkedin &&
+                                                    t.link_linkedin ?
                                                     <Link href={t.link_linkedin} className="font-semibold " target="_blank">
                                                         <span className="text-gray-800">{t.full_name}</span>
-                                                    </Link>
+                                                    </Link> : <span className="text-gray-800 font-semibold">{t.full_name}</span>
                                                 }
                                                 {
                                                     t.link_linkedin && <Link href={t.link_linkedin} className="font-medium text-gray-500 mt-4" target="_blank">
