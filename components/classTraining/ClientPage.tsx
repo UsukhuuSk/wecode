@@ -70,9 +70,12 @@ const ClientPageClassTraining = ({ detail }: any) => {
                                         <div className="py-2 rounded-[2rem]  inline-flex gap-2 items-center">
                                             <Image className="rounded-md group-hover:scale-110 transition-all duration-1000" height={50} width={50} alt={t.full_name} src={GetFileUrl(t.image)} />
                                             <div>
-                                                <Link href={t.link_linkedin} className="font-semibold " target="_blank">
-                                                    <span className="text-gray-800">{t.full_name}</span>
-                                                </Link>
+                                                {
+                                                    t.link_linkedin &&
+                                                    <Link href={t.link_linkedin} className="font-semibold " target="_blank">
+                                                        <span className="text-gray-800">{t.full_name}</span>
+                                                    </Link>
+                                                }
                                                 {
                                                     t.link_linkedin && <Link href={t.link_linkedin} className="font-medium text-gray-500 mt-4" target="_blank">
                                                         <LinkedInLogoIcon fontSize={'2rem'} />
