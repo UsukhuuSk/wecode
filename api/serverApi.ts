@@ -5,6 +5,7 @@ import { cookies } from 'next/headers'
 export class ServerApi {
     static async _get(endpoint: string, params = {}): Promise<any> {
         const timeout = 5000;
+        endpoint = endpoint.replace(/^\//, '');
         const url = `${BASEURL}/${endpoint}`;
         const cookieStore = await cookies()
         const tokenObj = cookieStore.get('authToken')

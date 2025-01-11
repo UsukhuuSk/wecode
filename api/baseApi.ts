@@ -17,6 +17,7 @@ export class BaseApi {
         params: any = {},
         timeout: number = DEFAULT_TIMEOUT
     ): Promise<any> {
+        endpoint = endpoint.replace(/^\//, '');
         let locale = 'mn'
         if (window && typeof window !== 'undefined') {
             const pathSegments = window.location.pathname.split('/').filter(Boolean);

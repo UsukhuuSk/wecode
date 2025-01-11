@@ -158,13 +158,13 @@ export default function Header() {
           <div className="absolute bottom-28 h-16 px-4 flex w-11/12 m-auto items-center gap-2 justify-between rounded-xl bg-[rgba(51, 65, 85, 0.2)] border border-neutral-700">
             <div className="flex items-center gap-2">
               <div className="h-8 w-8 rounded-full border border-neutral-700 p-0 relative object-cover cursor-pointer">
-                <Image
+                { user.image?._id && <Image
                   src={GetFileUrl(user.image._id)}
                   alt=""
                   width={32}
                   height={32}
                   className="rounded-full object-cover"
-                />
+                />}
               </div>
               <div>
                 {user.given_name}
@@ -220,13 +220,13 @@ export default function Header() {
                 <DropdownMenu>
                   <DropdownMenuTrigger asChild>
                     <div className="h-8 w-8 rounded-full border border-neutral-700 p-0 relative object-cover cursor-pointer">
-                      <Image
+                      {user.image?._id && <Image
                         src={GetFileUrl(user.image._id)}
                         alt=""
                         width={32}
                         height={32}
                         className="rounded-full object-cover"
-                      />
+                      />}
                       <ChevronDownIcon className="h-4 w-4 text-white absolute -right-5 top-1/2 transform -translate-y-1/2" />
                     </div>
                   </DropdownMenuTrigger>
