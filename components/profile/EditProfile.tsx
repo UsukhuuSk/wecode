@@ -139,7 +139,7 @@ export default function EditProfile() {
                 htmlFor="profileImage"
                 className="relative flex items-center justify-center cursor-pointer w-[100px] h-[100px] rounded-full overflow-hidden bg-[#fff]"
               >
-                <img src={GetFileUrl(user?.image._id)} alt="" />
+                <img src={GetFileUrl(user?.image?._id)} alt="" />
                 <div className="absolute bottom-[10%] translate-x-1/2 right-1/2 bg-[#13032B] rounded-full p-1 z-[150]">
                   <Camera01Icon color="#fff" size={20} variant="solid" />
                 </div>
