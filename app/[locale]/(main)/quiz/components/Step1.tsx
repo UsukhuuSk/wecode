@@ -93,7 +93,7 @@ const Step1: React.FC<StepProps> = ({ next }) => {
     <form onSubmit={handleSubmit(onSubmit)}>
       <h1 className="text-center text-[#3f3f46] font-neue">{trns("account.create")}</h1>
       <div className="flex flex-col gap-4">
-        <div className="grid grid-cols-2 gap-4 mt-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-6">
           <div className="flex flex-col gap-3">
             <Label htmlFor="given_name">{trns("account.firstName")}</Label>
             <Input
@@ -119,8 +119,8 @@ const Step1: React.FC<StepProps> = ({ next }) => {
             )}
           </div>
         </div>
-        <div className="flex gap-4 ">
-          <div className="basis-1/4">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-4 ">
+          <div className="">
             <Label htmlFor="">{trns("account.gender")}</Label>
             <Controller
               name="gender"
@@ -146,7 +146,7 @@ const Step1: React.FC<StepProps> = ({ next }) => {
               <p className="text-red-500 text-sm">{errors.gender.message}</p>
             )}
           </div>
-          <div className="basis-1/2">
+          <div className="md:col-span-2">
             <Label htmlFor="">{trns("account.employment")}</Label>
             <Controller
               name="work_id"
@@ -171,7 +171,7 @@ const Step1: React.FC<StepProps> = ({ next }) => {
               <p className="text-red-500 text-sm">{errors.work_id.message}</p>
             )}
           </div>
-          <div className="basis-1/4">
+          <div className="">
             <Label htmlFor="">{trns("account.age")}</Label>
             <Controller
               name="age_id"
@@ -197,7 +197,7 @@ const Step1: React.FC<StepProps> = ({ next }) => {
             )}
           </div>
         </div>
-        <div className="grid grid-cols-2 gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div className="flex flex-col gap-3">
             <Label htmlFor="given_name">{trns("account.address")}</Label>
             <Input
@@ -223,7 +223,7 @@ const Step1: React.FC<StepProps> = ({ next }) => {
             )}
           </div>
         </div>
-        <div className="grid grid-cols-2 gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div className="">
             <Label htmlFor="">{trns("account.region")}</Label>
             <Controller
@@ -284,12 +284,12 @@ const Step1: React.FC<StepProps> = ({ next }) => {
             render={({ field }) => (
               <>
                 <Checkbox
-                className=""
+                  className=""
                   checked={field.value}
                   onCheckedChange={field.onChange}
                 />
                 <span className="flex items-center  gap-1">
-                  <span onClick={()=>field.onChange(!field.value)} className="cursor-pointer">
+                  <span onClick={() => field.onChange(!field.value)} className="cursor-pointer">
                     {trns("account.agreeWith")}
                   </span>
 

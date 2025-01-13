@@ -23,7 +23,7 @@ export default function Form() {
   const trns = useTranslations("quiz");
 
   return (
-    <div className="flex flex-col gap-10 items-center h-screen relative">
+    <div className="flex flex-col gap-10 items-center min-h-screen relative">
       <div className="overflow-hidden h-[200px] xl:h-[450px] absolute bottom-0 -z-50">
         <Image
           src={purple}
@@ -73,12 +73,14 @@ export default function Form() {
           {trns("tip")}
         </div>
       </div>
-      <div className="pt-4 px-6 pb-6 bg-white w-[620px] mx-auto rounded-3xl">
-        {currentStep === 1 && <Step1 next={next} />}
-        {currentStep === 2 && <Step2 next={next} back={back} />}
-        {currentStep === 3 && <Step3 next={next} back={back} />}
-        {currentStep === 4 && <Step4 next={next} back={back} />}
-        {currentStep === 5 && <Step5 next={next} back={back} />}
+      <div className="px-4 md:px-0 w-full">
+        <div className="pt-4 px-6 pb-6 bg-white w-full md:w-[620px] md:mx-auto rounded-3xl">
+          {currentStep === 1 && <Step1 next={next} />}
+          {currentStep === 2 && <Step2 next={next} back={back} />}
+          {currentStep === 3 && <Step3 next={next} back={back} />}
+          {currentStep === 4 && <Step4 next={next} back={back} />}
+          {currentStep === 5 && <Step5 next={next} back={back} />}
+        </div>
       </div>
     </div>
   );
