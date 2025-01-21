@@ -286,6 +286,7 @@
   },
   "course": {
     "detail": {
+      "min": "min",
       "rating": "avarage rating",
       "length": "course length",
       "level": "course level",

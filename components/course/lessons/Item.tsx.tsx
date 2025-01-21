@@ -33,7 +33,7 @@ export const LessonItem: React.FC<PropLessonItem> = ({ lesson, locale, onPlay, t
                     <div className="inline-block w-1 h-1 rounded-full bg-white"></div>
                 </div>
                 <span>
-                    {lesson?.video_id.duration_seconds} min
+                    {(Number(lesson?.video_id?.duration_seconds || 0) / 60).toFixed(0)} {trns('min')}
                 </span>
             </div>
         </li>
