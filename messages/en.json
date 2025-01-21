@@ -335,6 +335,8 @@
       "noResult": "No search results found."
     },
     "exam": {
+      "hours": "hours",
+      "minutes": "minutes",
       "instruction": "Instruction",
       "duration": "Exam duration",
       "questions": "Exam question",
