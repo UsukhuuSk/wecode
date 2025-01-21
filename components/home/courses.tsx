@@ -24,7 +24,7 @@ const HomeCourses = () => {
     const getCourses = async () => {
         try {
             setLoading(true)
-            const data = await BaseApi._get('9/service_acourses')
+            const data = await BaseApi._get('9/service_courses')
             setCourses(data.list)
         } catch (error) {
             Helper.handleError(error)

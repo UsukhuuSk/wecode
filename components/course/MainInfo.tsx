@@ -3,6 +3,7 @@ import HugeIcon from "../ui/HugeIcon";
 
 export const CourseMainInfo = ({ course }: any) => {
     const trns = useTranslations("course.detail");
+    const trnsProfile = useTranslations("profile");
 
     return (
         <div className="container my-4 pb-6 md:pb-0 md:my-0">
@@ -23,7 +24,7 @@ export const CourseMainInfo = ({ course }: any) => {
                     <HugeIcon size={20} name="timeSchedule" color={"white"} />
                     <div>
                         <span className="text-white font-semibold ">
-                            {course?.duration_seconds}
+                            {(Number(course?.duration_seconds || 0) / 60 / 60).toFixed(1)} { trnsProfile('hours') }
                         </span>
                         <br />
                         <span className="text-slate-400 font-medium text-xs">

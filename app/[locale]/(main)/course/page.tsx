@@ -57,7 +57,7 @@ export default function Course() {
       if (filter.text.length > 0) {
         searchObj.name = { "val": filter.text, "t": "string" }
       }
-      const apiUrl = tabValue === 'top-rated' ? 'list/9/service_course_top_rates' : '9/service_acourses';
+      const apiUrl = tabValue === 'top-rated' ? 'list/9/service_course_top_rates' : '9/service_courses';
       const data = await BaseApi._get(apiUrl, { search: JSON.stringify(searchObj) })
       setCourses(tabValue === 'top-rated' ? data : data.list)
     } catch (error) {

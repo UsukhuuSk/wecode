@@ -2,10 +2,10 @@ import { GetThumbnailUrl } from "../../lib/utils";
 import { useParams } from "next/navigation";
 import Link from "next/link";
 import { useEffect, useState } from "react";
-
+import { useLocale, useTranslations } from "next-intl";
 const CourseCard = ({ course, children }: any) => {
   const params = useParams()
-
+  const trns = useTranslations('profile')
   return (
     <Link href={`/${params.locale}/course/${course._id}`}>
       <div
@@ -28,11 +28,7 @@ const CourseCard = ({ course, children }: any) => {
                 {course.teachers[0].given_name}
               </span>
               <span>•</span>
-              {(
-                Math.round((course.duration_seconds / 3600) * 2) /
-                2
-              ).toFixed(1)}{" "}
-              hours
+              { (course.duration_seconds / 60 / 60).toFixed(1) } {trns('hours')}
             </span>
             {/* <Badge className="bg-green-600 text-white">
               Introductory
