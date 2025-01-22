@@ -2,8 +2,8 @@ import logo1 from "@/assets/landing/Mask group.svg";
 import logo2 from "@/assets/landing/Mask group1.svg";
 import logo3 from "@/assets/landing/Group 12.svg";
 import WefLogo from "@/assets/landing/weflogo.svg"
-import CamLogo from "@/assets/landing/CamLogo.svg"
-
+// import CamLogo from "@/assets/landing/CamLogo.svg"
+import ITULogo from "@/assets/landing/ITU-logo.svg"
 import unicefLogo from "@/assets/landing/unicefLogo.png"
 
 import Image from "next/image";
@@ -28,7 +28,7 @@ const HomeJourney = () => {
                         {t("partners")}
                     </span>
                     <Image height={80} src={WefLogo} alt="" />
-                    <Image height={80} src={CamLogo} alt="" />
+                    <Image height={80} src={ITULogo} alt="" />
                     <Image src={logo3} alt="" />
                     <Image height={80} src={unicefLogo} alt="" />
                     <Image src={logo2} alt="" />
