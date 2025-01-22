@@ -18,6 +18,7 @@ import logo2 from "@/assets/landing/Mask group1.svg";
 import logo3 from "@/assets/landing/Group 12.svg";
 import WefLogo from "@/assets/landing/weflogo.svg"
 import CamLogo from "@/assets/landing/cambridge.png"
+import ITULogo from "@/assets/landing/ITU-logo.svg"
 
 import unicefLogo from "@/assets/landing/unicefLogo.png"
 import { motion } from "framer-motion";
@@ -136,7 +137,8 @@ export default function About() {
             </div>
             <div className="rounded-xl flex items-center justify-center h-28">
               <div className="h-24">
-                <Image className="h-24 w-auto" src={CamLogo} alt="" />
+                {/* <Image className="h-24 w-auto" src={CamLogo} alt="" /> */}
+                <Image className="h-24 w-auto" src={ITULogo} alt="" />
               </div>
             </div>
             <div className="rounded-xl flex items-center justify-center h-28">
