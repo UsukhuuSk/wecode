@@ -64,10 +64,15 @@ const ClassroomTraining = () => {
                     <Image className="absolute hidden md:block right-[-150px] top-1/2 -translate-y-[50%] select-none" height={300} alt="In-person training" src={twelve} />
                     <div className="flex flex-col md:flex-row items-center gap-2 justify-center">
                         <div className="bg-gray-50 left-0 rounded-xl h-24 inline-flex justify-center items-center">
-                            <img className="h-24 rounded-xl object-cover" alt="In-person training" src={GetFileUrl(course?.image?._id)} />
+                            <Link href={"/classTraining/" + course?._id}>
+                                <img className="h-24 rounded-xl object-cover" alt="In-person training" src={GetFileUrl(course?.image?._id)} />
+                            </Link>
                         </div>
                         <p className="w-3/5 text-center text-lg font-bold text-gray-200 ">
-                            {course?.name}
+                            <Link href={"/classTraining/" + course?._id}>{course?.name}</Link>
+                            <Link href={"/classTraining/" + course?._id}><p>
+                                {course?.description}
+                            </p></Link>
                         </p>
                     </div>
                 </div>
