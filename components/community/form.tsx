@@ -4,7 +4,7 @@ import { BaseApi } from "@/api/baseApi"
 import FormComponent from "./component"
 import * as Dialog from '@radix-ui/react-dialog';
 import { useTranslations } from "next-intl";
-import { useParams } from "next/navigation";
+import { useParams, useRouter, useSearchParams } from "next/navigation";
 import { Loading03Icon } from "@hugeicons/react";
 
 
@@ -13,8 +13,9 @@ interface FormProps {
 }
 const CommunityForm = forwardRef(({ type }: FormProps, ref) => {
     const contentRef = useRef<HTMLDivElement>(null);
+    const searchParams = useSearchParams()
     const { locale } = useParams()
-
+    const router = useRouter()
     const trns = useTranslations("community")
     const [config, setConfig] = useState<any>(null)
     const [formData, setFormData] = useState<any>({})
@@ -30,6 +31,15 @@ const CommunityForm = forwardRef(({ type }: FormProps, ref) => {
         openForm
     }));
 
+    const setId = (id :any) => {
+        const newParams = new URLSearchParams(searchParams.toString());
+        if (id) {
+            newParams.set("id", id)
+        } else {
+            newParams.delete("id")
+        }
+        router.replace(`?${newParams.toString()}`, { scroll: false });
+    }
     useEffect(() => {
         if (config) {
             getRefs()
@@ -37,6 +47,7 @@ const CommunityForm = forwardRef(({ type }: FormProps, ref) => {
     }, [config])
 
     const openForm = async (table: string, clearable?: boolean) => {
+        setId('register')
         setErrors([])
         if (clearable) {
             setConfig(null)
@@ -52,6 +63,7 @@ const CommunityForm = forwardRef(({ type }: FormProps, ref) => {
 
     const handleClose = () => {
         setOpen(false)
+        setId(null)
     }
 
     const clearFormData = (columns: any) => {
@@ -71,7 +83,8 @@ const CommunityForm = forwardRef(({ type }: FormProps, ref) => {
 
     const getRef = async (ref_table: any) => {
         try {
-            return await BaseApi._get(`list/9/${ref_table}`)
+            const data = await BaseApi._get(`list/9/${ref_table}`)
+            return data.filter((c : any) => c.is_active !== false)
         } catch (error) {
             Helper.handleError(error)
         }

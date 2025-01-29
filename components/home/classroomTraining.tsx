@@ -3,7 +3,7 @@ import Link from "next/link";
 import twelve from "@/assets/LandingPage/12.svg";
 import Image
     from "next/image";
-import { useParams } from "next/navigation";
+import { useParams, useSearchParams, useRouter } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import CommunityForm from "../community/form";
 import { Helper } from "@/lib/helper";
@@ -11,16 +11,17 @@ import { BaseApi } from "@/api/baseApi";
 import { GetFileUrl } from "@/lib/utils";
 import SafeHtmlContent from "../SafeHtmlContent";
 const ClassroomTraining = () => {
+    const searchParams = useSearchParams()
+    const id = searchParams.get('id')
+    const router = useRouter()
     const { locale } = useParams()
     const refForm = useRef<any>(null);
     const isEn = () => locale === 'en'
     const [course, setCourse] = useState<any>(null)
     const [htmlContent, setHtmlContent] = useState<any>(null)
-
     useEffect(() => {
         getAnnouncement()
     }, [])
-
     const getAnnouncement = async () => {
         try {
             const { list } = await BaseApi._get('9/service_classroom_announcements')
@@ -28,6 +29,9 @@ const ClassroomTraining = () => {
                 const c = list[0]
                 setCourse(c);
                 setHtmlContent(c.html_content)
+                if (id === 'register') {
+                    handleOpenForm()
+                }
             }
         } catch (error) {
             Helper.handleError(error)
