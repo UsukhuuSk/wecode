@@ -58,8 +58,8 @@ const ClassroomTraining = () => {
 ">
                 <div className="flex items-center justify-center mb-4 pt-2">
                     <Image className="absolute hidden md:block right-[-150px] top-1/2 -translate-y-[50%] select-none" height={300} alt="In-person training" src={twelve} />
-                    <div className="flex flex-col md:flex-row relative items-center gap-2 justify-center">
-                        <div className="bg-gray-50  md:absolute left-0 rounded-xl h-24 inline-flex justify-center items-center">
+                    <div className="flex flex-col md:flex-row items-center gap-2 justify-center">
+                        <div className="bg-gray-50 left-0 rounded-xl h-24 inline-flex justify-center items-center">
                             <img className="h-24 rounded-xl object-cover" alt="In-person training" src={GetFileUrl(course?.image?._id)} />
                         </div>
                         <p className="w-3/5 text-center text-lg font-bold text-gray-200 ">
