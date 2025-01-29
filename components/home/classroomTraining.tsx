@@ -65,12 +65,12 @@ const ClassroomTraining = () => {
                     <div className="flex flex-col md:flex-row items-center gap-2 justify-center">
                         <div className="bg-gray-50 left-0 rounded-xl h-24 inline-flex justify-center items-center">
                             <Link href={"/classTraining/" + course?._id}>
-                                <img className="h-24 rounded-xl object-cover" alt="In-person training" src={GetFileUrl(course?.image?._id)} />
+                                <img className="h-24 rounded-xl object-cover hover:shadow-lg" alt="In-person training" src={GetFileUrl(course?.image?._id)} />
                             </Link>
                         </div>
-                        <p className="w-3/5 text-center text-lg font-bold text-gray-200 ">
+                        <p className="w-3/5 text-center text-lg font-bold text-gray-200 hover:underline">
                             <Link href={"/classTraining/" + course?._id}>{course?.name}</Link>
-                            <Link href={"/classTraining/" + course?._id}><p>
+                            <Link href={"/classTraining/" + course?._id}><p className="text-sm">
                                 {course?.description}
                             </p></Link>
                         </p>
