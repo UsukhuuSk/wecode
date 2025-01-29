@@ -70,6 +70,7 @@ const ClassroomTraining = () => {
                         </div>
                         <p className="w-3/5 text-center text-lg font-bold text-gray-200 hover:underline">
                             <Link href={"/classTraining/" + course?._id}>{course?.name}</Link>
+                            <br />
                             <Link href={"/classTraining/" + course?._id} className="text-sm">{course?.description}</Link>
                         </p>
                     </div>
