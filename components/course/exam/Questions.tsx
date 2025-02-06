@@ -118,7 +118,7 @@ export const ExamQuestions: React.FC<QsProps> = ({ fetching, exam, onNext, onQue
 
     return (
         <div className={`text-white rounded-md ${fetching ? 'animate-pulse' : ''}`}>
-            <div className={`flex justify-between mb-6`}>
+            <div className={`flex flex-wrap justify-start mb-6 gap-2`}>
                 {numbers.map((number) => (
                     <div key={number}
                         className={`flex items-center justify-center 
