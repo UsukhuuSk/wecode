@@ -34,7 +34,7 @@ const LeaderBoard = forwardRef(({ isMini }: any, ref) => {
                 params.last_date = filterValue
             }
             const data = await BaseApi._get('/exam/leaderboards', params)
-            setOtherUsers(data.length > 3 ? data.slice(3) : []);
+            setOtherUsers(data.length > 3 ? data.slice(3, 10) : []);
             if (data.length === 0) {
                 setTopThree([{}, {}, {}]);
             } else if (data.length === 1) {
