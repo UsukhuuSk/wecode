@@ -7,10 +7,11 @@ interface TopicProps {
     topic: object;
     index?: number;
     openMiniMenu?: boolean;
+    enrolled?: any;
 }
 
 
-const TopicItem: React.FC<TopicProps> = ({ topic, index, onPlay, openMiniMenu }: any) => {
+const TopicItem: React.FC<TopicProps> = ({ topic, index, onPlay, openMiniMenu, enrolled }: any) => {
     const [open, setOpen] = useState<boolean>(false)
 
     const trns = useTranslations("course.detail");
@@ -33,7 +34,7 @@ const TopicItem: React.FC<TopicProps> = ({ topic, index, onPlay, openMiniMenu }:
             <div className={"oveflow-hidden transition-all " + (open ? '' : "h-0")}>
                 <div className={" " + (!open ? 'hidden' : 'px-3 pb-3')}>
                     {
-                        <TopicLessons topic={topic} />
+                        <TopicLessons enrolled={enrolled} topic={topic} />
                     }
                 </div>
             </div>

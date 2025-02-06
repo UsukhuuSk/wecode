@@ -352,7 +352,7 @@
       "loading": "Loading...",
       "gaveup": "You have given up this attempt.   You have 2 more attempts remaining. Goodluck",
       "failBtn": "Lets Prepare Again",
-      "fail": "Be careful! You now have only 1 attempt left to complete this exam.",
+      "fail": "Be careful! You did not pass the exam.",
       "success": "Congratulations, You Passed!",
       "successBtn": "Download Certificate",
       "false": "Congratulations, You Passed!",
@@ -361,7 +361,12 @@
       "cert": "Certification",
       "certDesc": "Exam Completion Certificate is now available for download.",
       "start": "Start",
-      "backtoCourse": "Back to Course"
+      "backtoCourse": "Back to Course",
+      "dialogTitle": "Warning",
+      "warningQuestion": "Are you sure you want to give up?",
+      "submit": "Yes",
+      "saving": "...",
+      "close": "No"
     }
   },
   "profile": {

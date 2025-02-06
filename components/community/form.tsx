@@ -9,12 +9,15 @@ import { Loading03Icon } from "@hugeicons/react";
 
 
 interface FormProps {
-    type?: any
+    type?: 'BG_FORM' | 'MODAL_FORM';
+    staticData?: any
 }
-const CommunityForm = forwardRef(({ type }: FormProps, ref) => {
+const CommunityForm = forwardRef(({ type = 'MODAL_FORM', staticData = [] }: FormProps, ref) => {
     const contentRef = useRef<HTMLDivElement>(null);
     const searchParams = useSearchParams()
     const { locale } = useParams()
+    const isEn = () => locale === 'en'
+
     const router = useRouter()
     const trns = useTranslations("community")
     const [config, setConfig] = useState<any>(null)
@@ -31,7 +34,7 @@ const CommunityForm = forwardRef(({ type }: FormProps, ref) => {
         openForm
     }));
 
-    const setId = (id :any) => {
+    const setId = (id: any) => {
         const newParams = new URLSearchParams(searchParams.toString());
         if (id) {
             newParams.set("id", id)
@@ -59,6 +62,13 @@ const CommunityForm = forwardRef(({ type }: FormProps, ref) => {
             await getConfig(table)
             setOpen(true)
         }
+        if (Helper.isNotEmptyList(staticData)) {
+            const tempData: any = {}
+            staticData.forEach((element: any) => {
+                tempData[element.field] = element.value
+            });
+            setFormData(tempData)
+        }
     }
 
     const handleClose = () => {
@@ -84,7 +94,7 @@ const CommunityForm = forwardRef(({ type }: FormProps, ref) => {
     const getRef = async (ref_table: any) => {
         try {
             const data = await BaseApi._get(`list/9/${ref_table}`)
-            return data.filter((c : any) => c.is_active !== false)
+            return data.filter((c: any) => c.is_active !== false)
         } catch (error) {
             Helper.handleError(error)
         }
@@ -150,6 +160,9 @@ const CommunityForm = forwardRef(({ type }: FormProps, ref) => {
             Helper.handleInfo("Таны хүсэлт илгээгдлээ.")
             handleClose()
             clearFormData(config.columns)
+            if (type === 'BG_FORM') {
+                router.push(`/${locale}`)
+            }
         } catch (error) {
             Helper.handleError(error)
         } finally {
@@ -194,41 +207,64 @@ const CommunityForm = forwardRef(({ type }: FormProps, ref) => {
             </div>
         )
     }
-    return (
-        <>
-
-            {loading && <div className="fixed inset-0 w-full min-h-screen bg-[#00000070] z-[250] flex flex-col items-center justify-center">
-                <Loading03Icon className="animate-spin text-white" />
-                <p className="text-white">{locale === 'en' ? 'Loading...' : 'Уншиж байна...'}</p>
-            </div>}
-            <Dialog.Root open={open} onOpenChange={handleClose}>
-                <Dialog.Portal>
-                    <Dialog.Overlay className="fixed inset-0 bg-black/50 z-[998]" />
-                    <Dialog.Content className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white p-3 md:p-5 rounded-lg z-[999] shadow-lg  w-[90%] md:w-auto">
-                        <Dialog.Title className="text-xl mb-4">{trns("dialogTitle")}</Dialog.Title>
-                        <Dialog.Description className="text-base mb-6 max-h-[75vh] overflow-auto" ref={contentRef} >
-                            {config && RenderForm()}
-                        </Dialog.Description>
+    if (type === 'BG_FORM') {
+        return (
+            <div className="bg-white pb-4 rounded-md">
+                {
+                    config
+                    &&
+                    <>
+                        {RenderForm()}
                         <div className="flex gap-4 justify-center">
                             {
                                 !loading && <button className="px-4 py-2 rounded-md bg-primary text-white font-semibold disabled:animate-pulse disabled:bg-gray-400 text-xl" onClick={handleConfirm} disabled={saving}>{
                                     saving ? trns("saving") : trns("submit")
                                 }</button>
                             }
-                            <button className="px-4 py-2 rounded-md  text-black font-semibold disabled:animate-pulse disabled:bg-gray-400 text-xl" onClick={handleClose} disabled={saving}>{
-                                trns("close")
-                            }</button>
+                            <button className="px-4 py-2 rounded-md  text-black font-semibold disabled:animate-pulse disabled:bg-gray-400 text-xl" onClick={() => router.push(`/${locale}`)} disabled={saving}>
+                                {isEn() ? 'Back' : 'Буцах'}
+                            </button>
                         </div>
-                        <Dialog.Close asChild>
-                            {
-                                <button className="btn-close">
-                                </button>
-                            }
-                        </Dialog.Close>
-                    </Dialog.Content>
-                </Dialog.Portal>
-            </Dialog.Root>
-            {/* <Dialog title="Form" isOpen={open} onClose={handleClose}>
+                    </>
+                }
+            </div>
+        )
+    } else {
+        return (
+            <>
+
+                {loading && <div className="fixed inset-0 w-full min-h-screen bg-[#00000070] z-[250] flex flex-col items-center justify-center">
+                    <Loading03Icon className="animate-spin text-white" />
+                    <p className="text-white">{locale === 'en' ? 'Loading...' : 'Уншиж байна...'}</p>
+                </div>}
+                <Dialog.Root open={open} onOpenChange={handleClose}>
+                    <Dialog.Portal>
+                        <Dialog.Overlay className="fixed inset-0 bg-black/50 z-[998]" />
+                        <Dialog.Content className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white p-3 md:p-5 rounded-lg z-[999] shadow-lg  w-[90%] md:w-auto">
+                            <Dialog.Title className="text-xl mb-4">{trns("dialogTitle")}</Dialog.Title>
+                            <Dialog.Description className="text-base mb-6 max-h-[75vh] overflow-auto" ref={contentRef} >
+                                {config && RenderForm()}
+                            </Dialog.Description>
+                            <div className="flex gap-4 justify-center">
+                                {
+                                    !loading && <button className="px-4 py-2 rounded-md bg-primary text-white font-semibold disabled:animate-pulse disabled:bg-gray-400 text-xl" onClick={handleConfirm} disabled={saving}>{
+                                        saving ? trns("saving") : trns("submit")
+                                    }</button>
+                                }
+                                <button className="px-4 py-2 rounded-md  text-black font-semibold disabled:animate-pulse disabled:bg-gray-400 text-xl" onClick={handleClose} disabled={saving}>{
+                                    trns("close")
+                                }</button>
+                            </div>
+                            <Dialog.Close asChild>
+                                {
+                                    <button className="btn-close">
+                                    </button>
+                                }
+                            </Dialog.Close>
+                        </Dialog.Content>
+                    </Dialog.Portal>
+                </Dialog.Root>
+                {/* <Dialog title="Form" isOpen={open} onClose={handleClose}>
                 {
                     config && <>
                         <div>
@@ -242,8 +278,9 @@ const CommunityForm = forwardRef(({ type }: FormProps, ref) => {
                 }
 
             </Dialog> */}
-        </>
-    )
+            </>
+        )
+    }
 })
 CommunityForm.displayName = 'community-form'
 export default CommunityForm

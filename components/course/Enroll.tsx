@@ -42,18 +42,18 @@ export const CourseEnroll: React.FC<PropEnroll> = ({ course, enroll, onChange })
 
     return (
         <>
-            <Dialog isOpen={openInfo} onClose={handleClose} title={""}>
+            <Dialog width={400} isOpen={openInfo} onClose={handleClose} title={""}>
                 {
                     <div className="flex flex-col items-center gap-6 p-4">
-                        <div className="text-[72px] text-center">
+                        {/* <div className="text-[72px] text-center">
                             🚪🔒
-                        </div>
+                        </div> */}
                         <div className="font-bold text-center text-lg md:text-2xl text-wcZinc700">
                             {trns("enrollAuth")}
                         </div>
                         <Link className="w-full" href={'/login'}>
                             <button className="bg-primary rounded-[32px] text-white py-[12px] w-full hover:opacity-90 font-bold">
-                            {trns("enrollAuthBtn")}
+                                {trns("enrollAuthBtn")}
                             </button>
                         </Link>
                     </div>

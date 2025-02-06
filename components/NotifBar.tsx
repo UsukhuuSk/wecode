@@ -175,9 +175,12 @@ export const NotifBar = () => {
                             color={"#fff"}
                             variant="duotone"
                         />
-                        <div className="absolute -top-1 -right-2 bg-red-500 py-[2px] px-[4px] rounded-md text-xs">
-                            {count}
-                        </div>
+                        {
+                            count > 0 &&
+                            <div className="absolute -top-1 -right-2 bg-red-500 py-[2px] px-[4px] rounded-md text-xs">
+                                {count}
+                            </div>
+                        }
                     </div>
                 </DropdownMenuTrigger>
                 <DropdownMenuContent className="w-[360px] mr-[110px] bg-[#1a1a40] border-neutral-700 text-white flex flex-col items-start">

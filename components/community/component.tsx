@@ -104,12 +104,12 @@ const FormComponent = ({ description, columns = [], label, col_field, col_length
         }
 
         return (<div className="flex flex-col gap-2">
-            <p className={`${isError() ? 'text-red-500' : ''}`}>
+            <div className={`${isError() ? 'text-red-500' : ''}`}>
                 {col_nullable === false && <span className="text-red-500">* &nbsp;</span>}
-                {label}</p>
+                {label}</div>
             {InputItem}
             {description &&
-                <p className="text-gray-400 text-xs">  {description}</p>
+                <div className="text-gray-400 text-xs">  {description}</div>
             }
         </div>
         )

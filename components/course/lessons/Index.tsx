@@ -8,7 +8,7 @@ import { LessonItem } from "./Item.tsx";
 
 
 
-const TopicLessons = ({ topic, onPlay }: any) => {
+const TopicLessons = ({ topic, onPlay, enrolled }: any) => {
     const params = useParams()
     const [lessons, setLessons] = useState<any>([])
     const trns = useTranslations("course.detail");
@@ -23,7 +23,7 @@ const TopicLessons = ({ topic, onPlay }: any) => {
             {
                 lessons.map((l: any, index: number) => {
                     return (
-                        <LessonItem key={index} lesson={l} locale={params.locale} topicId={topic._id} />
+                        <LessonItem enrolled={enrolled} key={index} lesson={l} locale={params.locale} topicId={topic._id} />
                     )
                 })
             }

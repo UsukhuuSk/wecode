@@ -1,11 +1,10 @@
 import dayjs from 'dayjs';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import HugeIcon from '../ui/HugeIcon';
 import { useTranslations } from 'next-intl';
-import { Helper } from '@/lib/helper';
-import { BaseApi } from '@/api/baseApi';
 
-export const ProfileCalendar = ({ locale }: any) => {
+
+export const ProfileCalendar = ({ locale, streakDays }: any) => {
     const trns = useTranslations('profile.calendar')
     const [currentDate, setCurrentDate] = useState(dayjs().locale(locale));
 
@@ -13,27 +12,7 @@ export const ProfileCalendar = ({ locale }: any) => {
     const startOfMonth = currentDate.startOf('month').day();
     const days = [...Array(daysInMonth).keys()].map((i) => i + 1);
     const today = dayjs();
-    const [streakDays, setStreakDays] = useState<any>([])
 
-    useEffect(() => {
-        getStreakDays()
-    }, [])
-
-    const getStreakDays = async () => {
-        try {
-            const list = await BaseApi._get('exam/streakdays', { date: today.format('YYYY-MM-DD') })
-            if (Helper.isNotEmptyList(list)) {
-                for (const item of list) {
-                    if (Helper.isNotEmptyList(item['streak_dates'])) {
-                        setStreakDays((prev: any) => [...prev, ...item['streak_dates']]);
-                    }
-                }
-            }
-
-        } catch (error) {
-            Helper.handleError(error)
-        }
-    }
 
     const handleMonthChange = (direction: 'prev' | 'next') => {
         setCurrentDate((prev) =>

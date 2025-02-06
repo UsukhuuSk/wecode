@@ -16,17 +16,43 @@ import { ProCourseCompleted } from "@/components/profile/CourseCompleted";
 import { ProfileCalendar } from "@/components/profile/Calendar";
 import { ProMainInfo } from "@/components/profile/MainInfo";
 import { ProLeaderBoard } from "@/components/profile/LeaderBoard";
+import { BaseApi } from "@/api/baseApi";
+import { Helper } from "@/lib/helper";
+import dayjs from "dayjs";
 
 export default function Profile({ params }: any) {
   const trns = useTranslations('profile')
   const { user } = useAuth();
   const [userInfo, setUserInfo] = useState<any>({});
+  const [streakDays, setStreakDays] = useState<any>([])
+  const today = dayjs();
 
   useEffect(() => {
     if (user) {
       setUserInfo({ ...user })
     }
   }, [user])
+
+  useEffect(() => {
+    getStreakDays()
+  }, [])
+
+  const getStreakDays = async () => {
+    try {
+      const list = await BaseApi._get('exam/streakdays', { date: today.format('YYYY-MM-DD') })
+      if (Helper.isNotEmptyList(list)) {
+        for (const item of list) {
+          if (Helper.isNotEmptyList(item['streak_dates'])) {
+            setStreakDays((prev: any) => [...prev, ...item['streak_dates']]);
+          }
+        }
+      }
+
+    } catch (error) {
+      Helper.handleError(error)
+    }
+  }
+
 
   const WelcomeProfile = () => {
     return (
@@ -39,7 +65,7 @@ export default function Profile({ params }: any) {
           </span>
         </div>
         <div className="text-center md:text-left font-normal text-[14px] font-neue text-slate-200">
-          {trns('dayInfo').replace("DAYCOUNT", "5")}
+          {trns('dayInfo').replace("DAYCOUNT", streakDays.length)}
         </div>
       </div>
     )
@@ -55,7 +81,7 @@ export default function Profile({ params }: any) {
       <div className="flex flex-col-reverse md:flex-row gap-8">
         <div className="flex flex-col gap-6 items-center md:items-start ">
           <ProMainInfo userInfo={userInfo} trns={trns} />
-          <ProfileCalendar locale={params.locale} />
+          <ProfileCalendar locale={params.locale} streakDays={streakDays} />
           <ProLeaderBoard />
         </div>
         <div className="w-full">

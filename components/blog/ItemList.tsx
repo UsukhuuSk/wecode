@@ -34,7 +34,7 @@ const BlogListItem = ({ post }: any) => {
         setIsError(true);
     };
     return (
-        <li ref={ref} className="group overflow-hidden border rounded-[2rem]  border-[#FFFFFF33] pb-2 flex flex-col justify-between bg-[#1c0b38]">
+        <li ref={ref} className="group relative overflow-hidden border rounded-[2rem]  border-[#FFFFFF33] pb-2 flex flex-col justify-between bg-[#1c0b38]">
             <div>
                 <div className={`relative max-h-60 min-h-60 rounded-r-xl overflow-hidden ${isLoading ? 'animate-pulse' : ''}`}>
                     {
@@ -50,10 +50,10 @@ const BlogListItem = ({ post }: any) => {
                         </Link>
                     }
                     <div className="blogItemTitle  absolute bottom-0 text-sm text-gray-400 font-medium">
-                        {post.publish_at} /&nbsp; {post.created_by && <span>{`${post.created_by.surname ? post.created_by.surname.charAt(0) : ''}.${post.created_by?.given_name}`}</span>}
+                        <span>  {post.publish_at}</span>
                     </div>
                 </div>
-                <div className="mt-4 py-6 px-8">
+                <div className="mt-4 py-6 px-8 flex flex-col">
                     <Link
                         href={`/${locale}/blog/${post._id}`}>
                         <h1 className="text-white transition-all text-2xl hover:underline">{post.title}</h1>
@@ -76,7 +76,7 @@ const BlogListItem = ({ post }: any) => {
                         }}
                     /> */}
                     <div className="h-6"></div>
-                    <div className="text-sm text-gray-400 font-medium">
+                    <div className="text-sm text-gray-400 font-medium absolute bottom-6">
                         {post.type_id.name}
                     </div>
                 </div>

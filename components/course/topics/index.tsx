@@ -4,7 +4,7 @@ import HugeIcon from "../../ui/HugeIcon";
 import TopicItem from "./Item";
 import { Cancel01Icon } from "@hugeicons/react";
 
-const CourseTopics = ({ topics, onClose, openMiniMenu }: any) => {
+const CourseTopics = ({ topics, onClose, openMiniMenu, enrolled }: any) => {
     const trns = useTranslations("course.detail");
     return (
         <div>
@@ -20,7 +20,7 @@ const CourseTopics = ({ topics, onClose, openMiniMenu }: any) => {
             <div className="flex flex-col gap-4">
                 {
                     topics.map((t: any, index: number) => {
-                        return <TopicItem key={index} topic={t} index={index} openMiniMenu={openMiniMenu} />
+                        return <TopicItem key={index} enrolled={enrolled} topic={t} index={index} openMiniMenu={openMiniMenu} />
                     })
                 }
             </div>

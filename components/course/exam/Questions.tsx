@@ -72,7 +72,7 @@ export const ExamQuestions: React.FC<QsProps> = ({ fetching, exam, onNext, onQue
                 "current_question_id": exam?.current_question._id,
                 "selected_answer_ids": checkedItems
             })
-            Helper.handleSuccess()
+            // Helper.handleSuccess()
             if (isLast()) {
                 onQuestionFinish()
             } else {

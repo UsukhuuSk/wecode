@@ -77,7 +77,7 @@ export default function PageCourse({ courseData, params }: any) {
                         <div className="flex flex-col gap-8 col-span-12  lg:col-span-8 xl:col-span-8 2xl:col-span-8">
                             <CourseGoal course={course} />
                             <CourseAbout course={course} />
-                            <CourseTopics topics={topics} />
+                            <CourseTopics enrolled={enrolled} topics={topics} />
                         </div>
                         <div className="hidden mt-8 lg:mt-0 md:block col-span-12 lg:col-span-4 xl:col-span-4 2xl:col-span-4 text-white">
                             <CourseInstructor course={course} teachers={teachers} enrolled={enrolled} onChange={handleEnroll} />
@@ -119,7 +119,7 @@ export default function PageCourse({ courseData, params }: any) {
                         <div className="col-span-12 lg:col-span-4 xl:col-span-4 2xl:col-span-4 text-white">
                             <CourseInstructor course={course} teachers={teachers} enrolled={enrolled} onChange={handleEnroll} />
                             <div ref={topicRef} className={`${openMiniMenu ? 'z-[999] block fixed inset-0 bg-[#000000eb] backdrop-blur-sm overflow-auto h-[100vh] px-4 pt-[72px] pb-4' : 'hidden'} md:block transition-all`}>
-                                <CourseTopics openMiniMenu={openMiniMenu} topics={topics} onClose={() => setOpenMiniMenu(false)} />
+                                <CourseTopics enrolled={enrolled} openMiniMenu={openMiniMenu} topics={topics} onClose={() => setOpenMiniMenu(false)} />
                                 <CourseExam course={course} />
                             </div>
                         </div>

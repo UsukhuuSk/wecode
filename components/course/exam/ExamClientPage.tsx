@@ -1,7 +1,5 @@
 "use client"
-import React, { useEffect, useState } from "react";
-import { IoIosStar } from "react-icons/io";
-import Video from "next-video";
+import React, { useEffect, useRef, useState } from "react";
 
 import { useTranslations } from "next-intl";
 import HugeIcon from "../../ui/HugeIcon";
@@ -11,6 +9,8 @@ import { useParams } from "next/navigation";
 import { Helper } from "../../../lib/helper";
 import { useRouter } from "next/navigation";
 import { InfoDialog } from "./InfoDialog";
+import * as Dialog from '@radix-ui/react-dialog';
+
 
 
 
@@ -23,6 +23,11 @@ export default function ExamClientPage() {
     const [remaining, setRemaining] = useState(0)
     const [fetching, setFetching] = useState<boolean>(false)
     const [fetchingNext, setFetchingNext] = useState<boolean>(false)
+    const [openGiveUp, setOpenGiveUp] = useState<boolean>(false)
+    const [saving, setSaving] = useState<boolean>(false)
+
+    saving
+    const contentRef = useRef<HTMLDivElement>(null);
 
     const router = useRouter()
     const [info, setInfo] = useState<any>(null)
@@ -136,16 +141,23 @@ export default function ExamClientPage() {
     const handleNext = () => {
         handleRefresh()
     }
+    const handleWarning = () => {
+        setOpenGiveUp(true)
+    }
 
     const handleGiveup = async () => {
         try {
+            setSaving(true)
             await handleFinish()
+            setOpenGiveUp(false)
             setInfo({
                 type: 'giveup',
 
             })
         } catch (error) {
             Helper.handleError(error)
+        } finally {
+            setSaving(false)
         }
     }
 
@@ -170,6 +182,47 @@ export default function ExamClientPage() {
 
     const handleQuestionFinish = () => {
         getExam()
+    }
+
+    const GiveUpDialog = () => {
+        return (
+            <Dialog.Root open={openGiveUp} onOpenChange={() => setOpenGiveUp(false)}>
+                <Dialog.Portal>
+                    <Dialog.Overlay className="fixed inset-0 bg-black/50 z-[998]" />
+                    <Dialog.Content className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white p-3 md:p-5 rounded-lg z-[999] shadow-lg  w-[90%] md:w-auto">
+                        <Dialog.Title className="text-xl mb-4 font-bold">{trns("dialogTitle")}</Dialog.Title>
+                        <Dialog.Description className="text-base mb-6 min-h-32 max-h-[75vh] overflow-auto" ref={contentRef} >
+
+                            <div className=" md:w-[430px]">
+                                <div className="text-center text-[4rem] min-h-28 flex justify-center items-center">
+                                    ❔
+                                </div>
+                                <p className="md:w-[430px] text-center font-semibold text-lg md:font-bold md:text-2xl text-wcZinc700">
+                                    {trns("warningQuestion")}
+                                </p>
+                            </div>
+                        </Dialog.Description>
+                        <div className="flex gap-4 justify-center">
+                            {
+                                <button className="px-4 py-2 rounded-md bg-primary text-white font-semibold disabled:animate-pulse disabled:bg-gray-400 text-xl"
+                                    onClick={handleGiveup} disabled={saving}>{
+                                        saving ? trns("saving") : trns("submit")
+                                    }</button>
+                            }
+                            <button className="px-4 py-2 rounded-md  text-black font-semibold disabled:animate-pulse disabled:bg-gray-400 text-xl" onClick={() => setOpenGiveUp(false)} disabled={saving}>{
+                                trns("close")
+                            }</button>
+                        </div>
+                        <Dialog.Close asChild>
+                            {
+                                <button className="btn-close">
+                                </button>
+                            }
+                        </Dialog.Close>
+                    </Dialog.Content>
+                </Dialog.Portal>
+            </Dialog.Root>
+        )
     }
 
     if (fetching) {
@@ -229,6 +282,7 @@ export default function ExamClientPage() {
     } else {
         return (
             <div className="container pt-20 pb-10">
+                {GiveUpDialog()}
                 <InfoDialog info={info} onRetry={handleRetry} />
                 <div className="flex flex-col gap-4 ">
                     <div className="flex-1 flex gap-10 items-center ">
@@ -247,7 +301,7 @@ export default function ExamClientPage() {
                             <div className="grid grid-cols-2 gap-4 text-white">
                                 <div>
                                     <p className="text-wcSlate400 text-sm mb-1">{trns('duration')}</p>
-                                    { examDetail?.moment_duration ? <span>{examDetail?.moment_duration.split(':')[0]} {trns(examDetail?.moment_duration.split(':')[1])}</span> : '' }
+                                    {examDetail?.moment_duration ? <span>{examDetail?.moment_duration.split(':')[0]} {trns(examDetail?.moment_duration.split(':')[1])}</span> : ''}
                                 </div>
 
                                 <div>
@@ -277,7 +331,7 @@ export default function ExamClientPage() {
                                                     <>{RenderRemaining()}</>
                                                 </button>
                                                 <div>
-                                                    <button className="bold font-adineue text-wcRed mt-3" onClick={handleGiveup}>{trns('giveup')}</button>
+                                                    <button className="bold font-adineue text-wcRed mt-3" onClick={handleWarning}>{trns('giveup')}</button>
                                                 </div>
                                             </>
                                             :

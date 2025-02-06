@@ -52,8 +52,8 @@ const ClassroomTraining = () => {
                         {isEn() ? 'Corporate Training' : 'Байгууллагын Багц'}
                     </Link>
                     <div className="flex justify-center mt-8">
-                        <button onClick={handleOpenForm} className="bg-red-500 hover:border border-red-500 hover:bg-transparent hover:text-red-500 hover:scale-110 rounded-[2rem] text-white text-2xl py-2 px-6 font-bold uppercase transition-all">
-                            {isEn() ? 'Get Started Today' : 'Бидэнтэй холбогдох'}
+                        <button onClick={()=>router.push(`/${locale}/register`)} className="bg-red-500 hover:border border-red-500 hover:bg-transparent hover:text-red-500 hover:scale-110 rounded-[2rem] text-white text-2xl py-2 px-6 font-bold uppercase transition-all">
+                            {isEn() ? 'Get Started Today' : 'Бидэнтэй холбогдох' }
                         </button>
                     </div>
                 </div>

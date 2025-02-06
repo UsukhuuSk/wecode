@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { CircleArrowLeft02Icon } from "@hugeicons/react";
+import { CircleArrowLeft02Icon, Globe02Icon } from "@hugeicons/react";
 import Link from "next/link";
 import { ServerApi } from "@/api/serverApi";
 import { headers } from 'next/headers';
@@ -69,14 +69,14 @@ export default async function BlogDetail({ params }: any) {
           </h1>
           <div className="text-white text-sm font-medium tracking-[0.151px] leading-normal">
 
-            <span className="text-[#FFFFFF66] font-normal text-sm"> {params.locale === 'en' ? 'by' : 'нийтэлсэн'} </span>
+            {/* <span className="text-[#FFFFFF66] font-normal text-sm"> {params.locale === 'en' ? 'by' : 'нийтэлсэн'} </span>
             <span className="text-white font-medium text-sm">
               {post.created_by.surname} {post.created_by.given_name}
             </span>
-            <span className="text-[#FFFFFF66] font-normal text-sm"> {params.locale === 'end' ? 'on' : '-'} </span>
-            <span className="text-white font-medium text-sm">
+            <span className="text-[#FFFFFF66] font-normal text-sm"> {params.locale === 'end' ? 'on' : '-'} </span> */}
+            <div className="text-white font-medium text-sm flex gap-1">
               {post.publish_at}
-            </span>
+            </div>
           </div>
           <div className="rounded-3xl ">
             {
