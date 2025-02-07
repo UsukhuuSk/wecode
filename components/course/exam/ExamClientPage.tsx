@@ -26,7 +26,6 @@ export default function ExamClientPage() {
     const [openGiveUp, setOpenGiveUp] = useState<boolean>(false)
     const [saving, setSaving] = useState<boolean>(false)
 
-    saving
     const contentRef = useRef<HTMLDivElement>(null);
 
     const router = useRouter()
