@@ -9,12 +9,13 @@ export class ServerApi {
         const url = `${BASEURL}/${endpoint}`;
         const cookieStore = await cookies()
         const tokenObj = cookieStore.get('authToken')
+        const locale = cookieStore.get('NEXT_LOCALE')
         let token = tokenObj ? tokenObj.value : undefined
         const method = 'GET'
-
         const options: RequestInit = {
             method: 'GET',
             headers: {
+                'Accept-Language': locale?.value || 'mn',
                 'Content-Type': 'application/json',
                 ...(token ? { Authorization: `Bearer ${token}` } : {})
             },
@@ -22,7 +23,6 @@ export class ServerApi {
         const finalUrl = method === 'GET' && params
             ? `${url}?${new URLSearchParams(params).toString()}`
             : url;
-            console.log('finalUrl', finalUrl)
         if (method !== 'GET' && params) {
             options.body = JSON.stringify(params);
         }
@@ -30,7 +30,6 @@ export class ServerApi {
         const controller = new AbortController();
         const signal = controller.signal;
         options.signal = signal;
-
         const timeoutId = setTimeout(() => {
             controller.abort();
         }, timeout);
@@ -69,7 +68,7 @@ export class ServerApi {
         const cookieStore = await cookies()
         const tokenObj = cookieStore.get('authToken')
         let token = tokenObj ? tokenObj.value : undefined
-        const data = await this._get(`9/courses/${courseId}`, params)
+        const data = await this._get(`9/service_courses/${courseId}`, params)
         if (token) {
             const enroll = await this._get(`course/9/enroll/check`, { courseId })
             return {
