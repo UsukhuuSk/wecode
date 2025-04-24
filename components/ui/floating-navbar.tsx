@@ -79,7 +79,7 @@ export const FloatingNav = ({
             <Image src={logo} alt="" />{" "}
           </Link>
         </div>
-        <div className="flex justify-center gap-2 lg:gap-4">
+        <div className="flex justify-center gap-2 lg:gap-2">
           {navItems.map((navItem: any, idx: number) => {
             const isActive = navItem.link === pathname;
             return (
@@ -87,12 +87,12 @@ export const FloatingNav = ({
                 key={`link=${idx}`}
                 href={navItem.link}
                 className={cn(
-                  `relative items-center flex rounded-3xl py-2 px-3 text-[#13032B] font-medium text-xs lg:text-sm font-golosText transition-all ease-in-out duration-300 ${isActive ? "bg-[#E2E8F0]" : ""
+                  `relative items-center flex rounded-3xl py-2 px-1 text-[#13032B] font-medium text-xs lg:text-sm font-golosText transition-all ease-in-out duration-300 ${isActive ? "bg-[#E2E8F0]" : ""
                   }`
                 )}
               >
                 {navItem.icon && <span className="block mr-2">{navItem.icon}</span>}
-                <span className="hidden sm:block text-sm">{navItem.name}</span>
+                <span className={cn(`hidden sm:inline-block text-sm w-auto leading-4 max-w-[140px] ${!navItem.icon ? 'text-center' : ''}`)}>{navItem.name}</span>
               </Link>
             );
           })}

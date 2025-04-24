@@ -53,6 +53,10 @@ export function FloatingHeader() {
       link: `/${locale}/classTraining`,
     },
     {
+      name: t("campaign"),
+      link: `/${locale}/blog/17`,
+    },
+    {
       name: t("blog"),
       link: `/${locale}/blog`,
     },
@@ -82,7 +86,7 @@ export function FloatingHeader() {
               <LocaleSwitcher />
             </SheetTitle>
             <SheetDescription>
-              <div className="flex flex-col items-start justify-center gap-4 mt-[60px]">
+              <div className="flex flex-col items-start justify-center gap-2 mt-[60px] text-center">
                 {navItems.map((navItem: any, idx: number) => {
                   const isActive = navItem.link === pathname;
                   return (
@@ -91,12 +95,12 @@ export function FloatingHeader() {
                       key={`link=${idx}`}
                       href={navItem.link}
                       className={cn(
-                        `relative items-center flex rounded-3xl py-2 px-3 text-[#13032B] font-medium text-[14px] font-golosText transition-all ease-in-out duration-300 ${isActive ? "bg-[#E2E8F0]" : ""
+                        `text-center relative items-center flex rounded-3xl py-2 px-3 text-[#13032B] font-medium text-[14px] font-golosText transition-all ease-in-out duration-300 ${isActive ? "bg-[#E2E8F0]" : ""
                         }`
                       )}
                     >
                       <span className="block">{navItem.icon}</span>
-                      <span className="text-base font-semibold">
+                      <span className="text-base font-semibold text-center">
                         {navItem.name}
                       </span>
                     </Link>

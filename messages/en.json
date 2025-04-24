@@ -129,7 +129,8 @@
     "login": "Login",
     "learning": "My learning",
     "profile": "My learning",
-    "classTraining": "In-person training"
+    "classTraining": "In-person training",
+    "campaign": "National AI Campaign"
   },
   "blog": {
     "title": "Blog",

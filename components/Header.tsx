@@ -100,6 +100,10 @@ export default function Header() {
       link: `/${locale}/classTraining`,
     },
     {
+      name: t("campaign"),
+      link: `/${locale}/campaign`,
+    },
+    {
       name: t("blog"),
       link: `/${locale}/blog`,
     },
@@ -136,7 +140,7 @@ export default function Header() {
         </div>
         {
           isSheetOpen &&
-          <div className="w-full mt-16 flex flex-col gap-[10px]">
+          <div className="w-full mt-16 flex flex-col gap-[5px]">
             {routes.map((route, index) => {
               return (
                 <div className={`text-center h-10 rounded-[32px] ${isActiveMenu(route.link) ? 'bg-[#FFFFFF33]' : ''}`} key={index}>
