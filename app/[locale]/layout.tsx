@@ -125,6 +125,12 @@ export default async function RootLayout({
   const messages = await getMessages();
   return (
     <html lang={locale}>
+        <Head>
+          <meta
+            name="google-site-verification"
+            content="IXr3MbyNd2b3LsnF3t_n1vIE0__jrivmXb-_aB6-SlI"
+          />
+        </Head>
         <body
           className={`${montserratAlt.variable} ${manrope.variable} ${ovSoge.variable} ${golosText.variable} ${adineue.variable} ${neue.variable} antialiased`}
           // className={`${ovSoge.variable} ${adineue.variable} ${neue.variable} antialiased`}
