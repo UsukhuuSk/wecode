@@ -2,7 +2,7 @@ import React from 'react';
 
 const PrivacyPolicy = () => {
   return (
-    <div className="max-w-3xl mx-auto px-4 py-24 text-gray-200 text-[14pt]">
+    <div className="max-w-3xl mx-auto px-4 py-32 text-gray-200 text-[14pt]">
       <p>
         AI Academy Asia (&quot;AI Academy,&quot; &quot;we,&quot; &quot;us,&quot; or &quot;our&quot;) is committed to protecting the privacy of your information. This Privacy Policy explains how we collect, use, and share your personal information when you use our website, mobile applications, online courses, programs, resources, and all related services (collectively, the &quot;Services&quot;).
       </p>
