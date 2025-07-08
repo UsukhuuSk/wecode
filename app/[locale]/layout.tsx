@@ -107,13 +107,13 @@ const neue = localFont({
   variable: "--font-neue",
   preload: true,
 });
-export const metadata: Metadata = [{
+export const metadata: Metadata = {
   title: "AI Academy",
   description: "Empowering the Next Generation",
-}, {
-  name: "google-site-verification",
-  content: "IXr3MbyNd2b3LsnF3t_n1vIE0__jrivmXb-_aB6-SlI"
-}];
+  verification: {
+    google: "IXr3MbyNd2b3LsnF3t_n1vIE0__jrivmXb-_aB6-SlI",
+  },
+}
 
 export default async function RootLayout({
   children,
