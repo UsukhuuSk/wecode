@@ -11,7 +11,7 @@ import { ReactLenis } from "../../lib/lenis";
 import { AuthProvider } from "../../context/AuthContext";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-
+import Head from 'next/head'
 const montserratAlt = Montserrat_Alternates({
   weight: ["200", "300", "400", "500", "600", "700", "800"],
   preload: true,
@@ -125,12 +125,12 @@ export default async function RootLayout({
   const messages = await getMessages();
   return (
     <html lang={locale}>
-        <head>
+        <Head>
           <meta
             name="google-site-verification"
             content="IXr3MbyNd2b3LsnF3t_n1vIE0__jrivmXb-_aB6-SlI"
           />
-        </head>
+        </Head>
         <body
           className={`${montserratAlt.variable} ${manrope.variable} ${ovSoge.variable} ${golosText.variable} ${adineue.variable} ${neue.variable} antialiased`}
           // className={`${ovSoge.variable} ${adineue.variable} ${neue.variable} antialiased`}
