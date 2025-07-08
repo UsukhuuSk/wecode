@@ -14,7 +14,7 @@ const PrivacyPolicy = () => {
         <strong>Personal Information:</strong> This may include information that can be used to identify you, such as your name, email address, postal address, phone number, username, password, and payment information.<br />
         <strong>Usage Information:</strong> This includes information about how you use our Services, such as the pages you visit, the courses you enroll in, the content you access, the time you spend on the Services, and your interactions with other users.<br />
         <strong>Device Information:</strong> We may collect information about the device you use to access our Services, such as your IP address, browser type, operating system, device identifiers, and mobile network information.<br />
-        <strong>Log Information:</strong> Our servers automatically record information ("log data"), including your IP address, access times, browser type and language, device type, operating system, and referring website address.<br />
+        <strong>Log Information:</strong> Our servers automatically record information (&quot;log data&quot;), including your IP address, access times, browser type and language, device type, operating system, and referring website address.<br />
         <strong>Cookies and Similar Technologies:</strong> We may use cookies, web beacons, and other similar technologies to collect information about your browsing activity and preferences. You can control cookies through your browser settings, but disabling cookies may affect the functionality of the Services.
       </p>
 
@@ -56,7 +56,7 @@ const PrivacyPolicy = () => {
         We take reasonable measures to protect your information from unauthorized access, use, or disclosure. However, no data transmission over the Internet or electronic storage method is 100% secure.
       </p>
 
-      <p className="mt-4 font-bold">6. Children's Privacy</p>
+      <p className="mt-4 font-bold">6. Children&apos;s Privacy</p>
 
       <p className="mt-4">
         Our Services are not intended for children under the age of 13. We do not knowingly collect personal information from children under this age. If you become aware that a child has provided us with personal information, please contact us.
