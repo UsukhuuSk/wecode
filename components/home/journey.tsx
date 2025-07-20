@@ -60,19 +60,34 @@ const HomeJourney = () => {
                                 <span className="text-white  font-semibold md:font-bold font-neue">
                                     {t("mobile")}{" "}
                                 </span>
-                                <span className=" text-white font-light">
+                                {/* <span className=" text-white font-light">
                                     {t("soon")}
-                                </span>
+                                </span> */}
                             </h1>
                             <div className="flex flex-row items-start md:items-center justify-start gap-3">
-                                <div className="flex items-center  gap-3 w-[170px] rounded-[48px] bg-[#FFFFFF33] border border-[#FFFFFF66] justify-start text-white py-[10px] px-5">
+                                {/* App Store Button */}
+                                <a
+                                    href="https://apps.apple.com/app/id6748180960"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    aria-label="Download on the App Store"
+                                    className="flex items-center gap-3 w-[170px] rounded-[48px] bg-[#FFFFFF33] border border-[#FFFFFF66] justify-start text-white py-[10px] px-5 hover:bg-white hover:text-black transition"
+                                >
                                     <FaAppleAlt size={16} color="#fff" />
                                     <span>App Store</span>
-                                </div>
-                                <div className="flex items-center gap-3 w-[170px] rounded-[48px] bg-[#FFFFFF33] border border-[#FFFFFF66] justify-start text-white py-[10px] px-5">
+                                </a>
+
+                                {/* Google Play Button */}
+                                <a
+                                    href="https://play.google.com/store/apps/details?id=com.aiacademy.asia"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    aria-label="Download on Google Play"
+                                    className="flex items-center gap-3 w-[170px] rounded-[48px] bg-[#FFFFFF33] border border-[#FFFFFF66] justify-start text-white py-[10px] px-5 hover:bg-white hover:text-black transition"
+                                >
                                     <IoPlay size={16} color="#fff" />
-                                    <span>Google Play </span>
-                                </div>
+                                    <span>Google Play</span>
+                                </a>
                             </div>
                         </div>
                         <div className="absolute hidden lg:flex top-0 right-[5%] lg:h-[276px] lg:w-[276px]">
