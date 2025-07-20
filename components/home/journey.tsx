@@ -79,7 +79,7 @@ const HomeJourney = () => {
 
                                 {/* Google Play Button */}
                                 <a
-                                    href="https://play.google.com/store/apps/details?id=com.aiacademy.asia"
+                                    href="https://play.google.com/store/apps/details?id=com.app.aiacademy"
                                     target="_blank"
                                     rel="noopener noreferrer"
                                     aria-label="Download on Google Play"
