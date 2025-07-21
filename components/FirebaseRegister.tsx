@@ -16,7 +16,7 @@ export default function FirebaseRegister({ onCountChange }: any) {
 
     if (navigator && "serviceWorker" in navigator) {
       navigator.serviceWorker
-        .register("/firebase-messaging-sw-1.js")
+        .register("/firebase-messaging-sw.js")
         .then((_) => {
           import('../firebaseMessaging').then(({ requestNotificationPermission, onForegroundMessage }) => {
             requestNotificationPermission().then(token => {
